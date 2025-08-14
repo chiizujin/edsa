@@ -1,0 +1,45 @@
+"en-GB"
+
+group DSAG "Selective Force Field "
+"Agent Type" 0
+"Dependency Count" 3
+"Dependency 1" "force field.c16"
+"Dependency Category 1" 2
+"Dependency 2" "ffbz.wav"
+"Dependency Category 2" 1
+"Dependency 3" "force field.catalogue"
+"Dependency Category 3" 7
+
+"Script Count" 1
+"Script 1" @ "ffield.cos"
+"Agent Description" "A force field that can be configured to prevent certain types of creatures from passing."
+"Agent Animation File" "force field.c16"
+"Agent Animation Gallery" "force field"
+"Agent Animation String" "0"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32208 kill targ next scrx 1 1 32208 1 scrx 1 1 32208 2 scrx 1 1 32208 4 scrx 1 1 32208 9 scrx 1 1 32208 1000 enum 1 1 32209 kill targ next scrx 1 1 32209 1 scrx 1 1 32209 1000 scrx 1 1 32209 1001 scrx 1 1 32209 1002 scrx 1 1 32209 1003"
+ 
+group AGNT "Selective Force Field"
+"Agent Type" 0
+"Dependency Count" 3
+"Dependency 1" "force field.c16"
+"Dependency Category 1" 2
+"Dependency 2" "ffbz.wav"
+"Dependency Category 2" 1
+"Dependency 3" "force field.catalogue"
+"Dependency Category 3" 7
+
+"Script Count" 1
+"Script 1" @ "ffield.cos"
+"Agent Description" "A force field that can be configured to prevent certain types of creatures from passing."
+"Agent Animation File" "force field.c16"
+"Agent Animation Gallery" "force field"
+"Agent Animation String" "0"
+
+"Remove script" "enum 1 1 32208 kill targ next scrx 1 1 32208 1 scrx 1 1 32208 2 scrx 1 1 32208 4 scrx 1 1 32208 9 scrx 1 1 32208 1000 enum 1 1 32209 kill targ next scrx 1 1 32209 1 scrx 1 1 32209 1000 scrx 1 1 32209 1001 scrx 1 1 32209 1002 scrx 1 1 32209 1003"
+ 
+inline FILE "force field.c16" "force field.c16" 
+inline FILE "ffbz.wav" "ffbz.wav"
+inline FILE "force field.catalogue" "force field.catalogue" 

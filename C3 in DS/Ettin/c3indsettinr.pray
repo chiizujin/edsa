@@ -1,0 +1,14 @@
+"en-GB"
+
+group DSAG "Ettin Desert (Remove)"
+"Agent Type" 0
+"Dependency Count" 0
+
+"Script Count" 1
+"Script 1" @ "ettinremove.cos"
+"Agent Description" "This removes the Ettin desert from an undocked DS world."
+"Agent Animation File" "fav_place_desert.c16"
+"Agent Animation Gallery" "fav_place_desert"
+"Agent Animation String" "1"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"

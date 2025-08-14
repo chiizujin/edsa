@@ -1,0 +1,22 @@
+"en-GB"
+
+group DSAG "Aquarium"
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "c3indsaqua.c16"
+"Dependency Category 1" 2
+"Dependency 2" "c3indsaqua.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 2
+"Script 1" @ "aqua.cos"
+"Script 2" @ "aqualifts.cos"
+"Agent Description" "This agent re-creates the Aquarium in undocked DS worlds."
+"Agent Animation File" "fav_place_marine.c16"
+"Agent Animation Gallery" "fav_place_marine"
+"Agent Animation String" "1"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+ 
+inline FILE "c3indsaqua.c16" "c3indsaqua.c16" 
+inline FILE "c3indsaqua.catalogue" "c3indsaqua.catalogue" 

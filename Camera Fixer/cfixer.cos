@@ -1,0 +1,156 @@
+* CREATE
+inst
+new: comp 1 1 32223 "comms camera units" 1 0 5000
+attr 198
+perm 90
+bhvr 0
+accg 3
+elas 10
+fric 100
+* Get creator positioning
+setv va00 game "CreatorX"
+setv va01 game "CreatorY"
+* If no values then assume this is C3 only
+doif va00 eq 0 and va01 eq 0
+  * Move it to a safe C3 location (just above the incubator area)
+  setv va00 rand 1400 1550
+  setv va01 400
+  endi
+tino 128 200 128 128 128
+mvsf va00 va01
+
+* OVs
+
+* ACTIVATE 1
+scrp 1 1 32223 1
+  lock
+  snde "1bep"
+  tino  256 128 128 128 128
+  * Change attributes of cameras and record positions
+  enum 3 8 50
+    velo 0 0
+    doif ov00 eq 1
+      setv va01 posl
+      setv va02 post
+    endi
+    doif ov00 eq 2
+      setv va03 posl
+      setv va04 post
+    endi
+    doif ov00 eq 3
+      setv va05 posl
+      setv va06 post
+    endi
+    doif ov00 eq 4
+      setv va07 posl
+      setv va08 post
+    endi
+    doif ov00 eq 5
+      setv va09 posl
+      setv va10 post
+    endi
+    doif ov00 eq 6
+      setv va11 posl
+      setv va12 post
+    endi
+    attr 192
+    bhvr 0
+  next
+  targ ownr
+  * Save values
+  setv ov01 va01
+  setv ov02 va02
+  setv ov03 va03
+  setv ov04 va04
+  setv ov05 va05
+  setv ov06 va06
+  setv ov07 va07
+  setv ov08 va08
+  setv ov09 va09
+  setv ov10 va10
+  setv ov11 va11
+  setv ov12 va12
+  clac 1
+endm
+
+* ACTIVATE 2
+scrp 1 1 32223 2
+  lock
+  snde "1bep"
+  tino 128 200 128 128 128
+  * Restore attributes of cameras
+  enum 3 8 50
+    attr 195
+    bhvr 11
+  next
+  targ ownr
+  clac 0
+endm
+
+* TIMER
+scrp 1 1 32223 9
+  inst
+  * Get values
+  setv va01 ov01
+  setv va02 ov02
+  setv va03 ov03
+  setv va04 ov04
+  setv va05 ov05
+  setv va06 ov06
+  setv va07 ov07
+  setv va08 ov08
+  setv va09 ov09
+  setv va10 ov10
+  setv va11 ov11
+  setv va12 ov12
+  * Force camera back to where it should be
+  enum 3 8 50
+    doif ov00 eq 1
+      velo 0 0
+      mvto va01 va02
+    endi
+    doif ov00 eq 2
+      velo 0 0
+      mvto va03 va04
+    endi
+    doif ov00 eq 3
+      velo 0 0
+      mvto va05 va06
+    endi
+    doif ov00 eq 4
+      velo 0 0
+      mvto va07 va08
+    endi
+    doif ov00 eq 5
+      velo 0 0
+      mvto va09 va10
+    endi
+    doif ov00 eq 6
+      velo 0 0
+      mvto va11 va12
+    endi
+  next
+  tick 0
+endm
+
+* WORLD LOADED
+scrp 1 1 32223 128
+  * Enable timer to force cameras back after quarter of a second
+  doif clac eq 1
+    tick 5
+  endi
+endm
+
+rscr
+  enum 1 1 32223
+    kill targ
+  next
+  scrx 1 1 32223 1
+  scrx 1 1 32223 2
+  scrx 1 1 32223 9
+  scrx 1 1 32223 128
+  * Restore attributes of cameras
+  enum 3 8 50
+    attr 195
+    bhvr 11
+  next

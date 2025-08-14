@@ -1,0 +1,134 @@
+* CREATE
+inst
+new: comp 1 1 32201 "norn of knowing" 3 0 5000
+attr 199
+perm 90
+clac 0
+bhvr 0
+accg 3
+elas 0
+fric 100
+puhl -1 45 10
+* Get creator positioning
+setv va00 game "CreatorX"
+setv va01 game "CreatorY"
+* If no values then assume this is C3 only
+doif va00 eq 0 and va01 eq 0
+  * Move it to a safe C3 location (just above the incubator area)
+  setv va00 rand 1400 1550
+  setv va01 400
+  endi
+pat: fixd 1 "norn of knowing" 2 -2 -2 0 "WhiteOnTransparentChars"
+pose 0
+mvsf va00 va01
+
+* ACTIVATE 1
+scrp 1 1 32201 1
+  * Start NoK
+  sndc "boh0"
+  wait 2
+  sndc "ke_0"
+  * Save initial position
+  targ ownr
+  setv va01 posx
+  subv va01 50
+  setv va02 posy
+  subv va02 36
+  attr 231
+  part 0
+  pose 1
+  * Loop through Norns
+  enum 4 1 0
+    * Only check Norns older than 5 seconds to prevent "meta room" error for new-borns when moving camera.  Also ignore dead Norns
+    doif targ ne null and tage gt 100 and dead eq 0
+      * Move camera to Norn
+      cmrt 0
+      * Make camera follow NoK (Norn)
+      * Get Norn's agent & name
+      seta va99 targ
+      sets va98 hist name gtos 0
+      * Float NoK to Norn
+      targ ownr
+      frel va99
+      flto -20 -70
+      part 1
+      ptxt va98
+      * Check Norn
+      inst
+      targ va99
+      sets va97 ""
+      * Check for older than 9 hours
+      doif tage gt 648000
+        adds va97 "O"
+        endi
+      * Check for any chemicals 66-89 at 100
+      setv va05 0
+      setv va06 66
+      loop
+        doif chem va06 gt 0.95
+          addv va05 1
+          endi
+        addv va06 1
+        untl va06 gt 89
+      * Flag if 2 or more chemicals found at 100
+      doif va05 gt 1
+        adds va97 "T"
+        endi
+      * Check history for quick aging if at least adult (reached adult at less than 30 min)
+      setv va07 hist find gtos 0 4 -1
+      doif va07 ne -1
+        loop
+          doif hist cage gtos 0 va07 eq 4 and hist tage gtos 0 va07 lt 36000
+            adds va97 "A"
+            endi
+          setv va07 hist find gtos 0 4 va07
+          untl va07 eq -1
+        endi
+      * Check the old way if not already flagged in case no adult event (less than 30 min old now and at least adult)
+      doif sins va97 1 "A" eq -1
+        doif tage lt 36000 and cage ge 4
+          adds va97 "A"
+          endi
+        endi
+      slow
+      * Play sound and show status if any flags
+      doif va97 ne ""
+        adds va97 "! "
+        adds va97 va98
+        * Prevent string from wrapping
+        doif strl va97 gt 10
+          sets va96 va97
+          sets va97 subs va96 1 10
+          adds va97 "..."
+          endi
+        targ ownr
+        part 1
+        ptxt va97
+        sndc "cmov"
+        * Wait an extra half second
+        wait 10
+        endi
+      targ ownr
+      endi
+    * Wait a second
+    wait 20
+    next
+  * Return NoK to initial position
+  targ ownr
+  part 1
+  ptxt ""
+  attr 199
+  frel null
+  accg 3
+  mvto va01 va02
+  cmrt 0
+  part 0
+  pose 0
+endm
+
+* DESTROY
+rscr
+  enum 1 1 32201
+  kill targ
+  next
+  scrx 1 1 32201 1

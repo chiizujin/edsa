@@ -1,0 +1,14 @@
+"en-GB"
+
+group DSAG "Grendel Jungle (Remove)"
+"Agent Type" 0
+"Dependency Count" 0
+
+"Script Count" 1
+"Script 1" @ "grendelremove.cos"
+"Agent Description" "This removes the Grendel jungle from an undocked DS world."
+"Agent Animation File" "fav_place_jungle.c16"
+"Agent Animation Gallery" "fav_place_jungle"
+"Agent Animation String" "1"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"

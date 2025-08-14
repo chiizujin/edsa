@@ -1,0 +1,3 @@
+TAG "Agent Help 1 1 32205"
+"Dummy Control"
+"This control panel allows you to make the training dummy moveable by the hand (you).\n\nThe top button (the grabbing hand) makes the dummy moveable and you will see it jump as it is released.  The bottom button (the pointing hand) teleports the dummy back to its original place in the Workshop and fixes it down again.\n\nThe eyes of the dummy on the control panel will be green when the dummy is moveable.\nThe control panel can be left in the world or injected as needed then removed.\n\nThe dummy will remain moveable without the agent needing to be present."

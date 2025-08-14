@@ -1,0 +1,15 @@
+TAG "Agent Help 3 8 32201"
+"Roamer" 
+"This robotic spider-rock wanders around the world occasionally releasing sprays as needed.\n\nIf any bacteria are nearby then an anti-bacterial spray is released, and if any creatures are nearby then either a curing spray or a ''feel-good'' spray is released.\n\nThe pink anti-bacterial spray kills any bacteria that the spray clouds touch.\n\nThe yellow curing spray reduces disease-related chemicals of any creatures the clouds touch, such as Glycotoxin and Histamines.\n\nThe bluey-white ''feel-good'' spray reduces things such as injury and loneliness of any creatures the clouds touch.\n\nThe Roamer itself can also be played with as desired.\n\nAfter being in a room for a while the Roamer will teleport to another location somewhere in the world."
+
+TAG "Agent Help 1 1 32213"
+"Feel-good Spray" 
+"These spray clouds are released from the Roamer and reduce things such as injury and loneliness of any creatures they touch."
+
+TAG "Agent Help 1 1 32214"
+"Curing Spray" 
+"These spray clouds are released from the Roamer and reduce disease-related chemicals of any creatures they touch, such as Glycotoxin and Histamines."
+
+TAG "Agent Help 1 1 32215"
+"Anti-bacterial Spray" 
+"These spray clouds are released from the Roamer and kill any bacteria that they touch."

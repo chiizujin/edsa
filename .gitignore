@@ -1,0 +1,15 @@
+notes.txt
+agent number list.txt
+
+*.agents
+*.exe
+
+0_working/
+raw/
+backup/
+trash/
+
+Name Tagger/
+Norn Garden/
+Reaper Norn/
+Shuttle/

@@ -1,0 +1,93 @@
+* The comments are deliberately vague to avoid giving things away if people look in the .agents file, though obviously there are certain things that can't be hidden...
+
+* CREATE
+inst
+new: simp 1 1 32216 "mystery agent" 2 0 1000
+attr 0
+bhvr 0
+accg 0
+elas 0
+fric 0
+pose 1
+* Position it out of the way in the comms room
+mvto 6161 9062
+tick rand 6000 36000
+
+* TIMER
+scrp 1 1 32216 9
+  * Pick another random time
+  tick rand 6000 36000
+  * Create the other thing
+  new: simp 2 8 32201 "fotl" 4 0 5000
+  attr 192
+  elas 0
+  fric 0
+  accg 0
+  doif rand 0 1 eq 0
+    * Left
+    pose 1
+    frat 3
+    anim [0 1 255]
+    velo -7 0
+    setv ov00 -1
+    setv ov01 0
+  else
+    *Right
+    pose 3
+    frat 3
+    anim [2 3 255]
+    velo 7 0
+    setv ov00 1
+    setv ov01 0
+  endi
+  * Find random position
+  loop
+    setv va01 rand 0 10000
+    setv va02 rand 0 10000
+  untl tmvt va01 va02 eq 1
+  mvsf va01 va02
+  tick 1
+endm
+
+* OTHER TIMER
+scrp 2 8 32201 9
+  * Check if reached left wall
+  doif ov01 ne 0 and ov00 eq -1 and ov01 le posx
+    anim []
+    pose 1
+    velo 3 0
+    setv va00 1
+  endi
+  * Check if reached right wall
+  doif ov01 ne 0 and ov00 eq 1 and ov01 ge posx
+    anim []
+    pose 3
+    velo -3 0
+    setv va00 1
+  endi
+  * Collided?
+  doif va00 eq 1
+    accg 3
+    fric 10
+    setv va01 0
+    loop
+      alph va01 1
+      addv va01 8
+      slow
+    untl va01 gt 256
+    kill targ
+  endi
+  setv ov01 posx  
+endm
+
+rscr
+  * Kill the controlling agent
+  enum 1 1 32216
+    kill targ
+  next
+  * Kill the other thing
+  enum 2 8 32201
+    kill targ
+  next
+  scrx 1 1 32216 9
+  scrx 2 8 32201 9

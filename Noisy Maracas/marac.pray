@@ -1,0 +1,50 @@
+"en-GB"
+
+group DSAG "Noisy Maracas "
+"Agent Type" 0
+"Dependency Count" 4
+"Dependency 1" "noisy maracas.c16"
+"Dependency Category 1" 2
+"Dependency 2" "mrc1.wav"
+"Dependency Category 2" 1
+"Dependency 3" "mrc2.wav"
+"Dependency Category 3" 1
+"Dependency 4" "noisy maracas.catalogue"
+"Dependency Category 4" 7
+
+"Script Count" 1
+"Script 1" @ "marac.cos"
+"Agent Description" "A rather noisy musical instrument."
+"Agent Animation File" "noisy maracas.c16"
+"Agent Animation Gallery" "noisy maracas"
+"Agent Animation String" "0"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 2 21 32201 kill targ next scrx 2 21 32201 1 scrx 2 21 32201 2 scrx 2 21 32201 9  scrx 2 21 32201 6"
+ 
+group AGNT "Noisy Maracas"
+"Agent Type" 0
+"Dependency Count" 4
+"Dependency 1" "noisy maracas.c16"
+"Dependency Category 1" 2
+"Dependency 2" "mrc1.wav"
+"Dependency Category 2" 1
+"Dependency 3" "mrc2.wav"
+"Dependency Category 3" 1
+"Dependency 4" "noisy maracas.catalogue"
+"Dependency Category 4" 7
+
+"Script Count" 1
+"Script 1" @ "marac.cos"
+"Agent Description" "A rather noisy musical instrument."
+"Agent Animation File" "noisy maracas.c16"
+"Agent Animation Gallery" "noisy maracas"
+"Agent Animation String" "0"
+
+"Remove script" "enum 2 21 32201 kill targ next scrx 2 21 32201 1 scrx 2 21 32201 2 scrx 2 21 32201 3 scrx 2 21 32201 4 scrx 2 21 32201 6 scrx 2 21 32201 9"
+ 
+inline FILE "noisy maracas.c16" "noisy maracas.c16" 
+inline FILE "mrc1.wav" "mrc1.wav"
+inline FILE "mrc2.wav" "mrc2.wav"
+inline FILE "noisy maracas.catalogue" "noisy maracas.catalogue" 

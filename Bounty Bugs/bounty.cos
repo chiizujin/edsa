@@ -1,0 +1,364 @@
+* RED APPLE
+
+* EAT
+scrp 2 8 32206 12
+  inst
+  snde "reat"
+  stim writ from 78 2
+  * Antihistamine
+  setv va01 itof rand 1 2
+  divv va01 10.0
+  targ from
+  chem 100 va01
+  targ ownr
+  doif pose eq 1
+    kill targ
+  else
+    pose 1
+  endi
+endm
+
+* TIMER
+scrp 2 8 32206 9
+  lock
+  cato 10
+  bhvr 0
+  setv va01 0
+  loop
+    inst
+    alph va01 1
+    addv va01 1
+    slow
+  untl va01 gt 256
+  kill targ
+endm
+
+* GREEN APPLE
+
+* EAT
+scrp 2 8 32205 12
+  inst
+  snde "reat"
+  stim writ from 78 2
+  * Antihistamine - stronger than red
+  setv va01 itof rand 3 4
+  divv va01 10.0
+  targ from
+  chem 100 va01
+  targ ownr
+  doif pose eq 1
+    kill targ
+  else
+    pose 1
+  endi
+endm
+
+* TIMER
+scrp 2 8 32205 9
+  lock
+  cato 10
+  bhvr 0
+  setv va01 0
+  loop
+    inst
+    alph va01 1
+    addv va01 1
+    slow
+  untl va01 gt 256
+  kill targ
+endm
+
+* BANANA
+
+* EAT
+scrp 2 8 32204 12
+  inst
+  snde "reat"
+  stim writ from 78 2
+  * Antibodies
+  setv va01 102
+  targ from
+  loop
+    setv va02 itof rand 1 5
+    divv va02 10.0
+    chem va01 va02
+    addv va01 1
+  untl va01 gt 109
+  targ ownr
+  doif pose eq 0
+    pose 1
+  elif pose eq 1
+    bhvr 0
+    pose 2
+    urge writ from 8 0.9 7 0.9
+    cato 10
+  endi
+endm
+
+* TIMER
+scrp 2 8 32204 9
+  lock
+  cato 10
+  bhvr 0
+  setv va01 0
+  loop
+    inst
+    alph va01 1
+    addv va01 1
+    slow
+  untl va01 gt 256
+  kill targ
+endm
+
+* CHEESE SANDWICH
+
+* EAT
+scrp 2 11 32206 12
+  inst
+  snde "reat"
+  stim writ from 79 2
+  * Arnica (anti-glycotoxin)
+  setv va01 itof rand 1 2
+  divv va01 10.0
+  targ from
+  chem 97 va01
+  targ ownr
+  doif pose eq 1
+    kill targ
+  else
+    pose 1
+  endi
+endm
+
+* TIMER
+scrp 2 11 32206 9
+  lock
+  cato 10
+  bhvr 0
+  setv va01 0
+  loop
+    inst
+    alph va01 1
+    addv va01 1
+    slow
+  untl va01 gt 256
+  kill targ
+endm
+
+* GINGERBREAD MAN
+
+* EAT
+scrp 2 11 32205 12
+  inst
+  snde "reat"
+  stim writ from 79 1
+  doif pose eq 1
+    kill targ
+  else
+    * Get sick enjoyment from biting head off
+*    stim writ from 90 1
+    setv va01 itof rand -1 -2
+    divv va01 10.0
+    targ from
+    chem 159 va01
+    targ ownr
+    pose 1
+  endi
+endm
+
+* TIMER
+scrp 2 11 32205 9
+  lock
+  cato 10
+  bhvr 0
+  setv va01 0
+  loop
+    inst
+    alph va01 1
+    addv va01 1
+    slow
+  untl va01 gt 256
+  kill targ
+endm
+
+* SUSHI ROLL
+
+* EAT
+scrp 2 11 32204 12
+  inst
+  snde "reat"
+  stim writ from 79 1
+  * Anti-oxidant
+  setv va01 itof rand 1 2
+  divv va01 10.0
+  targ from
+  chem 93 va01
+  targ ownr
+  doif pose eq 1
+    kill targ
+  else
+    pose 1
+  endi
+endm
+
+* TIMER
+scrp 2 11 32204 9
+  lock
+  cato 10
+  bhvr 0
+  setv va01 0
+  loop
+    inst
+    alph va01 1
+    addv va01 1
+    slow
+  untl va01 gt 256
+  kill targ
+endm
+
+* POD OF PEAS
+
+* EAT
+scrp 2 3 32206 12
+  inst
+  snde "reat"
+  stim writ from 77 1
+  * Medicine One
+  setv va01 itof rand 1 2
+  divv va01 10.0
+  targ from
+  chem 92 va01
+  targ ownr
+  doif pose eq 1
+    kill targ
+  else
+    pose 1
+  endi
+endm
+
+* TIMER
+scrp 2 3 32206 9
+  lock
+  cato 10
+  bhvr 0
+  setv va01 0
+  loop
+    inst
+    alph va01 1
+    addv va01 1
+    slow
+  untl va01 gt 256
+  kill targ
+endm
+
+* GREEN CHILLI
+
+* EAT
+scrp 2 3 32205 12
+  inst
+  snde "reat"
+  stim writ from 77 1
+  * Temperature
+  setv va01 itof rand -1 -2
+  divv va01 10.0
+  setv va02 itof rand 1 2
+  divv va02 10.0
+  targ from
+  chem 152 va01
+  chem 153 va02
+  targ ownr
+  doif pose eq 1
+    kill targ
+  else
+    pose 1
+  endi
+endm
+
+* TIMER
+scrp 2 3 32205 9
+  lock
+  cato 10
+  bhvr 0
+  setv va01 0
+  loop
+    inst
+    alph va01 1
+    addv va01 1
+    slow
+  untl va01 gt 256
+  kill targ
+endm
+
+* RED CHILLI
+
+* EAT
+scrp 2 3 32204 12
+  inst
+  snde "reat"
+  stim writ from 77 1
+  * Temperature
+  setv va01 itof rand -1 -5
+  divv va01 10.0
+  setv va02 itof rand 1 5
+  divv va02 10.0
+  targ from
+  chem 152 va01
+  chem 153 va02
+  targ ownr
+  doif pose eq 1
+    kill targ
+  else
+    pose 1
+  endi
+endm
+
+* TIMER
+scrp 2 3 32204 9
+  lock
+  cato 10
+  bhvr 0
+  setv va01 0
+  loop
+    inst
+    alph va01 1
+    addv va01 1
+    slow
+  untl va01 gt 256
+  kill targ
+endm
+
+* CUBE
+
+* ACTIVATE 1
+scrp 2 21 32206 1
+  inst
+  snde "bbg3"
+  setv va01 rand 0 3
+  pose va01
+  doif va01 eq 3
+    stim writ from 97 2
+    bhvr 0
+    urge writ from 12 0.9 7 0.9
+    wait 100
+    setv va01 0
+    loop
+      inst
+      alph va01 1
+      addv va01 1
+      slow
+    untl va01 gt 256
+    kill targ
+  else
+    stim writ from 97 1
+  endi
+endm
+
+* ACTIVATE 2
+scrp 2 21 32206 2
+  call 1 0 0
+endm
+
+* COLLISION
+scrp 2 21 32206 6
+  snde "dr10"
+endm

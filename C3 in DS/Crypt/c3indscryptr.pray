@@ -1,0 +1,14 @@
+"en-GB"
+
+group DSAG "The Crypt (Remove)"
+"Agent Type" 0
+"Dependency Count" 0
+
+"Script Count" 1
+"Script 1" @ "cryptremove.cos"
+"Agent Description" "This removes the Crypt from an undocked DS world."
+"Agent Animation File" "c3indscrypt.c16"
+"Agent Animation Gallery" "c3indscrypt"
+"Agent Animation String" "1"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"

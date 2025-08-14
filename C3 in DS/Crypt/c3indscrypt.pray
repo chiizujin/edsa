@@ -1,0 +1,21 @@
+"en-GB"
+
+group DSAG "The Crypt"
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "c3indscrypt.c16"
+"Dependency Category 1" 2
+"Dependency 2" "c3indscrypt.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "crypt.cos"
+"Agent Description" "This agent re-creates the Crypt in undocked DS worlds."
+"Agent Animation File" "c3indscrypt.c16"
+"Agent Animation Gallery" "c3indscrypt"
+"Agent Animation String" "1"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+ 
+inline FILE "c3indscrypt.c16" "c3indscrypt.c16" 
+inline FILE "c3indscrypt.catalogue" "c3indscrypt.catalogue" 

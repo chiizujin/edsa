@@ -1,0 +1,7 @@
+TAG "Agent Help 1 1 32208"
+"Selective Force Field" 
+"This force field can be configured to prevent certain types of creatures from passing, based on race and life stage.\n\nFor example, it could be set up to only allow Norns older than Youth to pass or prevent Ettins older than Child from passing.\n\nAny creatures that try to pass, but are not allowed to, are pushed back away from the forcefield (non-harmfully).\n\n\nTo turn the force field on and off click it with the hand anywhere on the base or the pole.  The ball will light up green when active.\n\nTo configure the force field click on the ball at the top."
+
+TAG "Agent Help 1 1 32209"
+"Force Field Configuration" 
+"This panel is used to configure the force field.\n\nClick the red buttons to toggle the types of creatures that will be prevented from passing.\n\nClick anywhere else on the panel to close it."

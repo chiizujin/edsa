@@ -1,0 +1,496 @@
+inst
+
+* Abort if already present (scripts will still be installed)
+setv va01 0
+enum 1 1 32217
+  setv va01 1
+next
+doif va01 eq 1
+  stop
+endi
+
+* Abort if a C3 or docked game (scripts will still be installed)
+doif type game "ds_game_type" ne 2 or game "ds_game_type" eq "docked"
+  stop
+endi
+
+* Abort if C3 not installed (scripts will still be installed)
+doif eame "engine_no_auxiliary_bootstrap_1" ne 1
+  stop
+endi
+
+* Create a blank agent to record meta-room number
+new: simp 1 1 32217 "blnk" 1 0 1
+* Extra flag for lift script
+setv ov01 0
+* Timer for additional functions
+tick 20
+
+* Setup
+brmi 0 0
+
+* Create meta-room
+setv ov00 addm 4215 0 2968 1200 "ettin1.8"
+mmsc 5699 600 "desert.mng\\main"
+
+* Create rooms
+setv va00 addr ov00 7061 7137 551 550 620 567
+rtyp va00 8
+rmsc 7099 559 "desert.mng\\forest"
+setv va00 addr ov00 6897 7061 553 551 621 620
+rtyp va00 8
+rmsc 6979 586 "desert.mng\\forest"
+setv va00 addr ov00 6776 6897 553 553 622 621
+rtyp va00 8
+rmsc 6836 587 "desert.mng\\forest"
+setv va00 addr ov00 6689 6776 553 553 625 622
+rtyp va00 8
+rmsc 6732 587 "desert.mng\\forest"
+setv va00 addr ov00 6584 6689 543 553 550 625
+rtyp va00 8
+rmsc 6636 584 "desert.mng\\forest"
+setv va00 addr ov00 7008 7137 403 403 552 550
+rtyp va00 0
+rmsc 7072 476 "desert.mng\\forest"
+setv va00 addr ov00 6897 7008 403 403 553 552
+rtyp va00 0
+rmsc 6952 477 "desert.mng\\forest"
+setv va00 addr ov00 6776 6897 403 403 553 553
+rtyp va00 0
+rmsc 6836 478 "desert.mng\\forest"
+setv va00 addr ov00 6689 6776 403 403 553 553
+rtyp va00 0
+rmsc 6732 478 "desert.mng\\forest"
+setv va00 addr ov00 6584 6689 403 403 543 553
+rtyp va00 0
+rmsc 6636 478 "desert.mng\\forest"
+setv va00 addr ov00 6545 6584 387 403 532 550
+rtyp va00 0
+rmsc 6564 468 "desert.mng\\forest"
+setv va00 addr ov00 6434 6545 385 387 528 532
+rtyp va00 5
+rmsc 6489 458 "desert.mng\\forest"
+setv va00 addr ov00 6299 6434 339 336 528 528
+rtyp va00 0
+rmsc 6366 433 "desert.mng\\forest"
+setv va00 addr ov00 6288 6456 605 599 813 809
+rtyp va00 10
+rmsc 6372 707 "desert.mng\\tunnel1"
+setv va00 addr ov00 6299 6434 528 528 605 600
+rtyp va00 0
+rmsc 6366 564 "desert.mng\\tunnel1"
+setv va00 addr ov00 6299 6434 194 194 339 336
+rtyp va00 0
+rmsc 6366 265 "desert.mng\\quarry"
+setv va00 addr ov00 6434 6661 194 194 336 338
+rtyp va00 7
+rmsc 6547 266 "desert.mng\\quarry"
+setv va00 addr ov00 6661 6841 194 194 338 339
+rtyp va00 7
+rmsc 6751 266 "desert.mng\\quarry"
+setv va00 addr ov00 6841 6975 194 194 339 337
+rtyp va00 7
+rmsc 6908 265 "desert.mng\\quarry"
+setv va00 addr ov00 6104 6299 194 194 339 339
+rtyp va00 7
+rmsc 6201 266 "desert.mng\\quarry"
+setv va00 addr ov00 6104 6299 381 381 529 528
+rtyp va00 7
+rmsc 6201 454 "desert.mng\\forest"
+setv va00 addr ov00 6116 6288 605 605 812 813
+rtyp va00 10
+rmsc 6202 709 "desert.mng\\tunnel1"
+setv va00 addr ov00 5931 6116 605 605 815 812
+rtyp va00 10
+rmsc 6023 708 "desert.mng\\tunnel1"
+setv va00 addr ov00 5760 5931 605 605 814 815
+rtyp va00 10
+rmsc 5845 710 "desert.mng\\tunnel1"
+setv va00 addr ov00 5602 5760 605 605 814 814
+rtyp va00 10
+rmsc 5681 709 "desert.mng\\tunnel1"
+setv va00 addr ov00 5347 5602 605 605 814 814
+rtyp va00 10
+rmsc 5474 709 "desert.mng\\tunnel1"
+setv va00 addr ov00 5230 5347 605 605 809 814
+rtyp va00 10
+rmsc 5288 709 "desert.mng\\tunnel1"
+setv va00 addr ov00 5155 5230 605 605 814 809
+rtyp va00 10
+rmsc 5192 707 "desert.mng\\volcano"
+setv va00 addr ov00 4981 5155 605 605 816 814
+rtyp va00 10
+rmsc 5068 709 "desert.mng\\volcano"
+setv va00 addr ov00 4776 4981 605 605 811 816
+rtyp va00 10
+rmsc 4878 710 "desert.mng\\volcano"
+setv va00 addr ov00 5930 6104 352 352 533 529
+rtyp va00 7
+rmsc 6017 440 "desert.mng\\main"
+setv va00 addr ov00 5759 5930 352 352 535 533
+rtyp va00 7
+rmsc 5844 442 "desert.mng\\main"
+setv va00 addr ov00 5606 5759 352 352 535 535
+rtyp va00 7
+rmsc 5682 443 "desert.mng\\main"
+setv va00 addr ov00 5392 5606 352 352 534 535
+rtyp va00 7
+rmsc 5499 443 "desert.mng\\main"
+setv va00 addr ov00 5236 5392 352 352 535 534
+rtyp va00 7
+rmsc 5314 443 "desert.mng\\main"
+setv va00 addr ov00 5025 5236 352 352 533 535
+rtyp va00 7
+rmsc 5130 443 "desert.mng\\main"
+setv va00 addr ov00 4827 5025 352 352 534 533
+rtyp va00 7
+rmsc 4926 442 "desert.mng\\volcano"
+setv va00 addr ov00 4625 4827 352 352 531 534
+rtyp va00 7
+rmsc 4726 443 "desert.mng\\main"
+setv va00 addr ov00 4443 4625 387 388 521 531
+rtyp va00 7
+rmsc 4534 459 "desert.mng\\main"
+setv va00 addr ov00 4443 4625 375 281 387 388
+rtyp va00 0
+rmsc 4534 381 "desert.mng\\main"
+setv va00 addr ov00 4625 4827 281 205 352 352
+rtyp va00 0
+rmsc 4726 316 "desert.mng\\main"
+setv va00 addr ov00 5930 6104 194 194 352 352
+rtyp va00 0
+rmsc 6017 273 "desert.mng\\main"
+setv va00 addr ov00 5759 5930 194 194 352 352
+rtyp va00 0
+rmsc 5844 273 "desert.mng\\main"
+setv va00 addr ov00 5606 5759 194 194 352 352
+rtyp va00 0
+rmsc 5682 273 "desert.mng\\main"
+setv va00 addr ov00 5392 5606 194 194 352 352
+rtyp va00 0
+rmsc 5499 273 "desert.mng\\main"
+setv va00 addr ov00 5236 5392 194 194 352 352
+rtyp va00 0
+rmsc 5314 273 "desert.mng\\main"
+setv va00 addr ov00 5025 5236 194 194 352 352
+rtyp va00 0
+rmsc 5130 273 "desert.mng\\main"
+setv va00 addr ov00 4827 5025 230 231 352 352
+rtyp va00 0
+rmsc 4926 291 "desert.mng\\main"
+setv va00 addr ov00 4827 5025 205 155 230 231
+rtyp va00 0
+rmsc 4926 218 "desert.mng\\main"
+setv va00 addr ov00 5025 5236 155 111 194 194
+rtyp va00 0
+rmsc 5130 174 "desert.mng\\main"
+setv va00 addr ov00 5236 5392 111 90 194 194
+rtyp va00 0
+rmsc 5314 152 "desert.mng\\main"
+setv va00 addr ov00 5392 5606 90 63 194 194
+rtyp va00 0
+rmsc 5499 142 "desert.mng\\main"
+setv va00 addr ov00 5606 5759 63 50 194 194
+rtyp va00 0
+rmsc 5682 128 "desert.mng\\main"
+setv va00 addr ov00 5759 5930 50 47 194 194
+rtyp va00 0
+rmsc 5844 122 "desert.mng\\main"
+setv va00 addr ov00 5930 6104 47 45 194 194
+rtyp va00 0
+rmsc 6017 120 "desert.mng\\main"
+setv va00 addr ov00 6104 6299 45 52 194 194
+rtyp va00 0
+rmsc 6201 119 "desert.mng\\quarry"
+setv va00 addr ov00 6299 6494 52 67 194 194
+rtyp va00 0
+rmsc 6396 123 "desert.mng\\quarry"
+setv va00 addr ov00 6494 6661 67 88 194 194
+rtyp va00 0
+rmsc 6577 130 "desert.mng\\quarry"
+setv va00 addr ov00 6661 6841 88 130 194 194
+rtyp va00 0
+rmsc 6751 141 "desert.mng\\quarry"
+setv va00 addr ov00 5230 5347 809 814 1064 1064
+rtyp va00 3
+rmsc 5288 936 "desert.mng\\tunnel2"
+setv va00 addr ov00 5171 5230 867 872 1066 1064
+rtyp va00 3
+rmsc 5200 965 "desert.mng\\tunnel2"
+setv va00 addr ov00 5075 5171 858 867 1067 1066
+rtyp va00 3
+rmsc 5123 962 "desert.mng\\tunnel2"
+setv va00 addr ov00 4913 5075 860 858 1058 1067
+rtyp va00 3
+rmsc 4994 963 "desert.mng\\tunnel2"
+setv va00 addr ov00 4850 4913 860 860 1011 1058
+rtyp va00 3
+rmsc 4881 959 "desert.mng\\tunnel2"
+setv va00 addr ov00 5347 5402 868 860 1064 1066
+rtyp va00 3
+rmsc 5374 967 "desert.mng\\tunnel2"
+setv va00 addr ov00 5402 5487 860 857 1066 1067
+rtyp va00 3
+rmsc 5444 963 "desert.mng\\tunnel2"
+setv va00 addr ov00 5487 5692 857 859 1067 1065
+rtyp va00 3
+rmsc 5589 961 "desert.mng\\tunnel2"
+setv va00 addr ov00 5692 5754 859 862 1065 1037
+rtyp va00 3
+rmsc 5723 948 "desert.mng\\tunnel2"
+
+* Set necessary permiabilities
+door grap 6358 324 grap 6358 342 40
+door grap 6358 515 grap 6358 532 40
+door grap 5283 798 grap 5283 817 40
+
+* Old doors
+new: simp 1 1 32218 "door" 11 106 1
+mvto 5231 608
+new: simp 1 1 32218 "ettin_doors" 4 8 3
+mvto 6130 705
+new: simp 1 1 32218 "ettin_doors" 4 12 3
+mvto 5584 955
+
+* Populate with agents
+ject "balloon bug.cos" 7
+ject "cacbana.cos" 7
+ject "desert grass.cos" 7
+ject "environmental controls.cos" 7
+ject "ettin area environment.cos" 7
+ject "ettin seed bank.cos" 7
+ject "ettin_muscle_paralyser.cos" 7
+ject "gnarler.cos" 7
+ject "home smell emitters.cos" 7
+ject "meerk.cos" 7
+ject "uglee.cos" 7
+ject "volcano.cos" 7
+ject "water smell emitter.cos" 7
+ject "wetness monitor and designator.cos" 7
+
+* Egg layer
+new: simp 1 1 101 "greneggmask" 6 15 1
+tick 3603
+mvto 5941 656
+
+* Kill all other bioenergy incrementers
+enum 1 1 105
+  kill targ
+next
+* Bioengergy incrementer
+new: simp 1 1 105 "blnk" 0 0 0
+mvto 1000 300
+tick 100
+
+* Set up bioenergy initially
+setv game "Bioenergy" 1000
+
+* New teleporter in desert
+new: comp 3 2 32201 "c3indsettin" 5 0 2
+pat: butt 1 "fav_place_corridor" 1 1 54 12 0 [] 1001 1
+attr 198
+perm 90
+bhvr 3
+accg 10
+fric 100
+elas 0
+setv ov00 1
+mvto 5590 375
+
+* New teleporter in workshop
+new: comp 3 2 32201 "c3indsettin" 5 0 2
+pat: butt 1 "fav_place_desert" 1 1 54 12 0 [] 1001 1
+attr 198
+perm 90
+bhvr 3
+accg 10
+fric 100
+elas 0
+setv ov00 2
+mvto 4432 9035
+
+* Move to where the signpost is so the favourite place icon gets created
+enum 1 3 3
+  cmrp posx posy 0
+next
+
+* Additional scripts for removing muck
+scrp 2 10 37 6
+  lock
+  doif wall eq down
+    pose 1
+    altr room ownr 4 0.5
+    altr room ownr 3 0.5
+    wait 20
+    kill ownr
+  endi
+endm
+
+* Additional scripts for removing rain
+scrp 2 19 2 6
+  anim [0 1 2 3 4]
+  doif room targ <> -1 and carr = null
+    altr room ownr 3 0.05
+    altr room ownr 4 0.001
+  endi
+  over
+  kill ownr
+endm
+
+* Additional scripts for egg layer
+scrp 1 1 101 9
+  inst
+  setv va00 0
+  enum 4 3 0
+    doif dead = 0
+      addv va00 1
+    endi
+  next
+  addv va00 totl 3 4 3
+  slow
+  doif va00 lt 2
+    gsub egg_
+  endi
+  subr egg_
+    sndc "egg1"
+    anim [0 1 2 3 4 5]
+    over
+    inst
+    setv va00 posl
+    setv va01 post
+    addv va00 46
+    addv va01 65
+    new: simp 3 4 3 "greneggmask" 7 8 10
+    elas 10
+    fric 100
+    attr 195
+    bhvr 32
+    aero 10
+    accg 4
+    perm 60
+    gene load targ 1 "e*"
+    setv ov01 2
+    mvto va00 va01
+    tick 60
+    targ ownr
+    pose 0
+  retn
+endm
+
+* Additional scripts for bioenergy incrementer
+scrp 1 1 105 9
+  doif game "Bioenergy" < 1000
+    addv game "Bioenergy" 1
+  else
+    setv game "Bioenergy" 1000
+  endi
+endm
+
+* Additional function timer
+scrp 1 1 32217 9
+  * Make rocks usable by creatures
+  enum 2 21 4
+    inst
+    doif targ ne null
+      bhvr 3
+    endi
+    slow
+  next
+endm
+
+* New activate scripts for rocks since creatures see them as toys but they do nothing
+scrp 2 21 4 1
+  velo rand -5 5 rand -3 -5
+  stim writ from 89 1
+endm
+
+scrp 2 21 4 2
+  velo rand -5 5 rand -3 -5
+  stim writ from 89 1
+endm
+
+* NEW TELEPORTERS
+
+* Activate 1
+scrp 3 2 32201 1
+  inst
+  doif type _p1_ eq 4 or type _p1_ eq 7
+    seta va99 _p1_
+  else
+    seta va99 from
+  endi
+  slow
+  setv va00 ov00
+  enum 3 2 32201
+    doif va00 eq 1 and ov00 eq 2
+      setv va01 posx
+      setv va02 posy
+    endi
+    doif va00 eq 2 and ov00 eq 1
+      setv va01 posx
+      setv va02 posy
+    endi
+  next
+  * Animate/sound both doors
+  enum 3 2 32201
+    snde "tele"
+    anim [1 2 3 4 3 2 1 0]
+  next
+  targ va99
+  doif fmly ne 4
+    * Hand - destination may be in inventory so check using hand as target
+    enum 2 1 1
+      doif tmvt va01 va02 eq 1
+        cmrp va01 va02 0
+      else
+        snde "buzz"
+      endi
+    next
+    * Take touching creatures
+    etch 4 0 0
+      doif targ ne null
+        doif tmvf va01 va02 eq 1
+          mvft va01 va02
+        else
+          * Play error sound if no room on other end
+          snde "buzz"
+        endi
+      endi
+    next
+  else
+    * Creature
+    doif targ ne null
+      doif tmvf va01 va02 eq 1
+        mvft va01 va02
+        stim writ targ 95 1
+      else
+        * Play error sound if no room on other end
+        snde "buzz"
+      endi
+    endi
+  endi
+endm
+
+* Activate 2
+scrp 3 2 32201 2
+  call 1 from 0
+endm
+
+* Click icon
+scrp 3 2 32201 1001
+  call 1 from 0
+endm
+
+* Pick up
+scrp 3 2 32201 4
+  enum 3 2 32201
+    bhvr 0
+  next
+endm
+
+* Drop
+scrp 3 2 32201 5
+  enum 3 2 32201
+    bhvr 3
+  next
+endm

@@ -1,0 +1,87 @@
+inst
+
+* Abort if already present (scripts will still be installed)
+setv va01 0
+enum 1 1 32229
+  setv va01 1
+next
+doif va01 eq 1
+  stop
+endi
+
+* Abort if a C3 or docked game (scripts will still be installed)
+doif type game "ds_game_type" ne 2 or game "ds_game_type" eq "docked"
+  stop
+endi
+
+* Abort if C3 not installed (scripts will still be installed)
+doif eame "engine_no_auxiliary_bootstrap_1" ne 1
+  stop
+endi
+
+* Create a blank agent to record meta-room number
+new: simp 1 1 32229 "blnk" 1 0 1
+* Failsafe timer
+tick 100
+
+* Setup
+brmi 0 0
+
+* Create meta-room
+setv ov00 addm 8206 688 800 600 "crypt1.5"
+mmsc 8606 988 ""
+
+* Create rooms
+setv va00 addr ov00 8207 9003 691 690 1231 1231
+rtyp va00 0
+rmsc 8605 961 ""
+
+* Populate with agents
+ject "crypt3.cos" 7
+
+* Old door
+new: simp 1 1 32230 "crypt door" 0 0 1
+mvto 8948 1070
+
+* Headstone
+new: simp 1 1 32231 "c3indscrypt" 1 3 1
+mvto 704 9654
+attr 4
+
+* Create favourite place icon
+new: simp 1 3 32201 "c3indscrypt" 1 0 1 
+attr 272 
+mvto 8610 1011
+tick 10 
+
+* Move to where the signpost is so the favourite place icon gets created
+enum 1 3 32201
+  cmrp posx posy 0
+next
+
+* TIMER
+scrp 1 1 32229 9
+  * If there are no recorded deaths and you go to the deaths screen first parts of the agent, and eventually the main agent will be killed.  This can be avoided by going to the tombstone viewer first.  This script re-injects the agent if it gets killed.
+  doif totl 2 12 8 eq 0
+    ject "crypt3.cos" 7
+  endi
+endm
+
+* HEADSTONE ACTIVATE
+scrp 1 1 32231 1
+  lock
+  * Re-create fav place icon if not present
+  doif totl 1 3 32201 eq 0
+    new: simp 1 3 32201 "c3indscrypt" 1 0 1 
+    attr 272 
+    mvto 8610 1011
+    tick 10
+    * Re-target owner for sound
+    targ ownr
+  endi
+  * Move to icon
+  snde "tele"
+  enum 1 3 32201
+    cmrp posx posy 0
+  next
+endm

@@ -1,0 +1,40 @@
+"en-GB"
+
+group DSAG "Dummy Control"
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "dummy control.c16"
+"Dependency Category 1" 2
+"Dependency 2" "dummy control.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "dummycont.cos"
+"Agent Description" "Makes the training dummy moveable by the hand or returns it to its original position.\n\nSee its Agent Help for more information."
+"Agent Animation File" "dummy control.c16"
+"Agent Animation Gallery" "dummy control"
+"Agent Animation String" "0"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32205 kill targ next scrx 1 1 32205 9 scrx 1 1 32205 1001 scrx 1 1 32205 1002"
+
+group AGNT "Dummy Control "
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "dummy control.c16"
+"Dependency Category 1" 2
+"Dependency 2" "dummy control.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "dummycont.cos"
+"Agent Description" "Makes the training dummy moveable by the hand or returns it to its original position.\n\nSee its Agent Help for more information."
+"Agent Animation File" "dummy control.c16"
+"Agent Animation Gallery" "dummy control"
+"Agent Animation String" "0"
+
+"Remove script" "enum 1 1 32205 kill targ next scrx 1 1 32205 9 scrx 1 1 32205 1001 scrx 1 1 32205 1002"
+
+inline FILE "dummy control.c16" "dummy control.c16" 
+inline FILE "dummy control.catalogue" "dummy control.catalogue" 

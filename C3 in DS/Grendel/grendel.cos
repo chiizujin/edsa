@@ -1,0 +1,648 @@
+inst
+
+* Abort if already present (scripts will still be installed)
+setv va01 0
+enum 1 1 32221
+  setv va01 1
+next
+doif va01 eq 1
+  stop
+endi
+
+* Abort if a C3 or docked game (scripts will still be installed)
+doif type game "ds_game_type" ne 2 or game "ds_game_type" eq "docked"
+  stop
+endi
+
+* Abort if C3 not installed (scripts will still be installed)
+doif eame "engine_no_auxiliary_bootstrap_1" ne 1
+  stop
+endi
+
+* Create a blank agent to record meta-room number
+new: simp 1 1 32221 "blnk" 1 0 1
+* Extra flag for lift script
+setv ov01 0
+
+* Setup
+brmi 0 0
+
+* Create meta-room
+setv ov00 addm 14 1363 3000 1400 "gren3.4"
+mmsc 1514 2063 "grendel.mng\\swamp"
+
+* Create rooms
+setv va00 addr ov00 2281 2402 2443 2450 2606 2606
+rtyp va00 3
+rmsc 2341 2524 "grendel.mng\\sewer"
+setv va00 addr ov00 2137 2281 2442 2443 2606 2606
+rtyp va00 3
+rmsc 2209 2524 "grendel.mng\\sewer"
+setv va00 addr ov00 1981 2137 2439 2442 2605 2606
+rtyp va00 3
+rmsc 2059 2522 "grendel.mng\\sewer"
+setv va00 addr ov00 1837 1981 2431 2439 2597 2605
+rtyp va00 3
+rmsc 1909 2518 "grendel.mng\\sewer"
+setv va00 addr ov00 1700 1837 2427 2431 2597 2597
+rtyp va00 3
+rmsc 1768 2512 "grendel.mng\\sewer"
+setv va00 addr ov00 1544 1700 2419 2427 2596 2597
+rtyp va00 3
+rmsc 1622 2508 "grendel.mng\\sewer"
+setv va00 addr ov00 1403 1544 2405 2419 2599 2596
+rtyp va00 3
+rmsc 1473 2500 "grendel.mng\\sewer"
+setv va00 addr ov00 1292 1403 2394 2399 2599 2599
+rtyp va00 3
+rmsc 1347 2496 "grendel.mng\\sewer"
+setv va00 addr ov00 1292 1403 2171 2171 2394 2399
+rtyp va00 3
+rmsc 1347 2285 "grendel.mng\\cryogenics"
+setv va00 addr ov00 1403 1545 2210 2222 2399 2395
+rtyp va00 3
+rmsc 1474 2302 "grendel.mng\\cryogenics"
+setv va00 addr ov00 1545 1686 2222 2186 2395 2394
+rtyp va00 3
+rmsc 1615 2308 "grendel.mng\\cryogenics"
+setv va00 addr ov00 1686 1859 2186 2175 2394 2397
+rtyp va00 3
+rmsc 1772 2291 "grendel.mng\\cryogenics"
+setv va00 addr ov00 1859 2036 2175 2170 2397 2397
+rtyp va00 3
+rmsc 1947 2286 "grendel.mng\\cryogenics"
+setv va00 addr ov00 2036 2209 2170 2191 2397 2392
+rtyp va00 3
+rmsc 2122 2281 "grendel.mng\\cryogenics"
+setv va00 addr ov00 2209 2412 2191 2246 2392 2391
+rtyp va00 3
+rmsc 2310 2291 "grendel.mng\\cryogenics"
+setv va00 addr ov00 1292 1403 1998 1998 2171 2171
+rtyp va00 6
+rmsc 1347 2084 "grendel.mng\\ground"
+setv va00 addr ov00 1292 1403 1804 1804 1988 1988
+rtyp va00 0
+rmsc 1347 1896 "grendel.mng\\ground"
+setv va00 addr ov00 1292 1403 1618 1618 1786 1794
+rtyp va00 0
+rmsc 1347 1706 "grendel.mng\\upper"
+setv va00 addr ov00 1403 1604 1988 1983 2171 2161
+rtyp va00 6
+rmsc 1503 2074 "grendel.mng\\ground"
+setv va00 addr ov00 1604 1822 1983 1983 2161 2141
+rtyp va00 6
+rmsc 1713 2062 "grendel.mng\\ground"
+setv va00 addr ov00 1822 2030 1983 1983 2141 2121
+rtyp va00 6
+rmsc 1926 2052 "grendel.mng\\ground"
+setv va00 addr ov00 2030 2228 1983 1983 2121 2100
+rtyp va00 6
+rmsc 2129 2041 "grendel.mng\\ground"
+setv va00 addr ov00 2228 2446 1983 1983 2100 2099
+rtyp va00 6
+rmsc 2337 2041 "grendel.mng\\swamp"
+setv va00 addr ov00 2446 2623 1983 1983 2099 2100
+rtyp va00 0
+rmsc 2534 2041 "grendel.mng\\swamp"
+setv va00 addr ov00 2623 2785 1983 1983 2100 2102
+rtyp va00 0
+rmsc 2704 2042 "grendel.mng\\swamp"
+setv va00 addr ov00 2785 2935 1983 1983 2102 2104
+rtyp va00 6
+rmsc 2860 2043 "grendel.mng\\swamp"
+setv va00 addr ov00 1403 1604 1804 1804 1988 1983
+rtyp va00 0
+rmsc 1503 1893 "grendel.mng\\ground"
+setv va00 addr ov00 1604 1822 1804 1804 1983 1983
+rtyp va00 0
+rmsc 1713 1893 "grendel.mng\\ground"
+setv va00 addr ov00 1822 2030 1804 1804 1983 1983
+rtyp va00 0
+rmsc 1926 1893 "grendel.mng\\ground"
+setv va00 addr ov00 2030 2228 1804 1804 1983 1983
+rtyp va00 0
+rmsc 2129 1893 "grendel.mng\\ground"
+setv va00 addr ov00 2228 2446 1804 1804 1983 1983
+rtyp va00 0
+rmsc 2337 1893 "grendel.mng\\swamp"
+setv va00 addr ov00 2446 2643 1804 1804 1983 1983
+rtyp va00 0
+rmsc 2544 1893 "grendel.mng\\swamp"
+setv va00 addr ov00 2643 2809 1804 1804 1983 1983
+rtyp va00 0
+rmsc 2726 1893 "grendel.mng\\swamp"
+setv va00 addr ov00 2809 2935 1788 1788 1983 1983
+rtyp va00 0
+rmsc 2872 1885 "grendel.mng\\swamp"
+setv va00 addr ov00 1403 1576 1618 1618 1794 1786
+rtyp va00 0
+rmsc 1489 1702 "grendel.mng\\upper"
+setv va00 addr ov00 1576 1822 1605 1605 1786 1786
+rtyp va00 0
+rmsc 1699 1695 "grendel.mng\\upper"
+setv va00 addr ov00 1822 2030 1605 1605 1786 1786
+rtyp va00 0
+rmsc 1926 1695 "grendel.mng\\upper"
+setv va00 addr ov00 2030 2228 1605 1605 1786 1786
+rtyp va00 0
+rmsc 2129 1695 "grendel.mng\\upper"
+setv va00 addr ov00 2228 2446 1605 1605 1786 1789
+rtyp va00 0
+rmsc 2337 1697 "grendel.mng\\upper"
+setv va00 addr ov00 2446 2643 1605 1605 1789 1788
+rtyp va00 0
+rmsc 2544 1696 "grendel.mng\\upper"
+setv va00 addr ov00 2643 2809 1605 1605 1788 1788
+rtyp va00 0
+rmsc 2726 1696 "grendel.mng\\upper"
+setv va00 addr ov00 2809 2935 1514 1702 1788 1788
+rtyp va00 0
+rmsc 2872 1651 "grendel.mng\\upper"
+setv va00 addr ov00 2394 2623 2099 2100 2118 2118
+rtyp va00 1
+rmsc 2508 2108 ""
+setv va00 addr ov00 2446 2643 1374 1404 1605 1605
+rtyp va00 0
+rmsc 2544 1489 "grendel.mng\\upper"
+setv va00 addr ov00 2228 2446 1364 1374 1605 1605
+rtyp va00 0
+rmsc 2337 1484 "grendel.mng\\upper"
+setv va00 addr ov00 2030 2228 1364 1364 1605 1605
+rtyp va00 0
+rmsc 2129 1484 "grendel.mng\\upper"
+setv va00 addr ov00 1822 2030 1364 1364 1605 1605
+rtyp va00 0
+rmsc 1926 1484 "grendel.mng\\upper"
+setv va00 addr ov00 1576 1822 1364 1364 1605 1605
+rtyp va00 0
+rmsc 1699 1484 "grendel.mng\\upper"
+setv va00 addr ov00 1403 1576 1364 1364 1605 1605
+rtyp va00 0
+rmsc 1489 1484 "grendel.mng\\upper"
+setv va00 addr ov00 1292 1403 1364 1364 1605 1605
+rtyp va00 0
+rmsc 1347 1484 "grendel.mng\\upper"
+setv va00 addr ov00 684 1292 1791 1786 1804 1804
+rtyp va00 1
+rmsc 988 1797 ""
+setv va00 addr ov00 1292 1403 1786 1794 1804 1804
+rtyp va00 0
+rmsc 1347 1795 ""
+setv va00 addr ov00 1403 1576 1794 1786 1804 1804
+rtyp va00 1
+rmsc 1489 1799 ""
+setv va00 addr ov00 1576 1822 1786 1786 1804 1804
+rtyp va00 1
+rmsc 1699 1795 ""
+setv va00 addr ov00 1822 2030 1786 1786 1804 1804
+rtyp va00 1
+rmsc 1926 1795 ""
+setv va00 addr ov00 2030 2228 1786 1786 1804 1804
+rtyp va00 1
+rmsc 2129 1795 ""
+setv va00 addr ov00 2228 2446 1786 1789 1804 1804
+rtyp va00 1
+rmsc 2337 1795 ""
+setv va00 addr ov00 2446 2643 1789 1788 1804 1804
+rtyp va00 1
+rmsc 2544 1796 ""
+setv va00 addr ov00 2643 2809 1788 1788 1804 1804
+rtyp va00 1
+rmsc 2726 1796 ""
+setv va00 addr ov00 2623 2785 2100 2102 2118 2118
+rtyp va00 1
+rmsc 2704 2109 ""
+setv va00 addr ov00 2445 2623 2118 2118 2165 2165
+rtyp va00 0
+rmsc 2534 2141 "grendel.mng\\swamp"
+setv va00 addr ov00 2623 2785 2118 2118 2165 2165
+rtyp va00 0
+rmsc 2704 2141 "grendel.mng\\swamp"
+setv va00 addr ov00 2785 2862 2102 2103 2165 2165
+rtyp va00 0
+rmsc 2823 2133 "grendel.mng\\swamp"
+setv va00 addr ov00 2334 2394 2100 2099 2110 2146
+rtyp va00 0
+rmsc 2364 2123 ""
+setv va00 addr ov00 2394 2445 2118 2118 2165 2165
+rtyp va00 0
+rmsc 2419 2141 ""
+setv va00 addr ov00 2418 2643 2165 2165 2198 2256
+rtyp va00 8
+rmsc 2530 2210 "grendel.mng\\swamp"
+setv va00 addr ov00 2643 2851 2165 2165 2256 2182
+rtyp va00 8
+rmsc 2747 2173 "grendel.mng\\swamp"
+setv va00 addr ov00 2460 2643 2209 2256 2254 2270
+rtyp va00 8
+rmsc 2551 2239 "grendel.mng\\swamp"
+setv va00 addr ov00 2643 2801 2256 2200 2270 2262
+rtyp va00 8
+rmsc 2722 2259 "grendel.mng\\swamp"
+setv va00 addr ov00 2643 2809 1404 1492 1605 1605
+rtyp va00 0
+rmsc 2726 1504 "grendel.mng\\upper"
+setv va00 addr ov00 1403 1576 1605 1605 1618 1618
+rtyp va00 1
+rmsc 1489 1611 ""
+setv va00 addr ov00 1292 1403 1605 1605 1618 1618
+rtyp va00 0
+rmsc 1347 1611 ""
+setv va00 addr ov00 684 1292 1620 1605 1634 1635
+rtyp va00 1
+rmsc 988 1627 ""
+setv va00 addr ov00 217 684 1620 1620 1634 1634
+rtyp va00 1
+rmsc 450 1627 ""
+setv va00 addr ov00 1292 1403 1988 1988 1998 1998
+rtyp va00 1
+rmsc 1347 1993 ""
+setv va00 addr ov00 891 1292 1988 1988 1998 1998
+rtyp va00 1
+rmsc 1091 1993 ""
+setv va00 addr ov00 684 891 1983 1988 2020 1998
+rtyp va00 1
+rmsc 787 1990 ""
+setv va00 addr ov00 113 684 1983 1983 2020 2020
+rtyp va00 2
+rmsc 398 2001 ""
+setv va00 addr ov00 684 891 1804 1804 1983 1988
+rtyp va00 0
+rmsc 787 1896 "grendel.mng\\ground"
+setv va00 addr ov00 684 891 1634 1634 1791 1789
+rtyp va00 5
+rmsc 787 1711 "grendel.mng\\upper"
+setv va00 addr ov00 891 1093 1634 1635 1789 1788
+rtyp va00 5
+rmsc 992 1711 "grendel.mng\\upper"
+setv va00 addr ov00 1093 1292 1635 1635 1788 1786
+rtyp va00 5
+rmsc 1192 1710 "grendel.mng\\upper"
+setv va00 addr ov00 891 1093 1804 1804 1988 1988
+rtyp va00 0
+rmsc 992 1896 "grendel.mng\\ground"
+setv va00 addr ov00 1093 1292 1804 1804 1988 1988
+rtyp va00 0
+rmsc 1192 1896 "grendel.mng\\ground"
+setv va00 addr ov00 1092 1292 1364 1364 1610 1605
+rtyp va00 0
+rmsc 1192 1484 "grendel.mng\\upper"
+setv va00 addr ov00 891 1092 1364 1364 1615 1610
+rtyp va00 0
+rmsc 991 1487 "grendel.mng\\upper"
+setv va00 addr ov00 684 891 1364 1364 1620 1615
+rtyp va00 0
+rmsc 787 1489 "grendel.mng\\upper"
+setv va00 addr ov00 462 684 1363 1364 1620 1620
+rtyp va00 0
+rmsc 573 1491 "grendel.mng\\upper"
+setv va00 addr ov00 290 462 1476 1363 1620 1620
+rtyp va00 0
+rmsc 376 1548 "grendel.mng\\upper"
+setv va00 addr ov00 458 684 1634 1634 1786 1791
+rtyp va00 0
+rmsc 571 1712 "grendel.mng\\upper"
+setv va00 addr ov00 458 684 1786 1791 1983 1983
+rtyp va00 0
+rmsc 571 1884 "grendel.mng\\ground"
+setv va00 addr ov00 274 458 1634 1634 1786 1786
+rtyp va00 0
+rmsc 366 1710 "grendel.mng\\upper"
+setv va00 addr ov00 274 458 1786 1786 1983 1983
+rtyp va00 0
+rmsc 366 1884 "grendel.mng\\ground"
+setv va00 addr ov00 107 274 1786 1786 1983 1983
+rtyp va00 0
+rmsc 190 1884 "grendel.mng\\ground"
+setv va00 addr ov00 202 274 1634 1634 1786 1786
+rtyp va00 0
+rmsc 238 1710 ""
+setv va00 addr ov00 1093 1292 1998 1998 2177 2171
+rtyp va00 5
+rmsc 1192 2084 "grendel.mng\\ground"
+setv va00 addr ov00 891 1093 1998 1998 2177 2177
+rtyp va00 5
+rmsc 992 2087 "grendel.mng\\pond"
+setv va00 addr ov00 684 891 2020 1998 2176 2177
+rtyp va00 5
+rmsc 787 2098 "grendel.mng\\pond"
+setv va00 addr ov00 458 684 2020 2020 2176 2176
+rtyp va00 5
+rmsc 571 2098 "grendel.mng\\pond"
+setv va00 addr ov00 275 458 2020 2020 2176 2176
+rtyp va00 5
+rmsc 366 2098 "grendel.mng\\pond"
+setv va00 addr ov00 176 275 2020 2020 2175 2176
+rtyp va00 5
+rmsc 225 2098 "grendel.mng\\pond"
+
+* Set necessary permiabilities - top level, starting from left
+door grap 364 1615 grap 364 1626 50
+door grap 470 1619 grap 470 1628 50
+door grap 698 1607 grap 698 1621 50
+door grap 910 1604 grap 910 1616 50
+door grap 1096 1599 grap 1096 1614 50
+door grap 1301 1599 grap 1301 1609 50
+door grap 1409 1602 grap 1409 1607 50
+* Next level, above door, starting from left
+door grap 701 1780 grap 701 1792 50
+door grap 895 1776 grap 895 1792 50
+door grap 1102 1776 grap 1102 1794 50
+door grap 1294 1776 grap 1294 1789 50
+door grap 1409 1777 grap 1409 1795 50
+door grap 1588 1775 grap 1588 1793 50
+door grap 1827 1775 grap 1827 1788 50
+door grap 2040 1779 grap 2040 1794 50
+door grap 2243 1778 grap 2243 1792 50
+door grap 2454 1778 grap 2454 1791 50
+door grap 2711 1772 grap 2711 1789 50
+* Door level, starting from left
+door grap 126 1978 grap 126 1986 50
+door grap 277 1973 grap 277 1990 50
+door grap 460 1974 grap 460 1989 50
+door grap 689 1975 grap 689 1990 50
+door grap 894 1979 grap 894 1988 50
+door grap 1142 1978 grap 1142 1989 50
+door grap 1352 1979 grap 1352 1989 50
+* Lift, starting from top
+door grap 1335 2161 grap 1335 2174 50
+door grap 1348 2388 grap 1348 2403 50
+* Pool, starting from left
+door grap 2369 2097 grap 2369 2108 50
+door grap 2429 2094 grap 2429 2110 50
+door grap 2524 2097 grap 2524 2108 50
+door grap 2696 2097 grap 2696 2108 50
+door grap 2825 2089 grap 2825 2108 50
+
+* Old doors
+new: simp 1 1 32218 "door" 11 56 1
+mvto 354 1830
+new: simp 1 1 32218 "ettin_doors" 4 4 3
+mvto 1598 2476
+
+* Populate with agents
+ject "beetle.cos" 7
+ject "environmental controls.cos" 7
+ject "fungi.cos" 7
+ject "garbage spewer.cos" 7
+ject "gnats.cos" 7
+ject "grendel area environment.cos" 7
+ject "grendel scenery.cos" 7
+ject "grendel seed bank.cos" 7
+ject "home smell emitters.cos" 7
+ject "kobold.cos" 7
+ject "mosquito.cos" 7
+ject "palmplant.cos" 7
+ject "piranha.cos" 7
+ject "rocklice.cos" 7
+ject "tendril.cos" 7
+ject "trapdoor.cos" 7
+ject "wasp.cos" 7
+ject "water smell emitter.cos" 7
+ject "wetness monitor and designator.cos" 7
+
+* Add 20 bacteria (keep it simple)
+setv va01 0
+loop
+  new: simp 2 32 23 "bacteria" 2 0 6999
+  attr 144
+  accg 0
+  seta ov00 null
+  seta ov01 null
+  setv ov02 0
+  setv ov03 0
+  setv ov10 rand 6000 18000
+  setv ov11 rand 1 ov10
+  setv ov04 ov10
+  subv ov04 ov11
+  setv ov12 rand 5 100
+  divv ov12 100.0
+  setv ov13 rand 70 100
+  divv ov13 100.0
+  setv ov14 rand 5 25
+  divv ov14 100.0
+  setv ov15 rand 82 89
+  setv ov16 rand 70 81
+  setv ov17 rand 5 50
+  divv ov17 1000.0
+  setv ov18 69
+  setv ov19 rand 5 50
+  divv ov19 1000.0
+  setv ov30 60
+  setv ov31 40
+  setv ov32 0
+  setv ov33 100
+  setv ov34 80
+  setv ov35 30
+  setv ov36 35
+  setv ov38 80
+  setv ov37 2000
+  setv ov40 0
+  setv ov97 0
+  mvto rand 140 2940 rand 1380 2610
+  tick rand 13 17
+  addv va01 1
+untl va01 eq 20
+
+* Egg layer
+new: simp 1 1 99 "greneggmask" 1 0 1
+tick 3602
+mvto 2253 2017
+
+* Kill all other bioenergy incrementers
+enum 1 1 105
+  kill targ
+next
+* Bioengergy incrementer
+new: simp 1 1 105 "blnk" 0 0 0
+mvto 1000 300
+tick 100
+
+* Set up bioenergy initially
+setv game "Bioenergy" 1000
+
+* New teleporter in jungle
+new: comp 3 2 32203 "c3indsgrendel" 5 0 2
+pat: butt 1 "fav_place_corridor" 1 1 54 12 0 [] 1001 1
+attr 198
+perm 90
+bhvr 3
+accg 10
+fric 100
+elas 0
+setv ov00 1
+mvto 195 1823
+
+* New teleporter in corridor
+new: comp 3 2 32203 "c3indsgrendel" 5 0 2
+pat: butt 1 "fav_place_jungle" 1 1 54 12 0 [] 1001 1
+attr 198
+perm 90
+bhvr 3
+accg 10
+fric 100
+elas 0
+setv ov00 2
+mvto 2750 9034
+
+* Move to where the signpost is so the favourite place icon gets created
+enum 1 3 2
+  cmrp posx posy 0
+next
+
+* Additional scripts for removing muck
+scrp 2 10 37 6
+  lock
+  doif wall eq down
+    pose 1
+    altr room ownr 4 0.5
+    altr room ownr 3 0.5
+    wait 20
+    kill ownr
+  endi
+endm
+
+* Additional scripts for removing rain
+scrp 2 19 2 6
+  anim [0 1 2 3 4]
+  doif room targ <> -1 and carr = null
+    altr room ownr 3 0.05
+    altr room ownr 4 0.001
+  endi
+  over
+  kill ownr
+endm
+
+* Additional scripts for egg layer
+scrp 1 1 99 9
+  inst
+  setv va00 0
+  enum 4 2 0
+    doif dead = 0
+      addv va00 1
+    endi
+  next
+  addv va00 totl 3 4 2
+  slow
+  doif va00 lt 2
+    gsub egg_
+  endi
+
+  subr egg_
+    sndc "egg1"
+    inst
+    setv va00 posl
+    setv va01 post
+    subv va00 10
+    addv va01 10
+    new: simp 3 4 2 "greneggmask" 7 1 10
+    elas 10
+    fric 100
+    attr 195
+    bhvr 32
+    aero 10
+    accg 4
+    perm 60
+    gene load targ 1 "g*"
+    setv ov01 1
+    mvto va00 va01
+    velo -10 -5
+    tick 600
+  retn
+endm
+
+* Additional scripts for bioenergy incrementer
+scrp 1 1 105 9
+  doif game "Bioenergy" < 1000
+    addv game "Bioenergy" 1
+  else
+    setv game "Bioenergy" 1000
+  endi
+endm
+
+* NEW TELEPORTERS
+
+* Activate 1
+scrp 3 2 32203 1
+  inst
+  doif type _p1_ eq 4 or type _p1_ eq 7
+    seta va99 _p1_
+  else
+    seta va99 from
+  endi
+  slow
+  setv va00 ov00
+  enum 3 2 32203
+    doif va00 eq 1 and ov00 eq 2
+      setv va01 posx
+      setv va02 posy
+    endi
+    doif va00 eq 2 and ov00 eq 1
+      setv va01 posx
+      setv va02 posy
+    endi
+  next
+  * Animate/sound both doors
+  enum 3 2 32203
+    snde "tele"
+    anim [1 2 3 4 3 2 1 0]
+  next
+  targ va99
+  doif fmly ne 4
+    * Hand - destination may be in inventory so check using hand as target
+    enum 2 1 1
+      doif tmvt va01 va02 eq 1
+        cmrp va01 va02 0
+      else
+        snde "buzz"
+      endi
+    next
+    * Take touching creatures
+    etch 4 0 0
+      doif targ ne null
+        doif tmvf va01 va02 eq 1
+          mvft va01 va02
+        else
+          * Play error sound if no room on other end
+          snde "buzz"
+        endi
+      endi
+    next
+  else
+    * Creature
+    doif targ ne null
+      doif tmvf va01 va02 eq 1
+        mvft va01 va02
+        stim writ targ 95 1
+      else
+        * Play error sound if no room on other end
+        snde "buzz"
+      endi
+    endi
+  endi
+endm
+
+* Activate 2
+scrp 3 2 32203 2
+  call 1 from 0
+endm
+
+* Click icon
+scrp 3 2 32203 1001
+  call 1 from 0
+endm
+
+* Pick up
+scrp 3 2 32203 4
+  enum 3 2 32203
+    bhvr 0
+  next
+endm
+
+* Drop
+scrp 3 2 32203 5
+  enum 3 2 32203
+    bhvr 3
+  next
+endm
+

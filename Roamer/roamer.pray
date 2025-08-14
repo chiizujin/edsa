@@ -1,0 +1,40 @@
+"en-GB"
+
+group DSAG "Roamer "
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "roamer.c16"
+"Dependency Category 1" 2
+"Dependency 2" "roamer.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "roamer.cos"
+"Agent Description" "A robotic spider-rock that wanders around the world occasionally releasing sprays as needed."
+"Agent Animation File" "roamer.c16"
+"Agent Animation Gallery" "roamer"
+"Agent Animation String" "0"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 3 8 32201 kill targ next enum 1 1 32213 kill targ next enum 1 1 32214 kill targ next enum 1 1 32215 kill targ next scrx 3 8 32201 1 scrx 3 8 32201 2 scrx 3 8 32201 3 scrx 3 8 32201 4 scrx 3 8 32201 5 scrx 3 8 32201 9 scrx 1 1 32213 9 scrx 1 1 32214 9 scrx 1 1 32215 9"
+ 
+group AGNT "Roamer"
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "roamer.c16"
+"Dependency Category 1" 2
+"Dependency 2" "roamer.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "roamer.cos"
+"Agent Description" "A robotic spider-rock that wanders around the world occasionally releasing sprays as needed."
+"Agent Animation File" "roamer.c16"
+"Agent Animation Gallery" "roamer"
+"Agent Animation String" "0"
+
+"Remove script" "enum 3 8 32201 kill targ next enum 1 1 32213 kill targ next enum 1 1 32214 kill targ next enum 1 1 32215 kill targ next scrx 3 8 32201 1 scrx 3 8 32201 2 scrx 3 8 32201 3 scrx 3 8 32201 4 scrx 3 8 32201 5 scrx 3 8 32201 9 scrx 1 1 32213 9 scrx 1 1 32214 9 scrx 1 1 32215 9"
+ 
+inline FILE "roamer.c16" "roamer.c16" 
+inline FILE "roamer.catalogue" "roamer.catalogue" 

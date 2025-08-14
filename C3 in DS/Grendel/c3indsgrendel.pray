@@ -1,0 +1,22 @@
+"en-GB"
+
+group DSAG "Grendel Jungle"
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "c3indsgrendel.c16"
+"Dependency Category 1" 2
+"Dependency 2" "c3indsgrendel.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 2
+"Script 1" @ "grendel.cos"
+"Script 2" @ "grendellifts.cos"
+"Agent Description" "This agent re-creates the Grendel jungle in undocked DS worlds."
+"Agent Animation File" "fav_place_jungle.c16"
+"Agent Animation Gallery" "fav_place_jungle"
+"Agent Animation String" "1"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+ 
+inline FILE "c3indsgrendel.c16" "c3indsgrendel.c16" 
+inline FILE "c3indsgrendel.catalogue" "c3indsgrendel.catalogue" 

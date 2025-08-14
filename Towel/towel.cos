@@ -1,0 +1,14 @@
+* CREATE
+inst
+new: simp 1 1 32212 "emdatowel" 2 0 10
+attr 0
+bhvr 0
+accg 0
+pose 1
+mvto 1128 8827
+
+* DESTROY
+rscr
+  enum 1 1 32212
+    kill targ
+  next

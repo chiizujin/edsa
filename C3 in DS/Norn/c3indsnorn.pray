@@ -1,0 +1,25 @@
+"en-GB"
+
+group DSAG "Norn Terrarium"
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "c3indsnorn.c16"
+"Dependency Category 1" 2
+"Dependency 2" "c3indsnorn.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 5
+"Script 1" @ "norn.cos"
+"Script 2" @ "modifiedant.cos"
+"Script 3" @ "modifieddragonfly.cos"
+"Script 4" @ "nornegglayer.cos"
+"Script 5" @ "nornlifts.cos"
+"Agent Description" "This agent re-creates the Norn Terrarium in undocked DS worlds."
+"Agent Animation File" "fav_place_norn.c16"
+"Agent Animation Gallery" "fav_place_norn"
+"Agent Animation String" "1"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+ 
+inline FILE "c3indsnorn.c16" "c3indsnorn.c16" 
+inline FILE "c3indsnorn.catalogue" "c3indsnorn.catalogue" 

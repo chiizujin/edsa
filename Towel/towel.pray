@@ -1,0 +1,23 @@
+"en-GB"
+
+group DSAG "Towel (DS)"
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "emdatowel.c16"
+"Dependency Category 1" 2
+"Dependency 2" "emdatowel.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "towel.cos"
+"Agent Description" "A tribute to Douglas Adams."
+"Agent Animation File" "emdatowel.c16"
+"Agent Animation Gallery" "emdatowel"
+"Agent Animation String" "0"
+"Web URL" "www.towelday.org"
+"Web Label" "Towel Day"
+
+"Remove script" "enum 1 1 32212 kill targ next"
+ 
+inline FILE "emdatowel.c16" "emdatowel.c16"
+inline FILE "emdatowel.catalogue" "emdatowel.catalogue"

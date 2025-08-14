@@ -1,0 +1,112 @@
+inst
+
+* Check if present - abort if not
+setv va01 0
+enum 1 1 32229
+  setv va01 1
+next
+doif va01 eq 0
+  stop
+endi
+
+* Move camera back to meso
+cmrp 500 9200 0
+
+* Enumerate ettin area agent to get meta-room ID
+enum 1 1 32229
+  setv va00 ov00
+next
+
+* Delete statue
+enum 1 1 32231
+  kill targ
+next
+scrx 1 1 32231 1
+
+* Move creatures & eggs to meso
+enum 4 0 0
+  doif gmap posx posy eq va00
+    * Get vehicle to drop it if carried
+    doif movs eq 3
+      seta va01 targ
+      targ carr
+      dpas 4 0 0
+      targ va01
+    endi
+    mvft 500 9200
+  endi
+next
+enum 3 4 0
+  doif gmap posx posy eq va00
+    * Get vehicle to drop it if carried
+    doif movs eq 3
+      seta va01 targ
+      targ carr
+      dpas 3 4 0
+      targ va01
+    endi
+    mvto 500 9200
+    accg 4
+  endi
+next
+
+* Move portable portals to workshop
+enum 3 9 1
+  doif gmap posx posy eq va00
+    mvto 4526 9023
+    doif ov03 eq 1 or ov03 eq 2
+      * Close portal
+      lock
+      sndc "por2"
+**      stop timer
+*      tick 0
+      bhvr 0
+      setv ov03 0
+      anim [18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0]
+*      over
+      attr 199
+      clac 2
+    endi
+  endi
+next
+
+* Remove all agents
+enum 1 0 0
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+enum 2 0 0
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+enum 3 0 0
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+
+* Remove room
+sets va01 erid va00
+* List starts with a space
+setv va02 strl va01
+subv va02 1
+sets va01 subs va01 2 va02
+delr stoi va01
+
+* Delete meta-room
+delm va00
+
+* Kill room agent
+enum 1 1 32229
+  stpt
+  kill targ
+next
+scrx 1 1 32229 9
+
+* Re-inject favourite places icons
+ject "new_ds_fav_places.cos" 7
+* Re-inject norn/attention indicators
+ject "ds norn indicator.cos" 7
+ject "ds object of attention indicator.cos" 7

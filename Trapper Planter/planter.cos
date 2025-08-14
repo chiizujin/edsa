@@ -1,0 +1,80 @@
+* CREATE
+inst
+new: comp 1 1 32226 "trapper planter" 17 0 600
+attr 214
+* Perm has to be same as trappers really, though both have been increased
+perm 90
+bhvr 0
+accg 3
+elas 0
+fric 100
+* Get creator positioning
+setv va00 game "CreatorX"
+setv va01 game "CreatorY"
+* If no values then assume this is C3 only
+doif va00 eq 0 and va01 eq 0
+  * Move it to a safe C3 location (just above the incubator area)
+  setv va00 rand 1400 1550
+  setv va01 400
+  endi
+mvsf va00 va01
+
+* ACTIVATE 1
+scrp 1 1 32226 1
+  lock
+  * Make sure the planter isn't flying through the air or something
+  doif velx ne 0 or vely ne 0
+    stop
+  endi
+  * Get planter position
+  setv va01 posl
+  setv va02 post
+  * Calculate & check position
+  addv va01 15
+  addv va02 73
+  * Create the trapper (has to be done here to test the location)
+  new: simp 2 5 5 "trapper" 0 0 700
+  seta va00 targ
+  doif tmvt va01 va02 eq 1
+    targ ownr
+    * Prevent from picking up
+    attr 0
+    * Animate planter
+    anim [1 2 3 4 5 6 7 8]
+    over
+    snde "muco"
+    anim [9 10 11 12 13 14 15 16]
+    over
+    * Setup the trapper
+    targ va00
+    attr 192
+    perm 90
+    aero 2
+    accg 7
+    fric 100
+    elas 0
+    * Set as adult
+    setv ov05 6
+    pose 31
+    * Mouth open, hungry
+    setv ov01 121
+    setv ov00 1
+    mvto va01 va02
+    tick 1
+    * Reset planter
+    targ ownr
+    pose 0
+    attr 214
+  else
+    targ ownr
+    snde "buzz"
+    kill va00
+  endi
+endm
+
+* DESTROY
+rscr
+  enum 1 1 32226
+    kill targ
+  next
+  scrx 1 1 32226 1

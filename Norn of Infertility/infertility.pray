@@ -1,0 +1,40 @@
+"en-GB"
+
+group DSAG "Norn of Infertility"
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "norn of infertility.c16"
+"Dependency Category 1" 2
+"Dependency 2" "norn of infertility.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "norn of infertility.cos"
+"Agent Description" "Checks for possible immortal or fast-aging Norns and attempts to keep them infertile.\n\nSee its Agent Help for more information."
+"Agent Animation File" "norn of infertility.c16"
+"Agent Animation Gallery" "norn of infertility"
+"Agent Animation String" "0"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "delg \"emmental_nornoicounter1\" delg \"emmental_nornoicounter2\" delg \"emmental_infertilitylist\" enum 1 1 32203 kill targ next scrx 1 1 32203 1 scrx 1 1 32203 2 scrx 1 1 32203 9"
+ 
+group AGNT "Norn of Infertility "
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "norn of infertility.c16"
+"Dependency Category 1" 2
+"Dependency 2" "norn of infertility.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "norn of infertility.cos"
+"Agent Description" "Checks for possible immortal or fast-aging Norns and attempts to keep them infertile.\n\nSee its Agent Help for more information."
+"Agent Animation File" "norn of infertility.c16"
+"Agent Animation Gallery" "norn of infertility"
+"Agent Animation String" "0"
+
+"Remove script" "delg \"emmental_nornoicounter1\" delg \"emmental_nornoicounter2\" delg \"emmental_infertilitylist\" enum 1 1 32203 kill targ next scrx 1 1 32203 1 scrx 1 1 32203 2 scrx 1 1 32203 9"
+ 
+inline FILE "norn of infertility.c16" "norn of infertility.c16" 
+inline FILE "norn of infertility.catalogue" "norn of infertility.catalogue" 

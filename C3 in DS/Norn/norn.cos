@@ -1,0 +1,650 @@
+inst
+
+* Abort if already present (scripts will still be installed)
+setv va01 0
+enum 1 1 32224
+  setv va01 1
+next
+doif va01 eq 1
+  stop
+endi
+
+* Abort if a C3 or docked game (scripts will still be installed)
+doif type game "ds_game_type" ne 2 or game "ds_game_type" eq "docked"
+  stop
+endi
+
+* Abort if C3 not installed (scripts will still be installed)
+doif eame "engine_no_auxiliary_bootstrap_1" ne 1
+  stop
+endi
+
+* Create a blank agent to record meta-room number
+new: simp 1 1 32224 "blnk" 1 0 1
+* Extra flag for lift script
+setv ov01 0
+* Extra flag for ant script
+setv ov02 0
+* Extra flag for dragonfly script
+setv ov03 0
+* Extra flag for layer script
+setv ov04 0
+* Timer for additional functions
+tick 5
+
+* Setup
+brmi 0 0
+
+* Check if meta-room 0 exists
+doif sins emid 1 " 0" ne -1
+  * Check if is the splash screen
+  doif bkds 0 eq "DS_splash"
+    doif erid 0 ne ""
+      delr 0
+      delr 1
+      delr 2
+      delr 3
+    endi
+    delm 0
+  endi
+endi
+
+* Create meta-room
+setv ov00 addm 0 0 4112 1300 "norn3.0"
+mmsc 2056 650 "main.mng\\vivariumgarden"
+
+* Create rooms
+setv va00 addr ov00 326 644 593 643 997 999
+rtyp va00 3
+rmsc 485 796 "main.mng\\vivariumhatchery"
+setv va00 addr ov00 644 755 643 614 816 816
+rtyp va00 3
+rmsc 699 729 "main.mng\\vivariumnursery"
+setv va00 addr ov00 1227 1391 663 664 816 819
+rtyp va00 3
+rmsc 1309 741 "main.mng\\vivariumgarden"
+setv va00 addr ov00 1003 1159 593 669 816 816
+rtyp va00 3
+rmsc 1081 704 "main.mng\\vivariumnursery"
+setv va00 addr ov00 755 1003 614 593 816 816
+rtyp va00 3
+rmsc 879 715 "main.mng\\vivariumnursery"
+setv va00 addr ov00 1391 1523 664 641 819 818
+rtyp va00 3
+rmsc 1457 741 "main.mng\\vivariumgarden"
+setv va00 addr ov00 1523 1749 562 562 818 824
+rtyp va00 5
+rmsc 1636 693 "main.mng\\vivariumgarden"
+setv va00 addr ov00 1749 1861 583 583 824 861
+rtyp va00 5
+rmsc 1805 722 "main.mng\\vivariumgarden"
+setv va00 addr ov00 1930 2013 582 582 870 862
+rtyp va00 5
+rmsc 1971 722 "main.mng\\vivariumgarden"
+setv va00 addr ov00 2013 2075 582 567 862 843
+rtyp va00 5
+rmsc 2044 712 "main.mng\\vivariumgarden"
+setv va00 addr ov00 2075 2158 567 568 843 840
+rtyp va00 5
+rmsc 2116 703 "main.mng\\vivariumgarden"
+setv va00 addr ov00 2158 2253 587 586 840 851
+rtyp va00 5
+rmsc 2205 719 "main.mng\\vivariumgarden"
+setv va00 addr ov00 2345 2470 585 584 865 864
+rtyp va00 5
+rmsc 2407 724 "main.mng\\vivariumgarden"
+setv va00 addr ov00 2470 2570 584 583 864 880
+rtyp va00 5
+rmsc 2520 732 "main.mng\\vivariumgarden"
+setv va00 addr ov00 2691 2847 582 580 881 870
+rtyp va00 5
+rmsc 2769 726 "main.mng\\vivariumgarden"
+setv va00 addr ov00 2847 2988 580 578 870 850
+rtyp va00 5
+rmsc 2917 715 "main.mng\\vivariumpond"
+setv va00 addr ov00 3119 3309 576 576 876 925
+rtyp va00 0
+rmsc 3214 750 "main.mng\\vivariumpond"
+setv va00 addr ov00 3309 3391 576 576 925 982
+rtyp va00 0
+rmsc 3350 779 "main.mng\\vivariumpond"
+setv va00 addr ov00 3391 3745 576 576 877 877
+rtyp va00 0
+rmsc 3568 726 "main.mng\\vivariumpond"
+setv va00 addr ov00 3745 3946 576 576 1017 1017
+rtyp va00 0
+rmsc 3845 796 "main.mng\\vivariumpond"
+setv va00 addr ov00 3946 4110 576 576 1017 1017
+rtyp va00 0
+rmsc 4028 796 "main.mng\\vivariumpond"
+setv va00 addr ov00 3946 4110 1017 1017 1070 1064
+rtyp va00 8
+rmsc 4028 1040 "main.mng\\vivariumpond"
+setv va00 addr ov00 3843 3946 1017 1017 1065 1070
+rtyp va00 8
+rmsc 3894 1043 "main.mng\\vivariumpond"
+setv va00 addr ov00 3672 3843 1017 1017 1082 1065
+rtyp va00 8
+rmsc 3757 1041 "main.mng\\vivariumpond"
+setv va00 addr ov00 3510 3586 998 1017 1022 1073
+rtyp va00 8
+rmsc 3548 1035 "main.mng\\vivariumpond"
+setv va00 addr ov00 3309 3325 925 936 1008 1008
+rtyp va00 0
+rmsc 3317 966 ""
+setv va00 addr ov00 3391 3459 982 987 1008 1008
+rtyp va00 0
+rmsc 3425 995 ""
+setv va00 addr ov00 1442 1523 337 337 579 622
+rtyp va00 5
+rmsc 1482 479 "main.mng\\vivariumorchard"
+setv va00 addr ov00 1523 1749 337 337 562 562
+rtyp va00 0
+rmsc 1636 449 "main.mng\\vivariumorchard"
+setv va00 addr ov00 1749 2013 562 561 583 582
+rtyp va00 1
+rmsc 1881 572 ""
+setv va00 addr ov00 2013 2075 561 558 582 567
+rtyp va00 1
+rmsc 2044 564 ""
+setv va00 addr ov00 2075 2158 558 559 567 568
+rtyp va00 1
+rmsc 2116 563 ""
+setv va00 addr ov00 2158 2730 559 563 587 582
+rtyp va00 1
+rmsc 2444 570 ""
+setv va00 addr ov00 2730 3119 563 564 582 576
+rtyp va00 1
+rmsc 2924 569 ""
+setv va00 addr ov00 3119 3458 564 565 576 576
+rtyp va00 1
+rmsc 3288 570 ""
+setv va00 addr ov00 1749 2013 337 337 562 561
+rtyp va00 0
+rmsc 1881 449 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 2013 2075 337 337 561 558
+rtyp va00 0
+rmsc 2044 447 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 2075 2374 337 337 558 561
+rtyp va00 0
+rmsc 2224 449 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 2374 2565 337 341 561 562
+rtyp va00 0
+rmsc 2469 449 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 3459 3510 951 959 987 1022
+rtyp va00 0
+rmsc 3484 986 ""
+setv va00 addr ov00 644 1258 847 839 999 995
+rtyp va00 3
+rmsc 951 921 "main.mng\\vivariumhatchery"
+setv va00 addr ov00 1258 1593 839 860 995 1002
+rtyp va00 3
+rmsc 1425 920 "main.mng\\vivariumcorridor"
+setv va00 addr ov00 1593 1749 860 881 1002 1039
+rtyp va00 3
+rmsc 1671 949 "main.mng\\vivariumcorridor"
+setv va00 addr ov00 1749 1885 881 895 1039 1049
+rtyp va00 3
+rmsc 1817 965 "main.mng\\vivariumcorridor"
+setv va00 addr ov00 1885 2075 895 915 1049 1064
+rtyp va00 3
+rmsc 1980 979 "main.mng\\vivariumcorridor"
+setv va00 addr ov00 2075 2158 915 921 1064 1069
+rtyp va00 3
+rmsc 2116 992 "main.mng\\vivariumcorridor"
+setv va00 addr ov00 2158 2507 921 919 1069 1073
+rtyp va00 3
+rmsc 2332 997 "main.mng\\vivariumcorridor"
+setv va00 addr ov00 2507 2847 919 916 1073 1079
+rtyp va00 3
+rmsc 2677 999 "main.mng\\corridor"
+setv va00 addr ov00 2847 3137 916 921 1079 1078
+rtyp va00 3
+rmsc 2992 997 "main.mng\\corridor"
+setv va00 addr ov00 3309 3325 1008 1008 1080 1080
+rtyp va00 8
+rmsc 3317 1044 ""
+setv va00 addr ov00 2565 2891 341 341 562 563
+rtyp va00 0
+rmsc 2728 452 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 2891 3176 341 341 563 564
+rtyp va00 0
+rmsc 3033 452 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 3176 3458 341 341 564 565
+rtyp va00 0
+rmsc 3317 453 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 2565 3458 324 324 341 341
+rtyp va00 1
+rmsc 3011 332 ""
+setv va00 addr ov00 3458 3745 341 335 576 576
+rtyp va00 0
+rmsc 3601 458 "main.mng\\vivariumpond"
+setv va00 addr ov00 3745 3946 335 331 576 576
+rtyp va00 0
+rmsc 3845 455 "main.mng\\vivariumpond"
+setv va00 addr ov00 3946 4110 331 328 576 576
+rtyp va00 0
+rmsc 4028 453 "main.mng\\vivariumpond"
+setv va00 addr ov00 3458 4110 324 296 341 328
+rtyp va00 1
+rmsc 3784 326 ""
+setv va00 addr ov00 3586 3745 877 877 1017 1017
+rtyp va00 0
+rmsc 3665 947 "main.mng\\vivariumpond"
+setv va00 addr ov00 2988 3119 578 576 850 876
+rtyp va00 5
+rmsc 3053 727 "main.mng\\vivariumpond"
+setv va00 addr ov00 3586 3672 1017 1017 1073 1082
+rtyp va00 8
+rmsc 3629 1049 "main.mng\\vivariumpond"
+setv va00 addr ov00 479 655 423 324 561 564
+rtyp va00 5
+rmsc 567 493 "main.mng\\vivariumorchard"
+setv va00 addr ov00 655 953 337 337 564 568
+rtyp va00 5
+rmsc 804 452 "main.mng\\vivariumorchard"
+setv va00 addr ov00 953 1153 337 337 568 560
+rtyp va00 5
+rmsc 1053 448 "main.mng\\vivariumorchard"
+setv va00 addr ov00 1153 1338 337 337 560 560
+rtyp va00 5
+rmsc 1245 448 "main.mng\\vivariumorchard"
+setv va00 addr ov00 655 979 324 182 337 337
+rtyp va00 0
+rmsc 817 330 "main.mng\\vivariumorchard"
+setv va00 addr ov00 979 1153 198 198 337 337
+rtyp va00 0
+rmsc 1066 267 "main.mng\\vivariumorchard"
+setv va00 addr ov00 979 1153 182 121 198 198
+rtyp va00 0
+rmsc 1066 190 "main.mng\\vivariumorchard"
+setv va00 addr ov00 1153 1415 198 198 337 337
+rtyp va00 0
+rmsc 1284 267 "main.mng\\vivariumorchard"
+setv va00 addr ov00 1153 1415 121 46 198 198
+rtyp va00 0
+rmsc 1284 159 "main.mng\\vivariumorchard"
+setv va00 addr ov00 1415 1597 46 0 198 198
+rtyp va00 0
+rmsc 1506 122 "main.mng\\vivariumorchard"
+setv va00 addr ov00 1415 1749 198 198 337 337
+rtyp va00 0
+rmsc 1582 267 "main.mng\\vivariumorchard"
+setv va00 addr ov00 1597 1749 0 0 198 198
+rtyp va00 0
+rmsc 1673 99 "main.mng\\vivariumorchard"
+setv va00 addr ov00 1749 2075 198 198 337 337
+rtyp va00 0
+rmsc 1912 267 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 1749 2075 0 1 198 198
+rtyp va00 0
+rmsc 1912 99 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 2075 2374 198 198 337 337
+rtyp va00 0
+rmsc 2224 267 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 2374 2565 198 198 337 341
+rtyp va00 0
+rmsc 2469 269 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 2075 2374 1 0 198 198
+rtyp va00 0
+rmsc 2224 99 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 2374 2565 0 0 198 198
+rtyp va00 0
+rmsc 2469 99 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 2565 2803 158 158 324 324
+rtyp va00 0
+rmsc 2684 241 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 2803 3039 158 158 324 324
+rtyp va00 0
+rmsc 2921 241 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 3039 3267 158 158 324 324
+rtyp va00 0
+rmsc 3153 241 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 3267 3458 158 158 324 324
+rtyp va00 0
+rmsc 3362 241 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 2565 2803 0 0 158 158
+rtyp va00 0
+rmsc 2684 79 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 2803 3039 0 0 158 158
+rtyp va00 0
+rmsc 2921 79 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 3039 3267 0 1 158 158
+rtyp va00 0
+rmsc 3153 79 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 3267 3458 1 0 158 158
+rtyp va00 0
+rmsc 3362 79 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 3458 3744 158 158 324 312
+rtyp va00 0
+rmsc 3601 235 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 3744 3945 158 158 312 303
+rtyp va00 0
+rmsc 3844 230 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 3945 4110 158 158 303 296
+rtyp va00 0
+rmsc 4027 227 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 3458 3744 0 0 158 158
+rtyp va00 0
+rmsc 3601 79 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 3744 3945 0 0 158 158
+rtyp va00 0
+rmsc 3844 79 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 3945 4110 0 0 158 158
+rtyp va00 0
+rmsc 4027 79 "main.mng\\vivariumtreehouse"
+setv va00 addr ov00 1861 1930 583 582 861 870
+rtyp va00 5
+rmsc 1895 726 "main.mng\\vivariumgarden"
+setv va00 addr ov00 2253 2345 586 585 851 865
+rtyp va00 5
+rmsc 2299 725 "main.mng\\vivariumgarden"
+setv va00 addr ov00 2570 2691 583 582 880 881
+rtyp va00 5
+rmsc 2630 732 "main.mng\\vivariumgarden"
+setv va00 addr ov00 1338 1442 337 337 560 579
+rtyp va00 5
+rmsc 1390 458 "main.mng\\vivariumorchard"
+setv va00 addr ov00 1159 1227 669 663 816 816
+rtyp va00 3
+rmsc 1193 742 "main.mng\\vivariumcorridor"
+setv va00 addr ov00 3510 3586 959 971 998 1017
+rtyp va00 0
+rmsc 3548 988 ""
+setv va00 addr ov00 3325 3346 936 951 1008 1008
+rtyp va00 0
+rmsc 3335 972 ""
+setv va00 addr ov00 3325 3346 1008 1008 1080 1080
+rtyp va00 8
+rmsc 3335 1044 ""
+setv va00 addr ov00 3346 3367 1008 1008 1080 1084
+rtyp va00 8
+rmsc 3356 1046 ""
+setv va00 addr ov00 3367 3391 1008 1008 1084 1084
+rtyp va00 8
+rmsc 3379 1046 ""
+setv va00 addr ov00 3391 3413 1008 1008 1084 1090
+rtyp va00 8
+rmsc 3402 1049 ""
+setv va00 addr ov00 3391 3459 877 877 982 987
+rtyp va00 0
+rmsc 3425 932 "main.mng\\vivariumpond"
+setv va00 addr ov00 3459 3586 877 877 951 971
+rtyp va00 0
+rmsc 3522 924 "main.mng\\vivariumpond"
+setv va00 addr ov00 3413 3437 1008 1008 1090 1090
+rtyp va00 8
+rmsc 3425 1049 ""
+setv va00 addr ov00 3437 3459 1008 1008 1090 1092
+rtyp va00 8
+rmsc 3448 1050 ""
+setv va00 addr ov00 3459 3480 987 1001 1092 1091
+rtyp va00 8
+rmsc 3469 1039 ""
+setv va00 addr ov00 3480 3494 1001 1011 1091 1090
+rtyp va00 8
+rmsc 3487 1045 ""
+setv va00 addr ov00 3494 3510 1011 1022 1090 1090
+rtyp va00 8
+rmsc 3502 1050 ""
+setv va00 addr ov00 3510 3529 1022 1035 1090 1087
+rtyp va00 8
+rmsc 3519 1054 ""
+setv va00 addr ov00 3529 3550 1035 1049 1087 1084
+rtyp va00 8
+rmsc 3539 1059 ""
+setv va00 addr ov00 3550 3586 1049 1073 1084 1085
+rtyp va00 8
+rmsc 3568 1067 ""
+setv va00 addr ov00 3346 3367 951 965 1008 1008
+rtyp va00 0
+rmsc 3356 979 ""
+setv va00 addr ov00 3367 3391 965 982 1008 1008
+rtyp va00 0
+rmsc 3379 986 ""
+
+* Set necessary permiabilities - top platform, starting from left
+door grap 2577 320 grap 2577 328 50
+door grap 2829 315 grap 2829 330 50
+door grap 3084 322 grap 3084 329 50
+door grap 3287 321 grap 3287 328 50
+door grap 3474 318 grap 3474 328 50
+door grap 3812 307 grap 3812 313 50
+door grap 3976 298 grap 3976 304 50
+* Bottom platform, starting from left
+door grap 1779 555 grap 1779 563 50
+door grap 2023 554 grap 2023 564 50
+door grap 2078 550 grap 2078 561 50
+door grap 2162 553 grap 2161 561 50
+door grap 2426 551 grap 2426 564 50
+door grap 2624 556 grap 2624 567 50
+door grap 2756 557 grap 2756 569 50
+door grap 2940 558 grap 2940 571 50
+door grap 3130 556 grap 3130 569 50
+door grap 3197 558 grap 3197 568 50
+* Log in water, starting from left
+door grap 3318 926 grap 3318 938 50
+door grap 3331 923 grap 3331 945 50
+door grap 3353 948 grap 3353 959 50
+door grap 3369 957 grap 3369 967 50
+door grap 3397 977 grap 3397 984 50
+door grap 3470 994 grap 3470 996 50
+door grap 3483 994 grap 3483 1006 50
+door grap 3502 1008 grap 3502 1018 50
+door grap 3525 1019 grap 3525 1034 50
+door grap 3550 1040 grap 3550 1052 50
+door grap 3564 1048 grap 3564 1062 50
+
+* Old doors
+new: simp 1 1 32225 "door" 11 56 1
+mvto 2786 922
+new: simp 1 1 32225 "door" 12 89 1
+mvto 891 698
+pose 11
+
+* Populate with agents
+ject "apples.cos" 7
+ject "beatbox.cos" 7
+ject "bee.cos" 7
+ject "bluebell.cos" 7
+ject "bongo_drums.cos" 7
+ject "butterfly.cos" 7
+ject "carrot.cos" 7
+ject "environmental controls.cos" 7
+ject "grass.cos" 7
+ject "grasshopper.cos" 7
+ject "grazer2.cos" 7
+ject "hatchery2.cos" 7
+ject "hawk.cos" 7
+ject "hedgehog.cos" 7
+ject "home smell emitters.cos" 7
+ject "hoppity.cos" 7
+ject "hover vehicle.cos" 7
+ject "hummingbird.cos" 7
+ject "internal terrarium door.cos" 7
+ject "kingfisher.cos" 7
+ject "light & heat emitters nt.cos" 7
+ject "norn atmosphere machine.cos" 7
+ject "norn cutaways 01.cos" 7
+ject "norn egg layer.cos" 7
+ject "norn platform.cos" 7
+ject "norn seed launcher.cos" 7
+ject "plant model - foxglove flower.cos" 7
+ject "plant model - foxglove leaf.cos" 7
+ject "plant model - foxglove plant.cos" 7
+ject "plant model - foxglove seed.cos" 7
+ject "pumperspikel.cos" 7
+ject "robin2.cos" 7
+ject "sludge gun.cos" 7
+ject "snail.cos" 7
+ject "stickleback.cos" 7
+ject "water smell emitter.cos" 7
+ject "waterplant.cos" 7
+ject "wetness monitor and designator.cos" 7
+ject "woodpigeon2.cos" 7
+
+* Kill all other bioenergy incrementers
+enum 1 1 105
+  kill targ
+next
+* Bioengergy incrementer
+new: simp 1 1 105 "blnk" 0 0 0
+mvto 1000 300
+tick 100
+
+* Set up bioenergy initially
+setv game "Bioenergy" 1000
+
+* New teleporter in terrarium
+new: comp 3 2 32204 "c3indsnorn" 5 0 2
+pat: butt 1 "fav_place_corridor" 1 1 54 12 0 [] 1001 1
+attr 198
+perm 90
+bhvr 3
+accg 10
+fric 100
+elas 0
+setv ov00 1
+mvto 1564 662
+
+* New teleporter in meso
+new: comp 3 2 32204 "c3indsnorn" 5 0 2
+pat: butt 1 "fav_place_norn" 1 1 54 12 0 [] 1001 1
+attr 198
+perm 90
+bhvr 3
+accg 10
+fric 100
+elas 0
+setv ov00 2
+mvto 782 8852
+
+* Move to where the signpost is so the favourite place icon gets created
+enum 1 3 1
+  cmrp posx posy 0
+next
+
+* Move to where the signpost is so the favourite place icon gets created
+enum 1 3 1
+  cmrp posx posy 0
+next
+
+* Additional script to control hatchery
+scrp 1 1 32224 9
+  setv game "c3_max_creatures" game "total_population"
+  mulv game "c3_max_creatures" 3
+  divv game "c3_max_creatures" 2
+  setv game "c3_max_norns" game "breeding_limit"
+  mulv game "c3_max_norns" 3
+  divv game "c3_max_norns" 2
+endm
+
+* Additional scripts for bones
+scrp 2 10 30 6
+  doif wall eq down
+    pose rand 0 2
+  endi
+  tick rand 300 600
+endm
+scrp 2 10 30 9
+  doif ov00 eq 1
+    doif room targ <> -1 and carr = null
+      altr room targ 3 0.01
+      altr room targ 4 0.1
+      kill ownr
+    endi
+  endi
+  doif ov00 eq 0
+    doif fall eq 0
+      setv ov00 1
+      tick rand 300 600
+      pose rand 0 2
+    endi
+  endi
+endm
+
+* NEW TELEPORTERS
+
+* Activate 1
+scrp 3 2 32204 1
+  inst
+  doif type _p1_ eq 4 or type _p1_ eq 7
+    seta va99 _p1_
+  else
+    seta va99 from
+  endi
+  slow
+  setv va00 ov00
+  enum 3 2 32204
+    doif va00 eq 1 and ov00 eq 2
+      setv va01 posx
+      setv va02 posy
+    endi
+    doif va00 eq 2 and ov00 eq 1
+      setv va01 posx
+      setv va02 posy
+    endi
+  next
+  * Animate/sound both doors
+  enum 3 2 32204
+    snde "tele"
+    anim [1 2 3 4 3 2 1 0]
+  next
+  targ va99
+  doif fmly ne 4
+    * Hand - destination may be in inventory so check using hand as target
+    enum 2 1 1
+      doif tmvt va01 va02 eq 1
+        cmrp va01 va02 0
+      else
+        snde "buzz"
+      endi
+    next
+    * Take touching creatures
+    etch 4 0 0
+      doif targ ne null
+        doif tmvf va01 va02 eq 1
+          mvft va01 va02
+        else
+          * Play error sound if no room on other end
+          snde "buzz"
+        endi
+      endi
+    next
+  else
+    * Creature
+    doif targ ne null
+      doif tmvf va01 va02 eq 1
+        mvft va01 va02
+        stim writ targ 95 1
+      else
+        * Play error sound if no room on other end
+        snde "buzz"
+      endi
+    endi
+  endi
+endm
+
+* Activate 2
+scrp 3 2 32204 2
+  call 1 from 0
+endm
+
+* Click icon
+scrp 3 2 32204 1001
+  call 1 from 0
+endm
+
+* Pick up
+scrp 3 2 32204 4
+  enum 3 2 32204
+    bhvr 0
+  next
+endm
+
+* Drop
+scrp 3 2 32204 5
+  enum 3 2 32204
+    bhvr 3
+  next
+endm

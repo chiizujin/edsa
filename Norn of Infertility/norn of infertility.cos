@@ -1,0 +1,240 @@
+* CREATE
+inst
+new: comp 1 1 32203 "norn of infertility" 3 0 5000
+attr 199
+perm 90
+clac 0
+bhvr 0
+accg 3
+elas 0
+fric 100
+puhl -1 45 10
+* Get creator positioning
+setv va00 game "CreatorX"
+setv va01 game "CreatorY"
+* If no values then assume this is C3 only
+doif va00 eq 0 and va01 eq 0
+  * Move it to a safe C3 location (just above the incubator area)
+  setv va00 rand 1400 1550
+  setv va01 400
+endi
+pat: fixd 1 "norn of infertility" 2 -2 -2 0 "WhiteOnTransparentChars"
+pose 1
+mvsf va00 va01
+
+* ACTIVATE 1
+scrp 1 1 32203 1
+  sndc "boh0"
+  wait 2
+  sndc "ke_0"
+  targ ownr
+  * Set how many timer runs make up 1 minute
+  setv ov01 3
+  * Set how many minutes between checks
+  setv ov02 5
+  sets ov03 ""
+  sets va30 vtos ov02
+  adds va30 " minutes..."
+  part 1
+  ptxt va30
+  part 0
+  pose 0
+  clac 1
+  tick 300
+endm
+
+* ACTIVATE 2
+scrp 1 1 32203 2
+  sndc "dead"
+  targ ownr
+  tick 0
+  part 1
+  ptxt ""
+  part 0
+  pose 1
+  delg "emmental_noicounter1"
+  delg "emmental_noicounter2"
+  delg "emmental_infertilitylist"
+  clac 0
+endm
+
+* TIMER
+scrp 1 1 32203 9
+  * Decrement counter
+  targ ownr
+  subv ov01 1
+  doif ov01 eq 0
+    subv ov02 1
+    setv ov01 3
+  endi
+  doif ov02 gt 0
+    * Show counter if not yet time
+    sets va30 vtos ov02
+    doif ov02 gt 1
+      adds va30 " minutes..."
+    else
+      adds va30 " minute..."
+      endi
+    part 1
+    ptxt va30
+  else
+    * Clear list and re-check Norns
+    sets ov03 ""
+    * Stop triggering again
+    setv ov01 1000
+    setv ov02 1000
+    * Save initial position
+    setv va01 posx
+    subv va01 50
+    setv va02 posy
+    subv va02 36
+    attr 231
+    part 0
+    pose 1
+    * Loop through Norns
+    enum 4 1 0
+      * Ignore dead Norns
+      doif targ ne null and dead eq 0
+        * Get Norn's agent & name
+        seta va99 targ
+        sets va98 hist name gtos 0
+        sets va95 gtos 0
+        * Move to Norn
+        targ ownr
+        mvto va03 va04
+        frel va99
+        flto -20 -70
+        part 1
+        ptxt va98
+        * Check Norn
+        inst
+        targ va99
+        sets va97 ""
+        * Check for older than 9 hours
+        doif tage gt 648000
+          adds va97 "O"
+          endi
+        * Check for any chemicals 66-89 at 100
+        setv va05 0
+        setv va06 66
+        loop
+          doif chem va06 gt 0.95
+            addv va05 1
+            endi
+          addv va06 1
+          untl va06 gt 89
+        * Flag if 2 or more chemicals found at 100
+        doif va05 gt 1
+          adds va97 "T"
+          endi
+        * Check history for quick aging if at least adult (reached adult at less than 30 min)
+        setv va07 hist find gtos 0 4 -1
+        doif va07 ne -1
+          loop
+            doif hist cage gtos 0 va07 eq 4 and hist tage gtos 0 va07 lt 36000
+            adds va97 "A"
+            endi
+          setv va07 hist find gtos 0 4 va07
+          untl va07 eq -1
+          endi
+        * Check the old way if not already flagged in case no adult event (less than 30 min old now and at least adult)
+        doif sins va97 1 "A" eq -1
+          doif tage lt 36000 and cage ge 4
+            adds va97 "A"
+            endi
+          endi
+        slow
+        * Play sound and show status if any flags
+        doif va97 ne ""
+          * Add to infertility list
+          targ ownr
+          sets va94 ov03
+          adds va94 va95
+          adds va94 ","
+          sets ov03 va94
+          * Flag Norn
+          adds va97 "! "
+          adds va97 va98
+          * Prevent string from wrapping
+          doif strl va97 gt 10
+            sets va96 va97
+            sets va97 subs va96 1 10
+            adds va97 "..."
+            endi
+          part 1
+          ptxt va97
+          sndc "cmov"
+          * Wait an extra second
+          wait 20
+          endi
+        targ ownr
+        endi
+      * Wait half a second
+      wait 10
+      next
+    * Return to initial position
+    targ ownr
+    attr 199
+    frel null
+    accg 3
+    mvto va01 va02
+    * Reset counters
+    setv ov01 3
+    setv ov02 5
+    sets va30 vtos ov02
+    adds va30 " minutes..."
+    part 1
+    ptxt va30
+    part 0
+    pose 0
+  endi
+
+  * Make Norns in list infertile
+  targ ownr
+  part 0
+  pose 1
+  sets va98 ov03
+  * Loop through Norns
+  inst
+  enum 4 1 0
+    * Ignore dead Norns
+    doif targ ne null and dead eq 0
+      * Get Norn's name
+      sets va99 gtos 0
+      adds va99 ","
+      * Check if in list
+      doif sins va98 1 va99 ne -1
+        * Libido lowerer
+        chem 40 1
+        * Arousal potential
+        chem 39 -1
+        * Opposite sex pheromone
+        chem 41 -1
+        * Testosterone
+        chem 53 -1
+        * Oestrogen
+        chem 46 -1
+        * Sex drive
+        chem 161 -1
+        endi
+    endi
+  next
+  slow
+  * Wait half a second
+  wait 10
+  targ ownr
+  part 0
+  pose 0
+endm
+
+* DESTROY
+rscr
+  delg "emmental_nornoicounter1"
+  delg "emmental_nornoicounter2"
+  delg "emmental_infertilitylist"
+  enum 1 1 32203
+  kill targ
+  next
+  scrx 1 1 32203 1
+  scrx 1 1 32203 2
+  scrx 1 1 32203 9

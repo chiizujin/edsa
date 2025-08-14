@@ -1,0 +1,471 @@
+inst
+
+* Abort if already present (scripts will still be installed)
+setv va01 0
+enum 1 1 32219
+  setv va01 1
+next
+doif va01 eq 1
+  stop
+endi
+
+* Abort if a C3 or docked game (scripts will still be installed)
+doif type game "ds_game_type" ne 2 or game "ds_game_type" eq "docked"
+  stop
+endi
+
+* Abort if C3 not installed (scripts will still be installed)
+doif eame "engine_no_auxiliary_bootstrap_1" ne 1
+  stop
+endi
+
+* Create a blank agent to record meta-room number
+new: simp 1 1 32219 "blnk" 1 0 1
+* Extra flag for lift script
+setv ov01 0
+
+* Setup
+brmi 0 0
+
+* Create meta-room
+setv ov00 addm 3270 1569 2924 1168 "aqua2.6"
+mmsc 4732 2153 "main.mng\\aquariumbeach"
+
+* Create rooms
+setv va00 addr ov00 4275 4330 2174 2200 2342 2297
+rtyp va00 9
+rmsc 4302 2235 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 4728 5106 2049 2076 2111 2111
+rtyp va00 0
+rmsc 4917 2080 ""
+setv va00 addr ov00 5106 5361 2076 2123 2189 2202
+rtyp va00 0
+rmsc 5233 2139 ""
+setv va00 addr ov00 5361 5624 2123 2143 2202 2202
+rtyp va00 0
+rmsc 5492 2162 ""
+setv va00 addr ov00 5624 5833 2202 2202 2435 2429
+rtyp va00 9
+rmsc 5728 2315 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 5833 5938 2202 2202 2429 2411
+rtyp va00 9
+rmsc 5885 2306 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 5938 6144 2202 2202 2411 2375
+rtyp va00 9
+rmsc 6041 2288 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 5938 6119 1926 2058 2188 2195
+rtyp va00 7
+rmsc 6028 2060 "main.mng\\aquariumbeach"
+setv va00 addr ov00 5833 5938 1950 1950 2179 2188
+rtyp va00 7
+rmsc 5885 2069 "main.mng\\aquariumbeach"
+setv va00 addr ov00 5624 5833 1893 1893 2143 2179
+rtyp va00 7
+rmsc 5728 2036 "main.mng\\aquariumbeach"
+setv va00 addr ov00 5361 5624 1869 1869 2123 2143
+rtyp va00 7
+rmsc 5492 2006 "main.mng\\aquariumbeach"
+setv va00 addr ov00 5106 5361 1869 1869 2076 2123
+rtyp va00 7
+rmsc 5233 1996 "main.mng\\aquariumbeach"
+setv va00 addr ov00 5833 5938 2179 2188 2202 2202
+rtyp va00 0
+rmsc 5885 2190 ""
+setv va00 addr ov00 5624 5833 2143 2179 2202 2202
+rtyp va00 0
+rmsc 5728 2172 ""
+setv va00 addr ov00 5361 5624 2202 2202 2438 2435
+rtyp va00 9
+rmsc 5492 2318 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 5091 5141 2188 2191 2275 2354
+rtyp va00 9
+rmsc 5116 2271 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 5938 6144 2188 2196 2202 2202
+rtyp va00 0
+rmsc 6041 2195 ""
+setv va00 addr ov00 4151 4275 2151 2151 2454 2390
+rtyp va00 9
+rmsc 4213 2270 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 3979 4151 2151 2151 2480 2472
+rtyp va00 9
+rmsc 4065 2311 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 3784 3979 2151 2151 2462 2480
+rtyp va00 9
+rmsc 3881 2315 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 3601 3784 2151 2151 2322 2462
+rtyp va00 9
+rmsc 3692 2306 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 3507 3601 2151 2151 2181 2322
+rtyp va00 9
+rmsc 3554 2236 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 4185 4245 1955 1881 2048 2047
+rtyp va00 3
+rmsc 4215 2001 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 4245 4356 1881 1869 2047 2047
+rtyp va00 3
+rmsc 4300 1964 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 3979 4185 1687 1660 2151 2151
+rtyp va00 9
+rmsc 4082 1919 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 3784 3979 1729 1687 2151 2151
+rtyp va00 9
+rmsc 3881 1940 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 3601 3784 1793 1729 2151 2151
+rtyp va00 9
+rmsc 3692 1972 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 3507 3601 1844 1793 2151 2151
+rtyp va00 9
+rmsc 3554 1997 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 3383 3507 1950 1844 2093 2138
+rtyp va00 9
+rmsc 3445 2044 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 5045 5106 2111 2111 2171 2177
+rtyp va00 0
+rmsc 5075 2144 ""
+setv va00 addr ov00 5045 5091 2171 2176 2267 2275
+rtyp va00 9
+rmsc 5068 2223 ""
+setv va00 addr ov00 4930 5045 2111 2111 2292 2267
+rtyp va00 9
+rmsc 4987 2189 "main.mng\\aquariumcaves"
+setv va00 addr ov00 4854 4930 2111 2111 2286 2292
+rtyp va00 9
+rmsc 4892 2201 "main.mng\\aquariumcaves"
+setv va00 addr ov00 4728 4854 2111 2111 2297 2286
+rtyp va00 9
+rmsc 4791 2198 "main.mng\\aquariumcaves"
+setv va00 addr ov00 4398 4603 2048 2048 2084 2084
+rtyp va00 0
+rmsc 4500 2066 ""
+setv va00 addr ov00 4370 4456 2084 2084 2291 2306
+rtyp va00 9
+rmsc 4413 2195 "main.mng\\aquariumcaves"
+setv va00 addr ov00 4456 4548 2084 2084 2306 2300
+rtyp va00 9
+rmsc 4502 2192 "main.mng\\aquariumcaves"
+setv va00 addr ov00 4548 4687 2084 2084 2300 2303
+rtyp va00 9
+rmsc 4617 2193 "main.mng\\aquariumcaves"
+setv va00 addr ov00 4687 4728 2160 2160 2303 2297
+rtyp va00 9
+rmsc 4707 2228 ""
+setv va00 addr ov00 4666 4728 2312 2312 2451 2451
+rtyp va00 3
+rmsc 4697 2381 "main.mng\\aquariumcaves"
+setv va00 addr ov00 4728 4811 2312 2311 2451 2450
+rtyp va00 3
+rmsc 4769 2381 "main.mng\\aquariumcaves"
+setv va00 addr ov00 4811 4918 2311 2309 2450 2452
+rtyp va00 3
+rmsc 4864 2381 "main.mng\\aquariumcaves"
+setv va00 addr ov00 4918 5047 2309 2306 2452 2449
+rtyp va00 3
+rmsc 4982 2379 "main.mng\\aquariumcaves"
+setv va00 addr ov00 4577 4666 2311 2312 2452 2451
+rtyp va00 3
+rmsc 4621 2381 "main.mng\\aquariumcaves"
+setv va00 addr ov00 4457 4577 2315 2311 2452 2452
+rtyp va00 3
+rmsc 4517 2383 "main.mng\\aquariumcaves"
+setv va00 addr ov00 4323 4457 2315 2315 2452 2452
+rtyp va00 3
+rmsc 4390 2383 "main.mng\\aquariumcaves"
+setv va00 addr ov00 4398 4500 1869 1869 2048 2048
+rtyp va00 4
+rmsc 4449 1958 "main.mng\\aquariumdoor"
+setv va00 addr ov00 4500 4603 1869 1869 2048 2048
+rtyp va00 4
+rmsc 4551 1958 "main.mng\\aquariumdoor"
+setv va00 addr ov00 4728 4866 1869 1869 2049 2059
+rtyp va00 7
+rmsc 4797 1964 "main.mng\\aquariumbeach"
+setv va00 addr ov00 4866 5106 1869 1869 2059 2076
+rtyp va00 7
+rmsc 4986 1972 "main.mng\\aquariumbeach"
+setv va00 addr ov00 4866 5106 1654 1671 1869 1869
+rtyp va00 0
+rmsc 4986 1761 "main.mng\\aquariumbeach"
+setv va00 addr ov00 5833 5938 1869 1926 1950 1950
+rtyp va00 0
+rmsc 5885 1909 ""
+setv va00 addr ov00 5624 5833 1772 1869 1893 1893
+rtyp va00 0
+rmsc 5728 1832 ""
+setv va00 addr ov00 5361 5624 1706 1772 1869 1869
+rtyp va00 0
+rmsc 5492 1787 "main.mng\\aquariumbeach"
+setv va00 addr ov00 5106 5361 1671 1706 1869 1869
+rtyp va00 0
+rmsc 5233 1770 "main.mng\\aquariumbeach"
+setv va00 addr ov00 4622 4866 1645 1654 1869 1869
+rtyp va00 0
+rmsc 4744 1757 "main.mng\\aquariumdoor"
+setv va00 addr ov00 4398 4622 1645 1645 1869 1869
+rtyp va00 0
+rmsc 4510 1757 "main.mng\\aquariumdoor"
+setv va00 addr ov00 4151 4188 2454 2435 2472 2493
+rtyp va00 9
+rmsc 4169 2473 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 4188 4245 2435 2481 2493 2530
+rtyp va00 9
+rmsc 4216 2482 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 4245 4635 2481 2491 2530 2543
+rtyp va00 9
+rmsc 4440 2512 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 4635 4667 2491 2486 2557 2641
+rtyp va00 9
+rmsc 4651 2566 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 4667 4750 2486 2473 2641 2652
+rtyp va00 9
+rmsc 4708 2569 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 4750 4892 2473 2474 2652 2651
+rtyp va00 9
+rmsc 4821 2562 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 4892 4970 2474 2474 2651 2645
+rtyp va00 9
+rmsc 4931 2559 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 4970 5013 2474 2488 2645 2607
+rtyp va00 9
+rmsc 4991 2540 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 5013 5086 2488 2474 2541 2525
+rtyp va00 9
+rmsc 5049 2506 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 5086 5141 2474 2425 2525 2510
+rtyp va00 9
+rmsc 5113 2492 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 5141 5193 2191 2193 2384 2437
+rtyp va00 9
+rmsc 5167 2314 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 5193 5361 2193 2202 2437 2438
+rtyp va00 9
+rmsc 5277 2315 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 5141 5193 2384 2437 2510 2491
+rtyp va00 9
+rmsc 5167 2437 "main.mng\\aquariumunderwater"
+setv va00 addr ov00 4330 4370 2209 2209 2297 2291
+rtyp va00 0
+rmsc 4350 2250 ""
+setv va00 addr ov00 4687 4728 2084 2084 2160 2160
+rtyp va00 0
+rmsc 4707 2122 ""
+setv va00 addr ov00 4577 4687 2301 2303 2311 2312
+rtyp va00 3
+rmsc 4632 2306 ""
+setv va00 addr ov00 4356 4398 1869 1869 2047 2048
+rtyp va00 3
+rmsc 4377 1958 "main.mng\\aquariumdoor"
+setv va00 addr ov00 4185 4245 1692 1746 1955 1881
+rtyp va00 9
+rmsc 4215 1786 ""
+setv va00 addr ov00 4603 4728 1869 1869 2048 2049
+rtyp va00 0
+rmsc 4665 1959 "main.mng\\aquariumdoor"
+setv va00 addr ov00 4603 4728 2048 2049 2084 2084
+rtyp va00 0
+rmsc 4665 2066 ""
+
+* Set necessary permiabilities
+* Main door
+door grap 4420 2037 grap 4420 2050 40
+door grap 4560 2037 grap 4560 2050 40
+door grap 4640 2034 grap 4663 2053 40
+* First part of beach
+door grap 4822 2050 grap 4822 2066 40
+door grap 4980 2059 grap 4822 2066 40
+* Main beach
+door grap 5198 2088 grap 5198 2101 50
+door grap 5367 2102 grap 5367 2128 50
+door grap 5634 2141 grap 5634 2156 50
+door grap 5834 2172 grap 5834 2187 50
+door grap 5950 2186 grap 5950 2194 50
+* Middle lift shaft
+door grap 4630 2294 grap 4630 2310 40
+door grap 4686 2295 grap 4684 2308 40
+* Between 2 water rooms
+door grap 4692 2183 grap 4669 2189 40
+door grap 4735 2129 grap 4725 2130 40
+door grap 4692 2183 grap 4705 2147 40
+door grap 4725 2188 grap 4705 2147 40
+* Middle of left water room
+door grap 4416 2075 grap 4430 2094 40
+* Middle of right water room
+door grap 4789 2115 grap 4781 2105 40
+door grap 4864 2114 grap 4864 2102 40
+door grap 5010 2116 grap 5010 2107 40
+* Obvservation dome
+door grap 4181 2000 grap 4188 2000 40
+door grap 4200 1931 grap 4208 1931 40
+door grap 4236 1890 grap 4240 1890 40
+door grap 4203 1872 grap 4237 1910 40
+
+* Old doors
+new: simp 1 1 32220 "door" 14 75 1
+mvto 4415 1860
+new: simp 1 1 32220 "ettin_doors" 4 0 3
+mvto 4481 2335
+
+* Populate with agents
+ject "angel fish.cos" 7
+*ject "aquamite_maker.cos" 7
+ject "aquamites.cos" 7
+ject "aquatic tunnel gates.cos" 7
+*ject "aquatic_launcher.cos"
+*ject "aquatic_population_monitoring_device.cos" 7
+ject "clown fish.cos" 7
+ject "cuttlefish.cos" 7
+ject "environmental controls.cos" 7
+ject "fixed position fish egg launcher.cos" 7
+ject "gumin grass.cos" 7
+ject "handlefish.cos" 7
+ject "man-o-war.cos" 7
+ject "marine room cutout.cos" 7
+ject "marine_airlocks.cos" 7
+ject "marine cave water.cos" 7
+ject "neon fish.cos" 7
+ject "nudibranch.cos" 7
+ject "ocean surface.cos" 7
+ject "ocean_pod.cos" 7
+ject "opal sponge.cos" 7
+ject "orange sponge.cos" 7
+ject "rainbow_sharkling.cos" 7
+ject "sealift.cos" 7
+ject "vents.cos" 7
+ject "water smell emitter.cos" 7
+ject "wetness monitor and designator.cos" 7
+ject "wysts.cos" 7
+
+* Kill all other bioenergy incrementers
+enum 1 1 105
+  kill targ
+next
+* Bioengergy incrementer
+new: simp 1 1 105 "blnk" 0 0 0
+mvto 1000 300
+tick 100
+
+* Set up bioenergy initially
+setv game "Bioenergy" 1000
+
+* New teleporter in aquarium
+new: comp 3 2 32202 "c3indsaqua" 5 0 2
+pat: butt 1 "fav_place_corridor" 1 1 54 12 0 [] 1001 1
+attr 198
+perm 90
+bhvr 3
+accg 10
+fric 100
+elas 0
+setv ov00 1
+mvto 5233 1944
+
+* New teleporter in corridor
+new: comp 3 2 32202 "c3indsaqua" 5 0 2
+pat: butt 1 "fav_place_marine" 1 1 54 12 0 [] 1001 1
+attr 198
+perm 90
+bhvr 3
+accg 10
+fric 100
+elas 0
+setv ov00 2
+mvto 2359 9034
+
+* Move to where the signpost is so the favourite place icon gets created
+enum 1 3 4
+  cmrp posx posy 0
+next
+
+* Additional scripts for bioenergy incrementer
+scrp 1 1 105 9
+  doif game "Bioenergy" < 1000
+    addv game "Bioenergy" 1
+  else
+    setv game "Bioenergy" 1000
+  endi
+endm
+
+* NEW TELEPORTERS
+
+* Activate 1
+scrp 3 2 32202 1
+  inst
+  doif type _p1_ eq 4 or type _p1_ eq 7
+    seta va99 _p1_
+  else
+    seta va99 from
+  endi
+  slow
+  setv va00 ov00
+  enum 3 2 32202
+    doif va00 eq 1 and ov00 eq 2
+      setv va01 posx
+      setv va02 posy
+    endi
+    doif va00 eq 2 and ov00 eq 1
+      setv va01 posx
+      setv va02 posy
+    endi
+  next
+  * Animate/sound both doors
+  enum 3 2 32202
+    snde "tele"
+    anim [1 2 3 4 3 2 1 0]
+  next
+  targ va99
+  doif fmly ne 4
+    * Hand - destination may be in inventory so check using hand as target
+    enum 2 1 1
+      doif tmvt va01 va02 eq 1
+        cmrp va01 va02 0
+      else
+        snde "buzz"
+      endi
+    next
+    * Take touching creatures
+    etch 4 0 0
+      doif targ ne null
+        doif tmvf va01 va02 eq 1
+          mvft va01 va02
+        else
+          * Play error sound if no room on other end
+          snde "buzz"
+        endi
+      endi
+    next
+  else
+    * Creature
+    doif targ ne null
+      doif tmvf va01 va02 eq 1
+        mvft va01 va02
+        stim writ targ 95 1
+      else
+        * Play error sound if no room on other end
+        snde "buzz"
+      endi
+    endi
+  endi
+endm
+
+* Activate 2
+scrp 3 2 32202 2
+  call 1 from 0
+endm
+
+* Click icon
+scrp 3 2 32202 1001
+  call 1 from 0
+endm
+
+* Pick up
+scrp 3 2 32202 4
+  enum 3 2 32202
+    bhvr 0
+  next
+endm
+
+* Drop
+scrp 3 2 32202 5
+  enum 3 2 32202
+    bhvr 3
+  next
+endm

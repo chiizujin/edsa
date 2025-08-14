@@ -1,0 +1,40 @@
+"en-GB"
+
+group DSAG "Norn of Knowing "
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "norn of knowing.c16"
+"Dependency Category 1" 2
+"Dependency 2" "norn of knowing.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "nok.cos"
+"Agent Description" "Checks for possible immortal or fast-aging Norns.\n\nSee its Agent Help for more information."
+"Agent Animation File" "norn of knowing.c16"
+"Agent Animation Gallery" "norn of knowing"
+"Agent Animation String" "0"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32201 kill targ next scrx 1 1 32201 1"
+
+group AGNT "Norn of Knowing"
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "norn of knowing.c16"
+"Dependency Category 1" 2
+"Dependency 2" "norn of knowing.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "nok.cos"
+"Agent Description" "Checks for possible immortal or fast-aging Norns.\n\nSee its Agent Help for more information."
+"Agent Animation File" "norn of knowing.c16"
+"Agent Animation Gallery" "norn of knowing"
+"Agent Animation String" "0"
+
+"Remove script" "enum 1 1 32201 kill targ next scrx 1 1 32201 1"
+
+inline FILE "norn of knowing.c16" "norn of knowing.c16" 
+inline FILE "norn of knowing.catalogue" "norn of knowing.catalogue" 

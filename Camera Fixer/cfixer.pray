@@ -1,0 +1,35 @@
+"en-GB"
+
+group DSAG "Camera Fixer"
+"Agent Type" 0
+"Dependency Count" 1
+"Dependency 1" "camera fixer.catalogue"
+"Dependency Category 1" 7
+
+"Script Count" 1
+"Script 1" @ "cfixer.cos"
+"Agent Description" "Makes sure your Docking Station cameras stay where you left them."
+"Agent Animation File" "comms camera units.c16"
+"Agent Animation Gallery" "comms camera units"
+"Agent Animation String" "0"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32223 kill targ next scrx 1 1 32223 1 scrx 1 1 32223 2 scrx 1 1 32223 9 scrx 1 1 32223 128 enum 3 8 50 attr 195 bhvr 11 next"
+
+group AGNT "Camera Fixer "
+"Agent Type" 0
+"Dependency Count" 1
+"Dependency 1" "camera fixer.catalogue"
+"Dependency Category 1" 7
+
+"Script Count" 1
+"Script 1" @ "cfixer.cos"
+"Agent Description" "Makes sure your Docking Station cameras stay where you left them."
+"Agent Animation File" "comms camera units.c16"
+"Agent Animation Gallery" "comms camera units"
+"Agent Animation String" "0"
+
+"Remove script" "enum 1 1 32223 kill targ next scrx 1 1 32223 1 scrx 1 1 32223 2 scrx 1 1 32223 9 scrx 1 1 32223 128 enum 3 8 50 attr 195 bhvr 11 next"
+
+inline FILE "camera fixer.catalogue" "camera fixer.catalogue" 

@@ -1,0 +1,15 @@
+inst
+
+* Remove Ettin egg layer
+enum 1 1 101
+  stpt
+  kill targ
+next
+scrx 1 1 101 9
+
+* Remove Grendel egg layer
+enum 1 1 99
+  stpt
+  kill targ
+next
+scrx 1 1 99 9

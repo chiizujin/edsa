@@ -1,0 +1,25 @@
+"en-GB"
+
+group DSAG "Egg Layer Remover"
+"Agent Type" 0
+"Dependency Count" 0
+
+"Script Count" 1
+"Script 1" @ "remover.cos"
+"Agent Description" "This completely removes the Grendel and Ettin egg layers.\n\nUSE WITH CARE!"
+"Agent Animation File" "greneggmask.c16"
+"Agent Animation Gallery" "greneggmask"
+"Agent Animation String" "6 6 6 5 5 5 12 12 12 13 13 13 255"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+
+group AGNT "Egg Layer Remover "
+"Agent Type" 0
+"Dependency Count" 0
+
+"Script Count" 1
+"Script 1" @ "remover.cos"
+"Agent Description" "This completely removes the Grendel and Ettin egg layers.\n\nUSE WITH CARE!"
+"Agent Animation File" "greneggmask.c16"
+"Agent Animation Gallery" "greneggmask"
+"Agent Animation String" "6 6 6 5 5 5 12 12 12 13 13 13 255"

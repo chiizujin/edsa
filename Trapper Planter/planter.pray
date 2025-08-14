@@ -1,0 +1,23 @@
+"en-GB"
+
+group DSAG "Trapper Planter"
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "trapper planter.c16"
+"Dependency Category 1" 2
+"Dependency 2" "trapper planter.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "planter.cos"
+"Agent Description" "This device allows you to plant extra trappers around your world."
+"Agent Animation File" "trapper planter.c16"
+"Agent Animation Gallery" "trapper planter"
+"Agent Animation String" "0"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32226 kill targ next scrx 1 1 32226 1"
+
+inline FILE "trapper planter.c16" "trapper planter.c16" 
+inline FILE "trapper planter.catalogue" "trapper planter.catalogue" 

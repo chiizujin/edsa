@@ -1,0 +1,3 @@
+TAG "Agent Help 1 1 32201"
+"Norn of Knowing" 
+"This agent checks for possible immortal and fast-aging Norns.\n\nIt does this by checking 3 possible indicators:\n\n1. Norns older than 9 hours may be immortal.\n\n2. Norns with 2 or more toxins in their body over 95 may be immortal.\n\n3. Norns that reached adult before they were 30 minutes old are probably fast-agers.\nIf any of these checks are matched then a ''boing'' sound will be heard and the Norn's name that is displayed above the NoK will have 1 or more extra letters added in front of it followed by a ! as follows:\n\nO = Old\nT = Toxins\nA = Aging"

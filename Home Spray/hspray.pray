@@ -1,0 +1,40 @@
+"en-GB"
+
+group DSAG "Home Spray "
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "home spray.c16"
+"Dependency Category 1" 2
+"Dependency 2" "home spray.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "hspray.cos"
+"Agent Description" "A spray to make homesick Norns feel better."
+"Agent Animation File" "home spray.c16"
+"Agent Animation Gallery" "home spray"
+"Agent Animation String" "0"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32210 kill targ next enum 1 1 32211 kill targ next scrx 1 1 32210 1 scrx 1 1 32210 6 scrx 1 1 32211 9"
+ 
+group AGNT "Home Spray"
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "home spray.c16"
+"Dependency Category 1" 2
+"Dependency 2" "home spray.catalogue"
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "hspray.cos"
+"Agent Description" "A spray to make homesick Norns feel better."
+"Agent Animation File" "home spray.c16"
+"Agent Animation Gallery" "home spray"
+"Agent Animation String" "0"
+
+"Remove script" "enum 1 1 32210 kill targ next enum 1 1 32211 kill targ next scrx 1 1 32210 1 scrx 1 1 32210 6 scrx 1 1 32211 9"
+ 
+inline FILE "home spray.c16" "home spray.c16"
+inline FILE "home spray.catalogue" "home spray.catalogue"

@@ -1,0 +1,120 @@
+*********************************
+* HOME SPRAY                    *
+* Concept & sprites by Sentinal *
+* CAOS by Emmental              *
+*********************************
+
+* CREATE
+inst
+new: simp 1 1 32210 "home spray" 3 0 5000
+attr 198
+bhvr 0
+accg 3
+elas 10
+fric 100
+* Get creator positioning
+setv va00 game "CreatorX"
+setv va01 game "CreatorY"
+* If no values then assume this is C3 only
+doif va00 eq 0 and va01 eq 0
+  * Move it to a safe C3 location (just above the incubator area)
+  setv va00 rand 1400 1550
+  setv va01 400
+  endi
+mvsf va00 va01
+
+* ACTIVATE 1
+scrp 1 1 32210 1
+  lock
+  * Animate container
+  anim [1 2 0]
+  wait 1
+  * Get container position
+  setv va01 posx
+  setv va02 posy
+  subv va01 22
+  subv va02 50
+  * Create clouds
+  snde "spry"
+  inst
+  setv va00 0
+  * Count existing clouds (restrict to 40 at once - may spray in more than room, but don't want hundreds)
+  enum 1 1 32211
+    addv va00 1
+  next
+  targ ownr
+  * But only create 8 at once
+  setv va03 40
+  subv va03 va00
+  setv va00 40
+  subv va00 va03
+  doif va00 lt 32
+    setv va00 32
+  endi
+  doif va00 lt 40
+    loop
+      * Create a cloud
+      new: simp 1 1 32211 "home spray" 1 3 4900
+      attr 64
+      alph 120 1
+      emit 15 0.1
+      mvsf va01 va02
+      * Set life counter
+      setv ov00 0
+      velo 0 -2
+      tick 10
+      addv va00 1
+    untl va00 eq 40
+  endi
+endm
+
+* COLLISION
+scrp 1 1 32210 6
+  snde "dr10"
+endm
+
+* CLOUD TIMER
+scrp 1 1 32211 9
+  * Reduce comfort drive for nearby Norns
+  inst
+  rnge 150
+  esee 4 1 0
+    doif targ <> null
+      chem 162 -0.01
+    endi
+  next
+  * Change direction?
+  doif rand 0 1 eq 0
+    * Set random direction, but make sure isn't standing still
+    loop
+      velo rand -1 1 rand -1 1
+    untl velx ne 0 and vely ne 0
+  endi
+  * Increment life counter
+  addv ov00 1
+  slow
+  * Decide whether to fade out or not (randomise this to make them disappear at different times)
+  doif ov00 ge 50 and rand 0 50 eq 0
+    setv ov01 120
+    loop
+      alph ov01 1
+      addv ov01 2
+    untl ov01 ge 255
+    kill targ
+  endi
+endm
+
+* DESTROY
+rscr
+  * Kill container
+  enum 1 1 32210
+    kill targ
+  next
+  * Kill clouds
+  enum 1 1 32211
+    kill targ
+  next
+  * Remove scripts
+  scrx 1 1 32210 1
+  scrx 1 1 32210 6
+  scrx 1 1 32211 9

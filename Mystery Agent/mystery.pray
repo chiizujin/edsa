@@ -1,0 +1,44 @@
+"en-GB"
+
+group DSAG "Mystery Agent "
+"Agent Type" 0
+"Dependency Count" 3
+"Dependency 1" "mystery agent.c16"
+"Dependency Category 1" 2
+"Dependency 2" "fotl.c16"
+"Dependency Category 2" 2
+"Dependency 3" "mystery agent.catalogue"
+"Dependency Category 3" 7
+
+"Script Count" 1
+"Script 1" @ "mystery.cos"
+"Agent Description" "What does this agent do? Who knows?"
+"Agent Animation File" "mystery agent.c16"
+"Agent Animation Gallery" "mystery agent"
+"Web URL" "creatures.webhop.net"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32216 kill targ next enum 2 8 32201 kill targ next scrx 1 1 32216 9 scrx 2 8 32201 9"
+ 
+group AGNT "Mystery Agent"
+"Agent Type" 0
+"Dependency Count" 3
+"Dependency 1" "mystery agent.c16"
+"Dependency Category 1" 2
+"Dependency 2" "fotl.c16"
+"Dependency Category 2" 2
+"Dependency 3" "mystery agent.catalogue"
+"Dependency Category 3" 7
+
+"Script Count" 1
+"Script 1" @ "mystery.cos"
+"Agent Description" "What does this agent do? Who knows?"
+"Agent Animation File" "mystery agent.c16"
+"Agent Animation Gallery" "mystery agent"
+"Agent Animation String" "0"
+
+"Remove script" "enum 1 1 32216 kill targ next enum 2 8 32201 kill targ next scrx 1 1 32216 9 scrx 2 8 32201 9"
+ 
+inline FILE "mystery agent.c16" "mystery agent.c16" 
+inline FILE "fotl.c16" "fotl.c16" 
+inline FILE "mystery agent.catalogue" "mystery agent.catalogue" 

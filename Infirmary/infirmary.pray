@@ -1,0 +1,37 @@
+"en-GB"
+
+group AGNT "Infirmary"
+  "Agent Bioenergy Value" 100
+  "Agent Type" 0
+  "Dependency Category 1" 2
+  "Dependency Category 2" 7
+  "Dependency Category 3" 2
+  "Dependency Category 4" 2
+  "Dependency Category 5" 2
+  "Dependency Category 6" 2
+  "Dependency Count" 6
+  "Script Count" 1
+  "Agent Animation File" "iromcross.c16"
+  "Agent Animation Gallery" "iromcross"
+  "Agent Animation String" "0 0 0 1 1 1 255"
+  "Agent Description" "The Creatures Health Centre"
+  "Dependency 1" "adscan.c16"
+  "Dependency 2" "infirmary.catalogue"
+  "Dependency 3" "irom.c16"
+  "Dependency 4" "iromvendor.c16"
+  "Dependency 5" "iromcross.c16"
+  "Dependency 6" "idor.c16"
+  "Remove script" "enum 4 0 0 setv va00 posx setv va01 posy setv va02 0 setv va03 0 doif va00 gt 6830 and va00 lt 7550 setv va02 1 endi doif va01 gt 1640 and va01 lt 2130 setv va03 1 endi doif va02 eq 1 and va03 eq 1 mvft 3678 3493 endi next enum 1 1 53203 kill targ next scrx 1 1 53203 9 scrx 1 1 53203 1 enum 1 1 53206 kill targ next enum 2 25 53200 kill targ next scrx 2 25 53200 12 scrx 1 1 53206 1002 scrx 1 1 53206 1003 scrx 2 25 53200 6 enum 2 25 53201 kill targ next scrx 2 25 53201 12 scrx 2 25 53201 6 enum 2 25 53202 kill targ next scrx 2 25 53202 12 scrx 2 25 53202 6 enum 2 25 53203 kill targ next scrx 2 25 53203 12 scrx 2 25 53203 6 enum 2 25 53204 kill targ next scrx 2 25 53204 12 scrx 2 25 53204 6 enum 2 25 53205 kill targ next scrx 2 25 53205 12 scrx 2 25 53205 6 enum 2 25 53206 kill targ next scrx 2 25 53206 12 scrx 2 25 53206 6 enum 2 25 53207 kill targ next scrx 2 25 53207 12 scrx 2 25 53207 6 enum 2 25 53208 kill targ next scrx 2 25 53208 12 scrx 2 25 53208 6 enum 1 1 53205 kill targ next scrx 1 1 53205 9 enum 1 1 53204 kill targ next scrx 1 1 53204 1001 scrx 1 1 53204 9 enum 1 1 53201 kill targ next scrx 1 1 53201 1001 scrx 1 1 53201 1002 scrx 1 1 53201 1003 scrx 1 1 53201 1004 scrx 1 1 53201 1005 scrx 1 1 53201 1006 scrx 1 1 53201 9 scrx 1 1 53201 1013 scrx 1 1 53201 1014 scrx 1 1 53201 1015 scrx 1 1 53201 1016 scrx 1 1 53201 1017 enum 2 2 53203 kill targ next enum 2 2 53204 kill targ next scrx 2 2 53204 1 scrx 2 2 53203 1 enum 1 1 53202 kill targ next scrx 1 1 53202 1000 scrx 1 1 53202 9 enum 1 1 53207 kill targ next enum 1 1 53200 kill targ next delr 677 delm 63"
+  "Script 1" @ "infirmary.cos"
+
+inline FILE "adscan.c16" "adscan.c16"
+
+inline FILE "infirmary.catalogue" "infirmary.catalogue"
+
+inline FILE "irom.c16" "irom.c16"
+
+inline FILE "iromvendor.c16" "iromvendor.c16"
+
+inline FILE "iromcross.c16" "iromcross.c16"
+
+inline FILE "idor.c16" "idor.c16"

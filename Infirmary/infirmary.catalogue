@@ -1,0 +1,75 @@
+TAG "Agent Help 1 1 53200"
+"Infirmary"
+"This room hopefully contains all your medical needs.                    This room is dedicated to Max 'Steerpike' Jerome, an upstanding member of the Creatures Community who recently passed away at the age of 47. Rest in peace, SP, and we'll all miss you!"
+
+TAG "Agent Help 1 1 53207"
+"Chemical List"
+"Chemical List:                                                    Digestive:                                                                1 Lactate                            2 Pyruvate                           3 Glucose                            4 Glycogen                           5 Starch                             6 Fatty Acid                         7 Cholesterol                        8 Triglyceride                       9 Adipose tissue                    10 Fat                              11 Muscle tissue                    12 Protein                          13 Amino Acid                     Movement:                                                                 17 Downatrophin                     18 Upatrophin                      Waste:                                                                    24 Dissolved carbon dioxide                   25 Urea                             26 Ammonia                        Respiratory:                                                             29 Air                              30 Oxygen                           33 Water                            34 Energy                               35 ATP                               36 ADP                              Reproductive (general):                                                    39 Arousal Potential                40 Mating Pheromone                 41 Opposite Sex Pheromone Reproductive (female):                                                   46 Oestrogen                        47 <spare>                          48 Progesterone           Reproductive (male):                                                     53 Testosterone                      54 Inhibin:                        Toxins:                                                                  66 Heavy Metals	                  67 Cyanide                          68 Belladonna                       69 Geddonase                        70 Glycotoxin                       71 Sleep toxin                      72 Fever toxin                      73 Histamine A                      74 Histamine B                      75 Alcohol                          78 ATP decoupler                    79 Carbon monoxide                  80 Fear toxin                       81 Muscle toxin                     82 Antigen 0                        83 Antigen 1                        84 Antigen 2                        85 Antigen 3                        86 Antigen 4                        87 Antigen 5                        88 Antigen 6                        89 Antigen 7                        90 Wounded                    Medicinal:                             92 Medicine one	                  93 Anti-oxidant                     94 Prostaglandin                    95 EDTA                             96 Sodium thiosulphite              97 Arnica                           98 Vitamin E                        99 Vitamin C                        100 Antihistamine               Immune system:                                                          102 Antibody 0                       103 Antibody 1                     104 Antibody 2                     105 Antibody 3                     106 Antibody 4                     107 Antibody 5                     108 Antibody 6                     109 Antibody 7                   Regulatory:                                                             112 Anabolic steroid               113 Pistle                         114 Insulin                        115 Glycolase                      116 Dehydrogenase                  117 Adrenaline                       118 Grendel nitrate                 119 Ettin nitrate                   121 Protease                       124 Activase                       125 Life                            127 Injury                         128 Stress                                      Drive backups:                                             131 Pain backup                     132 Hunger for protein backup      133 Hunger for carb backup         134 Hunger for fat backup             135 Coldness backup                 136 Hotness backup                 137 Tiredness backup               138 Sleepiness backup                139 Loneliness backup                   140 Crowdedness backup              141 Fear backup                    142 Boredom backup                 143 Anger backup                      144 Sex drive backup                    145 Comfort drive backup         Drive chemicals:                                                        148 Pain                           149 Hunger for protein               150 Hunger for carb                 151 Hunger for fat                 152 Coldness                       153 Hotness                        154 Tiredness                      155 Sleepiness                     156 Loneliness                         157 Crowded                          158 Fear                           159 Boredom                        160 Anger                           161 Sex Drive                      162 Comfort drive                   CA smell gradient chemicals:                                                165 CA Sound                       166 CA Light                       167 CA Heat                        168 CA Water (from the sky)          169 CA Nutrient (plants)           170 CA Water (bodies of)               171 CA Protein                     172 CA Carbohydrate                173 CA Fat                         174 CA Flowers                     175 CA Machinery                    176 CA smell 11                         177 CA Norn smell                  178 CA Grendel smell                179 CA Ettin smell                    180 CA Norn home smell                 181 CA Grendel home smell             182 CA Ettin home smell               183 CA smell 18                    184 CA smell 19                   Stress chemicals:                                                        187 Stress (high H4C)                   188 Stress (high H4P)              189 Stress (high H4F)               190 Stress (high Anger)              191 Stress (high Fear)             192 Stress (high Pain)              193 Stress (high Tired)             194 Stress (high Sleep)              195 Stress (high Crowded)          Brain chemicals:                                                        198 Disappointment                    199 Up                             200 Down                           201 Exit                           202 Enter                          203 Wait                             204 Reward                         205 Punishment                      206 Brain chemical 9                207 Brain chemical 10                 208 Brain chemical 11                209 Brain chemical 12                  210 Brain chemical 13               211 Brain chemical 14                212 Pre - REM                      213 REM"
+
+TAG "Agent Help 1 1 53202"
+"Creature Sniffer"
+"This little gadget controls what creature the infirmary advanced medical scanner and the diagnostic tool look at. Press the button to change the selection. Selected Norn means the norn currently with the red arrow over it. Room Norn means the norn currently occupying this room."
+
+TAG "Agent Help 2 2 53203"
+"Door to the Infirmary"
+"Through this door is the infirmary. Norns cannot open this door, and it will not admit any more creatures if the infirmary is occupied."
+
+TAG "Agent Help 2 2 53204"
+"Exit Door"
+"Let me out of this place!"
+
+TAG "Agent Help 1 1 53201"
+"Advanced Medical Scanner"
+"This complex machine can scan any chemical in any norn in your world. The target norn is chosen using the creature sniffer above this machine. Press the large gold button to activate the machine. You can then type in the number of a chemical in the coloured boxes near the golden button. The name of the chemical will be displayed, and the chemical graphed. The buttons to the right of the graph will inject the norn with 25% maximum of that chemical when pressed."
+
+TAG "Agent Help 1 1 53204"
+"Bacterial Scanner"
+"This Scanner checks the infirmary room for nasty bacteria, and warns you if there are any present. You can then choose to sterilise the room by pressing the small round button."
+
+TAG "Agent Help 1 1 53205"
+"Diagnostic Tool"
+"If you haven't figured out what this does yet, I'm very surprised. Try finding a sick norn. The norn scanned is specified by the creature sniffer."
+
+TAG "Agent Help 2 25 53208"
+"Instant Nutrition"
+"Helps a norn that is starving."
+
+TAG "Agent Help 2 25 53207"
+"Antibiotic"
+"A cure for all known bacterial infections."
+
+TAG "Agent Help 2 25 53206"
+"Dehydrogenase"
+"An instant cure for alcohol. I know some humans who could do with some of this."
+
+TAG "Agent Help 2 25 53205"
+"Antihistamine"
+"Coughs and sneezles spread diseasles!"
+
+TAG "Agent Help 2 25 53204"
+"EDTA"
+"Heavy Metal Cure. Axl Rose take note."
+
+TAG "Agent Help 2 25 53203"
+"Arnica"
+"Glycotoxin Cure."
+
+TAG "Agent Help 2 25 53202"
+"Anti-Oxidant"
+"Cure for carbon monoxide poisoning."
+
+TAG "Agent Help 2 25 53201"
+"Medicine One"
+"If you can get the norn to drink it quickly enough, this cures ATP decoupler poisoning."
+
+TAG "Agent Help 2 25 53200"
+"Sodium Thiosulphate"
+"Cure for that nasty cyanide stuff."
+
+TAG "Agent Help 1 1 53206"
+"Potion Vendor"
+"Dispenses all sorts of cures for all sorts of norn afflictions. Press the arrow to move on to the next potion, or the golden button to dispense the current selection."
+
+TAG "Agent Help 1 1 53203"
+"Infirmary Camera Zoom"
+"This button will zoom you directly to the infirmary."

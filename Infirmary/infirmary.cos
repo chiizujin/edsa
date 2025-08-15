@@ -1,0 +1,1214 @@
+setv va00 gmap 7000 2000
+doif va00 eq -1
+	gsub room
+endi
+setv va01 0
+setv va01 totl 1 1 53202
+doif va01 eq 1
+	cmra 7139 1849 0
+	rtar 1 1 53202
+	snde "excl"
+else
+	gsub stuf
+	cmra 7139 1849 0
+endi
+*new metaroom
+subr room
+	brmi 63 677
+	setv va00 addm 6740 1550 800 600 "space"
+	mmsc 6840 1650 "bridge.mng\\main"
+	setv va01 addr va01 6741 7540 1551 1551 2120 2120
+retn
+subr stuf
+*background
+	new: simp 1 1 53200 "irom" 1 0 0
+	bhvr 0
+	attr 0
+	mvto 6740 1550
+*Norn Picture
+	new: simp 1 1 53207 "irom" 1 3 1
+	bhvr 0
+	attr 0
+	mvto 6852 1648
+*creature sniffer
+	new: comp 1 1 53202 "adscan" 1 7 3
+	attr 16
+	clac -1
+	elas 0
+	setv ov01 0
+	rnge 1000
+	mvto 7230 1603
+	pat: butt 1 "adscan" 5 1 133 7 2 [] 1000 0
+	part 1
+	pose 0
+	tick 1
+	pat: fixd 2 "adscan" 6 0 8 7 "WhiteOnTransparentChars"
+	part 2
+	frmt 2 2 2 2 0 0 2
+	ptxt "Room Norn"
+*doors
+	new: simp 2 2 53203 "idor" 8 0 1
+	attr 20
+	bhvr 0
+	clac 0
+	mvto 3595 3365
+	new: simp 2 2 53204 "idor" 8 0 1
+	attr 20
+	bhvr 0
+	clac 0
+	mvto 6854 1910
+*advanced scanner
+	new: comp 1 1 53201 "adscan" 1 0 2
+	attr 16
+	clac -1
+	elas 0
+	rnge 1000
+	setv ov01 0
+	seta ov00 null
+	sets ov07 "Unknownase"
+	sets ov08 "Unknownase"
+	sets ov09 "Unknownase"
+	sets ov10 "Unknownase"
+	sets ov11 "Unknownase"
+	sets ov12 "00"
+	sets ov13 "00"
+	sets ov14 "00"
+	sets ov15 "00"
+	sets ov16 "00"
+	mvto 6974 1625
+	pat: butt 1 "adscan" 1 1 8 24 1 [] 1001 0
+	part 1
+	pose 0
+*bacterial scanner
+	new: comp 1 1 53204 "adscan" 1 8 4
+	attr 16
+	clac -1
+	elas 0
+	rnge 1000
+	pat: butt 1 "adscan" 5 1 133 11 2 [] 1001 0
+	pat: fixd 2 "adscan" 6 4 12 0 "WhiteOnTransparentChars"
+	part 2
+	frmt 2 2 2 2 0 0 2
+	ptxt "Room is Sterile"
+	tick 10
+	mvto 7230 1831
+*diagnostic tool
+	new: comp 1 1 53205 "adscan" 1 9 4
+	attr 16
+	clac -1
+	elas 0
+	rnge 1000
+	tick 1
+	pat: fixd 1 "adscan" 4 10 10 4 "WhiteOnTransparentChars"
+	part 1
+	frmt 2 2 2 2 0 0 2
+	ptxt "No creature selected"
+	mvto 7259 1896
+*vendor
+	new: comp 1 1 53206 "iromvendor" 1 0 4
+	clac -1
+	attr 16
+	elas 0
+	mvto 7047 1877
+	pat: fixd 1 "iromvendor" 1 17 22 1 "WhiteOnTransparentChars"
+	part 1
+	frmt 2 2 2 2 0 0 2
+	ptxt "Sodium Thiosulphate"
+	pat: butt 2 "iromvendor" 2 1 13 83 1 [] 1002 0
+	pat: butt 3 "iromvendor" 3 1 108 81 1 [] 1003 0
+	setv ov03 0
+*camera zoom
+	new: simp 1 1 53203 "iromcross" 2 0 8505
+	attr 52
+	bhvr 0
+	tick 2
+	clac 0
+	flto 495 0
+retn
+*Cor, what a lot of scripts!
+*creature sniffer
+scrp 1 1 53202 9
+	doif tick eq 1
+		tick 10
+	endi
+	seta va02 null
+	esee 4 0 0
+		doif targ ne null
+			seta va02 targ
+		endi
+	next
+	seta ov02 va02
+endm
+
+scrp 1 1 53202 1000
+	snde "beep"
+	seta va00 null
+	doif ov01 eq 0
+		setv ov01 1
+		part 2
+		ptxt "Selected Norn"
+	else
+		setv ov01 0
+		part 2
+		ptxt "Room Norn"
+	endi
+endm
+
+*doors
+scrp 2 2 53203 1
+	anim [0 1 2 3 4 5 6 7]
+	over
+	snde "open"
+	cmra 7064 1980 0
+	rtar 2 2 53204
+	anim [7 6 5 4 3 2 1 0]
+	rtar 1 1 53202
+	doif ov02 eq null
+		targ ownr
+		ttar 4 0 0
+		doif targ ne null
+			mvft 6935 2004
+		endi
+	endi
+	targ ownr
+	clac 0
+	anim [7 6 5 4 3 2 1 0]
+endm
+
+scrp 2 2 53204 1
+	anim [0 1 2 3 4 5 6 7]
+	over
+	snde "open"
+	cmra 3250 3150 0
+	rtar 2 2 53203
+	anim [7 6 5 4 3 2 1 0]
+	targ ownr
+	ttar 4 0 0
+	doif targ ne null
+		mvft 3678 3493
+	endi
+	targ ownr
+	clac 0
+	anim [7 6 5 4 3 2 1 0]
+endm
+
+*advanced scanner
+scrp 1 1 53201 1001
+	doif ov01 eq 0
+		snde "beep"
+		pat: text 2 "adscan" 2 53 16 3000 1002 "WhiteOnTransparentChars"
+		pat: fixd 7 "adscan" 3 88 16 1 "WhiteOnTransparentChars"
+		pat: text 3 "adscan" 2 53 59 3000 1003 "WhiteOnTransparentChars"
+		pat: fixd 8 "adscan" 3 88 59 1 "WhiteOnTransparentChars"
+		pat: text 4 "adscan" 2 53 102 3000 1004 "WhiteOnTransparentChars"
+		pat: fixd 9 "adscan" 3 88 102 1 "WhiteOnTransparentChars"
+		pat: text 5 "adscan" 2 53 145 3000 1005 "WhiteOnTransparentChars"
+		pat: fixd 10 "adscan" 3 88 145 1 "WhiteOnTransparentChars"
+		pat: text 6 "adscan" 2 53 189 3000 1006 "WhiteOnTransparentChars"
+		pat: fixd 11 "adscan" 3 88 189 1 "WhiteOnTransparentChars"
+		pat: grph 12 "adscan" 4 270 42 200 100
+		pat: butt 13 "adscan" 2 1 442 11 1 [] 1013 0
+		pat: butt 14 "adscan" 2 1 442 55 1 [] 1014 0
+		pat: butt 15 "adscan" 2 1 442 98 1 [] 1015 0
+		pat: butt 16 "adscan" 2 1 442 141 1 [] 1016 0
+		pat: butt 17 "adscan" 2 1 442 184 1 [] 1017 0
+		part 12
+		grpl 255 0 0 0 1
+		grpl 255 128 0 0 1
+		grpl 255 255 0 0 1
+		grpl 0 255 0 0 1
+		grpl 0 0 255 0 1
+		targ ownr
+		part 2
+		frmt 2 2 2 2 0 0 2
+		ptxt ov12
+		part 3
+		frmt 2 2 2 2 0 0 2
+		ptxt ov13
+		part 4
+		frmt 2 2 2 2 0 0 2
+		ptxt ov14
+		part 5
+		frmt 2 2 2 2 0 0 2
+		ptxt ov15
+		part 6
+		frmt 2 2 2 2 0 0 2
+		ptxt ov16
+		part 7
+		frmt 2 2 2 2 0 0 2
+		ptxt ov07
+		part 8
+		frmt 2 2 2 2 0 0 2
+		ptxt ov08
+		part 9
+		frmt 2 2 2 2 0 0 2
+		ptxt ov09
+		part 10
+		frmt 2 2 2 2 0 0 2
+		ptxt ov10
+		part 11
+		frmt 2 2 2 2 0 0 2
+		ptxt ov11
+		setv ov01 1
+		tick 1
+	else
+		snde "beep"
+		pat: kill 2
+		pat: kill 7
+		pat: kill 3
+		pat: kill 8
+		pat: kill 4
+		pat: kill 9
+		pat: kill 5
+		pat: kill 10
+		pat: kill 6
+		pat: kill 11
+		pat: kill 12
+		pat: kill 13
+		pat: kill 14
+		pat: kill 15
+		pat: kill 16
+		pat: kill 17
+		setv ov01 0
+		tick 0
+	endi
+endm
+
+scrp 1 1 53201 9
+	setv va02 ov02
+	setv va03 ov03
+	setv va04 ov04
+	setv va05 ov05
+	setv va06 ov06
+	rtar 1 1 53202
+	doif ov01 eq 0
+		inst
+		star 4 0 0
+		doif targ ne ownr and targ ne null
+			setv va07 chem va02
+			setv va08 chem va03
+			setv va09 chem va04
+			setv va10 chem va05
+			setv va11 chem va06
+		endi
+		slow
+		gsub grap
+	else
+		inst
+		targ norn
+		doif targ ne null
+			setv va07 chem va02
+			setv va08 chem va03
+			setv va09 chem va04
+			setv va10 chem va05
+			setv va11 chem va06
+		endi
+		slow
+		gsub grap
+	endi
+	subr grap
+		targ ownr
+		part 12
+		grpv 0 va07
+		grpv 1 va08
+		grpv 2 va09
+		grpv 3 va10
+		grpv 4 va11
+	retn
+endm
+
+scrp 1 1 53201 1002
+	targ game "c3_default_focus"
+	part game "c3_default_focus_part"
+	fcus
+	targ ownr
+	part 2
+	sets ov12 ptxt
+	setv ov02 stoi ptxt
+	part 7
+	doif ov02 lt 256
+		sets ov07 read "short_chemical_names" ov02
+		setv va44 stoi ov07
+		doif va44 = ov02
+			sets ov07 read "Unknown Chemical" 0
+		endi
+	else
+		sets ov07 "Too High"
+	endi
+	ptxt ov07
+	part 12
+endm
+
+scrp 1 1 53201 1003
+	targ game "c3_default_focus"
+	part game "c3_default_focus_part"
+	fcus
+	targ ownr
+	part 3
+	sets ov13 ptxt
+	setv ov03 stoi ptxt
+	part 8
+	doif ov03 lt 256
+		sets ov08 read "short_chemical_names" ov03
+		setv va44 stoi ov08
+		doif va44 = ov03
+			sets ov08 read "Unknown Chemical" 0
+		endi
+	else
+		sets ov08 "Too High"
+	endi
+	ptxt ov08
+endm
+
+scrp 1 1 53201 1004
+	targ game "c3_default_focus"
+	part game "c3_default_focus_part"
+	fcus
+	targ ownr
+	part 4
+	sets ov14 ptxt
+	setv ov04 stoi ptxt
+	part 9
+	doif ov04 lt 256
+		sets ov09 read "short_chemical_names" ov04
+		setv va44 stoi ov09
+		doif va44 = ov04
+			sets ov09 read "Unknown Chemical" 0
+		endi
+	else
+		sets ov09 "Too High"
+	endi
+	ptxt ov09
+endm
+
+scrp 1 1 53201 1005
+	targ game "c3_default_focus"
+	part game "c3_default_focus_part"
+	fcus
+	targ ownr
+	part 5
+	sets ov15 ptxt
+	setv ov05 stoi ptxt
+	part 10
+	doif ov05 lt 256
+		sets ov10 read "short_chemical_names" ov05
+		setv va44 stoi ov10
+		doif va44 = ov05
+			sets ov10 read "Unknown Chemical" 0
+		endi
+	else
+		sets ov10 "Too High"
+	endi
+	ptxt ov10
+endm
+
+scrp 1 1 53201 1006
+	targ game "c3_default_focus"
+	part game "c3_default_focus_part"
+	fcus
+	targ ownr
+	part 6
+	sets ov16 ptxt
+	setv ov06 stoi ptxt
+	part 11
+	doif ov06 lt 256
+		sets ov11 read "short_chemical_names" ov06
+		setv va44 stoi ov11
+		doif va44 = ov06
+			sets ov11 read "Unknown Chemical" 0
+		endi
+	else
+		sets ov11 "Too High"
+	endi
+	ptxt ov11
+endm
+
+scrp 1 1 53201 1013
+	snde "beep"
+	setv va02 ov02
+	rtar 1 1 53202
+	doif ov01 eq 0
+		inst
+		star 4 0 0
+		doif targ ne ownr and targ ne null
+			chem va02 0.25
+		endi
+		slow
+	else
+		inst
+		targ norn
+		doif targ ne null
+			chem va02 0.25
+		endi
+		slow
+	endi
+	targ ownr
+endm
+
+scrp 1 1 53201 1014
+	snde "beep"
+	setv va03 ov03
+	rtar 1 1 53202
+	doif ov01 eq 0
+		inst
+		star 4 0 0
+		doif targ ne ownr and targ ne null
+			chem va03 0.25
+		endi
+		slow
+	else
+		inst
+		targ norn
+		doif targ ne null
+			chem va03 0.25
+		endi
+		slow
+	endi
+	targ ownr
+endm
+
+scrp 1 1 53201 1015
+	snde "beep"
+	setv va04 ov04
+	rtar 1 1 53202
+	doif ov01 eq 0
+		inst
+		star 4 0 0
+		doif targ ne ownr and targ ne null
+			chem va04 0.25
+		endi
+		slow
+	else
+		inst
+		targ norn
+		doif targ ne null
+			chem va04 0.25
+		endi
+		slow
+	endi
+	targ ownr
+endm
+
+scrp 1 1 53201 1016
+	snde "beep"
+	setv va05 ov05
+	rtar 1 1 53202
+	doif ov01 eq 0
+		inst
+		star 4 0 0
+		doif targ ne ownr and targ ne null
+			chem va05 0.25
+		endi
+		slow
+	else
+		inst
+		targ norn
+		doif targ ne null
+			chem va05 0.25
+		endi
+		slow
+	endi
+	targ ownr
+endm
+
+scrp 1 1 53201 1017
+	snde "beep"
+	setv va06 ov06
+	rtar 1 1 53202
+	doif ov01 eq 0
+		inst
+		star 4 0 0
+		doif targ ne ownr and targ ne null
+			chem va06 0.25
+		endi
+		slow
+	else
+		inst
+		targ norn
+		doif targ ne null
+			chem va06 0.25
+		endi
+		slow
+	endi
+	targ ownr
+endm
+
+*bacterial scanner
+scrp 1 1 53204 1001
+	snde "ct_4"
+	esee 2 32 23
+		kill targ
+	next
+	part 2
+	ptxt "Room is Sterile"
+endm
+
+scrp 1 1 53204 9
+	setv va00 0
+	esee 2 32 23
+		addv va00 1
+	next
+	targ ownr
+	doif va00 gt 0
+		part 2
+		ptxt "Bacteria Detected!"
+	else
+		part 2
+		ptxt "Room is Sterile"
+	endi
+endm
+
+*dianostic tool
+scrp 1 1 53205 9
+	rtar 1 1 53202
+	doif ov01 eq 0
+		inst
+		star 4 0 0
+		doif targ ne ownr and targ ne null
+			setv va01 dead
+			setv va02 chem 67
+			setv va03 chem 78
+			setv va04 chem 79
+			setv va05 chem 70
+			setv va06 chem 29
+			setv va07 chem 66
+			setv va08 chem 82
+			setv va09 chem 83
+			setv va10 chem 84
+			setv va11 chem 85
+			setv va12 chem 86
+			setv va13 chem 87
+			setv va14 chem 88
+			setv va15 chem 89
+			setv va16 chem 73
+			setv va17 chem 4
+			setv va18 chem 5
+			setv va19 chem 11
+			setv va20 chem 12
+			setv va21 chem 9
+			setv va22 chem 10
+			slow
+			gsub diag
+		else
+			targ ownr
+			part 1
+			ptxt "No creature is selected"
+		endi
+		slow
+	else
+		inst
+		targ norn
+		doif targ ne null
+			inst
+			setv va01 dead
+			setv va02 chem 67
+			setv va03 chem 78
+			setv va04 chem 79
+			setv va05 chem 70
+			setv va06 chem 29
+			setv va07 chem 66
+			setv va08 chem 82
+			setv va09 chem 83
+			setv va10 chem 84
+			setv va11 chem 85
+			setv va12 chem 86
+			setv va13 chem 87
+			setv va14 chem 88
+			setv va15 chem 89
+			setv va16 chem 73
+			setv va17 chem 74
+			setv va18 chem 75
+			setv va19 chem 4
+			setv va20 chem 5
+			setv va21 chem 11
+			setv va22 chem 12
+			setv va23 chem 9
+			setv va24 chem 10
+			slow
+			gsub diag
+		else
+			targ ownr
+			part 1
+			ptxt "No creature is selected"
+		endi
+		slow
+	endi
+	subr diag
+		doif va01 eq 1
+			targ ownr
+			part 1
+			ptxt "This creature is dead. Try contacting a spritual medium."
+		elif va02 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature is suffering from cyanide poisoning (chemical 67). Treat with Sodium Thiosulphate (chemical 96)."
+		elif va03 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature is suffering from ATP decoupler poisoning (chemical 78). Treat with Medicine One (chemical 92)."
+		elif va04 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature is suffering from carbon monoxide poisoning (chemical 79). Treat with Anti-Oxidant (chemical 93)."
+		elif va05 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature is suffering from glycotoxin poisoning (chemical 70). Treat with Arnica (chemical 97)."
+		elif va06 lt 0.25
+			targ ownr
+			part 1
+			ptxt "This creature is suffocating. It might be a normal norn underwater, or a water norn on land. Either way, it can be treated with oxygen (chemical 30)."
+		elif va07 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature is suffering from heavy metal poisoning (chemical 66). Treat with EDTA (chemical 95)."
+		elif va08 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature has a bacterial infection (antigen 0, chemical 82). Treat with antibiotic potion."
+		elif va09 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature has a bacterial infection (antigen 1, chemical 83). Treat with antibiotic potion."
+		elif va10 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature has a bacterial infection (antigen 2, chemical 84). Treat with antibiotic potion."
+		elif va11 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature has a bacterial infection (antigen 3, chemical 85). Treat with antibiotic potion."
+		elif va12 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature has a bacterial infection (antigen 4, chemical 86). Treat with antibiotic potion."
+		elif va13 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature has a bacterial infection (antigen 5, chemical 87). Treat with antibiotic potion."
+		elif va14 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature has a bacterial infection (antigen 6, chemical 88). Treat with antibiotic potion."
+		elif va15 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature has a bacterial infection (antigen 7, chemical 89). Treat with antibiotic potion."
+		elif va16 gt 0.01 or va17 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature has a bad case of the sniffles and coughs (chemicals 73 and/or 74). Treat with antihistamine (chemical 100)."
+		elif va18 gt 0.01
+			targ ownr
+			part 1
+			ptxt "This creature is just plain drunk (chemical 75). Treat with strong coffee, or dehydrogenase (chemical 116)."
+		elif va19 le 0.05 and va20 lt 0.25
+			targ ownr
+			part 1
+			ptxt "This norn is starving for starch (chemical 5)."
+		elif va21 le 0.05 and va22 lt 0.25
+			targ ownr
+			part 1
+			ptxt "This norn is starving for protein (chemical 12)."
+		elif va23 le 0.05 and va24 lt 0.25
+			targ ownr
+			part 1
+			ptxt "This creature is starving for fat (chemical 10)"
+		else
+			targ ownr
+			part 1
+			ptxt "This creature seems healthy"
+
+		endi
+	retn
+endm
+
+*vendor
+
+scrp 1 1 53206 1003
+	snde "beep"
+	doif ov03 lt 8
+		addv ov03 1
+	else
+		setv ov03 0
+	endi
+	doif ov03 eq 0
+		part 1
+		ptxt "Sodium Thiosulphate"
+	elif ov03 eq 1
+		part 1
+		ptxt "Medicine One"
+	elif ov03 eq 2
+		part 1
+		ptxt "Anti-Oxidant"
+	elif ov03 eq 3
+		part 1
+		ptxt "Arnica"
+	elif ov03 eq 4
+		part 1
+		ptxt "EDTA"
+	elif ov03 eq 5
+		part 1
+		ptxt "Antihistamine"
+	elif ov03 eq 6
+		part 1
+		ptxt "Dehydrogenase"
+	elif ov03 eq 7
+		part 1
+		ptxt "Antibiotic"
+	elif ov03 eq 8
+		part 1
+		ptxt "Instant Nutrition"
+	endi
+endm
+
+scrp 1 1 53206 1002
+	snde "dr10"
+	doif ov03 eq 0
+		gsub sodi
+	elif ov03 eq 1
+		gsub medi
+	elif ov03 eq 2
+		gsub anto
+	elif ov03 eq 3
+		gsub arni
+	elif ov03 eq 4
+		gsub edta
+	elif ov03 eq 5
+		gsub anth
+	elif ov03 eq 6
+		gsub dehy
+	elif ov03 eq 7
+		gsub antb
+	elif ov03 eq 8
+		gsub nutr
+	endi
+	subr sodi
+		setv va20 rand 0 3
+		new: simp 2 25 53200 "potions" 1 va20 201
+		attr 199
+		BHVR 48
+		accg 10
+		perm 64
+		aero 3
+		elas 50
+		fric 60
+		tint 255 5 5 128 128
+		mvto 7130 2037
+		slow
+	retn
+	subr medi
+		setv va20 rand 0 3
+		new: simp 2 25 53201 "potions" 1 va20 201
+		attr 199
+		BHVR 48
+		accg 10
+		perm 64
+		aero 3
+		elas 50
+		fric 60
+		tint 255 128 5 128 128
+		mvto 7130 2037
+		slow
+	retn
+	subr anto
+		setv va20 rand 0 3
+		new: simp 2 25 53202 "potions" 1 va20 201
+		attr 199
+		BHVR 48
+		accg 10
+		perm 64
+		aero 3
+		elas 50
+		fric 60
+		tint 255 255 5 128 128
+		mvto 7130 2037
+		slow
+	retn
+	subr arni
+		setv va20 rand 0 3
+		new: simp 2 25 53203 "potions" 1 va20 201
+		attr 199
+		BHVR 48
+		accg 10
+		perm 64
+		aero 3
+		elas 50
+		fric 60
+		tint 5 255 5 128 128
+		mvto 7130 2037
+		slow
+	retn
+	subr edta
+		setv va20 rand 0 3
+		new: simp 2 25 53204 "potions" 1 va20 201
+		attr 199
+		BHVR 48
+		accg 10
+		perm 64
+		aero 3
+		elas 50
+		fric 60
+		tint 5 255 255 128 128
+		mvto 7130 2037
+		slow
+	retn
+	subr anth
+		setv va20 rand 0 3
+		new: simp 2 25 53205 "potions" 1 va20 201
+		attr 199
+		BHVR 48
+		accg 10
+		perm 64
+		aero 3
+		elas 50
+		fric 60
+		tint 5 5 255 128 128
+		mvto 7130 2037
+		slow
+	retn
+	subr dehy
+		setv va20 rand 0 3
+		new: simp 2 25 53206 "potions" 1 va20 201
+		attr 199
+		BHVR 48
+		accg 10
+		perm 64
+		aero 3
+		elas 50
+		fric 60
+		tint 128 5 255 128 128
+		mvto 7130 2037
+		slow
+	retn
+	subr antb
+		setv va20 rand 0 3
+		new: simp 2 25 53207 "potions" 1 va20 201
+		attr 199
+		BHVR 48
+		accg 10
+		perm 64
+		aero 3
+		elas 50
+		fric 60
+		tint 255 5 255 128 128
+		mvto 7130 2037
+		slow
+	retn
+	subr nutr
+		setv va20 rand 0 3
+		new: simp 2 25 53208 "potions" 1 va20 201
+		attr 199
+		BHVR 48
+		accg 10
+		perm 64
+		aero 3
+		elas 50
+		fric 60
+		tint 64 64 64 128 128
+		mvto 7130 2037
+		slow
+	retn
+endm
+
+scrp 2 25 53200 12
+	seta va16 from
+	snde "drnk"
+	inst
+	targ va16
+	chem 96 1
+	slow
+	targ ownr
+	kill ownr
+endm
+
+scrp 2 25 53200 6
+	snde "boi2"
+endm
+
+scrp 2 25 53201 12
+	seta va16 from
+	snde "drnk"
+	inst
+	targ va16
+	chem 92 1
+	slow
+	targ ownr
+	kill ownr
+endm
+
+scrp 2 25 53201 6
+	snde "boi2"
+endm
+
+scrp 2 25 53202 12
+	seta va16 from
+	snde "drnk"
+	inst
+	targ va16
+	chem 93 1
+	slow
+	targ ownr
+	kill ownr
+endm
+
+scrp 2 25 53202 6
+	snde "boi2"
+endm
+
+
+scrp 2 25 53203 12
+	seta va16 from
+	snde "drnk"
+	inst
+	targ va16
+	chem 97 1
+	slow
+	targ ownr
+	kill ownr
+endm
+
+scrp 2 25 53203 6
+	snde "boi2"
+endm
+
+scrp 2 25 53204 12
+	seta va16 from
+	snde "drnk"
+	inst
+	targ va16
+	chem 95 1
+	slow
+	targ ownr
+	kill ownr
+endm
+
+scrp 2 25 53204 6
+	snde "boi2"
+endm
+
+scrp 2 25 53205 12
+	seta va16 from
+	snde "drnk"
+	inst
+	targ va16
+	chem 100 1
+	slow
+	targ ownr
+	kill ownr
+endm
+
+scrp 2 25 53205 6
+	snde "boi2"
+endm
+
+scrp 2 25 53206 12
+	seta va16 from
+	snde "drnk"
+	inst
+	targ va16
+	chem 116 1
+	slow
+	targ ownr
+	kill ownr
+endm
+
+scrp 2 25 53206 6
+	snde "boi2"
+endm
+
+scrp 2 25 53207 12
+	seta va16 from
+	snde "drnk"
+	inst
+	setv va00 102
+	reps 8
+		targ va16
+		chem va00 1
+		addv va00 1
+	repe
+	slow
+	targ ownr
+	kill ownr
+endm
+
+scrp 2 25 53207 6
+	snde "boi2"
+endm
+
+scrp 2 25 53208 12
+	seta va16 from
+	snde "drnk"
+	inst
+	targ va16
+	chem 4 0.25
+	chem 9 0.25
+	chem 11 0.25
+	slow
+	targ ownr
+	kill ownr
+endm
+
+scrp 2 25 53208 6
+	snde "boi2"
+endm
+
+*camera zoom
+scrp 1 1 53203 9
+	setv va02 0
+	setv va00 cmrx
+	setv va01 cmry
+	doif va00 ge 6739 and va00 le 7541
+		doif va01 ge 1549 and va01 le 2151
+			setv va02 1
+		endi
+	endi
+	doif va02 eq 1
+		pose 1
+	else
+		pose 0
+	endi
+endm
+
+scrp 1 1 53203 1
+	snde "fp_1"
+	pose 1
+	cmra 6740 1550 0
+endm
+
+
+rscr
+*everyone out!
+enum 4 0 0
+	setv va00 posx
+	setv va01 posy
+	setv va02 0
+	setv va03 0
+	doif va00 gt 6830 and va00 lt 7550
+		setv va02 1
+	endi
+	doif va01 gt 1640 and va01 lt 2130
+		setv va03 1
+	endi
+	doif va02 eq 1 and va03 eq 1
+		mvft 3678 3493
+	endi
+next
+
+*camera zoom
+enum 1 1 53203
+	kill targ
+next
+scrx 1 1 53203 9
+scrx 1 1 53203 1
+
+*vendor
+enum 1 1 53206
+	kill targ
+next
+enum 2 25 53200
+	kill targ
+next
+scrx 2 25 53200 12
+scrx 1 1 53206 1002
+scrx 1 1 53206 1003
+scrx 2 25 53200 6
+enum 2 25 53201
+	kill targ
+next
+scrx 2 25 53201 12
+scrx 2 25 53201 6
+enum 2 25 53202
+	kill targ
+next
+scrx 2 25 53202 12
+scrx 2 25 53202 6
+enum 2 25 53203
+	kill targ
+next
+scrx 2 25 53203 12
+scrx 2 25 53203 6
+enum 2 25 53204
+	kill targ
+next
+scrx 2 25 53204 12
+scrx 2 25 53204 6
+enum 2 25 53205
+	kill targ
+next
+scrx 2 25 53205 12
+scrx 2 25 53205 6
+enum 2 25 53206
+	kill targ
+next
+scrx 2 25 53206 12
+scrx 2 25 53206 6
+enum 2 25 53207
+	kill targ
+next
+scrx 2 25 53207 12
+scrx 2 25 53207 6
+enum 2 25 53208
+	kill targ
+next
+scrx 2 25 53208 12
+scrx 2 25 53208 6
+
+*diagnostic tool
+enum 1 1 53205
+	kill targ
+next
+scrx 1 1 53205 9
+
+*bacterial scanner
+enum 1 1 53204
+	kill targ
+next
+scrx 1 1 53204 1001
+scrx 1 1 53204 9
+
+*advanced scanner
+enum 1 1 53201
+	kill targ
+next
+scrx 1 1 53201 1001
+scrx 1 1 53201 1002
+scrx 1 1 53201 1003
+scrx 1 1 53201 1004
+scrx 1 1 53201 1005
+scrx 1 1 53201 1006
+scrx 1 1 53201 9
+scrx 1 1 53201 1013
+scrx 1 1 53201 1014
+scrx 1 1 53201 1015
+scrx 1 1 53201 1016
+scrx 1 1 53201 1017
+
+*doors
+enum 2 2 53203
+	kill targ
+next
+enum 2 2 53204
+	kill targ
+next
+scrx 2 2 53204 1
+scrx 2 2 53203 1
+
+*creature sniffer
+enum 1 1 53202
+	kill targ
+next
+scrx 1 1 53202 1000
+scrx 1 1 53202 9
+
+*Norn Picture
+enum 1 1 53207
+	kill targ
+next
+
+*background
+enum 1 1 53200
+	kill targ
+next
+delr 677
+delm 63

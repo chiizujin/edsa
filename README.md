@@ -99,13 +99,13 @@ When injected, this agent removes the Ettin and Grendel egg layers from the curr
 
 # Agent updates
 
-### ※ Infirmary (Docking Station update) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Infirmary/Infirmary%20(DS%20update).zip))
+## ※ Infirmary (Docking Station update) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/(Updated%20agents)/Infirmary/Infirmary%20(DS%20update).zip))
 
 This is an update of the Creatures 3 Infirmary metaroom by Lis Morris to enable it to be fully compatible with undocked Docking Station worlds. It is based on version 1.3.
 
 # Hosted agents
 
-## ※ Remover Pack for Docking Station (by MNB) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/0_hosted/DSRemoverPack.zip))
+## ※ Remover Pack for Docking Station (by MNB) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/(Hosted%20agents)/DSRemoverPack.zip))
 
 This pack contains three agents that can help your game run a bit faster on older hardware.
 

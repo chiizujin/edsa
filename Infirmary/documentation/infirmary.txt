@@ -1,0 +1,184 @@
+The Infirmary for C3
+
+Version 1.3
+
+Introduction
+
+Welcome to the help file for the infirmary, a whole new area for C3 dedicated to
+making sick norns well, and investigating norn biochemistry. This room is
+designed to be used by anyone- from a beginner norn breeder to experienced cdn
+member. No special breeding experience is necessary.  However, the tools in the
+room could do with some individual explanation, so here’s a quick help file to
+explain everything!
+
+Installation
+
+For this agent file to work, you must have installed the second creatures three
+update, and created a new world after that installation. A simple test to see if
+your world is ready to accept agents is to look at your creator machine- if it
+has a cross on it that lights up blue when you press it once, your world is
+fully updated and ready to go! If you can inject the Albian Yule agent files on
+Cyberlife’s site, you’ll have no problems. Place the infirmary.agent file into
+the ‘my agents’ folder in your creatures three main folder. When you next run
+the game, the infirmary will be available in your creator machine. Look for a
+flashing blue cross icon. Once installed, the game will zoom to the new room.
+The room can be removed by selecting it in the creator, and clicking on the
+cross icon twice. Remember to remove any toys etc. first! Any creatures in the
+room will automatically be removed to the bridge corridor, but anything else
+will end up suspended in nothingness forever more. This version of the infirmary
+takes advantage of the second patch to the game, and deletes the room, leaving
+your world in the same state as before the room was injected. If you get an
+error on trying to remove the room, abort the game, and get the second patch
+from the creatures website.
+
+Room Layout
+
+There are basic machines in the room:
+
+    1.  The Door: Dark metallic circle, bottom left.
+    2.  The Norn Picture: Matt Black with norn drawing on it, middle left.
+    3.  The Advanced Medical Scanner: A collection of coloured buttons and a
+        graph display, middle to right of the room.
+    4.  Norn Selector: Small gold metal edged black box, above the Advanced
+        Scanner.
+    5.  Bacteria Detector: Small, gold metal edged black box just beneath the
+        Advanced Scanner.
+    6.  Diagnostic Tool: Large Display box, underneath and to the right of the
+        Bacteria Detector.
+    7.  Potion Vendor: Large white box with arrow, button and small text
+        display, bottom center of room.
+    8.  Infirmary Camera Zoom: Blue cross next to the favourite places icons.
+
+
+Using the room’s tools
+
+All objects in the room have context sensitive help that displays extra
+information about their function. This can be accessed within the game by
+choosing the help mode (the hand with the question mark beside it), and right
+clicking on the object.
+
+    1.  The Door
+
+The infirmary door is different to other doors on the ship. It can only be
+operated by the hand, and is invisible to norns. No smells can pass through it,
+so it won’t attract creatures to come and investigate. Once there is one
+creature in the room, another can’t enter until the currently inhabiting
+creature leaves. This means that the infirmary can be used to quarantine a sick
+creature with no fear of any other creatures barging in and catching the
+disease.
+
+    2.  The Norn Picture
+
+The norn picture in itself is merely a pretty backdrop that seemed appropriate.
+However, if you right click on it in help mode, the context sensitive help will
+bring up a full list of all C3 chemicals and their numbers. This is useful for
+controlling the advanced medical scanner.
+
+    3.  The Advanced Medical Scanner
+
+This device can scan and inject up to five chemicals at any one time. It can be
+set to read a norn of your choice using the Norn Selector (see below). It can be
+switched on using the large bar shaped gold button to the right of the norn
+picture. Once switched on, clicking on the coloured buttons immediately to the
+right of the on button places them in edit mode. Type in the number of a
+chemical to display the chemical’s name in the text box to the right, and to
+draw a line for that chemical on the graph in the same colour as the buttons.
+Clicking on the buttons to the right hand side of the graph display injects the
+norn with 25% of that chemical. The scanner will save the currently selected
+chemical scheme when switched off, and display it again when switched on.
+
+    4.  Norn Selector
+
+This tool chooses which norn in the world the advanced medical scanner and the
+diagnostic tool monitor. It has two modes: Room Norn mode, and Selected Norn.
+Click on the small golden button to change from one mode to the other. In Room
+Norn mode, the creature within the infirmary is monitored. In Selected Norn
+mode, the norn currently selected by the hand (the one with the little red arrow
+above it) is monitored instead. In this mode, the infirmary acts more like a
+simple science applet.
+
+    5.  Bacterial Detector
+
+The bacterial detector regularly scans the room for bacteria. If found, it
+reports them on its screen. When the small gold button is pressed, the room is
+sterilised. Please note that even if the Norn Selector is placed into Selected
+Norn mode, the bacterial scanner still only checks the infirmary room, not the
+selected norn.
+
+    6.  Diagnostic Tool
+
+The diagnostic tool reports any possible illness of the norn chosen by the Norn
+Selector, and suggests a possible course of action. In itself, it does not cure
+norns- that is still up to the owner. The diagnostic tool has a complex nested
+scanning algorithm that allows it to attach importance to different conditions-
+for instance, if a norn is suffering from alcohol and cyanide poisoning, the
+diagnostic tool will report the cyanide poisoning, since this is a greater
+threat to the norn’s life. The diagnostic tool only reports illnesses that are
+curable- it is still possible that a norn with chronic organ failure may die
+while being reported as healthy by the tool. However, regular checkups of a
+norn’s health using this tool can prevent that from ever happening (unless a
+grendel gets in on the act).
+
+    7.  Potion Vendor
+
+The potion vendor is in many ways a copy of the vendor on the bridge of the
+ship. The name of the currently vended potion is provided in the black display
+window, and the potion can be created by pressing on the round button. Pressing
+on the arrow moves the vendor onto the next potion. Many potions perform a
+similar function to those on the bridge, but there are a few extras I felt might
+be useful, such as the instant nutrition, and the antibiotic. The Diagnostic
+Tool refers to many of the potions as possible cures for diseases.
+
+    8.  Infirmary Camera Zoom
+
+This works in the same way as the other round blue favourite places icons,
+except that it doesn’t have to be activated by visiting the infirmary- the blue
+cross icon will appear next to the other favourite places icons on injection.
+
+Developer’s Information
+
+The infirmary metaroom has id#63, and is placed at the co-ordinates x=6740-7560,
+y=1550-2150. The metaroom contains one room, id#677.
+
+Dependencies:
+
+Sprites:
+irom.c16       - background room sprite, Norn Picture sprite.
+adscan.c16     - Advanced Scanner, Bacterial Scanner, Norn Selector and
+                 Diagnostic Tool sprites.
+idor.c16       - Infirmary Door Sprite.
+iromvendor.c16 - Potion Vendor sprites.
+iromcross.c16  - Infirmary Camera Zoom sprites.
+
+Catalogues:
+infirmary.catalogue - Context sensitive help file for the infirmary agents.
+
+Object classifiers used:
+1 1 53200 - Background Scenery
+1 1 53201 - Advanced Scanner
+1 1 53202 - Norn Selector
+1 1 53203 - Camera Zoom
+1 1 53204 - Bacterial Scanner
+1 1 53205 - Diagnostic Tool
+1 1 53206 - Potion Vendor
+1 1 53207 - Norn Picture
+2 2 53203 - Door from corridor to infirmary
+2 2 53204 - Door from infirmary to corridor
+
+Acknowledgements
+
+Many thanks to my beta testers Carolyn Horn, Miff, and Ricardo2000, for spotting
+many bugs and making some very useful suggestions.
+
+Thanks also to Moca for giving me the original idea in the first place. I know I
+said I couldn’t make it- it turned out I was lying!
+
+Dedication
+
+It may be considered a little odd to dedicate a few lines of computer code and
+some pixels to a person, but in this case it seems apt. Max Jerome, better known
+as Steerpike, created many items for the creatures community, and died, aged 47,
+shortly after the first beta of this agent was completed, causing much grief
+among Creatures users everywhere. Therefore, I’d like to dedicate this infirmary
+to his memory. I hope you enjoy using it, and take a few moments to remember him
+when you do.

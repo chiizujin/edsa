@@ -6,6 +6,11 @@ Most of my agents are also mirrored at [Eem Foo's Archive](https://eem.foo/). Th
 
 There is (and has been for some time) an *unofficial* [mirror](http://www.creaturesvillage.com/emmental/) of one of my previous sites. This is likely no longer maintained.
 
+### Latest updates
+
+**2025-08-16**
+Infirmary Docking Station update released. Original agent by Lis Morris.
+
 ### Downloading
 
 If you just want the agent to install into your game then all you need is the **.zip** file from the appropriate directory. This is linked beside the agent's name. The rest of the files in each directory are the sources used to build the agent.
@@ -91,6 +96,12 @@ A series of agents that re-create areas of the Shee Starhip from Creatures 3 in 
 ### ※ Egg Layer Remover ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Layer%20Remover/egg%20layer%20remover.zip))
 
 When injected, this agent removes the Ettin and Grendel egg layers from the current world. This is useful for people who would like to use the C3-in-DS meta-room agents but do not want Ettins or Grendels in their world.
+
+# Agent updates
+
+### ※ Infirmary (Docking Station update) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Infirmary/Infirmary%20(DS%20update).zip))
+
+This is an update of the Creatures 3 Infirmary metaroom by Lis Morris to enable it to be fully compatible with undocked Docking Station worlds. It is based on version 1.3.
 
 # Hosted agents
 

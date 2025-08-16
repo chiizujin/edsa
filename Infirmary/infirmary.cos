@@ -17,7 +17,7 @@ subr room
 	brmi 63 677
 	setv va00 addm 6740 1550 800 600 "space"
 	mmsc 6840 1650 "bridge.mng\\main"
-	setv va01 addr va01 6741 7540 1551 1551 2120 2120
+	setv va01 addr va00 6740 7539 1550 1550 2125 2125
 retn
 subr stuf
 *background
@@ -51,7 +51,15 @@ subr stuf
 	attr 20
 	bhvr 0
 	clac 0
-	mvto 3595 3365
+	* C3/docked DS outer door position, stored on the door
+	setv ov30 3595
+	setv ov31 3365
+	* Fallback to undocked DS location if invalid
+	doif gmap ov30 ov31 eq -1
+		setv ov30 2350
+		setv ov31 9015
+	endi
+	mvto ov30 ov31
 	new: simp 2 2 53204 "idor" 8 0 1
 	attr 20
 	bhvr 0
@@ -117,24 +125,46 @@ subr stuf
 	pat: butt 2 "iromvendor" 2 1 13 83 1 [] 1002 0
 	pat: butt 3 "iromvendor" 3 1 108 81 1 [] 1003 0
 	setv ov03 0
-*camera zoom
-	new: simp 1 1 53203 "iromcross" 2 0 8505
-	attr 52
-	bhvr 0
-	tick 2
-	clac 0
-	flto 495 0
+*camera zoom (standalone C3 only)
+	rtar 1 1 185
+	doif targ eq null
+		new: simp 1 1 53203 "iromcross" 2 0 8505
+		attr 52
+		bhvr 0
+		tick 2
+		clac 0
+		flto 495 0
+	else
+		* Create favourite place icon for Docking Station
+		new: simp 1 3 53203 "iromcross2" 1 0 1
+		attr 272
+		mvto 6883 1820
+		tick 10
+	endi
 retn
+
 *Cor, what a lot of scripts!
 *creature sniffer
 scrp 1 1 53202 9
 	doif tick eq 1
 		tick 10
 	endi
+	* Calculate ejection position from outer door location saved on inner door
+	rtar 2 2 53203
+	setv va30 ov30
+	setv va31 ov31
+	addv va30 80
+	addv va31 100
+	setv va00 0
 	seta va02 null
 	esee 4 0 0
-		doif targ ne null
+		doif va00 eq 0
+			* Only let 1 Norn stay in the room
 			seta va02 targ
+			setv va00 1
+		else
+			* Eject any others that may have got in by means other than the door
+			mvft va30 va31
 		endi
 	next
 	seta ov02 va02
@@ -179,13 +209,26 @@ scrp 2 2 53204 1
 	anim [0 1 2 3 4 5 6 7]
 	over
 	snde "open"
-	cmra 3250 3150 0
+	* Get the outer door location from the inner door
 	rtar 2 2 53203
+	setv va30 ov30
+	setv va31 ov31
+	* Camera position
+	setv va32 va30
+	subv va32 250
+	setv va33 va31
+	subv va33 200
+	cmra va32 va33 0
 	anim [7 6 5 4 3 2 1 0]
 	targ ownr
 	ttar 4 0 0
 	doif targ ne null
-		mvft 3678 3493
+		* Norn position
+		setv va32 va30
+		addv va32 80
+		setv va33 va31
+		addv va33 100
+		mvft va32 va33
 	endi
 	targ ownr
 	clac 0
@@ -285,11 +328,21 @@ scrp 1 1 53201 9
 		inst
 		star 4 0 0
 		doif targ ne ownr and targ ne null
-			setv va07 chem va02
-			setv va08 chem va03
-			setv va09 chem va04
-			setv va10 chem va05
-			setv va11 chem va06
+		  doif va02 le 255
+				setv va07 chem va02
+			endi
+		  doif va03 le 255
+				setv va08 chem va03
+			endi
+		  doif va04 le 255
+				setv va09 chem va04
+			endi
+		  doif va05 le 255
+				setv va10 chem va05
+			endi
+		  doif va06 le 255
+				setv va11 chem va06
+			endi
 		endi
 		slow
 		gsub grap
@@ -297,11 +350,21 @@ scrp 1 1 53201 9
 		inst
 		targ norn
 		doif targ ne null
-			setv va07 chem va02
-			setv va08 chem va03
-			setv va09 chem va04
-			setv va10 chem va05
-			setv va11 chem va06
+		  doif va02 le 255
+				setv va07 chem va02
+			endi
+		  doif va03 le 255
+				setv va08 chem va03
+			endi
+		  doif va04 le 255
+				setv va09 chem va04
+			endi
+		  doif va05 le 255
+				setv va10 chem va05
+			endi
+		  doif va06 le 255
+				setv va11 chem va06
+			endi
 		endi
 		slow
 		gsub grap
@@ -558,7 +621,7 @@ scrp 1 1 53204 9
 	endi
 endm
 
-*dianostic tool
+*diagnostic tool
 scrp 1 1 53205 9
 	rtar 1 1 53202
 	doif ov01 eq 0
@@ -581,18 +644,20 @@ scrp 1 1 53205 9
 			setv va14 chem 88
 			setv va15 chem 89
 			setv va16 chem 73
-			setv va17 chem 4
-			setv va18 chem 5
-			setv va19 chem 11
-			setv va20 chem 12
-			setv va21 chem 9
-			setv va22 chem 10
+			setv va17 chem 74
+			setv va18 chem 75
+			setv va19 chem 4
+			setv va20 chem 5
+			setv va21 chem 11
+			setv va22 chem 12
+			setv va23 chem 9
+			setv va24 chem 10
 			slow
 			gsub diag
 		else
 			targ ownr
 			part 1
-			ptxt "No creature is selected"
+			ptxt "No creature is selected."
 		endi
 		slow
 	else
@@ -629,7 +694,7 @@ scrp 1 1 53205 9
 		else
 			targ ownr
 			part 1
-			ptxt "No creature is selected"
+			ptxt "No creature is selected."
 		endi
 		slow
 	endi
@@ -637,7 +702,7 @@ scrp 1 1 53205 9
 		doif va01 eq 1
 			targ ownr
 			part 1
-			ptxt "This creature is dead. Try contacting a spritual medium."
+			ptxt "This creature is dead. Try contacting a spiritual medium."
 		elif va02 gt 0.01
 			targ ownr
 			part 1
@@ -657,7 +722,7 @@ scrp 1 1 53205 9
 		elif va06 lt 0.25
 			targ ownr
 			part 1
-			ptxt "This creature is suffocating. It might be a normal norn underwater, or a water norn on land. Either way, it can be treated with oxygen (chemical 30)."
+			ptxt "This creature is suffocating. It might be a normal creature underwater, or a water creature on land. Either way, it can be treated with oxygen (chemical 30)."
 		elif va07 gt 0.01
 			targ ownr
 			part 1
@@ -705,11 +770,11 @@ scrp 1 1 53205 9
 		elif va19 le 0.05 and va20 lt 0.25
 			targ ownr
 			part 1
-			ptxt "This norn is starving for starch (chemical 5)."
+			ptxt "This creature is starving for starch (chemical 5)."
 		elif va21 le 0.05 and va22 lt 0.25
 			targ ownr
 			part 1
-			ptxt "This norn is starving for protein (chemical 12)."
+			ptxt "This creature is starving for protein (chemical 12)."
 		elif va23 le 0.05 and va24 lt 0.25
 			targ ownr
 			part 1
@@ -717,7 +782,7 @@ scrp 1 1 53205 9
 		else
 			targ ownr
 			part 1
-			ptxt "This creature seems healthy"
+			ptxt "This creature seems healthy."
 
 		endi
 	retn
@@ -1078,137 +1143,170 @@ endm
 
 
 rscr
-*everyone out!
-enum 4 0 0
-	setv va00 posx
-	setv va01 posy
-	setv va02 0
-	setv va03 0
-	doif va00 gt 6830 and va00 lt 7550
-		setv va02 1
-	endi
-	doif va01 gt 1640 and va01 lt 2130
-		setv va03 1
-	endi
-	doif va02 eq 1 and va03 eq 1
-		mvft 3678 3493
-	endi
-next
+doif gmap 7000 2000 ne -1
+	*everyone out!
 
-*camera zoom
-enum 1 1 53203
-	kill targ
-next
-scrx 1 1 53203 9
-scrx 1 1 53203 1
+	rtar 2 2 53203
+	setv va30 ov30
+	setv va31 ov31
+	addv va30 80
+	addv va31 100
 
-*vendor
-enum 1 1 53206
-	kill targ
-next
-enum 2 25 53200
-	kill targ
-next
-scrx 2 25 53200 12
-scrx 1 1 53206 1002
-scrx 1 1 53206 1003
-scrx 2 25 53200 6
-enum 2 25 53201
-	kill targ
-next
-scrx 2 25 53201 12
-scrx 2 25 53201 6
-enum 2 25 53202
-	kill targ
-next
-scrx 2 25 53202 12
-scrx 2 25 53202 6
-enum 2 25 53203
-	kill targ
-next
-scrx 2 25 53203 12
-scrx 2 25 53203 6
-enum 2 25 53204
-	kill targ
-next
-scrx 2 25 53204 12
-scrx 2 25 53204 6
-enum 2 25 53205
-	kill targ
-next
-scrx 2 25 53205 12
-scrx 2 25 53205 6
-enum 2 25 53206
-	kill targ
-next
-scrx 2 25 53206 12
-scrx 2 25 53206 6
-enum 2 25 53207
-	kill targ
-next
-scrx 2 25 53207 12
-scrx 2 25 53207 6
-enum 2 25 53208
-	kill targ
-next
-scrx 2 25 53208 12
-scrx 2 25 53208 6
+	enum 4 0 0
+		setv va00 posx
+		setv va01 posy
+		setv va02 0
+		setv va03 0
+		doif va00 gt 6830 and va00 lt 7550
+			setv va02 1
+		endi
+		doif va01 gt 1640 and va01 lt 2130
+			setv va03 1
+		endi
+		doif va02 eq 1 and va03 eq 1
+			mvft va30 va31
+		endi
+	next
 
-*diagnostic tool
-enum 1 1 53205
-	kill targ
-next
-scrx 1 1 53205 9
+	*camera zoom
+	enum 1 1 53203
+		kill targ
+	next
+	scrx 1 1 53203 9
+	scrx 1 1 53203 1
+  * DS fav icon
+	enum 1 3 53203
+		kill targ
+	next
+	enum 1 4 53203
+		setv va50 ov50
+		kill targ
+	next
+	* Move subsequent icons left a position (credit: Norn Garden)
+	enum 1 4 0
+		doif ov50 > va50
+			subv ov50 1
+			setv va02 ov50
+			mulv va02 50
+			addv va02 145
+			flto va02 0
+		endi
+	next
 
-*bacterial scanner
-enum 1 1 53204
-	kill targ
-next
-scrx 1 1 53204 1001
-scrx 1 1 53204 9
+	*vendor
+	enum 1 1 53206
+		kill targ
+	next
+	enum 2 25 53200
+		kill targ
+	next
+	scrx 2 25 53200 12
+	scrx 1 1 53206 1002
+	scrx 1 1 53206 1003
+	scrx 2 25 53200 6
+	enum 2 25 53201
+		kill targ
+	next
+	scrx 2 25 53201 12
+	scrx 2 25 53201 6
+	enum 2 25 53202
+		kill targ
+	next
+	scrx 2 25 53202 12
+	scrx 2 25 53202 6
+	enum 2 25 53203
+		kill targ
+	next
+	scrx 2 25 53203 12
+	scrx 2 25 53203 6
+	enum 2 25 53204
+		kill targ
+	next
+	scrx 2 25 53204 12
+	scrx 2 25 53204 6
+	enum 2 25 53205
+		kill targ
+	next
+	scrx 2 25 53205 12
+	scrx 2 25 53205 6
+	enum 2 25 53206
+		kill targ
+	next
+	scrx 2 25 53206 12
+	scrx 2 25 53206 6
+	enum 2 25 53207
+		kill targ
+	next
+	scrx 2 25 53207 12
+	scrx 2 25 53207 6
+	enum 2 25 53208
+		kill targ
+	next
+	scrx 2 25 53208 12
+	scrx 2 25 53208 6
 
-*advanced scanner
-enum 1 1 53201
-	kill targ
-next
-scrx 1 1 53201 1001
-scrx 1 1 53201 1002
-scrx 1 1 53201 1003
-scrx 1 1 53201 1004
-scrx 1 1 53201 1005
-scrx 1 1 53201 1006
-scrx 1 1 53201 9
-scrx 1 1 53201 1013
-scrx 1 1 53201 1014
-scrx 1 1 53201 1015
-scrx 1 1 53201 1016
-scrx 1 1 53201 1017
+	*diagnostic tool
+	enum 1 1 53205
+		kill targ
+	next
+	scrx 1 1 53205 9
 
-*doors
-enum 2 2 53203
-	kill targ
-next
-enum 2 2 53204
-	kill targ
-next
-scrx 2 2 53204 1
-scrx 2 2 53203 1
+	*bacterial scanner
+	enum 1 1 53204
+		kill targ
+	next
+	scrx 1 1 53204 1001
+	scrx 1 1 53204 9
 
-*creature sniffer
-enum 1 1 53202
-	kill targ
-next
-scrx 1 1 53202 1000
-scrx 1 1 53202 9
+	*advanced scanner
+	enum 1 1 53201
+		kill targ
+	next
+	scrx 1 1 53201 1001
+	scrx 1 1 53201 1002
+	scrx 1 1 53201 1003
+	scrx 1 1 53201 1004
+	scrx 1 1 53201 1005
+	scrx 1 1 53201 1006
+	scrx 1 1 53201 9
+	scrx 1 1 53201 1013
+	scrx 1 1 53201 1014
+	scrx 1 1 53201 1015
+	scrx 1 1 53201 1016
+	scrx 1 1 53201 1017
 
-*Norn Picture
-enum 1 1 53207
-	kill targ
-next
+	*doors
+	enum 2 2 53203
+		kill targ
+	next
+	enum 2 2 53204
+		kill targ
+	next
+	scrx 2 2 53204 1
+	scrx 2 2 53203 1
 
-*background
-enum 1 1 53200
-	kill targ
-next
-delr 677
-delm 63
+	*creature sniffer
+	enum 1 1 53202
+		kill targ
+	next
+	scrx 1 1 53202 1000
+	scrx 1 1 53202 9
+
+	*Norn Picture
+	enum 1 1 53207
+		kill targ
+	next
+
+	*background
+	enum 1 1 53200
+		kill targ
+	next
+
+	* DS doesn't always seem to assign room ID 677, despite brmi
+	*delr 677
+	*delm 63
+
+	* There's only one room so this is OK instead
+	delr stoi erid 63
+	delm 63
+endi

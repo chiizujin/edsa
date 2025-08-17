@@ -72,9 +72,9 @@ scrp 2 17 32206 1
     anim [0 0 1 1 2 2 1 1 255 0]
     * Decide which way to go
     doif rand 1 2 eq 1
-      setv ov01 2
+      setv ov01 3
     else
-      setv ov01 -2
+      setv ov01 -3
     endi
     setv ov02 0
     setv ov03 0
@@ -211,9 +211,9 @@ scrp 2 13 32206 9
   * Pick another random direction unless half eaten or collision
   doif ov03 ge 100 and ov05 eq 0 and ov07 ne -1
     doif rand 1 2 eq 1
-       setv ov01 2
+       setv ov01 3
      else
-      setv ov01 -2
+      setv ov01 -3
     endi
     * Look appealing
     urge sign 0.9 12 0.9
@@ -292,9 +292,9 @@ scrp 2 13 32206 5
     pose 0
     * Decide which way to go
     doif rand 1 2 eq 1
-      setv ov01 2
+      setv ov01 3
     else
-      setv ov01 -2
+      setv ov01 -3
     endi
     wait 50
     tick 1

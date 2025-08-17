@@ -1,6 +1,5 @@
 install
-notes.txt
-agent number list.txt
+notes.md
 
 *.agents
 *.exe

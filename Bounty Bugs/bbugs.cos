@@ -275,13 +275,7 @@ endm
 * PICK UP
 scrp 2 13 32206 4
 *  stim writ from 85 1
-  * Reduce boredom
-  setv va01 itof rand -1 -2
-  divv va01 10.0
-  targ from
-  chem 159 va01
-  targ ownr
-  * Do nothing else if half eaten
+  * Do nothing if half eaten
   doif ov05 eq 0
     inst
     tick 0
@@ -317,11 +311,9 @@ scrp 2 13 32206 12
   snde "reat"
 *  stim writ from 85 2
   stim writ from 80 1
-  * Reduce boredom
-  setv va01 itof rand -1 -3
-  divv va01 10.0
+  * Reduce boredom in addition to normal eating reduction
   targ from
-  chem 159 va01
+  chem 159 -0.05
   targ ownr
   * Two bites
   doif ov05 eq 0

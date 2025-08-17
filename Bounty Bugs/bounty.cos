@@ -157,10 +157,7 @@ scrp 2 11 32205 12
   else
     * Get sick enjoyment from biting head off
 *    stim writ from 90 1
-    setv va01 itof rand -1 -2
-    divv va01 10.0
-    targ from
-    chem 159 va01
+    chem 159 0.01
     targ ownr
     pose 1
   endi
@@ -297,9 +294,9 @@ scrp 2 3 32204 12
   snde "reat"
   stim writ from 77 1
   * Temperature
-  setv va01 itof rand -1 -5
+  setv va01 itof rand -2 -3
   divv va01 10.0
-  setv va02 itof rand 1 5
+  setv va02 itof rand 2 3
   divv va02 10.0
   targ from
   chem 152 va01
@@ -331,14 +328,20 @@ endm
 
 * ACTIVATE 1
 scrp 2 21 32206 1
+  * Check if param 1 is a creature (call in activate 2)
+  doif type _P1_ eq 7
+    seta va00 _P1_
+  else
+    seta va00 from
+  endi
   inst
   snde "bbg3"
   setv va01 rand 0 3
   pose va01
   doif va01 eq 3
-    stim writ from 97 2
+    stim writ va00 97 2
     bhvr 0
-    urge writ from 12 0.9 7 0.9
+    urge writ va00 12 0.9 7 0.9
     wait 100
     setv va01 0
     loop
@@ -349,13 +352,13 @@ scrp 2 21 32206 1
     untl va01 gt 256
     kill targ
   else
-    stim writ from 97 1
+    stim writ va00 97 1
   endi
 endm
 
 * ACTIVATE 2
 scrp 2 21 32206 2
-  call 1 0 0
+  call 1 from 0
 endm
 
 * COLLISION

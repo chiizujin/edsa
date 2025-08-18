@@ -23,11 +23,11 @@ group DSAG "Bounty Bugs"
 "Agent Animation File" "bounty bugs.c16"
 "Agent Animation Gallery" "bounty bugs"
 "Agent Animation String" "0"
-"Web URL" "creatures.webhop.net"
+"Web URL" "https://github.com/chiizujin/edsa"
 "Web Label" "Emmental's DS Agents"
 
-"Remove script" "enum 2 8 32206 kill targ next enum 2 8 32205 kill targ next enum 2 8 32204 kill targ next enum 2 11 32206 kill targ next enum 2 11 32205 kill targ next enum 2 11 32204 kill targ next enum 2 3 32206 kill targ next enum 2 3 32205 kill targ next enum 2 3 32204 kill targ next enum 2 21 32206 kill targ next enum 2 13 32206 kill targ next enum 2 17 32206 kill targ next scrx 2 17 32206 1 scrx 2 17 32206 2 scrx 2 17 32206 9 scrx 2 17 32206 4 scrx 2 17 32206 5 scrx 2 13 32206 1 scrx 2 13 32206 9 scrx 2 13 32206 4 scrx 2 13 32206 5 scrx 2 13 32206 12 scrx 2 8 32206 12 scrx 2 8 32206 9 scrx 2 8 32205 12 scrx 2 8 32205 9 scrx 2 8 32204 12 scrx 2 8 32204 9 scrx 2 11 32206 12 scrx 2 11 32206 9 scrx 2 11 32205 12 scrx 2 11 32205 9 scrx 2 11 32204 12 scrx 2 11 32204 9 scrx 2 3 32206 12 scrx 2 3 32206 9 scrx 2 3 32205 12 scrx 2 3 32205 9 scrx 2 3 32204 12 scrx 2 3 32204 9 scrx 2 21 32206 1 scrx 2 21 32206 2 scrx 2 21 32206 6"
- 
+"Remove script" "enum 2 8 32206 kill targ next enum 2 8 32205 kill targ next enum 2 8 32204 kill targ next enum 2 11 32206 kill targ next enum 2 11 32205 kill targ next enum 2 11 32204 kill targ next enum 2 3 32206 kill targ next enum 2 3 32205 kill targ next enum 2 3 32204 kill targ next enum 2 21 32206 kill targ next enum 2 13 32206 kill targ next enum 2 17 32206 kill targ next scrx 2 17 32206 1 scrx 2 17 32206 2 scrx 2 17 32206 9 scrx 2 17 32206 4 scrx 2 17 32206 5 scrx 2 13 32206 1 scrx 2 13 32206 9 scrx 2 13 32206 4 scrx 2 13 32206 5 scrx 2 13 32206 12 scrx 2 8 32206 12 scrx 2 8 32206 9 scrx 2 8 32205 12 scrx 2 8 32205 9 scrx 2 8 32204 12 scrx 2 8 32204 9 scrx 2 11 32206 12 scrx 2 11 32206 9 scrx 2 11 32205 12 scrx 2 11 32205 9 scrx 2 11 32204 12 scrx 2 11 32204 9 scrx 2 3 32206 12 scrx 2 3 32206 9 scrx 2 3 32205 12 scrx 2 3 32205 9 scrx 2 3 32204 12 scrx 2 3 32204 9 scrx 2 21 32206 1 scrx 2 21 32206 2 scrx 2 21 32206 6 scrx 2 21 32206 9"
+
 group AGNT "Bounty Bugs "
 "Agent Type" 0
 "Dependency Count" 6
@@ -52,11 +52,11 @@ group AGNT "Bounty Bugs "
 "Agent Animation Gallery" "bounty bugs"
 "Agent Animation String" "0"
 
-"Remove script" "enum 2 8 32206 kill targ next enum 2 8 32205 kill targ next enum 2 8 32204 kill targ next enum 2 11 32206 kill targ next enum 2 11 32205 kill targ next enum 2 11 32204 kill targ next enum 2 3 32206 kill targ next enum 2 3 32205 kill targ next enum 2 3 32204 kill targ next enum 2 21 32206 kill targ next enum 2 13 32206 kill targ next enum 2 17 32206 kill targ next scrx 2 17 32206 1 scrx 2 17 32206 2 scrx 2 17 32206 9 scrx 2 17 32206 4 scrx 2 17 32206 5 scrx 2 13 32206 1 scrx 2 13 32206 9 scrx 2 13 32206 4 scrx 2 13 32206 5 scrx 2 13 32206 12 scrx 2 8 32206 12 scrx 2 8 32206 9 scrx 2 8 32205 12 scrx 2 8 32205 9 scrx 2 8 32204 12 scrx 2 8 32204 9 scrx 2 11 32206 12 scrx 2 11 32206 9 scrx 2 11 32205 12 scrx 2 11 32205 9 scrx 2 11 32204 12 scrx 2 11 32204 9 scrx 2 3 32206 12 scrx 2 3 32206 9 scrx 2 3 32205 12 scrx 2 3 32205 9 scrx 2 3 32204 12 scrx 2 3 32204 9 scrx 2 21 32206 1 scrx 2 21 32206 2 scrx 2 21 32206 6"
- 
-inline FILE "bounty bugs.c16" "bounty bugs.c16" 
-inline FILE "bounty.c16" "bounty.c16" 
-inline FILE "bbg1.wav" "bbg1.wav" 
-inline FILE "bbg2.wav" "bbg2.wav" 
-inline FILE "bbg3.wav" "bbg3.wav" 
-inline FILE "bounty bugs.catalogue" "bounty bugs.catalogue" 
+"Remove script" "enum 2 8 32206 kill targ next enum 2 8 32205 kill targ next enum 2 8 32204 kill targ next enum 2 11 32206 kill targ next enum 2 11 32205 kill targ next enum 2 11 32204 kill targ next enum 2 3 32206 kill targ next enum 2 3 32205 kill targ next enum 2 3 32204 kill targ next enum 2 21 32206 kill targ next enum 2 13 32206 kill targ next enum 2 17 32206 kill targ next scrx 2 17 32206 1 scrx 2 17 32206 2 scrx 2 17 32206 9 scrx 2 17 32206 4 scrx 2 17 32206 5 scrx 2 13 32206 1 scrx 2 13 32206 9 scrx 2 13 32206 4 scrx 2 13 32206 5 scrx 2 13 32206 12 scrx 2 8 32206 12 scrx 2 8 32206 9 scrx 2 8 32205 12 scrx 2 8 32205 9 scrx 2 8 32204 12 scrx 2 8 32204 9 scrx 2 11 32206 12 scrx 2 11 32206 9 scrx 2 11 32205 12 scrx 2 11 32205 9 scrx 2 11 32204 12 scrx 2 11 32204 9 scrx 2 3 32206 12 scrx 2 3 32206 9 scrx 2 3 32205 12 scrx 2 3 32205 9 scrx 2 3 32204 12 scrx 2 3 32204 9 scrx 2 21 32206 1 scrx 2 21 32206 2 scrx 2 21 32206 6 scrx 2 21 32206 9"
+
+inline FILE "bounty bugs.c16" "bounty bugs.c16"
+inline FILE "bounty.c16" "bounty.c16"
+inline FILE "bbg1.wav" "bbg1.wav"
+inline FILE "bbg2.wav" "bbg2.wav"
+inline FILE "bbg3.wav" "bbg3.wav"
+inline FILE "bounty bugs.catalogue" "bounty bugs.catalogue"

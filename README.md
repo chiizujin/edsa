@@ -8,8 +8,11 @@ There is (and has been for some time) an *unofficial* [mirror](http://www.creatu
 
 ### Latest updates
 
+**2025-08-18**
+- Updated Bounty Bugs with a few small fixes.
+
 **2025-08-16**
-Infirmary Docking Station update released. Original agent by Lis Morris.
+- Infirmary Docking Station update released. Original agent by Lis Morris.
 
 ### Downloading
 

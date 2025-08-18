@@ -175,7 +175,7 @@ scrp 2 13 32206 1
   elif va04 eq 10
     * Cube
     new: simp 2 21 32206 "bounty" 4 9 2500
-    attr 194 bhvr 35 accg 2 fric 100 elas 25
+    attr 194 bhvr 35 accg 2 fric 100 elas 25 tick 10000
   endi
   mvsf va01 va02
   velo va03 rand -5 -10
@@ -400,3 +400,4 @@ rscr
   scrx 2 21 32206 1
   scrx 2 21 32206 2
   scrx 2 21 32206 6
+  scrx 2 21 32206 9

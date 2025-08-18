@@ -365,3 +365,18 @@ endm
 scrp 2 21 32206 6
   snde "dr10"
 endm
+
+* TIMER
+scrp 2 21 32206 9
+  lock
+  cato 10
+  bhvr 0
+  setv va01 0
+  loop
+    inst
+    alph va01 1
+    addv va01 1
+    slow
+  untl va01 gt 256
+  kill targ
+endm

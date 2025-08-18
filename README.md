@@ -10,6 +10,8 @@ There is (and has been for some time) an *unofficial* [mirror](http://www.creatu
 
 **2025-08-18**
 - Updated Bounty Bugs with a few small fixes.
+- Fixed missing dependency reference in Infirmary DS update installer.
+  **Note:** *You do not need to reinstall the agent if you have already installed it by manually copying iromcross2.c16 into the Images folder.*
 
 **2025-08-16**
 - Infirmary Docking Station update released. Original agent by Lis Morris.

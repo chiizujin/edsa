@@ -1,11 +1,11 @@
-Infirmary - Docking Station Update
+Infirmary - Docking Station Update (1.1)
 
 This is an update of the Creatures 3 Infirmary metaroom by Lis Morris to enable
 it to be fully compatible with undocked Docking Station worlds. It is based on
 version 1.3.
 
-Changes
--------
+Changes to Infirmary
+--------------------
 - The entrance to the infirmary for undocked DS worlds is located the Cappilata
   hub. For docked C3/DS worlds it is in its original C3 location.
 - The room bounds have been adjusted so that things don't disappear off the
@@ -21,15 +21,6 @@ Changes
   255 were entered.
 - Added a text-only version (infirmary.txt) of the original documentation
   (infirmary.rtf).
-
-Installation
-------------
-If you have previously installed the Infirmary in Creatures 3 then you will most
-likely need to manually copy the included "iromcross2.c16" file into your
-Creatures 3 "Images" folder.
-
-If this is the first version you have used then you can ignore the
-"iromcross2.c16" file.
 
 Notes
 -----
@@ -53,6 +44,14 @@ shortly after the first beta of this agent was completed, causing much grief
 among Creatures users everywhere. Therefore, I’d like to dedicate this infirmary
 to his memory. I hope you enjoy using it, and take a few moments to remember him
 when you do.
+
+Version history
+---------------
+1.1
+- Added missing dependency reference in installer that prevented iromcross2.c16
+  installing.
+  Note: You do not need to reinstall the agent if you have already installed it
+  by manually copying iromcross2.c16 into the Images folder.
 
 Emmental
 https://github.com/chiizujin/edsa

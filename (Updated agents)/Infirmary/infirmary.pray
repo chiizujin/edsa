@@ -9,7 +9,8 @@ group AGNT "Infirmary"
   "Dependency Category 4" 2
   "Dependency Category 5" 2
   "Dependency Category 6" 2
-  "Dependency Count" 6
+  "Dependency Category 7" 2
+  "Dependency Count" 7
   "Script Count" 1
   "Agent Animation File" "iromcross.c16"
   "Agent Animation Gallery" "iromcross"

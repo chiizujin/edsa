@@ -94,97 +94,100 @@ scrp 1 1 32203 9
     * Loop through Norns
     enum 4 1 0
       * Ignore dead Norns
-      doif targ ne null and dead eq 0
-        inst
-        * Get Norn's agent & name
-        seta va99 targ
-        sets va98 hist name gtos 0
-        sets va95 gtos 0
-        * Move to Norn
-        targ ownr
-        mvto va03 va04
-        frel va99
-        flto -20 -70
-        part 1
-        ptxt va98
-        * Check Norn
-        targ va99
-        sets va97 ""
-        * Check for older than 9 hours
-        doif tage gt 648000
-          adds va97 "O"
-          endi
-        * Check for any chemicals 66-89 at 95 (toxins)
-        setv va05 0
-        setv va06 66
-        loop
-          doif chem va06 ge 0.95
-            addv va05 1
-            endi
-          addv va06 1
-          untl va06 gt 89
-        * Flag if 2 or more chemicals found at 95
-        doif va05 ge 1
-          adds va97 "T"
-          endi
-        * Check history for quick aging if at least adult (reached adult at less than 30 min)
-        setv va07 hist find gtos 0 4 -1
-        doif va07 ne -1
-          loop
-            doif hist cage gtos 0 va07 eq 4 and hist tage gtos 0 va07 lt 36000
-            adds va97 "A"
-            endi
-          setv va07 hist find gtos 0 4 va07
-          untl va07 eq -1
-          endi
-        * Check the old way if not already flagged in case no adult event (less than 30 min old now and at least adult)
-        doif sins va97 1 "A" eq -1
-          doif tage lt 36000 and cage ge 4
-            adds va97 "A"
-            endi
-          endi
-        * Check for extremely low energy or ATP (zombie - should be dead) (credit: SunlitMiracle)
-        setv va05 0
-        setv va06 34
-        loop
-          doif chem va06 lt 0.01
-            addv va05 1
-          endi
-          addv va06 1
-        untl va06 gt 35
-        * Flag if at least 1
-        doif va05 gt 0
-          adds va97 "Z"
-        endi
-        slow
-        * Play sound and show status if any flags
-        doif va97 ne ""
-          * Add to infertility list
+      doif targ ne null
+        * No short-circuit evaluation? ('targ ne null and dead eq 0' sometimes errors)
+        doif dead eq 0
+          inst
+          * Get Norn's agent & name
+          seta va99 targ
+          sets va98 hist name gtos 0
+          sets va95 gtos 0
+          * Move to Norn
           targ ownr
-          sets va94 ov03
-          adds va94 va95
-          adds va94 ","
-          sets ov03 va94
-          * Flag Norn
-          adds va97 "! "
-          adds va97 va98
-          * Prevent string from wrapping
-          doif strl va97 gt 10
-            sets va96 va97
-            sets va97 subs va96 1 10
-            adds va97 "..."
-            endi
+          mvto va03 va04
+          frel va99
+          flto -20 -70
           part 1
-          ptxt va97
-          sndc "cmov"
-          * Wait an extra 2 seconds
-          wait 40
+          ptxt va98
+          * Check Norn
+          targ va99
+          sets va97 ""
+          * Check for older than 9 hours
+          doif tage gt 648000
+            adds va97 "O"
+          endi
+          * Check for any chemicals 66-89 at 95 (toxins)
+          setv va05 0
+          setv va06 66
+          loop
+            doif chem va06 ge 0.95
+              addv va05 1
+            endi
+            addv va06 1
+            untl va06 gt 89
+          * Flag if 2 or more chemicals found at 95
+          doif va05 ge 1
+            adds va97 "T"
+          endi
+          * Check history for quick aging if at least adult (reached adult at less than 30 min)
+          setv va07 hist find gtos 0 4 -1
+          doif va07 ne -1
+            loop
+              doif hist cage gtos 0 va07 eq 4 and hist tage gtos 0 va07 lt 36000
+              adds va97 "A"
+              endi
+            setv va07 hist find gtos 0 4 va07
+            untl va07 eq -1
+          endi
+          * Check the old way if not already flagged in case no adult event (less than 30 min old now and at least adult)
+          doif sins va97 1 "A" eq -1
+            doif tage lt 36000 and cage ge 4
+              adds va97 "A"
+            endi
+          endi
+          * Check for extremely low energy or ATP (zombie - should be dead) (credit: SunlitMiracle)
+          setv va05 0
+          setv va06 34
+          loop
+            doif chem va06 lt 0.01
+              addv va05 1
+            endi
+            addv va06 1
+          untl va06 gt 35
+          * Flag if at least 1
+          doif va05 gt 0
+            adds va97 "Z"
+          endi
+          slow
+          * Play sound and show status if any flags
+          doif va97 ne ""
+            * Add to infertility list
+            targ ownr
+            sets va94 ov03
+            adds va94 va95
+            adds va94 ","
+            sets ov03 va94
+            * Flag Norn
+            adds va97 "! "
+            adds va97 va98
+            * Prevent string from wrapping
+            doif strl va97 gt 10
+              sets va96 va97
+              sets va97 subs va96 1 10
+              adds va97 "..."
+            endi
+            part 1
+            ptxt va97
+            sndc "cmov"
+            * Wait an extra 2 seconds
+            wait 40
           endi
         targ ownr
         endi
+      endi
       * Wait half a second
       wait 10
-      next
+    next
     * Return to initial position
     targ ownr
     attr 199
@@ -211,25 +214,28 @@ scrp 1 1 32203 9
   inst
   enum 4 1 0
     * Ignore dead Norns
-    doif targ ne null and dead eq 0
-      * Get Norn's name
-      sets va99 gtos 0
-      adds va99 ","
-      * Check if in list
-      doif sins va98 1 va99 ne -1
-        * Libido lowerer
-        chem 40 1
-        * Arousal potential
-        chem 39 -1
-        * Opposite sex pheromone
-        chem 41 -1
-        * Testosterone
-        chem 53 -1
-        * Oestrogen
-        chem 46 -1
-        * Sex drive
-        chem 161 -1
+    doif targ ne null
+      * No short-circuit evaluation? ('targ ne null and dead eq 0' sometimes errors)
+      doif dead eq 0
+        * Get Norn's name
+        sets va99 gtos 0
+        adds va99 ","
+        * Check if in list
+        doif sins va98 1 va99 ne -1
+          * Libido lowerer
+          chem 40 1
+          * Arousal potential
+          chem 39 -1
+          * Opposite sex pheromone
+          chem 41 -1
+          * Testosterone
+          chem 53 -1
+          * Oestrogen
+          chem 46 -1
+          * Sex drive
+          chem 161 -1
         endi
+      endi
     endi
   next
   slow

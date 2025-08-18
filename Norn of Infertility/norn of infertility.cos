@@ -114,17 +114,17 @@ scrp 1 1 32203 9
         doif tage gt 648000
           adds va97 "O"
           endi
-        * Check for any chemicals 66-89 at 100
+        * Check for any chemicals 66-89 at 95 (toxins)
         setv va05 0
         setv va06 66
         loop
-          doif chem va06 gt 0.95
+          doif chem va06 ge 0.95
             addv va05 1
             endi
           addv va06 1
           untl va06 gt 89
-        * Flag if 2 or more chemicals found at 100
-        doif va05 gt 1
+        * Flag if 2 or more chemicals found at 95
+        doif va05 ge 1
           adds va97 "T"
           endi
         * Check history for quick aging if at least adult (reached adult at less than 30 min)
@@ -143,6 +143,19 @@ scrp 1 1 32203 9
             adds va97 "A"
             endi
           endi
+        * Check for extremely low energy or ATP (zombie - should be dead) (credit: SunlitMiracle)
+        setv va05 0
+        setv va06 34
+        loop
+          doif chem va06 lt 0.01
+            addv va05 1
+          endi
+          addv va06 1
+        untl va06 gt 35
+        * Flag if at least 1
+        doif va05 gt 0
+          adds va97 "Z"
+        endi
         slow
         * Play sound and show status if any flags
         doif va97 ne ""
@@ -164,8 +177,8 @@ scrp 1 1 32203 9
           part 1
           ptxt va97
           sndc "cmov"
-          * Wait an extra second
-          wait 20
+          * Wait an extra 2 seconds
+          wait 40
           endi
         targ ownr
         endi

@@ -12,6 +12,7 @@ There is (and has been for some time) an *unofficial* [mirror](http://www.creatu
 - Updated Bounty Bugs with a few small fixes.
 - Fixed missing dependency reference in Infirmary DS update installer.
   **Note:** *You do not need to reinstall the agent if you have already installed it by manually copying iromcross2.c16 into the Images folder.*
+- Fixed an intermittent script error (maybe) and added SunlitMiracle's zombie check to the Norn of Intertility.
 
 **2025-08-16**
 - Infirmary Docking Station update released. Original agent by Lis Morris.
@@ -50,7 +51,7 @@ This agent adds a panel to the left of the screen that displays the bacteria and
 
 ### Alternative version
 
-SunlitMiracle updated *Medical Monitor* and *Norn Statistics* to include additional features. The updated versions can be found [here](https://eem.foo/ccsf24_12).
+SunlitMiracle updated Medical Monitor and Norn Statistics to include additional features. The updated versions can be found [here](https://eem.foo/ccsf24_12).
 
 ## ※ Mystery Agent ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Mystery%20Agent/mystery%20agent.zip))
 
@@ -74,7 +75,7 @@ This agent adds a panel to the left of the screen that displays various informat
 
 ### Alternative version
 
-SunlitMiracle updated *Medical Monitor* and *Norn Statistics* to include additional features. The updated versions can be found [here](https://eem.foo/ccsf24_12).
+SunlitMiracle updated Medical Monitor and Norn Statistics to include additional features. The updated versions can be found [here](https://eem.foo/ccsf24_12).
 
 ## ※ Roamer ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Roamer/roamer.zip))
 

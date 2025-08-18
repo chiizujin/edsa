@@ -95,6 +95,7 @@ scrp 1 1 32203 9
     enum 4 1 0
       * Ignore dead Norns
       doif targ ne null and dead eq 0
+        inst
         * Get Norn's agent & name
         seta va99 targ
         sets va98 hist name gtos 0
@@ -107,7 +108,6 @@ scrp 1 1 32203 9
         part 1
         ptxt va98
         * Check Norn
-        inst
         targ va99
         sets va97 ""
         * Check for older than 9 hours

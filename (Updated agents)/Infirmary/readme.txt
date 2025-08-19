@@ -1,4 +1,4 @@
-Infirmary - Docking Station Update (1.1)
+Infirmary - Docking Station Update (1.2)
 
 This is an update of the Creatures 3 Infirmary metaroom by Lis Morris to enable
 it to be fully compatible with undocked Docking Station worlds. It is based on
@@ -45,8 +45,10 @@ among Creatures users everywhere. Therefore, I’d like to dedicate this infirma
 to his memory. I hope you enjoy using it, and take a few moments to remember him
 when you do.
 
-Version history
 ---------------
+1.2
+- Removal script now corrects the DS favourite count. This only affects the
+  removal so you do not need to remove and recreate the agent.
 1.1
 - Added missing dependency reference in installer that prevented iromcross2.c16
   installing.

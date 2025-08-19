@@ -9,7 +9,8 @@ There is (and has been for some time) an *unofficial* [mirror](http://www.creatu
 ### Latest updates
 
 **2025-08-19**
-- Really (I think) Fixed the Norn of Intertility script error.
+- Really (I think) Fixed the Norn of Infertility script error.
+- Infirmary removal script now corrects the DS favourite count.
 
 **2025-08-18**
 - Updated Bounty Bugs with a few small fixes.

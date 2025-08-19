@@ -1,4 +1,4 @@
-Norn of Infertility (1.5)
+Norn of Infertility (1.6)
 
 This agent checks for possible immortal and fast-aging Norns and attempts to
 keep them infertile.
@@ -28,6 +28,8 @@ Norn of Infertility's checks.
 
 Version history
 ---------------
+1.6
+- Really (I think) fixed the script error.
 1.5
 - Possibly fixed an intermittent "invalid targ" script error.
 - Added SunlitMiracle's zombie check from her updated Norn Statistics.

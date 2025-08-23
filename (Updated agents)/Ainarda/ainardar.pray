@@ -1,0 +1,14 @@
+"en-GB"
+
+group DSAG "Ainarda (Remove)"
+"Agent Type" 0
+"Dependency Count" 0
+
+"Script Count" 1
+"Script 1" @ "scripts\\ainardar.cos"
+"Agent Description" "Removes Ainarda (Ainarda World) and Ainarda agents."
+"Agent Animation File" "ainarda_fav.s16"
+"Agent Animation Gallery" "ainarda_fav"
+"Agent Animation String" "1"
+"Web URL" "github.com/chiizujin/edsa"
+"Web Label" "Emmental's DS Agents"

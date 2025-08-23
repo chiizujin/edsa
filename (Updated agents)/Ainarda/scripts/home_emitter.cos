@@ -1,0 +1,24 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if this present
+doif totl 3 5 60700 ne 0
+  stop
+endi
+
+new: simp 3 5 60700 "blnk" 1 0 0
+attr 16
+mvto 96031 4852
+emit 15 0.25
+
+rscr
+
+enum 3 5 60700
+  kill targ
+next
+
+* outv prop grap mopx mopy 15

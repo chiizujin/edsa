@@ -1,0 +1,122 @@
+* Abort if Ainarda not present
+setv va00 gmap 92000 4500
+doif va00  eq -1
+  stop
+endi
+
+* Rooms are not linled directly together as changing certain rooms here (most
+* notably at the foot of the treehouse) has been known to cause problems,
+* including GetNearbyFloorInformation crashes. The shorter distances created by
+* the new rooms should allow creatures to look for an elevator
+
+* CASTLE
+
+setv va01 addr va00 92548 92673 4806 4806 4881 4881
+setv va01 addr va00 92543 92669 5158 5158 5193 5193
+
+link grap 92584 4729 grap 92607 4993 100
+link grap 92607 4993 grap 92590 5251 100
+
+* CASTLE CAVE
+
+setv va01 addr va00 93528 93673 5158 5158 5193 5193
+
+link grap 93562 5110 grap 93658 5249 100
+link grap 93658 5249 grap 93633 5846 100
+
+* CAVE
+
+setv va01 addr va00 94143 94251 6053 6053 6136 6151
+
+link grap 94187 5990 grap 94182 6549 100
+
+* TREEHOUSE
+
+setv va01 addr va00 96568 96685 5621 5641 5677 5674
+setv va01 addr va00 96573 96673 5869 5869 5887 5894
+
+link grap 96582 4873 grap 96582 5059 100
+link grap 96582 5059 grap 96582 5502 100
+link grap 96582 5502 grap 96582 5758 100
+link grap 96582 5758 grap 96582 5958 100
+
+* Slightly lower permiabilty of treehouse floors so fewer things fall through
+
+door grap 95788 4850 grap 95788 5000 45
+door grap 95910 4850 grap 95910 5000 45
+door grap 96040 4850 grap 96040 5000 45
+door grap 96140 4850 grap 96140 5000 45
+door grap 96260 4850 grap 96260 5000 45
+door grap 96400 4850 grap 96400 5000 45
+door grap 96560 4850 grap 96560 5000 45
+door grap 96644 4850 grap 96644 5000 45
+door grap 96750 4850 grap 96750 5000 45
+door grap 96850 4850 grap 96850 5000 45
+door grap 96950 4850 grap 96950 5000 45
+door grap 97140 4850 grap 97140 5000 45
+door grap 97300 4850 grap 97300 5000 45
+
+door grap 96190 5130 grap 96190 5180 45
+door grap 96260 5130 grap 96260 5180 45
+door grap 96400 5130 grap 96400 5180 45
+door grap 96560 5130 grap 96560 5180 45
+door grap 96645 5130 grap 96645 5180 45
+
+* MAISON
+
+setv va01 addr va00 98037 98165 5240 5225 5327 5406
+setv va01 addr va00 98019 98098 5617 5616 5654 5652
+setv va01 addr va00 98019 98096 5866 5866 5884 5884
+setv va01 addr va00 98019 98096 6064 6064 6081 6082
+
+link grap 98051 5197 grap 98051 5585 100
+link grap 98051 5585 grap 98051 5747 100
+link grap 98051 5747 grap 98051 5969 100
+link grap 98051 5969 grap 98051 6164 100
+
+rscr
+
+* CASTLE
+
+link grap 92584 4729 grap 92607 4993 0
+link grap 92607 4993 grap 92590 5251 0
+
+delr grap 92566 4817
+delr grap 92593 5167
+
+* Strange hole in outer floor just left of top lift stop
+* delr grap 92479 4808
+
+* CASTLE CAVE
+
+link grap 93658 5249 grap 93633 5846 0
+
+* CAVE
+
+link grap 94187 5990 grap 94182 6549 0
+
+delr grap 94144 6052
+
+* TREEHOUSE
+
+link grap 96582 4873 grap 96582 5059 0
+link grap 96582 5059 grap 96582 5502 0
+link grap 96582 5502 grap 96582 5758 0
+link grap 96582 5758 grap 96582 5958 0
+
+delr grap 96628 5651
+delr grap 96620 5879
+
+* MAISON
+
+link grap 98051 5197 grap 98051 5585 0
+link grap 98051 5585 grap 98051 5747 0
+link grap 98051 5747 grap 98051 5969 0
+link grap 98051 5969 grap 98051 6164 0
+
+delr grap 98097 5293
+delr grap 98044 5629
+delr grap 98040 5870
+delr grap 98051 6068
+
+* outv prop grap mopx mopy 6

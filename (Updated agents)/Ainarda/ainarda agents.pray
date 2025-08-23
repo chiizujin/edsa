@@ -1,0 +1,165 @@
+"en-GB"
+
+group DSAG "Ainarda agents"
+"Agent Type" 0
+"Dependency Count" 39
+"Dependency 1" "ainarda_gondola.c16"
+"Dependency 2" "ainarda_lift_treehouse.c16"
+"Dependency 3" "ainarda_lift_castle.c16"
+"Dependency 4" "ainarda_lift_castlecave.c16"
+"Dependency 5" "ainarda_lift_cave.c16"
+"Dependency 6" "ainarda_lift_maison.c16"
+"Dependency 7" "ainarda_chandelier.s16"
+"Dependency 8" "ainarda_goldenapple.c16"
+"Dependency 9" "ainarda_darkfruit.c16"
+"Dependency 10" "ainarda_pomley.c16"
+"Dependency 11" "ainarda_pomleyani.c16"
+"Dependency 12" "ainarda_fireflies.s16"
+"Dependency 13" "ainarda_flowers.c16"
+"Dependency 14" "ainarda_fore_angel.s16"
+"Dependency 15" "ainarda_fore_castle1.s16"
+"Dependency 16" "ainarda_fore_castle2.s16"
+"Dependency 17" "ainarda_fore_castle3.s16"
+"Dependency 18" "ainarda_fore_castle4.s16"
+"Dependency 19" "ainarda_fore_ceiling.s16"
+"Dependency 20" "ainarda_fore_columns.s16"
+"Dependency 21" "ainarda_fore_door.s16"
+"Dependency 22" "ainarda_fore_evenstar.s16"
+"Dependency 23" "ainarda_fore_floor1.s16"
+"Dependency 24" "ainarda_fore_house.s16"
+"Dependency 25" "ainarda_fore_treehouse.s16"
+"Dependency 26" "ainarda_fore_underground.s16"
+"Dependency 27" "ainarda_window1.c16"
+"Dependency 28" "ainarda_window2.c16"
+"Dependency 29" "ainarda_window3.c16"
+"Dependency 30" "ainarda_ghost1.s16"
+"Dependency 31" "ainarda_ghost2.s16"
+"Dependency 32" "ainarda_ghost2.s16"
+"Dependency 33" "ainarda_castlevine.c16"
+"Dependency 34" "ainarda_fore_treehouse2.s16"
+"Dependency 35" "m_a3.wav"
+"Dependency 36" "angd.wav"
+"Dependency 37" "angs.wav"
+"Dependency 38" "anch.wav"
+"Dependency 39" "ainarda agents.catalogue"
+
+"Dependency Category 1" 2
+"Dependency Category 2" 2
+"Dependency Category 3" 2
+"Dependency Category 4" 2
+"Dependency Category 5" 2
+"Dependency Category 6" 2
+"Dependency Category 7" 2
+"Dependency Category 8" 2
+"Dependency Category 9" 2
+"Dependency Category 10" 2
+"Dependency Category 11" 2
+"Dependency Category 12" 2
+"Dependency Category 13" 2
+"Dependency Category 14" 2
+"Dependency Category 15" 2
+"Dependency Category 16" 2
+"Dependency Category 17" 2
+"Dependency Category 18" 2
+"Dependency Category 19" 2
+"Dependency Category 20" 2
+"Dependency Category 21" 2
+"Dependency Category 22" 2
+"Dependency Category 23" 2
+"Dependency Category 24" 2
+"Dependency Category 25" 2
+"Dependency Category 26" 2
+"Dependency Category 27" 2
+"Dependency Category 28" 2
+"Dependency Category 29" 2
+"Dependency Category 30" 2
+"Dependency Category 31" 2
+"Dependency Category 32" 2
+"Dependency Category 33" 2
+"Dependency Category 34" 2
+"Dependency Category 35" 1
+"Dependency Category 36" 1
+"Dependency Category 37" 1
+"Dependency Category 38" 1
+"Dependency Category 39" 7
+
+"Script Count" 29
+
+"Script 1" @ "scripts\\room_links.cos"
+"Script 2" @ "scripts\\backgrounds.cos"
+"Script 3" @ "scripts\\castlevine.cos"
+"Script 4" @ "scripts\\chandelier.cos"
+"Script 5" @ "scripts\\darkfruit.cos"
+"Script 6" @ "scripts\\fireflies.cos"
+"Script 7" @ "scripts\\flowers.cos"
+"Script 8" @ "scripts\\foregrounds.cos"
+"Script 9" @ "scripts\\ghosts.cos"
+"Script 10" @ "scripts\\golden_apples.cos"
+"Script 11" @ "scripts\\gondola.cos"
+"Script 12" @ "scripts\\haunts_trigger.cos"
+"Script 13" @ "scripts\\lift_castle.cos"
+"Script 14" @ "scripts\\lift_castlecave.cos"
+"Script 15" @ "scripts\\lift_cave.cos"
+"Script 16" @ "scripts\\lift_maison.cos"
+"Script 17" @ "scripts\\lift_treehouse.cos"
+"Script 18" @ "scripts\\pomley.cos"
+
+"Script 19" @ "scripts\\home_emitter.cos"
+"Script 20" @ "scripts\\c3_fish_monitor.cos"
+"Script 21" @ "scripts\\c3_fish_angel.cos"
+"Script 22" @ "scripts\\c3_fish_clown.cos"
+"Script 23" @ "scripts\\c3_fish_handle.cos"
+"Script 24" @ "scripts\\c3_fish_mow.cos"
+"Script 25" @ "scripts\\c3_fish_neon.cos"
+"Script 26" @ "scripts\\c3_other_gumin.cos"
+"Script 27" @ "scripts\\c3_other_sponge.cos"
+"Script 28" @ "scripts\\c3_other_vents.cos"
+
+"Script 29" @ "scripts\\incubator.cos"
+
+"Agent Description" "Adds various agents to Ainarda."
+"Agent Animation File" "ainarda_fav.s16"
+"Agent Animation Gallery" "ainarda_fav"
+"Agent Animation String" "1"
+"Web URL" "github.com/chiizujin/edsa"
+"Web Label" "Emmental's DS Agents"
+
+inline FILE "ainarda_gondola.c16" "sprites\\ainarda_gondola.c16"
+inline FILE "ainarda_lift_treehouse.c16" "sprites\\ainarda_lift_treehouse.c16"
+inline FILE "ainarda_lift_castle.c16" "sprites\\ainarda_lift_castle.c16"
+inline FILE "ainarda_lift_castlecave.c16" "sprites\\ainarda_lift_castlecave.c16"
+inline FILE "ainarda_lift_cave.c16" "sprites\\ainarda_lift_cave.c16"
+inline FILE "ainarda_lift_maison.c16" "sprites\\ainarda_lift_maison.c16"
+inline FILE "ainarda_chandelier.s16" "sprites\\ainarda_chandelier.s16"
+inline FILE "ainarda_goldenapple.c16" "sprites\\ainarda_goldenapple.c16"
+inline FILE "ainarda_darkfruit.c16" "sprites\\ainarda_darkfruit.c16"
+inline FILE "ainarda_pomley.c16" "sprites\\ainarda_pomley.c16"
+inline FILE "ainarda_pomleyani.c16" "sprites\\ainarda_pomleyani.c16"
+inline FILE "ainarda_fireflies.s16" "sprites\\ainarda_fireflies.s16"
+inline FILE "ainarda_flowers.c16" "sprites\\ainarda_flowers.c16"
+inline FILE "ainarda_fore_angel.s16" "sprites\\ainarda_fore_angel.s16"
+inline FILE "ainarda_fore_castle1.s16" "sprites\\ainarda_fore_castle1.s16"
+inline FILE "ainarda_fore_castle2.s16" "sprites\\ainarda_fore_castle2.s16"
+inline FILE "ainarda_fore_castle3.s16" "sprites\\ainarda_fore_castle3.s16"
+inline FILE "ainarda_fore_castle4.s16" "sprites\\ainarda_fore_castle4.s16"
+inline FILE "ainarda_fore_ceiling.s16" "sprites\\ainarda_fore_ceiling.s16"
+inline FILE "ainarda_fore_columns.s16" "sprites\\ainarda_fore_columns.s16"
+inline FILE "ainarda_fore_door.s16" "sprites\\ainarda_fore_door.s16"
+inline FILE "ainarda_fore_evenstar.s16" "sprites\\ainarda_fore_evenstar.s16"
+inline FILE "ainarda_fore_floor1.s16" "sprites\\ainarda_fore_floor1.s16"
+inline FILE "ainarda_fore_house.s16" "sprites\\ainarda_fore_house.s16"
+inline FILE "ainarda_fore_treehouse.s16" "sprites\\ainarda_fore_treehouse.s16"
+inline FILE "ainarda_fore_underground.s16" "sprites\\ainarda_fore_underground.s16"
+inline FILE "ainarda_window1.c16" "sprites\\ainarda_window1.c16"
+inline FILE "ainarda_window2.c16" "sprites\\ainarda_window2.c16"
+inline FILE "ainarda_window3.c16" "sprites\\ainarda_window3.c16"
+inline FILE "ainarda_ghost1.s16" "sprites\\ainarda_ghost1.s16"
+inline FILE "ainarda_ghost2.s16" "sprites\\ainarda_ghost2.s16"
+inline FILE "ainarda_ghost2.s16" "sprites\\ainarda_ghost2.s16"
+inline FILE "ainarda_castlevine.c16" "sprites\\ainarda_castlevine.c16"
+inline FILE "ainarda_fore_treehouse2.s16" "sprites\\ainarda_fore_treehouse2.s16"
+inline FILE "m_a3.wav" "sounds\\m_a3.wav"
+inline FILE "angd.wav" "sounds\\angd.wav"
+inline FILE "angs.wav" "sounds\\angs.wav"
+inline FILE "anch.wav" "sounds\\anch.wav"
+inline FILE "ainarda agents.catalogue" "ainarda agents.catalogue"

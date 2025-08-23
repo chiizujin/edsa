@@ -1,0 +1,46 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if Creatures 3 not installed
+doif reaq "patch_level" = 0
+  stop
+endi
+
+new: simp 2 15 60705 "gumin" 103 0 4200
+mvto 98802 5980
+new: simp 2 15 60705 "gumin" 103 0 4200
+mvto 98900 5980
+new: simp 2 15 60705 "gumin" 103 0 4200
+mvto 99180 5980
+
+new: simp 2 15 60705 "gumin" 103 0 4200
+mvto 99388 6275
+new: simp 2 15 60705 "gumin" 103 0 4200
+mvto 99797 6275
+
+new: simp 2 15 60705 "gumin" 103 0 4200
+mvto 98452 6622
+new: simp 2 15 60705 "gumin" 103 0 4200
+mvto 99231 6622
+
+scrp 2 15 60705 10
+  pose 76
+  attr 192
+  accg 3
+  elas 0
+  perm 100
+  * Offset animations
+  wait rand 0 20
+  anim [76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 255]
+endm
+
+rscr
+
+enum 2 15 60705
+  kill targ
+next
+scrx 2 15 60705 10

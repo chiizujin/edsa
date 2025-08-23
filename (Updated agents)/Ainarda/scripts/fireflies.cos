@@ -1,0 +1,22 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if this present
+doif totl 1 1 60701 ne 0
+  stop
+endi
+
+new: simp 1 1 60701 "ainarda_fireflies" 33 0 1
+mvto 93884 5443
+anim [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 255]
+frat 2
+
+rscr
+
+enum 1 1 60701
+  kill targ
+next

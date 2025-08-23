@@ -1,0 +1,50 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if this present
+doif totl 1 1 60716 ne 0
+  stop
+endi
+
+new: simp 1 1 60716 "blank" 0 0 1
+tick rand 8000 10000
+mvto 92000 4500
+
+scrp 1 1 60716 9
+  inst
+  enum 4 0 0
+    doif posx gt 92070 and posx lt 93680 and posy gt 4500 and posy lt 5380
+      * Increase fear
+      chem 158 0.9
+      * reduce boredom
+      chem 159 -0.5
+    endi
+  next
+  slow
+
+  enum 1 1 60714
+    mesg writ targ 1000
+  next
+  enum 1 1 60715
+    mesg writ targ 1000
+  next
+  enum 1 1 60717
+    mesg writ targ 1000
+    snde "angs"
+    sndl "anch"
+  next
+
+  targ ownr
+  tick rand 8000 10000
+endm
+
+rscr
+
+enum 1 1 60716
+  kill targ
+next
+scrx 1 1 60616 9

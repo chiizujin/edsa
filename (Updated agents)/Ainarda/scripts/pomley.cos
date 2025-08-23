@@ -1,0 +1,206 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if this present
+doif totl 1 1 60735 ne 0
+  stop
+endi
+
+new: simp 1 1 60735 "blnk" 1 0 0
+tick 3600
+mvto 93950 4734
+
+inst
+reps rand 3 5
+  new: simp 2 8 60736 "ainarda_pomley" 15 0 10
+  attr 64
+  bhvr 48
+  elas 4
+  accg 5
+  fric 100
+  puhl 13 15 30
+  puhl 14 15 35
+  tick rand 30 100
+  * mvsf rand 94200 94723 rand 4451 4750
+  mvsf rand 97788 98491 rand 4532 4934
+  setv ov61 25
+repe
+
+scrp 1 1 60735 9
+  inst
+  setv va00 0
+  enum 2 8 60736
+    doif ov00 eq 0
+      addv va00 1
+    endi
+  next
+  doif va00 lt 5
+    new: simp 2 8 60736 "ainarda_pomley" 15 0 10
+    attr 64
+    bhvr 48
+    elas 4
+    accg 5
+    fric 100
+    puhl 13 15 30
+    puhl 14 15 35
+    tick rand 50 300
+    * mvsf rand 94200 94723 rand 4451 4750
+    mvsf rand 97788 98491 rand 4532 4934
+    setv ov61 25
+  endi
+endm
+
+scrp 2 8 60736 4
+  lock
+  doif ov00 eq 0
+    emit 6 0.5
+    setv ov00 1
+  endi
+  doif attr eq 67
+    attr 195
+  endi
+  perm 60
+endm
+
+scrp 2 8 60736 6
+  doif carr eq null
+    plne 4000
+  endi
+endm
+
+scrp 2 8 60736 9
+  doif ov00 eq 0
+    doif carr eq null
+      doif pose lt 13
+        setv va00 pose
+        addv va00 1
+        pose va00
+      else
+        doif attr eq 64
+          attr 67
+        endi
+        addv ov99 1
+      endi
+      doif ov99 ge 20
+        setv ov99 0
+        doif attr eq 67
+          attr 195
+        endi
+        setv ov00 1
+        emit 6 0.01
+        inst
+        new: simp 2 8 60736 "ainarda_pomley" 15 0 10
+        doif rand 1 4 eq 1
+          perm 60
+        endi
+        attr 64
+        bhvr 48
+        elas 4
+        fric 100
+        accg 5
+        puhl 13 15 30
+        puhl 14 15 35
+        tick rand 100 300
+        * mvsf rand 94200 94723 rand 4451 4750
+        mvsf rand 97788 98491 rand 4532 4934
+        setv ov61 25
+        targ ownr
+      endi
+    endi
+  endi
+
+  doif ov00 eq 1
+    addv ov99 1
+    doif ov99 ge 50
+      doif carr eq null
+        altr room targ 4 0.01
+        altr room targ 3 0.01
+        kill ownr
+      endi
+    endi
+  endi
+endm
+
+scrp 2 8 60736 12
+  setv va00 posl
+  setv va01 post
+  subv va01 20
+  stim writ from 78 1
+  wait 1
+  snde "eat1"
+  inst
+  new: simp 2 10 60737 "ainarda_pomley" 1 14 20
+  doif tmvt va00 va01 ne 1
+    kill targ
+    stop
+  endi
+  attr 195
+  bhvr 48
+  elas 4
+  accg 5
+  puhl 0 15 35
+  tick rand 100 300
+  fric 100
+  mvto va00 va01
+  setv ov61 10
+  tick 1200
+  kill ownr
+endm
+
+scrp 2 10 60737 9
+  doif room targ <> -1 and carr = null
+    altr room targ 4 0.01
+    altr room targ 3 0.01
+    kill targ
+  elif room targ = -1 and carr = null
+    kill ownr
+  endi
+endm
+
+scrp 2 10 60737 12
+  stim writ from 81 1
+  wait 1
+  kill ownr
+endm
+
+new: simp 1 1 60732 "ainarda_pomleyani" 5 0 1
+frat 80
+tick 60
+
+scrp 1 1 60732 9
+  * mvsf rand 93950 94230 rand 4734 4858
+  mvsf rand 97788 98491 rand 4532 4934
+  anim [1 2 3 4 3 2 1 0]
+  over
+  pose 0
+endm
+
+rscr
+
+enum 1 1 60735
+  kill targ
+next
+scrx 1 1 60735 9
+
+enum 2 8 60736
+  kill targ
+next
+scrx 2 8 60736 4
+scrx 2 8 60736 6
+scrx 2 8 60736 9
+scrx 2 8 60736 12
+
+enum 2 10 60737
+  kill targ
+next
+scrx 2 10 60737 9
+scrx 2 10 60737 12
+
+enum 1 1 60732
+  kill targ
+next
+scrx 1 1 60732 9

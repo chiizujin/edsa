@@ -1,0 +1,189 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if this present
+doif totl 1 1 60737 ne 0
+  stop
+endi
+
+new: simp 1 1 60737 "blnk" 1 0 0
+tick 3600
+mvto 95565 4764
+
+reps rand 5 10
+  new: simp 2 8 60738 "ainarda_goldenapple" 15 0 10
+  attr 64
+  bhvr 48
+  elas 30
+  accg 5
+  fric 100
+  perm 51
+  tick rand 20 100
+  doif rand 1 2 eq 1
+    mvsf rand 95361 95720 rand 4600 4996
+  else
+    mvsf rand 97343 97595 rand 4543 4856
+  endi
+  setv ov61 25
+repe
+
+scrp 1 1 60737 9
+  inst
+  setv va00 0
+  enum 2 8 60738
+    doif ov00 eq 0
+      addv va00 1
+    endi
+  next
+  doif va00 lt 8
+    new: simp 2 8 60738 "ainarda_goldenapple" 15 0 10
+    attr 64
+    bhvr 48
+    elas 30
+    accg 5
+    fric 100
+    tick rand 50 300
+    doif rand 1 2 eq 1
+      mvsf rand 95361 95720 rand 4600 4996
+    else
+      mvsf rand 97343 97595 rand 4543 4856
+    endi
+    setv ov61 25
+  endi
+endm
+
+scrp 2 8 60738 4
+  lock
+  doif ov00 eq 0
+    emit 6 0.5
+    setv ov00 1
+  endi
+  doif attr eq 67
+    attr 195
+  endi
+  perm 51
+endm
+
+scrp 2 8 60738 6
+  doif carr eq null
+    plne 4000
+  endi
+endm
+
+scrp 2 8 60738 9
+  doif ov00 eq 0
+    doif carr eq null
+      doif pose lt 13
+        setv va00 pose
+        addv va00 1
+        pose va00
+      else
+        doif attr eq 64
+          attr 67
+        endi
+        addv ov99 1
+      endi
+      doif ov99 ge 20
+        setv ov99 0
+          doif attr eq 67
+          attr 195
+        endi
+        setv ov00 1
+        emit 6 0.01
+        inst
+        new: simp 2 8 60738 "ainarda_goldenapple" 15 0 10
+        doif rand 1 4 eq 1
+          perm 51
+        endi
+        attr 64
+        bhvr 48
+        elas 30
+        fric 100
+        accg 5
+        tick rand 100 300
+        doif rand 1 2 eq 1
+          mvsf rand 95361 95720 rand 4600 4996
+        else
+          mvsf rand 97343 97595 rand 4543 4856
+        endi
+        setv ov61 25
+        targ ownr
+      endi
+    endi
+  endi
+
+  doif ov00 eq 1
+    addv ov99 1
+    doif ov99 ge 50
+      doif carr eq null
+        altr room targ 4 0.01
+        altr room targ 3 0.01
+        kill ownr
+      endi
+    endi
+  endi
+endm
+
+scrp 2 8 60738 12
+  setv va00 posl
+  setv va01 post
+  stim writ from 78 1
+  wait 10
+  snde "eat1"
+  inst
+  new: simp 2 10 60739 "ainarda_goldenapple" 1 14 20
+  doif tmvt va00 va01 ne 1
+    kill targ
+    stop
+  endi
+  attr 195
+  bhvr 48
+  elas 0
+  accg 5
+  fric 100
+  mvto va00 va01
+  setv ov61 10
+  tick 1200
+  kill ownr
+endm
+
+scrp 2 10 60739 9
+  doif room targ <> -1 and carr = null
+    altr room targ 4 0.01
+    altr room targ 3 0.01
+    kill targ
+  elif room targ = -1 and carr = null
+    kill ownr
+  endi
+endm
+
+scrp 2 10 60739 12
+  stim writ from 81 1
+  wait 1
+  kill ownr
+endm
+
+rscr
+
+enum 1 1 60737
+  kill targ
+next
+scrx 1 1 60737 9
+
+enum 2 8 60738
+  kill targ
+next
+scrx 2 8 60738 4
+scrx 2 8 60738 6
+scrx 2 8 60738 9
+scrx 2 8 60738 12
+
+enum 2 10 60739
+  kill targ
+next
+scrx 2 10 60739 9
+scrx 2 10 60739 12

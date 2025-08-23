@@ -1,0 +1,310 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if this present
+doif totl 3 1 60702 ne 0
+  stop
+endi
+
+new: vhcl 3 1 60702 "ainarda_lift_maison" 13 0 1000
+mvto 98000 5410
+
+pat: dull 1 "ainarda_lift_maison" 0 0 0 40
+* Going down
+pat: butt 2 "ainarda_lift_maison" 2 1 66 139 41 [] 1001 0
+* Going up
+pat: butt 3 "ainarda_lift_maison" 1 1 87 139 41 [] 1000 0
+part 3
+sets name "call list" ""
+sets name "Lift" "MaisonLift"
+seta name "0" null
+setv name "total" 4
+setv ov04 0
+setv name "current level" 1
+
+scrp 3 1 60702 10
+  attr 512
+  * cabn 14 55 152 195
+  cabn 0 40 160 195
+  cabp 0
+  * Cabin can't hold more than 3 creatures
+  cabw 3
+  * Open Air Cabin 512
+  bhvr 3
+  wait 1
+  inst
+
+   * Call Button Level 5
+  new: comp 2 12 60702 "ainarda_lift_maison" 2 3 2000
+  plne 1
+  mvto 97995 5204
+  seta mame "0" targ
+  seta ov00 ownr
+  sets ov01 "0"
+  setv ov03 0
+  setv ov04 0
+
+  * Call Button Level 4
+  new: comp 2 12 60702 "ainarda_lift_maison" 2 5 2000
+  plne 1
+  mvto 98168 5575
+  seta mame "1" targ
+  seta ov00 ownr
+  sets ov01 "1"
+  setv ov03 0
+  setv ov04 0
+
+   * Call Button Level 3
+  new: comp 2 12 60702 "ainarda_lift_maison" 2 7 2000
+  plne 1
+  mvto 98178 5834
+  seta mame "2" targ
+  seta ov00 ownr
+  sets ov01 "2"
+  setv ov03 0
+  setv ov04 0
+
+  * Call Button Level 2
+  new: comp 2 12 60702 "ainarda_lift_maison" 2 9 2000
+  plne 1
+  mvto 98182 6034
+  seta mame "3" targ
+  seta ov00 ownr
+  sets ov01 "3"
+  setv ov03 0
+  setv ov04 0
+
+  * Call Button Level 1
+  new: comp 2 12 60702 "ainarda_lift_maison" 2 11 2000
+  plne 1
+  mvto 98182 6232
+  seta mame "4" targ
+  seta ov00 ownr
+  sets ov01 "4"
+  setv ov03 0
+  setv ov04 0
+endm
+
+* Push the down button
+scrp 3 1 60702 1000
+  inst
+  gsub movelift
+
+  subr movelift
+    doif name "current level" ne 0
+      setv va00 name "current level"
+      subv va00 1
+    else
+      stop
+    endi
+    adds name "call list" vtos va00
+    adds name "call list" " "
+    part 3
+    tick 10
+    spas ownr from
+  retn
+endm
+
+* Push the down button
+scrp 3 1 60702 1001
+  inst
+  gsub movelift
+
+  subr movelift
+    doif name "current level" ne name "total"
+      setv va00 name "current level"
+      addv va00 1
+    else
+      stop
+    endi
+    adds name "call list" vtos va00
+    adds name "call list" " "
+    part 3
+    tick 10
+    spas ownr from
+  retn
+endm
+
+* Push elevator
+scrp 3 1 60702 1
+  lock
+  inst
+  doif name "current level" ne 0
+    setv va00 name "current level"
+    subv va00 1
+    adds name "call list" vtos va00
+    adds name "call list" " "
+    tick 10
+    spas ownr from
+    stim writ from 75 1
+  endi
+  unlk
+endm
+
+* Pull elevator
+scrp 3 1 60702 2
+  lock
+  inst
+  doif name "current level" ne name "total"
+    setv va00 name "current level"
+    addv va00 1
+    adds name "call list" vtos va00
+    adds name "call list" " "
+    tick 10
+    spas ownr from
+    stim writ from 75 1
+  endi
+  unlk
+endm
+
+scrp 2 12 60702 10
+  attr 4
+  bhvr 1
+  setv ov02 0
+endm
+
+* Switches
+
+scrp 2 12 60702 1001
+  lock
+  targ pntr
+  anim [0]
+  targ ownr
+  part 1
+  doif pose eq 0
+    pose 1
+  else
+    pose 0
+  endi
+  doif bhvr eq 0
+    bhvr 1
+    attr 4
+  else
+    bhvr 0
+    attr 20
+  endi
+endm
+
+
+scrp 2 12 60702 1
+  doif name "on" eq 0
+    stim writ from 75 2
+    inst
+    targ ov00
+    doif vtos name "current level" ne mv01
+      adds name "call list" mv01
+      adds name "call list" " "
+      tick 10
+      targ ownr
+      pose 1
+      sndc "ding"
+      setv name "on" 1
+    else
+      stim writ from 0 1
+    endi
+  else
+    stim writ from 0 1
+  endi
+  targ ownr
+endm
+
+scrp 2 12 60702 1000
+  * Return your animation
+  pose 0
+  setv name "on" 0
+endm
+
+scrp 3 1 60702 9
+  lock
+  doif name "call list" eq ""
+    tick 0
+    stop
+  endi
+  setv va00 stoi name "call list"
+  doif va00 ne name "current level"
+    sets va50 vtos va00
+    targ name va50
+    doif targ ne null
+      seta va05 targ
+      setv va01 posb
+      addv va01 ov03
+      targ ownr
+      gsub gotobutton
+    endi
+  endi
+  setv va00 stoi name "call list"
+  setv name "current level" va00
+  setv va03 strl name "call list"
+  subv va03 2
+  sets name "call list" subs name "call list" 3 va03
+  stop
+  unlk
+
+  subr gotobutton
+    doif posb lt va01
+      *gpas 4 0 0 0
+      doif ov04 eq 1
+        sndq "mlf1" 0
+        sndl "mlf2"
+      elif ov04 eq 0
+        sndl "m_a3"
+      endi
+      loop
+        setv vely 6
+      untl posb ge va01
+      velo 0 0
+    elif posb gt va01
+      *gpas 4 0 0 0
+      doif ov04 eq 1
+        sndq "mlf1" 0
+        sndl "mlf2"
+      elif ov04 eq 0
+        sndl "m_a3"
+      endi
+      loop
+        setv vely -6
+      untl posb le va01
+      velo 0 0
+    endi
+    part 2
+    pose 0
+    targ va05
+    mesg writ targ 1000
+    targ ownr
+    doif ov04 eq 1
+      sndq "mlf3" 0
+    elif ov04 eq 0
+      stpc
+    endi
+    epas 4 0 0
+      stim writ targ 94 1
+      stim writ targ 0 .25
+    next
+    targ ownr
+    dpas 4 0 0
+  retn
+endm
+
+rscr
+
+enum 3 1 60702
+  kill targ
+next
+scrx 3 1 60702 1
+scrx 3 1 60702 2
+scrx 3 1 60702 9
+scrx 3 1 60702 10
+scrx 3 1 60702 1000
+scrx 3 1 60702 1001
+
+enum 2 12 60702
+  kill targ
+next
+scrx 2 12 60702 1
+scrx 2 12 60702 10
+scrx 2 12 60702 1000
+scrx 2 12 60702 1001

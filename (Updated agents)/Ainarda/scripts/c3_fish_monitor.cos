@@ -1,0 +1,64 @@
+inst
+
+* Abort if Ainarda not present
+*doif gmap 92000 4500 eq -1
+*  stop
+*endi
+setv va00 gmap 92000 4500
+doif va00  eq -1
+  stop
+endi
+
+* Abort if Creatures 3 not installed
+doif reaq "patch_level" = 0
+  stop
+endi
+
+* The rooms near the fireflies look like water but they are not
+rtyp grap 94022 5580 8
+rtyp grap 94113 5580 8
+rtyp grap 94216 5580 8
+
+new: simp 2 15 60700 "blank" 1 0 0
+* Min/max for initial fish creation
+setv ov01 8
+setv ov02 12
+* Values for repopulation
+setv va01 8
+setv va02 1
+setv va03 5
+* Record metaroom for fish surfacing
+setv ov00 va00
+
+tick 1200
+mvto 92000 4500
+
+scrp 2 15 60700 9
+  doif totl 2 15 60701 lt va01
+    reps rand va02 va03
+      new: simp 2 15 60701 "angel" 153 0 4100
+    repe
+  endi
+  doif totl 2 15 60702 lt va01
+    reps rand va02 va03
+      new: simp 2 15 60702 "clown" 153 0 4100
+    repe
+  endi
+  doif totl 2 15 60703 lt va01
+    reps rand va02 va03
+      new: simp 2 15 60703 "handle" 198 0 4100
+    repe
+  endi
+  doif totl 2 15 60704 lt va01
+    reps rand va02 va03
+      new: simp 2 15 60704 "neon" 190 0 4100
+    repe
+  endi
+endm
+
+rscr
+
+enum 2 15 60700
+  kill targ
+next
+scrx 2 15 60700 9

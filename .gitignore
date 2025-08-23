@@ -2,9 +2,12 @@ install
 notes.md
 
 *.agents
+*.jar
 *.exe
+*.DLL
 
 0_working/
+0_additional/
 raw/
 backup/
 trash/

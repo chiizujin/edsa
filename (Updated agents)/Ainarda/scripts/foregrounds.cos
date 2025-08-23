@@ -1,0 +1,191 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* ANGEL
+
+doif totl 1 1 60748 eq 0
+  * new: simp 1 1 60748 "ainarda_fore_angel" 1 0 8000
+  new: simp 1 1 60748 "ainarda_fore_angel" 1 0 5010
+  attr 16
+  mvto 93296 6572
+endi
+
+* CASTLE 1
+
+doif totl 1 1 60702 eq 0
+  attr 16
+  * new: simp 1 1 60702 "ainarda_fore_castle1" 1 0 8000
+  new: simp 1 1 60702 "ainarda_fore_castle1" 1 0 5010
+  mvto 91939 4549
+endi
+
+* CASTLE 2
+
+doif totl 1 1 60703 eq 0
+  attr 16
+  * new: simp 1 1 60703 "ainarda_fore_castle2" 1 0 8000
+  new: simp 1 1 60703 "ainarda_fore_castle2" 1 0 5010
+  mvto 93150 4470
+endi
+
+* CASTLE 3
+
+doif totl 1 1 60704 eq 0
+  * new: simp 1 1 60704 "ainarda_fore_castle3" 1 0 8000
+  new: simp 1 1 60704 "ainarda_fore_castle3" 1 0 5010
+  attr 16
+  mvto 92455 4798
+endi
+
+* CASTLE 4
+
+doif totl 1 1 60705 eq 0
+  * new: simp 1 1 60705 "ainarda_fore_castle4" 1 0 8000
+  new: simp 1 1 60705 "ainarda_fore_castle4" 1 0 5010
+  attr 16
+  mvto 93392 4925
+endi
+
+* CEILING
+
+doif totl 1 1 60706 eq 0
+  * new: simp 1 1 60706 "ainarda_fore_ceiling" 1 0 8000
+  new: simp 1 1 60706 "ainarda_fore_ceiling" 1 0 5010
+  attr 16
+  mvto 94072 6069
+endi
+
+* COLUMNS
+
+doif totl 1 1 60707 eq 0
+  * new: simp 1 1 60707 "ainarda_fore_columns" 1 0 8000
+  new: simp 1 1 60707 "ainarda_fore_columns" 1 0 5010
+  attr 16
+  mvto 95545 6449
+endi
+
+* DOOR
+
+doif totl 1 1 60708 eq 0
+  * new: simp 1 1 60708 "ainarda_fore_door" 1 0 8000
+  new: simp 1 1 60708 "ainarda_fore_door" 1 0 5010
+  attr 16
+  mvto 97598 5471
+endi
+
+* EVENSTAR
+
+doif totl 1 1 60709 eq 0
+  * * new: simp 1 1 60709 "ainarda_fore_evenstar" 1 0 8000
+  * new: simp 1 1 60709 "ainarda_fore_evenstar" 1 0 5010
+  new: simp 1 1 60709 "ainarda_fore_evenstar" 1 0 5010
+  attr 16
+  mvto 99053 4893
+endi
+
+* FLOOR 1
+
+doif totl 1 1 60710 eq 0
+  * new: simp 1 1 60710 "ainarda_fore_floor1" 1 0 8000
+  new: simp 1 1 60710 "ainarda_fore_floor1" 1 0 5010
+  attr 16
+  mvto 92994 5980
+endi
+
+* HOUSE
+
+doif totl 1 1 60711 eq 0
+  * new: simp 1 1 60711 "ainarda_fore_house" 1 0 8000
+  new: simp 1 1 60711 "ainarda_fore_house" 1 0 5010
+  attr 16
+  mvto 97925 5187
+endi
+
+* TREEHOUSE
+
+doif totl 1 1 60712 eq 0
+  * new: simp 1 1 60712 "ainarda_fore_treehouse" 1 0 8000
+  new: simp 1 1 60712 "ainarda_fore_treehouse" 1 0 5010
+  attr 16
+  mvto 96156 4707
+  * Additional overlays
+  * new: simp 1 1 60712 "ainarda_fore_treehouse2" 1 0 8000
+  new: simp 1 1 60712 "ainarda_fore_treehouse2" 1 0 5010
+  attr 16
+  mvto 95781 4734
+  * new: simp 1 1 60712 "ainarda_fore_treehouse2" 1 1 8000
+  new: simp 1 1 60712 "ainarda_fore_treehouse2" 1 1 5010
+  attr 16
+  mvto 96141 4760
+  * new: simp 1 1 60712 "ainarda_fore_treehouse2" 1 2 8000
+  new: simp 1 1 60712 "ainarda_fore_treehouse2" 1 2 5010
+  attr 16
+  mvto 97236 4810
+endi
+
+* UNDERGROUND
+
+doif totl 1 1 60713 eq 0
+  * new: simp 1 1 60713 "ainarda_fore_underground" 1 0 8000
+  new: simp 1 1 60713 "ainarda_fore_underground" 1 0 5010
+  attr 16
+  mvto 96435 5602
+endi
+
+rscr
+
+enum 1 1 60748
+  kill targ
+next
+
+enum 1 1 60702
+  kill targ
+next
+
+enum 1 1 60703
+  kill targ
+next
+
+enum 1 1 60704
+  kill targ
+next
+
+enum 1 1 60705
+  kill targ
+next
+
+enum 1 1 60706
+  kill targ
+next
+
+enum 1 1 60707
+  kill targ
+next
+
+enum 1 1 60708
+  kill targ
+next
+
+enum 1 1 60709
+  kill targ
+next
+
+enum 1 1 60710
+  kill targ
+next
+
+enum 1 1 60711
+  kill targ
+next
+
+enum 1 1 60712
+  kill targ
+next
+
+enum 1 1 60713
+  kill targ
+next

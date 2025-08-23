@@ -1,0 +1,30 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if this present
+doif totl 1 1 60717 ne 0
+  stop
+endi
+
+new: simp 1 1 60717 "ainarda_chandelier" 18 0 1
+frat 1
+mvto 92891 4883
+
+scrp 1 1 60717 1000
+  reps 9
+    anim [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17]
+    over
+  repe
+  pose 0
+endm
+
+rscr
+
+enum 1 1 60717
+  kill targ
+next
+scrx 1 1 60717 1000

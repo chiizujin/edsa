@@ -1,0 +1,161 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if Creatures 3 not installed
+doif reaq "patch_level" = 0
+  stop
+endi
+
+* Get min/max initial creation from fish monitor
+rtar 2 15 60700
+setv va01 ov01
+setv va02 ov02
+
+reps rand va01 va02
+  new: simp 2 15 60703 "handle" 198 0 4100
+repe
+
+scrp 2 15 60703 10
+  attr 199
+  bhvr 48
+  clac -1
+  elas 20
+  aero 1
+  accg 0
+  perm 100
+  emit 6 .15
+
+  doif rand 1 2 eq 1
+    anim [186 187 188 189 190 191 192 193 194 255]
+    velo rand -1 -3 rand -2 2
+    setv ov01 1
+  else
+    anim [150 151 152 153 154 155 156 157 158 255]
+    velo rand 1 3 rand -2 2
+    setv ov01 2
+  endi
+
+  tick 10
+  mvto 99367 5811
+endm
+
+scrp 2 15 60703 4
+  * Stop moving when picked up
+  anim []
+  velo 0 0
+endm
+
+scrp 2 15 60703 5
+  * If dropped into water stop counting out-of-water cycles
+  doif rtyp room ownr eq 8 or rtyp room ownr eq 9
+    accg 0
+    velo 0 0
+    setv ov02 0
+  * Otherwise, start counting out-of-water cycles
+  else
+    accg 5
+    setv ov02 1
+  endi
+endm
+
+scrp 2 15 60703 9
+  inst
+
+  * Don't do anything if carried
+  doif carr ne null
+    stop
+  endi
+
+  * Kill if been out of the water for 100 cycles
+  doif ov02 ge 100
+    kill ownr
+    stop
+  endi
+
+  * If we've been out of water...
+  doif ov02 gt 0
+    * ...swim again if we're dropped back into it
+    doif rtyp room ownr eq 8 or rtyp room ownr eq 9
+      accg 0
+      velo 0 3
+      setv ov02 0
+    * Otherwise, increment out-of-water cycles
+    else
+      addv ov02 1
+      stop
+    endi
+  endi
+
+  * Get Ainarda metaroom
+  rtar 2 15 60700
+  setv va00 ov00
+  targ ownr
+
+  * Check if we're out of water
+  doif rtyp grap posx post ne 8 and rtyp grap posx post ne 9
+    setv va01 1
+  endi
+
+  * Check position if we're in Ainarda. This is done because some of the water
+  * rooms overlap with visually dry land areas
+  doif va01 eq 0 and gmap posx posy eq va00
+    doif posx gt 92818 and posx lt 93763  and post lt 6718
+      setv va01 1
+    elif posx gt 93958 and posx lt 94356 and post lt 5565
+      setv va01 1
+    elif posx gt 94470 and posx lt 95476 and post lt 6135
+      setv va01 1
+    elif posx gt 95454 and posx lt 97605 and post lt 6486
+      setv va01 1
+    elif posx gt 98460 and post lt 5437
+      setv va01 1
+    endi
+  endi
+
+  * Swim down if close to the surface
+  doif va01 eq 1
+    velo velx rand 1 3
+  endi
+
+  * Change direction at random or if no longer moving
+  doif rand 1 3 eq 10 or velx eq 0
+    doif ov01 eq 1
+      velo 0 0
+      anim [185 184 183 182 181 180 179 178 177 176 166 165 164 163 162 161 160 159]
+      over
+      anim [150 151 152 153 154 155 156 157 158 255]
+      velo rand 1 3 rand -2 2
+      setv ov01 2
+    else
+      velo 0 0
+      anim [159 160 161 162 163 164 165 166 176 177 178 179 180 181 182 183 184 185]
+      over
+      anim [186 187 188 189 190 191 192 193 194 255]
+      velo rand -1 -3 rand -2 2
+      setv ov01 1
+    endi
+  endi
+endm
+
+scrp 2 15 60703 12
+  lock
+  targ from
+  sndc "ceat"
+	stim writ from 80 1
+  kill ownr
+endm
+
+rscr
+
+enum 2 15 60703
+  kill targ
+next
+scrx 2 15 60703 4
+scrx 2 15 60703 5
+scrx 2 15 60703 9
+scrx 2 15 60703 10
+scrx 2 15 60703 12

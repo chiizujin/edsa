@@ -1,0 +1,303 @@
+inst
+
+* Abort if not present
+setv va00 gmap 92000 4500
+doif va00 eq -1
+  stop
+endi
+
+* Move creatures & eggs to meso
+
+enum 4 0 0
+  doif gmap posx posy eq va00
+    * Get vehicle to drop it if carried
+    doif movs eq 3
+      seta va01 targ
+      targ carr
+      dpas 4 0 0
+      targ va01
+    endi
+    mvft 500 9200
+  endi
+next
+enum 3 4 0
+  doif gmap posx posy eq va00
+    * Get vehicle to drop it if carried
+    doif movs eq 3
+      seta va01 targ
+      targ carr
+      dpas 3 4 0
+      targ va01
+    endi
+    mvto 500 9200
+    velo rand -10 10 0
+    accg 4
+  endi
+next
+
+* Move portable portals to workshop
+
+enum 3 9 1
+  doif gmap posx posy eq va00
+    mvto 4526 8990
+    velo rand -10 10 0
+    doif ov03 eq 1 or ov03 eq 2
+      * Close portal
+      lock
+      sndc "por2"
+      bhvr 0
+      setv ov03 0
+      anim [18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0]
+      attr 199
+      clac 2
+    endi
+  endi
+next
+
+* Move workshop teleporters to workshop
+
+enum 3 2 3
+  doif gmap posx posy eq va00
+    mvto 4500 9450
+    velo rand -10 10 0
+  endi
+next
+
+* Remove all remaining agents
+
+enum 0 0 0
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+
+* Remove Ainarda scripts
+
+* ...Backgrounds
+scrx 1 1 60720 9
+scrx 1 1 60721 9
+scrx 1 1 60722 9
+
+* ...Chandelier
+scrx 1 1 60717 1000
+
+* ...Darkfruit
+scrx 1 1 60726 9
+scrx 2 8 60728 4
+scrx 2 8 60728 6
+scrx 2 8 60728 9
+scrx 2 10 60729 9
+scrx 2 10 60729 12
+
+* ...Flowers
+scrx 1 1 60718 9
+scrx 2 3 60704 4
+scrx 2 3 60704 6
+scrx 2 3 60704 9
+scrx 2 3 60704 12
+
+scrx 2 10 60705 12
+
+* ...Ghosts
+scrx 1 1 60714 1000
+scrx 1 1 60715 1000
+
+* ...Golden apples
+scrx 1 1 60737 9
+scrx 2 8 60738 4
+scrx 2 8 60738 6
+scrx 2 8 60738 9
+scrx 2 8 60738 12
+scrx 2 10 60739 9
+scrx 2 10 60739 12
+
+* ...Gondola
+scrx 3 1 60704 1
+scrx 3 1 60704 2
+scrx 3 1 60704 9
+scrx 3 1 60704 1001
+scrx 3 1 60704 1002
+
+* ...Haunts trigger
+scrx 1 1 60616 9
+
+* ...Castle lift
+scrx 3 1 60705 1
+scrx 3 1 60705 2
+scrx 3 1 60705 9
+scrx 3 1 60705 10
+scrx 3 1 60705 1000
+scrx 3 1 60705 1001
+
+scrx 2 12 60704 1
+scrx 2 12 60704 10
+scrx 2 12 60704 1000
+scrx 2 12 60704 1001
+
+* ...Castle cave lift
+scrx 3 1 60703 1
+scrx 3 1 60703 2
+scrx 3 1 60703 9
+scrx 3 1 60703 10
+scrx 3 1 60703 1000
+scrx 3 1 60703 1001
+scrx 2 12 60703 1
+scrx 2 12 60703 10
+scrx 2 12 60703 1000
+scrx 2 12 60703 1001
+
+* ...Cave lift
+scrx 3 1 60746 1
+scrx 3 1 60746 2
+scrx 3 1 60746 1110
+scrx 3 1 60746 1111
+scrx 3 1 60746 2000
+scrx 3 1 60746 2001
+scrx 2 12 60746 1
+scrx 2 12 60746 2
+
+* ...Treehouse lift
+scrx 3 1 60749 1
+scrx 3 1 60749 2
+scrx 3 1 60749 9
+scrx 3 1 60749 10
+scrx 3 1 60749 1000
+scrx 3 1 60749 1001
+scrx 2 12 60749 1
+scrx 2 12 60749 10
+scrx 2 12 60749 1000
+scrx 2 12 60749 1001
+
+* ...Maison lift
+scrx 3 1 60702 1
+scrx 3 1 60702 2
+scrx 3 1 60702 9
+scrx 3 1 60702 10
+scrx 3 1 60702 1000
+scrx 3 1 60702 1001
+scrx 2 12 60702 10
+scrx 2 12 60702 1000
+scrx 2 12 60702 1001
+
+* ...Pomley
+scrx 1 1 60735 9
+scrx 2 8 60736 4
+scrx 2 8 60736 6
+scrx 2 8 60736 9
+scrx 2 8 60736 12
+scrx 2 10 60737 9
+scrx 2 10 60737 12
+scrx 1 1 60732 9
+
+* ...Grapes
+scrx 1 1 60723 9
+scrx 1 1 60723 1000
+scrx 2 4 60723 1
+scrx 2 4 60723 3
+scrx 2 8 60723 9
+scrx 2 8 60723 12
+
+
+* Remove C3 sea life scripts
+
+scrx 2 15 60700 9
+
+scrx 2 15 60701 4
+scrx 2 15 60701 5
+scrx 2 15 60701 9
+scrx 2 15 60701 10
+scrx 2 15 60701 12
+
+scrx 2 15 60702 4
+scrx 2 15 60702 5
+scrx 2 15 60702 9
+scrx 2 15 60702 10
+scrx 2 15 60702 12
+
+scrx 2 15 60703 4
+scrx 2 15 60703 5
+scrx 2 15 60703 9
+scrx 2 15 60703 10
+scrx 2 15 60703 12
+
+scrx 2 15 60704 4
+scrx 2 15 60704 5
+scrx 2 15 60704 9
+scrx 2 15 60704 10
+scrx 2 15 60704 12
+
+scrx 2 15 60705 10
+
+scrx 2 15 60706 10
+
+scrx 2 15 60707 10
+
+scrx 2 15 60708 9
+scrx 2 15 60708 10
+
+scrx 2 15 60709 10
+
+* Remove additional CA links
+
+link grap 96582 4873 grap 96582 5059 0
+link grap 96582 5059 grap 96582 5502 0
+link grap 96582 5502 grap 96582 5758 0
+link grap 96582 5758 grap 96582 5958 0
+
+link grap 92584 4729 grap 92607 4993 0
+link grap 92607 4993 grap 92590 5251 0
+
+link grap 93562 5110 grap 93658 5249 0
+link grap 93658 5249 grap 93633 5846 0
+
+link grap 94187 5990 grap 94182 6549 0
+
+link grap 98051 5197 grap 98051 5585 0
+link grap 98051 5585 grap 98051 5747 0
+link grap 98051 5747 grap 98051 5969 0
+link grap 98051 5969 grap 98051 6164 0
+
+* Remove rooms
+
+sets va02 erid va00
+loop
+  setv va03 sins va02 1 " "
+  doif va03 ne -1
+    setv va04 va03
+    subv va03 1
+    addv va04 1
+    * Get a room ID
+    sets va05 subs va02 1 va03
+    * Remove this from the list
+    setv va06 strl va02
+    subv va06 va03
+    subv va06 1
+    sets va02 subs va02 va04 va06
+    doif va05 ne ""
+      delr stoi va05
+    endi
+  endi
+untl va03 eq -1
+delr stoi va02
+delm va00
+
+* Remove room favourite icon
+
+enum 1 3 60700
+  kill targ
+next
+enum 1 4 60700
+  setv va50 ov50
+  kill targ
+next
+* Move subsequent icons left a position
+enum 1 4 0
+  doif ov50 > va50
+    subv ov50 1
+    setv va02 ov50
+    mulv va02 50
+    addv va02 145
+    flto va02 0
+  endi
+next
+subv game "ds_favourites" 1

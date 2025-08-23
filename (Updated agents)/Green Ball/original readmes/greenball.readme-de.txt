@@ -1,0 +1,14 @@
+~Green Ball für C3 und DS+C3~
+
+Green Ball verwendet die Sprites des Balls aus Creatures 1, grün eingefärbt, und macht den Wesen mehr Spaß als der in Creatures 3 enthaltene Ball.
+__________________________________
+readme-de: Mairenn
+http://www.germancreatures.net/
+
+Copyright: Green Ball unterliegt dem Copyright von
+Uttar
+uttar@skynet.be
+
+Mai 2003
+__________________________________
+ 

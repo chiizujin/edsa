@@ -8,6 +8,9 @@ There is (and has been for some time) an *unofficial* [mirror](http://www.creatu
 
 ### Latest updates
 
+**2025-08-23**
+- Green Ball Docking Station update released. Original agent by Uttar and Tim.
+
 **2025-08-19**
 - Really (I think) Fixed the Norn of Infertility script error.
 - Infirmary removal script now corrects the DS favourite count.
@@ -111,7 +114,11 @@ When injected, this agent removes the Ettin and Grendel egg layers from the curr
 
 ## ※ Infirmary (Docking Station update) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/(Updated%20agents)/Infirmary/Infirmary%20(DS%20update).zip))
 
-This is an update of the Creatures 3 Infirmary metaroom by Lis Morris to enable it to be fully compatible with undocked Docking Station worlds. It is based on version 1.3.
+An update of the Creatures 3 Infirmary metaroom by Lis Morris to enable it to be fully compatible with undocked Docking Station worlds. It is based on version 1.3.
+
+## ※ Green Ball (Docking Station update) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/(Updated%20agents)/Green%20Ball/Green%20Ball%20(DS%20update).zip))
+
+An update of the Creatures 3 Green Ball agent by Uttar and Tim to enable it to be fully compatible with undocked Docking Station worlds.
 
 # Hosted agents
 

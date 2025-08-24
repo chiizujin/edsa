@@ -33,10 +33,9 @@ scrp 2 21 62500 1
 		setv va02 rand -25 -15
 	endi
 	anim [0 1 2 3 4 5 6 7 255]
+  tick 10
 	velo va02 rand -70 -20
-
 endm
-
 
 scrp 2 21 62500 2
 	inst
@@ -55,25 +54,22 @@ scrp 2 21 62500 2
 		setv va02 rand -25 -15
 	endi
 	anim [0 1 2 3 4 5 6 7 255]
+  tick 10
 	velo va02 rand 20 70
 endm
-
 
 scrp 2 21 62500 4
 	anim []
 endm
 
-
 scrp 2 21 62500 5
 	anim [0 1 2 3 4 5 6 7 255]
+  tick 10
 endm
-
 
 scrp 2 21 62500 6
 	inst
-
 	urge sign 0.5 -1 0.0
-
 	setv va00 vely
 	doif va00 lt 0
 		negv va00
@@ -81,7 +77,6 @@ scrp 2 21 62500 6
 	doif va00 gt 1
 		snde "boi2"
 	endi
-
 	setv va00 _p1_
 	setv va01 _p2_
 	doif va00 lt 0
@@ -95,20 +90,15 @@ scrp 2 21 62500 6
 	endi
 endm
 
-
-
-
-
-
-
-
-
-
-
-
-
+scrp 2 21 62500 9
+  doif velx eq 0 and vely eq 0
+    anim []
+    tick 0
+  endi
+endm
 
 rscr
+
 enum 2 21 62500
 	kill targ
 next
@@ -117,3 +107,4 @@ scrx 2 21 62500 2
 scrx 2 21 62500 4
 scrx 2 21 62500 5
 scrx 2 21 62500 6
+scrx 2 21 62500 9

@@ -8,6 +8,9 @@ There is (and has been for some time) an *unofficial* [mirror](http://www.creatu
 
 ### Latest updates
 
+**2025-08-24**
+- Fixed Green Ball perpetual spinning and remove script.
+
 **2025-08-23**
 - Green Ball Docking Station update released. Original agent by Uttar and Tim.
 

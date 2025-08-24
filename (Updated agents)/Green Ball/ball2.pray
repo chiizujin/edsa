@@ -11,7 +11,7 @@ group AGNT "Green Ball"
   "Agent Animation String" "0"
   "Agent Description" "Oooh! Aaah! Isn't that pretty."
   "Dependency 1" "ball2.c16"
-  "Remove script" "enum 2 21 62500 kill targ next"
+  "Remove script" "enum 2 21 62500 kill targ next scrx 2 21 62500 1 scrx 2 21 62500 2 scrx 2 21 62500 4 scrx 2 21 62500 5 scrx 2 21 62500 6 scrx 2 21 62500 9"
   "Script 1" @ "ball2.cos"
 
 inline FILE "ball2.c16" "ball2.c16"

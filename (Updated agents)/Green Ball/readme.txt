@@ -1,4 +1,4 @@
-Green Ball - Docking Station Update (1.0)
+Green Ball - Docking Station Update (1.1)
 
 This is an update of the Green Ball by Uttar and Tim to enable it to be fully
 compatible with undocked Docking Station worlds.
@@ -17,6 +17,12 @@ Credits
 -------
 Original agent:          Uttar and Tim
 DS compatibility update: Emmental
+
+Version history
+---------------
+1.1
+- Prevented perpetual spinning.
+- Updated PRAY uninstall script with missing script removals.
 
 Emmental
 https://github.com/chiizujin/edsa

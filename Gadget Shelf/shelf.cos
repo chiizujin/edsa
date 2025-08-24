@@ -1,0 +1,23 @@
+new: vhcl 1 1 32229 "gadget shelf" 1 0 300
+attr 202
+fric 100
+aero 100
+accg 0
+bhvr 0
+
+cabn 0 0 177 106
+puhl 0 89 108
+
+doif gmap 6100 9200 ne -1
+  * DS if the Comms Room exists (even if docked)
+  mvsf 6042 9131
+else
+  * Otherwise C3
+  mvsf 5633 3555
+endi
+
+rscr
+
+enum 1 1 32229
+  kill targ
+next

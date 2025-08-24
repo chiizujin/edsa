@@ -1,0 +1,37 @@
+"en-GB"
+
+group DSAG "Gadget Shelf "
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "gadget shelf.c16"
+"Dependency 2" "gadget shelf.catalogue"
+"Dependency Category 1" 2
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "shelf.cos"
+"Agent Description" "A shelf on which to put gadgets to keep them out of reach of mischievous hands."
+"Agent Animation File" "gadget shelf.c16"
+"Agent Animation Gallery" "gadget shelf"
+"Web URL" "github.com/chiizujin/edsa"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32229 kill targ next"
+
+group AGNT "Gadget Shelf"
+"Agent Type" 0
+"Dependency Count" 1
+"Dependency 1" "gadget shelf.c16"
+"Dependency Category 1" 2
+
+"Script Count" 1
+"Script 1" @ "shelf.cos"
+"Agent Description" "A shelf on which to put gadgets to keep them out of reach of mischievous hands."
+"Agent Animation File" "gadget shelf.c16"
+"Agent Animation Gallery" "gadget shelf"
+"Agent Animation String" "0"
+
+"Remove script" "enum 1 1 32229 kill targ next"
+
+inline FILE "gadget shelf.c16" "gadget shelf.c16"
+inline FILE "gadget shelf.catalogue" "gadget shelf.catalogue"

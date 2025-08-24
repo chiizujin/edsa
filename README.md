@@ -9,6 +9,7 @@ There is (and has been for some time) an *unofficial* [mirror](http://www.creatu
 ### Latest updates
 
 **2025-08-24**
+- New agent: Gadget Shelf.
 - Fixed Green Ball perpetual spinning and remove script.
 
 **2025-08-23**
@@ -35,6 +36,16 @@ If you just want the agent to install into your game then all you need is the **
 
 These little bugs are tasty and fun for creatures to eat, but if left alone long enough they have a little surprise in store.
 
+## ※ C3-in-DS
+
+A series of agents that re-create areas of the Shee Starhip from Creatures 3 in undocked Docking Station worlds. You must have Creatures 3 installed to use these. They include:
+
+- Norn Terrarium ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/C3%20in%20DS/Norn/c3%20in%20ds%20-%20norn.zip))
+- Aquarium ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/C3%20in%20DS/Aquarium/c3%20in%20ds%20-%20aquarium.zip))
+- Ettin Desert ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/C3%20in%20DS/Ettin/c3%20in%20ds%20-%20ettin.zip))
+- Grendel Jungle ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/C3%20in%20DS/Grendel/c3%20in%20ds%20-%20grendel.zip))
+- Crypt ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/C3%20in%20DS/Crypt/c3%20in%20ds%20-%20crypt.zip))
+
 ## ※ Camera Fixer ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Camera%20Fixer/camera%20fixer.zip))
 
 Use this to keep your Docking Station cameras in place.
@@ -43,13 +54,17 @@ Use this to keep your Docking Station cameras in place.
 
 This control panel allows you to make the training dummy moveable by the hand.
 
+## ※ Egg Layer Remover ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Layer%20Remover/egg%20layer%20remover.zip))
+
+When injected, this agent removes the Ettin and Grendel egg layers from the current world. This is useful for people who would like to use the C3-in-DS meta-room agents but do not want Ettins or Grendels in their world.
+
 ## ※ Electronic Butler ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Electronic%20Butler/electronic%20butler.zip))
 
 This electronic device monitors the speech of creatures anywhere in the world. Any complaining of hunger or boredom are served up with the appropriate food or a toy. Food is created anew and toys are selected from what's already in the world and moved near the creature.
 
-## ※ Selective Force Field ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Force%20Field/force%20field.zip))
+## ※ Gadget Shelf ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Gadget%20Shelf/gadget%20shelf.zip))
 
-This force field can be configured to prevent certain types of creatures from passing, based on race and life stage.
+Are you fed up of Ettins, and even Norns, messing with your connectable agents? If so then put them up on a shelf where they can't reach them.
 
 ## ※ Home Spray ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Home%20Spray/home%20spray.zip))
 
@@ -91,6 +106,10 @@ SunlitMiracle updated Medical Monitor and Norn Statistics to include additional 
 
 This robotic spider-rock wanders around the world, occasionally releasing sprays as needed. If any bacteria are nearby then an anti-bacterial spray is released, and if any creatures are nearby then either a curing spray or a "feel-good" spray is released.
 
+## ※ Selective Force Field ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Force%20Field/force%20field.zip))
+
+This force field can be configured to prevent certain types of creatures from passing, based on race and life stage.
+
 ## ※ Towel ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Towel/towel.zip))
 
 A tribute to Douglas Adams.
@@ -98,20 +117,6 @@ A tribute to Douglas Adams.
 ## ※ Trapper Planter ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Trapper%20Planter/trapper%20planter.zip))
 
 This useful tool allows you to plant extra trappers almost anywhere in your world to help get rid of pesky bugs.
-
-## ※ C3-in-DS
-
-A series of agents that re-create areas of the Shee Starhip from Creatures 3 in undocked Docking Station worlds. You must have Creatures 3 installed to use these. They include:
-
-- Norn Terrarium ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/C3%20in%20DS/Norn/c3%20in%20ds%20-%20norn.zip))
-- Aquarium ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/C3%20in%20DS/Aquarium/c3%20in%20ds%20-%20aquarium.zip))
-- Ettin Desert ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/C3%20in%20DS/Ettin/c3%20in%20ds%20-%20ettin.zip))
-- Grendel Jungle ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/C3%20in%20DS/Grendel/c3%20in%20ds%20-%20grendel.zip))
-- Crypt ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/C3%20in%20DS/Crypt/c3%20in%20ds%20-%20crypt.zip))
-
-### ※ Egg Layer Remover ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Layer%20Remover/egg%20layer%20remover.zip))
-
-When injected, this agent removes the Ettin and Grendel egg layers from the current world. This is useful for people who would like to use the C3-in-DS meta-room agents but do not want Ettins or Grendels in their world.
 
 # Agent updates
 

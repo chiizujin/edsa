@@ -75,6 +75,12 @@ enum 1 1 129
     kill targ
   endi
 next
+* ...Chopper toy
+enum 1 1 120
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
 * ...Hawk
 enum 1 1 43
   doif gmap posx posy eq va00
@@ -190,6 +196,7 @@ enum 3 0 0
 next
 
 * Other agents
+* ...Old terrarium doors
 enum 1 1 32225
   doif gmap posx posy eq va00
     kill targ

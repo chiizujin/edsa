@@ -1,0 +1,128 @@
+inst
+
+new: simp 2 21 7 "choppertoy" 2 0 5000
+attr 199
+bhvr 35
+clac 0
+elas 0
+accg 2
+fric 100
+perm 60
+mvto 1639 700
+setv ov61 100
+
+scrp 2 21 7 1
+  inst
+  doif carr ne game "c3_inventory"
+    sndc "ct_1"
+    stim writ from 97 1
+    clac -1
+    setv va00 posl
+    setv va01 post
+    addv va00 1
+    subv va01 1
+    new: simp 2 21 8 "choppertoy" 23 2 5001
+    attr 192
+    elas 0
+    perm 60
+    fric 100
+    doif tmvt va00 va01 eq 1
+      mvto va00 va01
+    else
+      mvsf va00 va01
+    endi
+    setv vely -10
+    anim [0 1 2 255]
+    tick 2
+    targ ownr
+    pose 1
+    tick 30
+  endi
+endm
+
+scrp 2 21 7 2
+  inst
+  doif carr ne game "c3_inventory"
+    sndc "ct_1"
+    stim writ from 97 1
+    clac -1
+    setv va00 posl
+    setv va01 post
+    addv va00 1
+    subv va01 1
+    new: simp 2 21 8 "choppertoy" 23 2 5001
+    attr 192
+    elas 0
+    fric 100
+    perm 60
+    doif tmvt va00 va01 eq 1
+      mvto va00 va01
+    else
+      mvsf va00 va01
+    endi
+    setv vely -10
+    anim [0 1 2 255]
+    tick 2
+    targ ownr
+    pose 1
+    tick 30
+  endi
+endm
+
+scrp 2 21 7 9
+  pose 0
+  tick 0
+  clac 0
+endm
+
+scrp 2 21 8 9
+  doif ov00 eq 1
+    doif fall eq 0
+      velo 0 -2
+    endi
+  endi
+
+  doif ov00 eq 0
+    doif vely ge 0
+      setv ov00 1
+      anim [3 4 5 6 7 8 9 10 11 12 13 14]
+      over
+      sndl "ct_2"
+      setv va99 rand 2 4
+      setv va98 rand 0 1
+      doif va98 eq 0
+        mulv va99 -1
+      endi
+      setv velx va99
+      anim [15 16 17 18 19 20 21 22 255]
+    endi
+  endi
+endm
+
+scrp 2 21 8 6
+  inst
+  doif wall eq down
+    fade
+    setv va00 posl
+    setv va01 post
+    subv va00 30
+    subv va01 20
+    sndc "ct_4"
+    new: simp 1 1 120 "choppertoy" 7 25 5005
+    mvto va00 va01
+    anim [0 1 2 3 4 5 6]
+    slow
+    lock
+    over
+    kill targ
+    kill ownr
+  endi
+endm
+
+rscr
+enum 2 21 7
+  kill targ
+next
+enum 2 21 8
+  kill targ
+next

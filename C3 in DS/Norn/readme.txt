@@ -72,6 +72,7 @@ Version history
   others.
 - Removing the meta-room no longer breaks some of the game's functionality.
 - Bioenergy now increases (as intended).
+- Added chopper toy.
 
 Emmental
 https://github.com/chiizujin/edsa

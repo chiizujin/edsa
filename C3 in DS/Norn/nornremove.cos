@@ -9,9 +9,6 @@ doif va01 eq 0
   stop
 endi
 
-* Move camera back to meso
-cmrp 500 9200 0
-
 * Enumerate norn area agent to get meta-room ID
 enum 1 1 32224
   setv va00 ov00
@@ -62,24 +59,125 @@ enum 3 9 1
       * Close portal
       lock
       sndc "por2"
-**      stop timer
-*      tick 0
       bhvr 0
       setv ov03 0
       anim [18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0]
-*      over
       attr 199
       clac 2
     endi
   endi
 next
 
-* Remove all agents
-enum 1 0 0
+* Remove specific agents of family 1
+* ...Apples
+enum 1 1 129
   doif gmap posx posy eq va00
     kill targ
   endi
 next
+* ...Hawk
+enum 1 1 43
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+enum 1 1 21
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+* ...Hover vehicle
+enum 1 1 110
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+enum 1 1 43
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+* ...Kingfisher
+enum 1 1 5
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+* ...Light & heat emitters NT
+enum 1 1 12
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+enum 1 1 13
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+enum 1 1 14
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+* ...Norn atmosphere machine
+enum 1 1 23
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+enum 1 1 17
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+* ...Norn cutaways 01
+enum 1 1 2
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+enum 1 1 3
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+enum 1 1 4
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+* ...Norn egg layer
+enum 1 1 131
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+* ...Norn platform
+enum 1 1 98
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+* ...Seed launcher
+enum 1 1 109
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+* ...Water smell emitter
+enum 1 1 15
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+* ...Wetness monitor and designator
+enum 1 1 106
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+
+* Remove all agents of families 2 and 3
 enum 2 0 0
   doif gmap posx posy eq va00
     kill targ
@@ -90,6 +188,22 @@ enum 3 0 0
     kill targ
   endi
 next
+
+* Other agents
+enum 1 1 32225
+  doif gmap posx posy eq va00
+    kill targ
+  endi
+next
+
+* Bioengergy incrementer - only remove if there are no other C3-in-DS rooms
+rtar 1 1 105
+subv ov01 1
+doif ov01 eq 0
+  kill targ
+endi
+rtar 1 1 32224
+kill targ
 
 * Set LINKs to 0 otherwise the game will crash hugely
 setv va66 grap 1400 500
@@ -138,12 +252,26 @@ enum 1 1 32224
 next
 scrx 1 1 32224 9
 
+* Delete room favourite icon
+enum 1 3 1
+  kill targ
+next
+enum 1 4 1
+  setv va50 ov50
+  kill targ
+next
+enum 1 4 0
+  doif ov50 > va50
+    subv ov50 1
+    setv va02 ov50
+    mulv va02 50
+    addv va02 145
+    flto va02 0
+  endi
+next
+subv game "ds_favourites" 1
+
 * Re-create splash screen room
 brmi 0 0
 setv va00 addm 0 0 800 600 "DS_splash"
 mmsc 100 100 "ds_music.mng\\StringsSolo"
-* Re-inject favourite places icons
-ject "new_ds_fav_places.cos" 7
-* Re-inject norn/attention indicators
-ject "ds norn indicator.cos" 7
-ject "ds object of attention indicator.cos" 7

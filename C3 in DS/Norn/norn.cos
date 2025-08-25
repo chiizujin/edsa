@@ -443,57 +443,64 @@ mvto 891 698
 pose 11
 
 * Populate with agents
-ject "apples.cos" 7
-ject "beatbox.cos" 7
-ject "bee.cos" 7
-ject "bluebell.cos" 7
-ject "bongo_drums.cos" 7
-ject "butterfly.cos" 7
-ject "carrot.cos" 7
-ject "environmental controls.cos" 7
-ject "grass.cos" 7
-ject "grasshopper.cos" 7
-ject "grazer2.cos" 7
-ject "hatchery2.cos" 7
-ject "hawk.cos" 7
-ject "hedgehog.cos" 7
-ject "home smell emitters.cos" 7
-ject "hoppity.cos" 7
-ject "hover vehicle.cos" 7
-ject "hummingbird.cos" 7
-ject "internal terrarium door.cos" 7
-ject "kingfisher.cos" 7
-ject "light & heat emitters nt.cos" 7
-ject "norn atmosphere machine.cos" 7
-ject "norn cutaways 01.cos" 7
-ject "norn egg layer.cos" 7
-ject "norn platform.cos" 7
-ject "norn seed launcher.cos" 7
-ject "plant model - foxglove flower.cos" 7
-ject "plant model - foxglove leaf.cos" 7
-ject "plant model - foxglove plant.cos" 7
-ject "plant model - foxglove seed.cos" 7
-ject "pumperspikel.cos" 7
-ject "robin2.cos" 7
-ject "sludge gun.cos" 7
-ject "snail.cos" 7
-ject "stickleback.cos" 7
-ject "water smell emitter.cos" 7
-ject "waterplant.cos" 7
-ject "wetness monitor and designator.cos" 7
-ject "woodpigeon2.cos" 7
+ject "ant.cos" 6
+ject "apples.cos" 6
+ject "beatbox.cos" 6
+ject "bee.cos" 6
+ject "bluebell.cos" 6
+ject "bongo_drums.cos" 6
+ject "Butterfly.cos" 6
+ject "Carrot.cos" 6
+ject "dragonfly.cos" 6
+ject "environmental controls.cos" 6
+ject "grass.cos" 6
+ject "grasshopper.cos" 6
+ject "grazer2.cos" 6
+ject "Hatchery2.cos" 6
+ject "Hawk.cos" 6
+ject "hedgehog.cos" 6
+ject "Home smell emitters.cos" 6
+ject "hoppity.cos" 6
+ject "hover vehicle.cos" 6
+ject "Hummingbird.cos" 6
+ject "internal terrarium door.cos" 6
+ject "kingfisher.cos" 6
+ject "light & heat emitters NT.cos" 6
+ject "norn atmosphere machine.cos" 6
+ject "norn cutaways 01.cos" 6
+ject "norn platform.cos" 6
+ject "Norn seed launcher.cos" 6
+ject "PLANT MODEL - foxglove Flower.cos" 6
+ject "PLANT MODEL - foxglove Leaf.cos" 6
+ject "PLANT MODEL - foxglove plant.cos" 6
+ject "PLANT MODEL - foxglove Seed.cos" 6
+ject "pumperspikel.cos" 6
+ject "Robin2.cos" 6
+ject "sludge gun.cos" 6
+ject "snail.cos" 6
+ject "stickleback.cos" 6
+ject "Water smell emitter.cos" 6
+ject "waterplant.cos" 6
+ject "wetness monitor and designator.cos" 6
+ject "woodpigeon2.cos" 6
 
-* Kill all other bioenergy incrementers
-enum 1 1 105
-  kill targ
-next
-* Bioengergy incrementer
-new: simp 1 1 105 "blnk" 0 0 0
-mvto 1000 300
-tick 100
-
-* Set up bioenergy initially
-setv game "Bioenergy" 1000
+* Bioengergy incrementer - shared with all C3-in-DS metarooms
+rtar 1 1 105
+doif targ eq null
+  new: simp 1 1 105 "blnk" 0 0 0
+  tick 100
+  setv game "Bioenergy" 1000
+  setv ov01 1
+else
+  addv ov01 1
+endi
+scrp 1 1 105 9
+	doif game "Bioenergy" < 1000
+		addv game "Bioenergy" 1
+	else
+		setv game "Bioenergy" 1000
+	endi
+endm
 
 * New teleporter in terrarium
 new: comp 3 2 32204 "c3indsnorn" 5 0 2
@@ -519,15 +526,16 @@ elas 0
 setv ov00 2
 mvto 782 8852
 
+* Create the signpost if it doesn't exist
+rtar 1 3 1
+doif targ eq null
+  new: simp 1 3 1 "fav_place_norn" 1 0 1
+  attr 272
+  mvto 2972 848
+  tick 10
+endi
 * Move to where the signpost is so the favourite place icon gets created
-enum 1 3 1
-  cmrp posx posy 0
-next
-
-* Move to where the signpost is so the favourite place icon gets created
-enum 1 3 1
-  cmrp posx posy 0
-next
+cmrp posx posy 0
 
 * Additional script to control hatchery
 scrp 1 1 32224 9

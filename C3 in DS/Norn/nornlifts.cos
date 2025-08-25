@@ -1,4 +1,4 @@
-inst 
+inst
 
 * Abort if already present (scripts will still be installed)
 setv va01 0
@@ -25,7 +25,6 @@ enum 1 1 32224
 next
 
 * Null checking ov16 was giving errors for some reason so decimal ov17 was added for checking instead
-
 new: simp 2 12 2 "lift" 2 14 5000
 bhvr 1
 attr 4
@@ -38,11 +37,8 @@ seta ov16 null
 setv ov17 0
 prt: inew 0 "lift call button in" "reads in data" 37 9 1000
 prt: onew 0 "lift call button out" "outputs input data or lift call state" 38 20
-
 mvto 1301 490
-
 pose 0
-
 setv va66 grap 1400 500
 
 new: simp 2 12 2 "lift" 2 14 5000
@@ -57,11 +53,8 @@ seta ov16 null
 setv ov17 0
 prt: inew 0 "lift call button in" "reads in data" 37 9 1000
 prt: onew 0 "lift call button out" "outputs input data or lift call state" 38 20
-
 mvto 1475 740
-
 pose 0
-
 setv va67 grap 1400 760
 link va66 va67 100
 
@@ -77,11 +70,8 @@ seta ov16 null
 setv ov17 0
 prt: inew 0 "lift call button in" "reads in data" 37 9 1000
 prt: onew 0 "lift call button out" "outputs input data or lift call state" 38 20
-
 mvto 1301 918
-
 pose 0
-
 setv va66 grap 1400 930
 link va66 va67 100
 
@@ -93,20 +83,15 @@ elas 0
 setv ov80 0
 mvto 1351 674
 seta ov99 null
-
 pat: dull 1 "lift" 4 0 0 200
-
 cabn 0 0 121 144
 cabw 5
-
 pat: butt 2 "lift" 16 7 52 68 0 [] 2000 1
 pat: butt 3 "lift" 16 7 52 82 0 [] 2001 1
-
 part 2
 anim [4]
 part 3
 anim [5]
-
 seta va00 targ
 enum 2 12 2
 *  doif ov16 = null
@@ -116,7 +101,6 @@ enum 2 12 2
   endi
 next
 targ va00
-
 part 1
 anim [7]
 
@@ -132,11 +116,8 @@ seta ov16 null
 setv ov17 0
 prt: inew 0 "lift call button in" "reads in data" 37 9 1000
 prt: onew 0 "lift call button out" "outputs input data or lift call state" 38 20
-
 mvto 2700 250
-
 pose 0
-
 setv va66 grap 2818 256
 
 new: simp 2 12 2 "lift" 2 14 5000
@@ -151,11 +132,8 @@ seta ov16 null
 setv ov17 0
 prt: inew 0 "lift call button in" "reads in data" 37 9 1000
 prt: onew 0 "lift call button out" "outputs input data or lift call state" 38 20
-
 mvto 2700 488
-
 pose 0
-
 setv va67 grap 2818 475
 link va66 va67 100
 
@@ -171,11 +149,8 @@ seta ov16 null
 setv ov17 0
 prt: inew 0 "lift call button in" "reads in data" 37 9 1000
 prt: onew 0 "lift call button out" "outputs input data or lift call state" 38 20
-
 mvto 2700 795
-
 pose 0
-
 setv va66 grap 2818 760
 link va66 va67 100
 
@@ -187,19 +162,15 @@ elas 0
 setv ov80 0
 mvto 2780 724
 seta ov99 null
-
 pat: dull 1 "lift" 4 0 0 200
 cabn 0 0 121 144
 cabw 5
-
 pat: butt 2 "lift" 16 7 52 68 0 [] 2000 1
 pat: butt 3 "lift" 16 7 52 82 0 [] 2001 1
-
 part 2
 anim [4]
 part 3
 anim [5]
-
 seta va00 targ
 enum 2 12 2
 *  doif ov16 = null
@@ -209,10 +180,8 @@ enum 2 12 2
   endi
 next
 targ va00
-
 part 1
 anim [7]
-
 
 scrp 2 12 2 1
   inst

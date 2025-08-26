@@ -1,0 +1,21 @@
+"en-GB"
+
+group AGNT "Pond Fish Food"
+"Agent Bioenergy Value" 1
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "pondfishfood.c16"
+"Dependency 2" "pondfishfood.catalogue"
+"Dependency Category 1" 2
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "pondfishfood.cos"
+"Agent Animation File" "pondfishfood.c16"
+"Agent Animation Gallery" "pondfishfood"
+"Agent Animation String" "0"
+"Agent Description" "Feeds the terrarium pond fish."
+"Remove script" "enum 2 13 41000 kill targ next scrx 2 13 41000"
+
+inline FILE "pondfishfood.c16" "pondfishfood.c16"
+inline FILE "pondfishfood.catalogue" "pondfishfood.catalogue"

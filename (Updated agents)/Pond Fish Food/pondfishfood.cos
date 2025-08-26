@@ -1,0 +1,31 @@
+inst
+
+new: simp 2 13 41000 "pondfishfood" 1 0 1000
+attr 195
+bhvr 48
+perm 60
+elas 20
+fric 50
+accg 3
+
+doif gmap 3682 1048 ne -1
+	* Create in the pond if it exists
+	mvto 3682 1048
+	cmrt 0
+else
+  * Otherwise assume this is undocked DS and create in the workshop
+	mvto 6100 9200
+endi
+
+scrp 2 13 41000 12
+	lock
+	sndc "chwp"
+	stim writ from 79 1
+endm
+
+rscr
+
+enum 2 13 41000
+	kill targ
+next
+scrx 2 13 41000 1

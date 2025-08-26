@@ -633,7 +633,7 @@ scrp 3 2 32204 1
     doif targ ne null
       doif tmvf va01 va02 eq 1
         mvft va01 va02
-        stim writ targ 95 1
+        stim writ targ 95 2
       else
         * Play error sound if no room on other end
         snde "buzz"

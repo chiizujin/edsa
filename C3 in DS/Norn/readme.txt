@@ -33,7 +33,7 @@ General notes
 -------------
 - It's probably a good idea to save the world before injecting or removing the
   meta-room by pressing CTRL+R. Then if anything does go wrong you can quit the
-  game without saving by pressing CTRL-Break.
+  game without saving by pressing CTRL+Break.
 
 - If you hear a "buzz" noise when a creature tries to use a teleporter or when
   the hand tries to use it then that means a valid location could not be found
@@ -74,6 +74,8 @@ Version history
 - Removed hard-coded room IDs from metaroom 0 removal script.
 - Fixed script error when selecting certain Norns in the egg layer.
 - Added chopper toy.
+- The stimulus for using the teleporters has been increased to lessen the
+  likelihood of a creature immediately returning.
 
 Emmental
 https://github.com/chiizujin/edsa

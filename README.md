@@ -6,6 +6,10 @@ Most of my agents are also mirrored at [Eem Foo's Archive](https://eem.foo/). Th
 
 There is (and has been for some time) an *unofficial* [mirror](http://www.creaturesvillage.com/emmental/) of one of my previous sites. This is likely no longer maintained.
 
+### Downloading
+
+If you just want the agent to install into your game then all you need is the **.zip** file from the appropriate directory. This is linked beside the agent's name. The rest of the files in each directory are the sources used to build the agent.
+
 ### Latest updates
 
 **2025-08-25**
@@ -18,9 +22,7 @@ There is (and has been for some time) an *unofficial* [mirror](http://www.creatu
 **2025-08-23**
 - Green Ball Docking Station update released. Original agent by Uttar and Tim.
 
-### Downloading
-
-If you just want the agent to install into your game then all you need is the **.zip** file from the appropriate directory. This is linked beside the agent's name. The rest of the files in each directory are the sources used to build the agent.
+([Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md))
 
 ## ※ Bounty Bugs ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Bounty%20Bugs/bounty%20bugs.zip))
 

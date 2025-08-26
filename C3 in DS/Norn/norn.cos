@@ -32,24 +32,36 @@ setv ov04 0
 * Timer for additional functions
 tick 5
 
-* Setup
-brmi 0 0
-
 * Check if meta-room 0 exists
 doif sins emid 1 " 0" ne -1
   * Check if is the splash screen
   doif bkds 0 eq "DS_splash"
-    doif erid 0 ne ""
-      delr 0
-      delr 1
-      delr 2
-      delr 3
+    sets va00 erid 0
+    doif va00 ne ""
+      * Delete rooms
+      setv va01 strl va00
+      subv va01 1
+      sets va00 subs va00 2 va01
+      loop
+        setv va01 stoi va00
+        delr va01
+        * Remove room ID from front of list
+        setv va01 sins va00 1 " "
+        setv va02 strl va00
+        subv va02 va01
+        addv va01 1
+        sets va00 subs va00 va01 va02
+      untl sins va00 1 " " eq -1
+      * Delete final room
+      setv va01 stoi va00
+      delr va01
     endi
     delm 0
   endi
 endi
 
 * Create meta-room
+brmi 0 0
 setv ov00 addm 0 0 4112 1300 "norn3.0"
 mmsc 2056 650 "main.mng\\vivariumgarden"
 

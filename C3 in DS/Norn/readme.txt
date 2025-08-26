@@ -67,11 +67,12 @@ Thanks
 Version history
 ---------------
 1.1
-- Fixed script error when selecting certain Norns in the egg layer.
 - The favourite place icon is now removed gracefully without removing all of the
   others.
 - Removing the meta-room no longer breaks some of the game's functionality.
 - Bioenergy now increases (as intended).
+- Removed hard-coded room IDs from metaroom 0 removal script.
+- Fixed script error when selecting certain Norns in the egg layer.
 - Added chopper toy.
 
 Emmental

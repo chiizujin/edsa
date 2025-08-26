@@ -8,11 +8,13 @@ group DSAG "Norn Terrarium"
 "Dependency 2" "c3indsnorn.catalogue"
 "Dependency Category 2" 7
 
-"Script Count" 4
+"Script Count" 6
 "Script 1" @ "norn.cos"
-"Script 2" @ "nornchoppertoy.cos"
-"Script 3" @ "nornlifts.cos"
-"Script 4" @ "nornegglayer.cos"
+"Script 2" @ "nornlifts.cos"
+"Script 3" @ "nornegglayer.cos"
+"Script 4" @ "nornant.cos"
+"Script 5" @ "norndragonfly.cos"
+"Script 6" @ "nornchoppertoy.cos"
 "Agent Description" "This agent re-creates the Norn Terrarium in undocked DS worlds."
 "Agent Animation File" "fav_place_norn.c16"
 "Agent Animation Gallery" "fav_place_norn"

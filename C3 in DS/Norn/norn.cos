@@ -1,21 +1,18 @@
 inst
 
-* Abort if already present (scripts will still be installed)
-setv va01 0
-enum 1 1 32224
-  setv va01 1
-next
-doif va01 eq 1
-  stop
-endi
-
-* Abort if a C3 or docked game (scripts will still be installed)
+* Abort if a C3 or docked game
 doif type game "ds_game_type" ne 2 or game "ds_game_type" eq "docked"
   stop
 endi
 
-* Abort if C3 not installed (scripts will still be installed)
+* Abort if C3 not installed
 doif eame "engine_no_auxiliary_bootstrap_1" ne 1
+  stop
+endi
+
+* Abort if already present
+rtar 1 1 32224
+doif targ ne null
   stop
 endi
 
@@ -455,7 +452,6 @@ mvto 891 698
 pose 11
 
 * Populate with agents
-ject "ant.cos" 6
 ject "apples.cos" 6
 ject "beatbox.cos" 6
 ject "bee.cos" 6
@@ -463,7 +459,6 @@ ject "bluebell.cos" 6
 ject "bongo_drums.cos" 6
 ject "Butterfly.cos" 6
 ject "Carrot.cos" 6
-ject "dragonfly.cos" 6
 ject "environmental controls.cos" 6
 ject "grass.cos" 6
 ject "grasshopper.cos" 6
@@ -506,13 +501,6 @@ doif targ eq null
 else
   addv ov01 1
 endi
-scrp 1 1 105 9
-	doif game "Bioenergy" < 1000
-		addv game "Bioenergy" 1
-	else
-		setv game "Bioenergy" 1000
-	endi
-endm
 
 * New teleporter in terrarium
 new: comp 3 2 32204 "c3indsnorn" 5 0 2
@@ -557,6 +545,15 @@ scrp 1 1 32224 9
   setv game "c3_max_norns" game "breeding_limit"
   mulv game "c3_max_norns" 3
   divv game "c3_max_norns" 2
+endm
+
+* Bioenergy script
+scrp 1 1 105 9
+	doif game "Bioenergy" < 1000
+		addv game "Bioenergy" 1
+	else
+		setv game "Bioenergy" 1000
+	endi
 endm
 
 * Additional scripts for bones

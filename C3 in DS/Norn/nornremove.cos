@@ -1,18 +1,13 @@
 inst
 
 * Check if present - abort if not
-setv va01 0
-enum 1 1 32224
-  setv va01 1
-next
-doif va01 eq 0
+rtar 1 1 32224
+doif targ eq null
   stop
 endi
 
-* Enumerate norn area agent to get meta-room ID
-enum 1 1 32224
-  setv va00 ov00
-next
+* Get meta-room ID
+setv va00 ov00
 
 * Delete teleporters
 enum 3 2 32204

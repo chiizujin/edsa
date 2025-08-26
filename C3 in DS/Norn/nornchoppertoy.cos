@@ -1,5 +1,24 @@
 inst
 
+* Abort if a C3 or docked game
+doif type game "ds_game_type" ne 2 or game "ds_game_type" eq "docked"
+  stop
+endi
+
+* Abort if C3 not installed
+doif eame "engine_no_auxiliary_bootstrap_1" ne 1
+  stop
+endi
+
+* Abort if already present
+setv va01 0
+rtar 1 1 32224
+doif ov05 eq 1
+  stop
+else
+  setv ov05 1
+endi
+
 new: simp 2 21 7 "choppertoy" 2 0 5000
 attr 199
 bhvr 35

@@ -6,7 +6,14 @@ Most of my agents are also mirrored at [Eem Foo's Archive](https://eem.foo/). Th
 
 There is (and has been for some time) an *unofficial* [mirror](http://www.creaturesvillage.com/emmental/) of one of my previous sites. This is likely no longer maintained.
 
+### Downloading
+
+If you just want the agent to install into your game then all you need is the **.zip** file from the appropriate directory. This is linked beside the agent's name. The rest of the files in each directory are the sources used to build the agent.
+
 ### Latest updates
+
+**2025-08-25**
+- Updated C3-in-DS Terrarium. See the *readme.txt* file for details.
 
 **2025-08-24**
 - New agent: Gadget Shelf.
@@ -15,22 +22,7 @@ There is (and has been for some time) an *unofficial* [mirror](http://www.creatu
 **2025-08-23**
 - Green Ball Docking Station update released. Original agent by Uttar and Tim.
 
-**2025-08-19**
-- Really (I think) Fixed the Norn of Infertility script error.
-- Infirmary removal script now corrects the DS favourite count.
-
-**2025-08-18**
-- Updated Bounty Bugs with a few small fixes.
-- Fixed missing dependency reference in Infirmary DS update installer.
-  **Note:** *You do not need to reinstall the agent if you have already installed it by manually copying iromcross2.c16 into the Images folder.*
-- Fixed an intermittent script error (maybe) and added SunlitMiracle's zombie check to the Norn of Intertility.
-
-**2025-08-16**
-- Infirmary Docking Station update released. Original agent by Lis Morris.
-
-### Downloading
-
-If you just want the agent to install into your game then all you need is the **.zip** file from the appropriate directory. This is linked beside the agent's name. The rest of the files in each directory are the sources used to build the agent.
+([Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md))
 
 ## ※ Bounty Bugs ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Bounty%20Bugs/bounty%20bugs.zip))
 

@@ -1,79 +1,57 @@
 inst
 
-* Abort if already present (scripts will still be installed)
-setv va01 0
-enum 1 1 32224
-  setv va01 ov04
-next
-doif va01 eq 1
-  stop
-endi
-
-* Abort if a C3 or docked game (scripts will still be installed)
+* Abort if a C3 or docked game
 doif type game "ds_game_type" ne 2 or game "ds_game_type" eq "docked"
   stop
 endi
 
-* Abort if C3 not installed (scripts will still be installed)
+* Abort if C3 not installed
 doif eame "engine_no_auxiliary_bootstrap_1" ne 1
   stop
 endi
 
-* Set dragonfly flag
-enum 1 1 32224
-  setv ov04 1
-next
+* Abort if already present
+setv va01 0
+rtar 1 1 32224
+doif ov02 eq 1
+  stop
+else
+  setv ov02 1
+endi
 
 new: comp 1 1 131 "infobar" 1 0 1
 attr 16
-
 pat: fixd 1 "infobar" 2 22 13 0 "whiteontransparentchars"
-
 part 1
 frmt 2 2 0 0 0 0 2
-
 mvto 700 820
 
-
 pray refr
-
 new: comp 3 3 30 "egglayer" 17 0 0
 attr 28
 clac 0
-
 pat: dull 1 "egglayer" 1 19 24 5
 part 1
 pose 4
-
 pat: dull 2 "egglayer" 7 23 89 1
-
 mvto 672 845
-
 
 new: comp 3 3 31 "egglayer" 10 17 0
 attr 16
-
 pat: butt 1 "egglayer" 18 2 112 30 0 [] 1000 0
 part 1
 anim [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255]
-
 pat: butt 2 "egglayer" 20 2 114 54 0 [] 1001 0
 part 2
 anim [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 255]
-
 pat: butt 3 "egglayer" 22 2 13 83 0 [] 1002 0
-
 pat: butt 4 "egglayer" 24 2 75 53 0 [] 1003 0
 part 4
 pose 1
-
 pat: butt 5 "egglayer" 26 2 76 33 0 [] 1004 0
-
-
-
 sets ov90 pray next "EGGS" ""
-doif pray test ov90 > 0
 
+doif pray test ov90 > 0
 	setv va23 pray file pray agts ov90 "Egg Glyph File" "blnk.s16" 2 1
 	doif pray test pray agts ov90 "Egg Glyph File 2" "blnk.s16" <> 0
 		setv va23 pray file pray agts ov90 "Egg Glyph File 2" "blnk.s16" 2 1
@@ -82,7 +60,6 @@ doif pray test ov90 > 0
 	part 6
 	anms pray agts ov90 "Egg Animation String" "0"
 	sets ov91 pray agts ov90 "Genetics File" "n*"
-
 	seta va98 targ
 	sets va99 ov90
 	rtar 1 1 131
@@ -91,37 +68,24 @@ doif pray test ov90 > 0
 		ptxt va99
 	endi
 	targ va98
-
 else
 	pat: dull 6 "blnk" 0 20 20 0
 	sets ov91 "n*"
 endi
 
-
-
-
-
-
-
 setv ov00 1
-
 mvto 736 845
-
 
 scrp 3 3 31 1000
 	sndc "sc_1"
 	lock
 	part 1
 	anim [1 0 1 0 1 0]
-
 	inst
 	pray refr
-
-
 	doif pray test ov90 eq 0
 		sets ov90 pray next "EGGS" ""
 	endi
-
 	sets ov90 pray next "EGGS" ov90
 	doif ov90 = ""
 		stop
@@ -132,55 +96,31 @@ scrp 3 3 31 1000
 		part 1
 		ptxt va99
 	endi
+
 	targ ownr
-
 	doif ov00 eq 1
-
 		part 6
-
 		setv va23 pray file pray agts ov90 "Egg Glyph File" "blnk.s16" 2 1
 		doif pray file pray agts ov90 "Egg Glyph File" "blnk.s16" 2 1 eq 1
 			gall "blnk" 0
-
 		else
-
-
-
-
-
-
-
 			anim [0]
 			gall pray agts ov90 "Egg Gallery male" "blnk" 0
-			anms pray agts ov90 "Egg Animation String" "0"
+			*anms pray agts ov90 "Egg Animation String" "0"
 		endi
 	elif ov00 eq 2
-
-
 		part 6
-
 		setv va23 pray file pray agts ov90 "Egg Glyph File 2" "blnk.s16" 2 1
 		doif pray file pray agts ov90 "Egg Glyph File 2" "blnk.s16" 2 1 eq 1
 			gall "blnk" 0
 		else
-
-
-
-
-
-
-
 			part 6
 			anim [0]
 			gall pray agts ov90 "Egg Gallery female" "blnk" 0
-			anms pray agts ov90 "Egg Animation String" "0"
+			*anms pray agts ov90 "Egg Animation String" "0"
 		endi
 	endi
 	sets ov91 pray agts ov90 "Genetics File" "n*"
-
-
-
-
 	slow
 	over
 	part 1
@@ -188,7 +128,6 @@ scrp 3 3 31 1000
 	part 2
 	anim [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 255]
 endm
-
 
 scrp 3 3 31 1003
 	sndc "pl_1"
@@ -200,8 +139,6 @@ scrp 3 3 31 1003
 	setv ov00 1
 
 	pray refr
-
-
 	doif pray test ov90 eq 0
 		sets ov90 pray next "EGGS" ""
 		sets va99 ov90
@@ -215,21 +152,14 @@ scrp 3 3 31 1003
 
 	part 6
 	doif pray test ov90 > 0
-
-
 		setv va23 pray file pray agts ov90 "Egg Glyph File" "blnk.s16" 2 1
 		doif pray file pray agts ov90 "Egg Glyph File" "blnk.s16" 2 1 eq 1
 			gall "blnk" 0
 			stop
 		endi
-
-
-
-
-
 		anim [0]
 		gall pray agts ov90 "Egg Gallery male" "blnk" 0
-		anms pray agts ov90 "Egg Animation String" "0"
+		*anms pray agts ov90 "Egg Animation String" "0"
 	endi
 endm
 
@@ -243,8 +173,6 @@ scrp 3 3 31 1004
 	setv ov00 2
 
 	pray refr
-
-
 	doif pray test ov90 eq 0
 		sets ov90 pray next "EGGS" ""
 		sets va99 ov90
@@ -257,22 +185,14 @@ scrp 3 3 31 1004
 	endi
 	part 6
 	doif pray test ov90 > 0
-
-
 		setv va23 pray file pray agts ov90 "Egg Glyph File 2" "blnk.s16" 2 1
 		doif pray file pray agts ov90 "Egg Glyph File 2" "blnk.s16" 2 1 eq 1
 			gall "blnk" 0
 			stop
 		endi
-
-
-
-
-
-
 		anim [0]
 		gall pray agts ov90 "Egg Gallery female" "blnk" 0
-		anms pray agts ov90 "Egg Animation String" "0"
+		*anms pray agts ov90 "Egg Animation String" "0"
 	endi
 endm
 
@@ -281,7 +201,6 @@ scrp 3 3 31 1001
 	lock
 	part 2
 	anim [1 0 1 0 1 0]
-
 	setv va00 ov00
 	rtar 3 3 30
 	doif targ ne null
@@ -294,8 +213,6 @@ scrp 3 3 31 1001
 	part 2
 	anim [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 255]
 endm
-
-
 
 scrp 3 3 30 1000
 	lock
@@ -325,7 +242,6 @@ scrp 3 3 30 1000
 	endi
 
 	setv va23 pray deps ov90 1
-
 	doif va23 ne 0
 		part 1
 		sndc "buzz"
@@ -339,19 +255,14 @@ scrp 3 3 30 1000
 		sets va99 ov91
 	endi
 	new: simp 3 4 1 "eggs" 8 va60 4
-
 	puhl 0 15 45
 	puhl 1 15 35
 	puhl 2 15 25
 	puhl 3 15 10
 	puhl 4 15 10
 	puhl 5 15 10
-
 	emit 11 0.65
-
-
 	gene load targ 1 va99
-
 	setv ov01 _p1_
 	elas 10
 	fric 100
@@ -361,9 +272,6 @@ scrp 3 3 30 1000
 	accg 4
 	perm 60
 	mvto va90 va91
-
-
-
 	tick 900
 
 	setv ov61 100
@@ -372,7 +280,6 @@ scrp 3 3 30 1000
 	anim [0 1 2 3 4]
 	over
 endm
-
 
 scrp 3 4 1 6
 	doif carr eq null

@@ -12,7 +12,7 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
-**2025-08-25**
+**2025-08-27**
 - Updated C3-in-DS Terrarium. See the *readme.txt* file for details.
 
 **2025-08-24**

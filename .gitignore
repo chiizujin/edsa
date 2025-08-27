@@ -3,6 +3,7 @@ notes.md
 
 *.agents
 *.exe
+*.DLL
 
 0_working/
 raw/

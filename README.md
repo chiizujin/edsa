@@ -14,6 +14,7 @@ If you just want the agent to install into your game then all you need is the **
 
 **2025-08-27**
 - Updated C3-in-DS Terrarium. See the *readme.txt* file for details.
+- Pond Fish Food Docking Station update released. Original agent by Spirit.
 
 **2025-08-24**
 - New agent: Gadget Shelf.
@@ -112,13 +113,17 @@ This useful tool allows you to plant extra trappers almost anywhere in your worl
 
 # Agent updates
 
-## ※ Infirmary (Docking Station update) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/(Updated%20agents)/Infirmary/Infirmary%20(DS%20update).zip))
+## ※ Pond Fish Food (Docking Station update) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/(Updated%20agents)/Pond%20Fish%20Food/Pond%20Fish%20Food%20(DS%20update).zip))
 
-An update of the Creatures 3 Infirmary metaroom by Lis Morris to enable it to be fully compatible with undocked Docking Station worlds. It is based on version 1.3.
+An update of the Creatures 3 Pond Fish Food agent by Spirit to enable it to be compatible with undocked Docking Station worlds.
 
 ## ※ Green Ball (Docking Station update) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/(Updated%20agents)/Green%20Ball/Green%20Ball%20(DS%20update).zip))
 
-An update of the Creatures 3 Green Ball agent by Uttar and Tim to enable it to be fully compatible with undocked Docking Station worlds.
+An update of the Creatures 3 Green Ball agent by Uttar and Tim to enable it to be compatible with undocked Docking Station worlds.
+
+## ※ Infirmary (Docking Station update) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/(Updated%20agents)/Infirmary/Infirmary%20(DS%20update).zip))
+
+An update of the Creatures 3 Infirmary metaroom by Lis Morris to enable it to be compatible with undocked Docking Station worlds. It is based on version 1.3.
 
 # Hosted agents
 

@@ -1,3 +1,6 @@
+**2025-08-23**
+- Green Ball Docking Station update released. Original agent by Uttar and Tim.
+
 **2025-08-19**
 - Really (I think) Fixed the Norn of Infertility script error.
 - Infirmary removal script now corrects the DS favourite count.

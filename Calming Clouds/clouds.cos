@@ -1,0 +1,128 @@
+* Abort if installed
+rtar 1 1 32234
+doif targ ne null
+  stop
+endi
+
+* Cloud controller
+new: simp 1 1 32234 "blnk" 1 0 0
+* This agent cheats a little by keeping a list of all Norns that have been
+* touched by a cloud and continues to keep them "calm", but with a lesser effect.
+* The list is cleared every 15 minutes. Relying solely on the clouds can be a
+* little hit-or-miss and can still allow pregnancies as the drives can regenerate
+* quickly. Arguably, it could just calm all Norns without the clouds but it feels
+* a bit more "natural" with them.
+sets ov00 ""
+tick 100
+
+* New clouds and cheat
+scrp 1 1 32234 9
+  addv ov01 1
+  * Clear the cheat list
+  doif ov01 gt 36
+    sets ov00 ""
+    setv ov01 0
+  endi
+  * Do cheat
+  inst
+  enum 4 1 0
+    doif sins mv00 1 gtos 0 ne -1 and dead eq 0
+      * Decrease arousal potential
+      chem 39 -0.1
+      * Increase libido lowerer
+      chem 40 0.1
+    endi
+  next
+  slow
+  doif totl 1 1 32235 lt 3
+    rtar 4 1 0
+    doif targ ne null
+      inst
+      doif dead eq 0 and cage ge 3
+        setv va01 posx
+        setv va02 posy
+        slow
+        subv va01 125
+        subv va02 100
+        new: simp 1 1 32235 "calming clouds" 11 0 8500
+        doif tmvt va01 va02 eq 1
+          mvto va01 va02
+          loop
+            setv va01 rand -2 2
+          untl va01 ne 0
+          velo va01 0
+          tick 3
+        else
+          kill targ
+        endi
+      endi
+    endi
+  endi
+endm
+
+scrp 1 1 32235 9
+  * Appearing
+  doif ov00 eq 0
+    doif pose < 7
+      setv va01 pose
+      addv va01 1
+      pose va01
+    else
+      tick 10
+      setv ov00 1
+    endi
+  * Floating around
+  elif ov00 eq 1
+    loop
+      setv va01 rand 7 10
+    untl va01 ne pose
+    pose va01
+    * Enumerate touching Norns
+    setv va00 0
+    inst
+    etch 4 0 0
+      doif dead eq 0 and cage ge 3
+        * Decrease arousal potential
+        chem 39 -1
+        * Increase libido lowerer
+        chem 40 1
+        * Add to cheat list
+        sets va01 gtos 0
+        adds va01 " "
+        rtar 1 1 32234
+        doif sins ov00 1 va01 eq -1
+          adds ov00 va01
+        endi
+        * Flag that we have found a valid Norn
+        setv va00 1
+      endi
+    next
+    slow
+    * Set to disappearing state if no touching Norns
+    doif va00 eq 0
+      setv ov00 2
+      tick 3
+    endi
+  * Disappearing
+  else
+    doif pose > 0
+      setv va01 pose
+      subv va01 1
+      pose va01
+    else
+      kill ownr
+    endi
+  endi
+endm
+
+rscr
+
+enum 1 1 32234
+  kill targ
+next
+scrx 1 1 32234 9
+
+enum 1 1 32235
+  kill targ
+next
+scrx 1 1 32235 9

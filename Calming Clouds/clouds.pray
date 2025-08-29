@@ -1,0 +1,40 @@
+"en-GB"
+
+group DSAG "Calming Clouds "
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "calming clouds.c16"
+"Dependency 2" "calming clouds.catalogue"
+"Dependency Category 1" 2
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "clouds.cos"
+"Agent Description" ""
+"Agent Animation File" "calming clouds.c16"
+"Agent Animation Gallery" "calming clouds"
+"Agent Animation String" "11"
+"Web URL" "github.com/chiizujin/edsa"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32234 kill targ next scrx 1 1 32234 9 enum 1 1 32235 kill targ next scrx 1 1 32235 9"
+
+group AGNT "Calming Clouds"
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "calming clouds.c16"
+"Dependency 2" "calming clouds.catalogue"
+"Dependency Category 1" 2
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "clouds.cos"
+"Agent Description" ""
+"Agent Animation File" "calming clouds.c16"
+"Agent Animation Gallery" "calming clouds"
+"Agent Animation String" "11"
+
+"Remove script" "enum 1 1 32234 kill targ next scrx 1 1 32234 9 enum 1 1 32235 kill targ next scrx 1 1 32235 9"
+
+inline FILE "calming clouds.c16" "calming clouds.c16"
+inline FILE "calming clouds.catalogue" "calming clouds.catalogue"

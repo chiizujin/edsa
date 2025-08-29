@@ -1,21 +1,18 @@
 inst
 
-* Abort if already present (scripts will still be installed)
-setv va01 0
-enum 1 1 32217
-  setv va01 1
-next
-doif va01 eq 1
-  stop
-endi
-
-* Abort if a C3 or docked game (scripts will still be installed)
+* Abort if a C3 or docked game
 doif type game "ds_game_type" ne 2 or game "ds_game_type" eq "docked"
   stop
 endi
 
-* Abort if C3 not installed (scripts will still be installed)
+* Abort if C3 not installed
 doif eame "engine_no_auxiliary_bootstrap_1" ne 1
+  stop
+endi
+
+* Abort if already present
+rtar 1 1 32217
+doif targ ne null
   stop
 endi
 
@@ -26,10 +23,8 @@ setv ov01 0
 * Timer for additional functions
 tick 20
 
-* Setup
-brmi 0 0
-
 * Create meta-room
+brmi 0 0
 setv ov00 addm 4215 0 2968 1200 "ettin1.8"
 mmsc 5699 600 "desert.mng\\main"
 
@@ -253,37 +248,36 @@ new: simp 1 1 32218 "ettin_doors" 4 12 3
 mvto 5584 955
 
 * Populate with agents
-ject "balloon bug.cos" 7
-ject "cacbana.cos" 7
-ject "desert grass.cos" 7
-ject "environmental controls.cos" 7
-ject "ettin area environment.cos" 7
-ject "ettin seed bank.cos" 7
-ject "ettin_muscle_paralyser.cos" 7
-ject "gnarler.cos" 7
-ject "home smell emitters.cos" 7
-ject "meerk.cos" 7
-ject "uglee.cos" 7
-ject "volcano.cos" 7
-ject "water smell emitter.cos" 7
-ject "wetness monitor and designator.cos" 7
+ject "balloon bug.cos" 6
+ject "cacbana.cos" 6
+ject "desert grass.cos" 6
+ject "environmental controls.cos" 6
+ject "ettin area environment.cos" 6
+ject "ettin seed bank.cos" 6
+ject "ettin_muscle_paralyser.cos" 6
+ject "gnarler.cos" 6
+ject "home smell emitters.cos" 6
+ject "meerk.cos" 6
+ject "uglee.cos" 6
+ject "volcano.cos" 6
+ject "water smell emitter.cos" 6
+ject "wetness monitor and designator.cos" 6
 
 * Egg layer
 new: simp 1 1 101 "greneggmask" 6 15 1
 tick 3603
 mvto 5941 656
 
-* Kill all other bioenergy incrementers
-enum 1 1 105
-  kill targ
-next
-* Bioengergy incrementer
-new: simp 1 1 105 "blnk" 0 0 0
-mvto 1000 300
-tick 100
-
-* Set up bioenergy initially
-setv game "Bioenergy" 1000
+* Bioengergy incrementer - shared with all C3-in-DS metarooms
+rtar 1 1 105
+doif targ eq null
+  new: simp 1 1 105 "blnk" 0 0 0
+  tick 100
+  setv game "Bioenergy" 1000
+  setv ov01 1
+else
+  addv ov01 1
+endi
 
 * New teleporter in desert
 new: comp 3 2 32201 "c3indsettin" 5 0 2
@@ -309,6 +303,14 @@ elas 0
 setv ov00 2
 mvto 4432 9035
 
+* Create the signpost if it doesn't exist
+rtar 1 3 3
+doif targ eq null
+  new: simp 1 3 3 "fav_place_desert" 1 0 1
+  attr 272
+  mvto 5281 608
+  tick 10
+endi
 * Move to where the signpost is so the favourite place icon gets created
 enum 1 3 3
   cmrp posx posy 0
@@ -462,7 +464,7 @@ scrp 3 2 32201 1
     doif targ ne null
       doif tmvf va01 va02 eq 1
         mvft va01 va02
-        stim writ targ 95 1
+        stim writ targ 95 2
       else
         * Play error sound if no room on other end
         snde "buzz"

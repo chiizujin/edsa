@@ -1,4 +1,4 @@
-new: vhcl 1 1 32229 "gadget shelf" 1 0 300
+new: vhcl 1 1 32232 "gadget shelf" 1 0 300
 attr 202
 fric 100
 aero 100
@@ -18,6 +18,6 @@ endi
 
 rscr
 
-enum 1 1 32229
+enum 1 1 32232
   kill targ
 next

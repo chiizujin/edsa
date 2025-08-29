@@ -14,6 +14,7 @@ If you just want the agent to install into your game then all you need is the **
 
 **2025-08-29**
 - Updated C3-in-DS Ettin Desert. See the *readme.txt* file for details.
+- Changed agent classifier of Gadget Shelf to avoid a clash.
 
 **2025-08-27**
 - Updated C3-in-DS Norn Terrarium. See the *readme.txt* file for details.

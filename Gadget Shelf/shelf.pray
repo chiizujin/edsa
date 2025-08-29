@@ -16,7 +16,7 @@ group DSAG "Gadget Shelf "
 "Web URL" "github.com/chiizujin/edsa"
 "Web Label" "Emmental's DS Agents"
 
-"Remove script" "enum 1 1 32229 kill targ next"
+"Remove script" "enum 1 1 32232 kill targ next"
 
 group AGNT "Gadget Shelf"
 "Agent Type" 0
@@ -31,7 +31,7 @@ group AGNT "Gadget Shelf"
 "Agent Animation Gallery" "gadget shelf"
 "Agent Animation String" "0"
 
-"Remove script" "enum 1 1 32229 kill targ next"
+"Remove script" "enum 1 1 32232 kill targ next"
 
 inline FILE "gadget shelf.c16" "gadget shelf.c16"
 inline FILE "gadget shelf.catalogue" "gadget shelf.catalogue"

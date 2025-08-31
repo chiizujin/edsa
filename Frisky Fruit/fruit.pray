@@ -1,0 +1,45 @@
+"en-GB"
+
+group DSAG "Frisky Fruit "
+"Agent Type" 0
+"Dependency Count" 3
+"Dependency 1" "frisky fruit.c16"
+"Dependency 2" "frisky fruit.catalogue"
+"Dependency 3" "leat.wav"
+"Dependency Category 1" 2
+"Dependency Category 2" 7
+"Dependency Category 3" 1
+
+"Script Count" 1
+"Script 1" @ "fruit.cos"
+"Agent Description" "A fruit that grows in certain places in the Norn terrium and meso. When a Norn eats one they become very friendly indeed..."
+"Agent Animation File" "frisky fruit.c16"
+"Agent Animation Gallery" "frisky fruit"
+"Agent Animation String" "5"
+"Web URL" "github.com/chiizujin/edsa"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32233 kill targ next enum 2 8 32202 kill targ next enum 2 10 32201 kill targ next"
+
+group AGNT "Frisky Fruit"
+"Agent Type" 0
+"Dependency Count" 3
+"Dependency 1" "frisky fruit.c16"
+"Dependency 2" "frisky fruit.catalogue"
+"Dependency 3" "leat.wav"
+"Dependency Category 1" 2
+"Dependency Category 2" 7
+"Dependency Category 3" 1
+
+"Script Count" 1
+"Script 1" @ "fruit.cos"
+"Agent Description" "A fruit that grows in certain places in the Norn terrium and meso. When a Norn eats one they become very friendly indeed..."
+"Agent Animation File" "frisky fruit.c16"
+"Agent Animation Gallery" "frisky fruit"
+"Agent Animation String" "5"
+
+"Remove script" "enum 1 1 32233 kill targ next enum 2 8 32202 kill targ next enum 2 10 32201 kill targ next"
+
+inline FILE "frisky fruit.c16" "frisky fruit.c16"
+inline FILE "frisky fruit.catalogue" "frisky fruit.catalogue"
+inline FILE "leat.wav" "leat.wav"

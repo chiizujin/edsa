@@ -1,0 +1,218 @@
+* Abort if installed
+rtar 1 1 32233
+doif targ ne null
+  stop
+endi
+
+* Coords are roughly minus half of sprite size as mvto uses top left
+
+* New fruit controller
+new: simp 1 1 32233 "blnk" 1 0 1
+tick rand 100 300
+
+* New fruit
+scrp 1 1 32233 9
+  * Norn meso
+  setv va00 gmap 1650 9170
+  doif va00 ne -1
+    * Count fruit here
+    setv va01 0
+    inst
+    enum 2 8 32202
+      doif gmap posx posy eq va00
+        addv va01 1
+      endi
+    next
+    slow
+    * Only spawn if there are fewer than 12 in this metaroom
+    doif va01 lt 12
+      * 1-in-3 chance to spawn in smaller section
+      doif rand 1 3 eq 1
+        new: simp 2 8 32202 "frisky fruit" 5 0 1
+        attr 16
+        perm 1
+        tick rand 100 200
+        setv va01 rand 1650 1669
+        setv va02 rand 9170 9206
+        mvto va01 va02
+      else
+        new: simp 2 8 32202 "frisky fruit" 5 0 1
+        attr 16
+        perm 1
+        tick rand 100 200
+        setv va01 rand 1179 1246
+        setv va02 rand 9299 9407
+        mvto va01 va02
+      endi
+    endi
+  endi
+
+  * Norn terraium
+  setv va00 gmap 2112 720
+  doif va00 ne -1
+    * Count fruit here
+    setv va01 0
+    inst
+    enum 2 8 32202
+      doif gmap posx posy eq va00
+        addv va01 1
+      endi
+    next
+    slow
+    * Only spawn if there are fewer than 12 in this metaroom
+    doif va01 lt 12
+      * 1-in-3 chance to spawn in smaller section
+      doif rand 1 3 eq 1
+        new: simp 2 8 32202 "frisky fruit" 5 0 1
+        attr 16
+        perm 1
+        tick rand 100 200
+        setv va01 rand 2112 2148
+        setv va02 rand 720 768
+        mvto va01 va02
+      else
+        new: simp 2 8 32202 "frisky fruit" 5 0 1
+        attr 16
+        perm 1
+        tick rand 100 200
+        setv va01 rand 2530 2580
+        setv va02 rand 616 676
+        mvto va01 va02
+      endi
+    endi
+  endi
+  tick rand 100 300
+endm
+
+* Fruit grow
+scrp 2 8 32202 9
+  * Grow
+  doif ov00 eq 0
+    pose 1
+    tick rand 100 200
+    setv ov00 1
+  elif ov00 eq 1
+    pose 2
+    tick rand 100 200
+    setv ov00 2
+  elif ov00 eq 2
+    pose 3
+    tick rand 100 200
+    setv ov00 3
+  * Fall
+  elif ov00 eq 3
+    * Only fall if there are fewer than 6 in this metaroom already fallen
+    inst
+    setv va00 gmap posx posy
+    enum 2 8 32202
+      doif gmap posx posy eq va00 and ov00 ge 4
+        addv va01 1
+      endi
+    next
+    slow
+    doif va01 lt 6
+      plne 1056
+      attr 194
+      fric 100
+      elas 30
+      accg 2
+      bhvr 48
+      tick 2400
+      setv ov00 4
+    endi
+  * Decay
+  else
+    doif carr eq null
+      setv va01 posl
+      setv va02 post
+      new: simp 2 10 32201 "frisky fruit" 4 5 1056
+      attr 192
+      elas 0
+      accg 2
+      tick rand 80 100
+      mvto va01 va02
+      kill ownr
+    endi
+  endi
+endm
+
+* Detritus decay
+scrp 2 10 32201 9
+  doif ov00 eq 0
+    pose 1
+    setv ov00 1
+  elif ov00 eq 1
+    pose 2
+    setv ov00 2
+  elif ov00 eq 2
+    pose 3
+    setv ov00 3
+  else
+    kill ownr
+  endi
+endm
+
+* Fruit eat
+scrp 2 8 32202 12
+  inst
+  targ from
+  snde "leat"
+  * Only affect Norns
+  doif fmly eq 4 and gnus eq 1
+    * Antihistamine (from DS lemon)
+    setv va01 itof rand 1 4
+    divv va01 10.0
+    chem 100 va01
+    * Antibodies (from DS lemon)
+    setv va02 102
+    loop
+      setv va00 chem va02
+      setv va01 itof rand 1 2
+      divv va01 10.0
+      chem va02 va01
+      addv va02 1
+    untl va02 = 110
+    * Increase arousal potential
+    chem 39 1
+    * Decrease libido lowerer
+    chem 40 -1
+    * Decrease tiredness
+    chem 154 -0.5
+    * Decrease sleepiness
+    chem 155 -0.5
+    * Decrease crowdedness
+    chem 157 -0.75
+    * Urge push Norn
+    urge writ targ 36 1 1 1
+  endi
+  * Anything can have the eat fruit stim
+  stim writ targ 78 1
+  slow
+
+  * Lasts for two bites
+  targ ownr
+  doif ov01 eq 0
+    pose 4
+    setv ov01 1
+  else
+    kill targ
+  endi
+endm
+
+rscr
+
+enum 1 1 32233
+  kill targ
+next
+scrx 1 1 32233 9
+
+enum 2 8 32202
+  kill targ
+next
+scrx 2 8 32202 9
+scrx 2 8 32202 12
+
+enum 2 10 32201
+  kill targ
+next
+scrx 2 10 32201 9

@@ -107,8 +107,14 @@ scrp 1 1 32203 9
           mvto va03 va04
           frel va99
           flto -20 -70
+          * Prevent string from wrapping, but we need to keep the full name for now
+          sets va97 va98
+          doif strl va97 gt 10
+            sets va97 subs va97 1 10
+            adds va97 "..."
+          endi
           part 1
-          ptxt va98
+          ptxt va97
           * Check Norn
           targ va99
           sets va97 ""
@@ -172,8 +178,7 @@ scrp 1 1 32203 9
             adds va97 va98
             * Prevent string from wrapping
             doif strl va97 gt 10
-              sets va96 va97
-              sets va97 subs va96 1 10
+              sets va97 subs va97 1 10
               adds va97 "..."
             endi
             part 1

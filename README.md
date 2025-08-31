@@ -13,6 +13,8 @@ If you just want the agent to install into your game then all you need is the **
 ### Latest updates
 
 **2025-08-31**
+- New agents: Frisky Fruit and Calming Clouds. Agents to assist with population
+  control.
 - Added "disappointment" stimulus to Selective Force Field's push-back.
 
 **2025-08-29**
@@ -22,10 +24,6 @@ If you just want the agent to install into your game then all you need is the **
 **2025-08-27**
 - Updated C3-in-DS Norn Terrarium. See the *readme.txt* file for details.
 - Pond Fish Food Docking Station update released. Original agent by Spirit.
-
-**2025-08-24**
-- New agent: Gadget Shelf.
-- Fixed Green Ball perpetual spinning and remove script.
 
 ([Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md))
 
@@ -43,6 +41,12 @@ A series of agents that re-create areas of the Shee Starhip from Creatures 3 in 
 - Grendel Jungle ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/C3%20in%20DS/Grendel/c3%20in%20ds%20-%20grendel.zip))
 - Crypt ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/C3%20in%20DS/Crypt/c3%20in%20ds%20-%20crypt.zip))
 
+## ※ Calming Clouds ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Calming%20Clouds/calming%20clouds.zip))
+
+Mysterious white clouds occasionally drift around, calming down any overly-frisky Norns.
+
+**See also**: Frisky Fruit.
+
 ## ※ Camera Fixer ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Camera%20Fixer/camera%20fixer.zip))
 
 Use this to keep your Docking Station cameras in place.
@@ -58,6 +62,12 @@ When injected, this agent removes the Ettin and Grendel egg layers from the curr
 ## ※ Electronic Butler ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Electronic%20Butler/electronic%20butler.zip))
 
 This electronic device monitors the speech of creatures anywhere in the world. Any complaining of hunger or boredom are served up with the appropriate food or a toy. Food is created anew and toys are selected from what's already in the world and moved near the creature.
+
+## ※ Frisky Fruit ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Frisky%20Fruit/frisky%20fruit.zip))
+
+Shortly after the Shee Ark traversed a strange, glowing asteroid field, this fruit started to grow in places around the Norn terrarium. It even found its way into the meso on the Docking Station. When a Norn eats one they become very friendly indeed...
+
+**See also**: Calming Clouds.
 
 ## ※ Gadget Shelf ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Gadget%20Shelf/gadget%20shelf.zip))
 

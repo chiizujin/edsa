@@ -1,3 +1,7 @@
+**2025-08-24**
+- New agent: Gadget Shelf.
+- Fixed Green Ball perpetual spinning and remove script.
+
 **2025-08-23**
 - Green Ball Docking Station update released. Original agent by Uttar and Tim.
 

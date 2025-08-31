@@ -9,7 +9,7 @@ It does this by checking 4 possible indicators:
 2. Norns with 2 or more toxins in their body over 95 may be immortal.
 3. Norns that reached adult before they were 30 minutes old are probably
    fast-agers.
-4. Norns with very low levels of energy or ATP may be immortal.
+4. Norns with very low levels of energy or ATP may be immortal (zombie).
 
 If any of these checks are matched then a "boing" sound will be heard and the
 Norn's name that is displayed above the NoK will have 1 or more extra letters
@@ -18,7 +18,7 @@ added in front of it followed by a ! as follows:
 O = Old
 T = Toxins
 A = Aging
-Z = Zombie (Energy/ATP)
+Z = Zombie
 
 Norns are checked every 5 minutes and are forced infertile every 20 seconds.
 Infertility cannot be guaranteed, as fertility rises constantly with time,
@@ -26,10 +26,14 @@ though it should greatly reduce the chance of pregnancies. There is also the
 possibility that an immortal/fast-ager will warp in and reproduce between the
 Norn of Infertility's checks.
 
+Installation
+------------
+
 Version history
 ---------------
 1.7
 - Fixed name wrapping when checking a Norn.
+- Updated catalogue.
 1.6
 - Really (I think) fixed the script error.
 1.5

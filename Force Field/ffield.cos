@@ -176,6 +176,7 @@ scrp 1 1 32208 9
           part 1
           pose 1
           targ va02
+          stim writ targ 0 1
           snde "ffbz"
           doif posx gt va01
             * Push right
@@ -219,6 +220,7 @@ scrp 1 1 32208 9
           part 1
           pose 1
           targ va02
+          stim writ targ 0 1
           snde "ffbz"
           doif posx gt va01
             * Push right
@@ -262,6 +264,7 @@ scrp 1 1 32208 9
           part 1
           pose 1
           targ va02
+          stim writ targ 0 1
           snde "ffbz"
           doif posx gt va01
             * Push right
@@ -305,6 +308,7 @@ scrp 1 1 32208 9
           part 1
           pose 1
           targ va02
+          stim writ targ 0 1
           snde "ffbz"
           doif posx gt va01
             * Push right

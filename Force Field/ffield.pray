@@ -16,11 +16,11 @@ group DSAG "Selective Force Field "
 "Agent Animation File" "force field.c16"
 "Agent Animation Gallery" "force field"
 "Agent Animation String" "0"
-"Web URL" "creatures.webhop.net"
+"Web URL" "github.com/chiizujin/edsa"
 "Web Label" "Emmental's DS Agents"
 
 "Remove script" "enum 1 1 32208 kill targ next scrx 1 1 32208 1 scrx 1 1 32208 2 scrx 1 1 32208 4 scrx 1 1 32208 9 scrx 1 1 32208 1000 enum 1 1 32209 kill targ next scrx 1 1 32209 1 scrx 1 1 32209 1000 scrx 1 1 32209 1001 scrx 1 1 32209 1002 scrx 1 1 32209 1003"
- 
+
 group AGNT "Selective Force Field"
 "Agent Type" 0
 "Dependency Count" 3
@@ -39,7 +39,7 @@ group AGNT "Selective Force Field"
 "Agent Animation String" "0"
 
 "Remove script" "enum 1 1 32208 kill targ next scrx 1 1 32208 1 scrx 1 1 32208 2 scrx 1 1 32208 4 scrx 1 1 32208 9 scrx 1 1 32208 1000 enum 1 1 32209 kill targ next scrx 1 1 32209 1 scrx 1 1 32209 1000 scrx 1 1 32209 1001 scrx 1 1 32209 1002 scrx 1 1 32209 1003"
- 
-inline FILE "force field.c16" "force field.c16" 
+
+inline FILE "force field.c16" "force field.c16"
 inline FILE "ffbz.wav" "ffbz.wav"
-inline FILE "force field.catalogue" "force field.catalogue" 
+inline FILE "force field.catalogue" "force field.catalogue"

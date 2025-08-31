@@ -1,0 +1,41 @@
+"en-GB"
+
+group DSAG "Interporter "
+  "Agent Sprite First Image" 0
+  "Agent Type" 0
+  "Dependency Category 1" 2
+  "Dependency Category 2" 2
+  "Dependency Category 3" 7
+  "Dependency Count" 3
+  "Script Count" 1
+  "Agent Animation File" "interporter.c16"
+  "Agent Animation Gallery" "interporter"
+  "Agent Animation String" "1"
+  "Agent Description" "Interporter allows creatures to travel through a portal anywhere in the world, to a like portal somewhere else.\n\nBy Mugendai.\nmugendai@anime.ods.org"
+  "Dependency 1" "interporter.c16"
+  "Dependency 2" "interporter-portal.c16"
+  "Dependency 3" "interporter.catalogue"
+  "Remove script" "enum 2 2 1018 kill targ next scrp 2 2 1018 1 scrp 2 2 1018 9 scrp 2 2 1018 1000 enum 2 21 1102 kill targ next scrp 2 21 1102 1 scrp 2 21 1102 1000 enum 3 2 1003 kill targ next scrp 3 2 1003 10 scrp 3 2 1003 1000 scrp 3 2 1003 1001 scrp 3 2 1003 1002 scrp 3 2 1003 1003 scrp 3 2 1003 1004 scrp 3 2 1003 1005 scrp 3 2 1003 1006 scrp 3 2 1003 1007 scrp 3 2 1003 1008 scrp 3 2 1003 1009 scrp 3 2 1003 1010 scrp 3 2 1003 1011 scrp 3 2 1003 1012 scrp 3 2 1003 1020 scrp 3 2 1003 1021 scrp 3 2 1003 1022 scrp 3 2 1003 1023 scrp 3 2 1003 1024 enum 3 9 1008 kill targ next scrp 3 9 1008 1 scrp 3 9 1008 9 scrp 3 9 1008 1000"
+  "Script 1" @ "interporter.cos"
+
+group AGNT "Interporter"
+  "Agent Bioenergy Value" 0
+  "Agent Type" 0
+  "Dependency Category 1" 2
+  "Dependency Category 2" 2
+  "Dependency Category 3" 7
+  "Dependency Count" 3
+  "Script Count" 1
+  "Agent Animation File" "interporter.c16"
+  "Agent Animation Gallery" "interporter"
+  "Agent Animation String" "1"
+  "Agent Description" "Interporter allows creatures to travel through a portal anywhere in the world, to a like portal somewhere else.\n\nBy Mugendai.\nmugendai@anime.ods.org"
+  "Dependency 1" "interporter.c16"
+  "Dependency 2" "interporter-portal.c16"
+  "Dependency 3" "interporter.catalogue"
+  "Remove script" "enum 2 2 1018 kill targ next scrp 2 2 1018 1 scrp 2 2 1018 9 scrp 2 2 1018 1000 enum 2 21 1102 kill targ next scrp 2 21 1102 1 scrp 2 21 1102 1000 enum 3 2 1003 kill targ next scrp 3 2 1003 10 scrp 3 2 1003 1000 scrp 3 2 1003 1001 scrp 3 2 1003 1002 scrp 3 2 1003 1003 scrp 3 2 1003 1004 scrp 3 2 1003 1005 scrp 3 2 1003 1006 scrp 3 2 1003 1007 scrp 3 2 1003 1008 scrp 3 2 1003 1009 scrp 3 2 1003 1010 scrp 3 2 1003 1011 scrp 3 2 1003 1012 scrp 3 2 1003 1020 scrp 3 2 1003 1021 scrp 3 2 1003 1022 scrp 3 2 1003 1023 scrp 3 2 1003 1024 enum 3 9 1008 kill targ next scrp 3 9 1008 1 scrp 3 9 1008 9 scrp 3 9 1008 1000"
+  "Script 1" @ "interporter.cos"
+
+inline FILE "interporter.catalogue" "interporter.catalogue"
+inline FILE "interporter-portal.c16" "interporter-portal.c16"
+inline FILE "interporter.c16" "interporter.c16"

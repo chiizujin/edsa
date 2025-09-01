@@ -95,7 +95,7 @@ scrp 1 1 32203 9
     subv va01 50
     setv va02 posy
     subv va02 36
-    attr 231
+    attr 229
     part 0
     pose 1
     * Loop through Norns

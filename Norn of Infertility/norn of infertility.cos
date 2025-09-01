@@ -58,6 +58,13 @@ scrp 1 1 32203 2
   clac 0
 endm
 
+* PICK UP
+scrp 1 1 32203 4
+  doif clac eq 1
+    call 2 0 0
+  endi
+endm
+
 * TIMER
 scrp 1 1 32203 9
   * Decrement counter

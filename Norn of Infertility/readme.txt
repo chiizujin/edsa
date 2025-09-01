@@ -3,7 +3,7 @@ Norn of Infertility (1.7)
 This agent checks for possible immortal and fast-aging Norns and attempts to
 keep them infertile.
 
-It does this by checking 4 possible indicators:
+It does this by checking four possible indicators:
 
 1. Norns older than 9 hours may be immortal.
 2. Norns with 2 or more toxins in their body over 95 may be immortal.
@@ -12,7 +12,7 @@ It does this by checking 4 possible indicators:
 4. Norns with very low levels of energy or ATP may be immortal (zombie).
 
 If any of these checks are matched then a "boing" sound will be heard and the
-Norn's name that is displayed above the NoK will have 1 or more extra letters
+Norn's name that is displayed above the NoK will have one or more extra letters
 added in front of it followed by a ! as follows:
 
 O = Old
@@ -29,11 +29,20 @@ Norn of Infertility's checks.
 Installation
 ------------
 
+The catalogue file has been updated, so if you have previously used Norn of
+Infertility then you should first delete "norn of infertility.catalogue" from
+your Docking Station's Catalogue folder to allow the new version to be
+installed.
+
 Version history
 ---------------
 1.7
-- Fixed name wrapping when checking a Norn.
+- Fixed name wrapping when checking Norns.
 - Updated catalogue.
+- NoI disables itself when picked up.
+- NoI can no longer be picked up while checking Norns.
+- NoI can now be stored in a vehicle (such as the Gadget Shelf) and will return
+  there if it can after checking the Norns.
 1.6
 - Really (I think) fixed the script error.
 1.5

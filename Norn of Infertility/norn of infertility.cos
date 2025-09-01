@@ -98,6 +98,13 @@ scrp 1 1 32203 9
     attr 229
     part 0
     pose 1
+    * Force any vehicle to drop
+    doif carr ne null
+      seta ov04 carr
+      rpas carr ownr
+    else
+      seta ov04 null
+    endi
     * Loop through Norns
     enum 4 1 0
       * Ignore dead Norns
@@ -205,7 +212,14 @@ scrp 1 1 32203 9
     attr 199
     frel null
     accg 3
-    mvto va01 va02
+    * Check we can move there. We may have started from a carried vehicle that wasn't in a valid room
+    doif tmvt va01 va02 eq 1
+      mvto va01 va02
+    endi
+    * Put back into vehicle if we started in one and it still exists
+    doif ov04 ne null
+      spas ov04 ownr
+    endi
     * Reset counters
     setv ov01 3
     setv ov02 5

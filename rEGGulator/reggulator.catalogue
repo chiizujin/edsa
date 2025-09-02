@@ -1,0 +1,3 @@
+TAG "Agent Help 1 1 32236"
+"rEGGulator"
+"The rEGGulator will attempt to maintain a desired number of Norn eggs. If there are too few then Norns will be encouraged to breed. Too many and Norns are discouraged from breeding.\n\nThe desired minimum and maximum numbers of eggs can be set by clicking the number, entering a new value and pressing enter.\n\nThe rEGGulator can be turned on and off with the green button. This button blinks every five seconds as the rEGGulator works."

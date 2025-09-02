@@ -1,0 +1,229 @@
+rtar 1 1 32236
+doif targ ne null
+  cmrt 0
+  stop
+endi
+
+new: comp 1 1 32236 "reggulator" 1 0 5010
+*pat: text 1 "blnk" 0 37 15 0 1001 "WhiteOnTransparentChars"
+
+pat: fixd 1 "blnk" 0 37 15 0 "WhiteOnTransparentChars"
+part 1
+frmt 0 0 0 0 0 0 2
+ptxt "Eggs:"
+
+pat: fixd 2 "blnk" 0 37 29 0 "WhiteOnTransparentChars"
+part 2
+frmt 0 0 0 0 0 0 2
+ptxt "---"
+
+pat: fixd 3 "blnk" 0 20 40 0 "WhiteOnTransparentChars"
+part 3
+frmt 0 0 0 0 0 0 1
+ptxt "Min:"
+
+pat: fixd 4 "blnk" 0 20 52 0 "WhiteOnTransparentChars"
+part 4
+frmt 0 0 0 0 0 0 1
+ptxt "Max:"
+
+setv ov01 5
+pat: text 5 "blnk" 0 65 40 0 1001 "WhiteOnTransparentChars"
+part 5
+frmt 0 0 0 0 0 0 0
+ptxt vtos ov01
+
+setv ov02 10
+pat: text 6 "blnk" 0 65 52 0 1002 "WhiteOnTransparentChars"
+part 6
+frmt 0 0 0 0 0 0 0
+ptxt vtos ov02
+
+pat: butt 7 "reggulator" 1 2 48 67 0 [] 1003 1
+
+attr 195
+perm 90
+bhvr 0
+accg 10
+elas 25
+fric 100
+* Accept mouse down events
+imsk 8
+
+doif game "CreatorX" ne 0 and game "CreatorY" ne 0
+  mvto 6071 9144
+else
+  mvto 5555 3563
+  velo 10 0
+endi
+
+* Minimum
+scrp 1 1 32236 1001
+  part 5
+  setv va01 stoi ptxt
+  doif va01 lt 0 or va01 gt ov02
+    snde "buzz"
+  else
+    * Clear last-clicked part
+    setv ov00 0
+    setv ov01 va01
+    ptxt vtos va01
+    targ null
+    fcus
+  endi
+endm
+
+* Maximum
+scrp 1 1 32236 1002
+  part 6
+  setv va01 stoi ptxt
+  doif va01 gt 999 or va01 lt ov01
+    snde "buzz"
+  else
+    * Clear last-clicked part
+    setv ov00 0
+    setv ov02 va01
+    ptxt vtos va01
+    targ null
+    fcus
+  endi
+endm
+
+* Button
+scrp 1 1 32236 1003
+  snde "beep"
+  part 7
+  doif pose eq 0
+    tick 1
+    pose 1
+    part 2
+  else
+    tick 0
+    pose 0
+    part 2
+    ptxt "---"
+  endi
+endm
+
+* Mouse down
+scrp 1 1 32236 76
+  doif _p1_ ne 1
+    stop
+  endi
+  * Keep the focus on the last-clicked part until enter is pressed if a part is clicked...
+  doif hotp eq 5 or hotp eq 6
+    * ...and it's one of the input parts...
+    doif ov00 eq 5 or ov00 eq 6
+      * ...and it's not the one clicked last time
+      doif hotp ne ov00
+        snde "buzz"
+        wait 1
+        part ov00
+        fcus
+      endi
+    else
+      * If an input part was clicked OK then set it as the last-clicked part
+      setv ov00 hotp
+      * Change text to yellow
+      part hotp
+      sets va01 "<tint 255 255 0>"
+      adds va01 ptxt
+      ptxt va01
+    endi
+  endi
+endm
+
+* Force the plane back (even when dropped into a vehicle) to make sure it (probably) stays visible
+scrp 1 1 32236 5
+  plne 5010
+endm
+
+scrp 1 1 32236 9
+  tick 100
+  part 7
+  pose 0
+  setv va01 totl 3 4 1
+  * Encourage breeding
+  doif va01 lt ov01
+    inst
+    enum 4 1 0
+      * Also check chem 48 to let pregnant Norns lay their eggs
+      doif dead eq 0 and cage ge 3 and chem 48 lt 0.1
+        * Decrease libido lowerer
+        chem 40 -1
+        * Increase arousal potential
+        chem 39 1
+        * Decrease tiredness
+        chem 154 -0.5
+        * Decrease sleepiness
+        chem 155 -0.5
+        * Decrease crowdedness
+        chem 157 -0.75
+        * Urge push Norn
+        urge writ targ 36 1 1 1
+      endi
+    next
+    slow
+    setv va02 1
+  * Discourage breeding
+  elif va01 ge ov02
+    inst
+    enum 4 1 0
+      doif dead eq 0 and cage ge 3
+        * Increase libido lowerer
+        chem 40 1
+        * Decrease arousal potential
+        chem 39 -1
+        doif spcs eq 1
+          * Decrease testosterone
+          chem 53 -1
+        elif spcs eq 2
+          * Decrease oestrogen
+          chem 46 -1
+        endi
+      endi
+    next
+    slow
+    * Only display as a warning if we are over the limit
+    doif va01 gt ov02
+      setv va02 1
+    endi
+  endi
+
+  doif va02 eq 0
+    * Creatures 3 can't tint text
+    doif gnam eq "Docking Station"
+      sets va03 "<tint 0 255 0>"
+      adds va03 vtos va01
+    else
+      sets va03 vtos va01
+    endi
+  else
+    doif gnam eq "Docking Station"
+      sets va03 "<tint 255 0 0>"
+      adds va03 vtos va01
+    else
+      sets va03 "! "
+      adds va03 vtos va01
+      adds va03 " !"
+    endi
+  endi
+
+  part 2
+  ptxt va03
+  wait 1
+  part 7
+  pose 1
+endm
+
+rscr
+
+enum 1 1 32236
+  kill targ
+next
+scrx 1 1 32236 5
+scrx 1 1 32236 9
+scrx 1 1 32236 76
+scrx 1 1 32236 1001
+scrx 1 1 32236 1002
+scrx 1 1 32236 1003

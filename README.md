@@ -12,9 +12,11 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-09-03**
+- New agent: rEGGulator. An all-in-one agent for maintaining the number of unhatched Norn eggs.
+
 **2025-08-31**
-- New agents: Frisky Fruit and Calming Clouds. Agents to assist with population
-  control.
+- New agents: Frisky Fruit and Calming Clouds. Agents to assist with population control.
 - Added "disappointment" stimulus to Selective Force Field's push-back.
 
 **2025-08-29**
@@ -108,6 +110,10 @@ This agent adds a panel to the left of the screen that displays various informat
 ### Alternative version
 
 SunlitMiracle updated Medical Monitor and Norn Statistics to include additional features. The updated versions can be found [here](https://eem.foo/ccsf24_12).
+
+## ※ rEGGulator ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/rEGGulator/reggulator.zip))
+
+The rEGGulator will attempt to maintain a desired number of Norn eggs. If there are too few then Norns will be encouraged to breed. Too many and Norns are discouraged from breeding.
 
 ## ※ Roamer ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Roamer/roamer.zip))
 

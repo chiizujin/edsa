@@ -12,20 +12,15 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-09-04**
+- Fixed a couple of inventory-related issues in the rEGGulator.
+
 **2025-09-03**
 - New agent: rEGGulator. An all-in-one agent for maintaining the number of unhatched Norn eggs.
 
 **2025-08-31**
 - New agents: Frisky Fruit and Calming Clouds. Agents to assist with population control.
 - Added "disappointment" stimulus to Selective Force Field's push-back.
-
-**2025-08-29**
-- Updated C3-in-DS Ettin Desert. See the *readme.txt* file for details.
-- Changed agent classifier of Gadget Shelf to avoid a clash.
-
-**2025-08-27**
-- Updated C3-in-DS Norn Terrarium. See the *readme.txt* file for details.
-- Pond Fish Food Docking Station update released. Original agent by Spirit.
 
 ([Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md))
 

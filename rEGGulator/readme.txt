@@ -1,4 +1,4 @@
-rEGGulator (1.0)
+rEGGulator (1.1)
 
 The rEGGulator will attempt to maintain a desired number of Norn eggs. If there
 are too few then Norns will be encouraged to breed. Too many and Norns are
@@ -20,6 +20,14 @@ Installation
 -----------
 Due to the way the Agent Injector/Creator sort agents in their lists, the
 rEGGulator will appear near the end of the list.
+
+Version history
+---------------
+1.1
+- The agent no longer disappears behind the inventory when dropped into it.
+  Thanks to DaveS for spotting this.
+- Handles being in the inventory when attempting to find the already-injected
+  agent.
 
 Emmental
 https://github.com/chiizujin/edsa

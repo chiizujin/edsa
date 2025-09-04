@@ -1,10 +1,33 @@
-* Creatures 3 has no 'hotp' command which is used to keep the focus in the clicked
-* text part until enter has been pressed, so this feature is unavailable in the C3
-* version
+* Creatures 3 has no 'hotp' command which is used to keep the focus in the clicked text
+* part until enter has been pressed, so this feature is unavailable in the C3 version
 
 rtar 1 1 32236
-doif targ ne null
-  cmrt 0
+seta va00 targ
+
+doif va00 ne null
+  doif carr ne null
+    * Find the inventory (we're not assuming that it does exist; it may not for some reason)
+    rtar 1 2 11
+    seta va01 targ
+    targ va00
+    * Check if we're in the inventory
+    doif carr eq va01
+      targ carr
+      * Open the inventory if it's closed
+      doif ov00 eq 0 and clac eq 0
+        mesg writ targ 0
+      endi
+      targ va00
+      * Flag that it's in the inventory
+      setv va02 1
+    endi
+   endi
+
+  * Make sure we're not in the inventory and are in a metaroom (we may be in a vehicle
+  * that is in the closed inventory, but that's getting too unnecessary to handle)
+  doif va02 eq 0 and gmap posx posy ne -1
+    cmrt 0
+  endi
   stop
 endi
 
@@ -107,9 +130,21 @@ scrp 1 1 32236 1003
   endi
 endm
 
-* Force the plane back (even when dropped into a vehicle) to make sure it (probably) stays visible
+* Force the plane back when dropped to make sure it (probably) stays visible
 scrp 1 1 32236 5
-  plne 5010
+  setv va01 5010
+  doif carr eq null
+    plne va01
+  else
+    * If dropped into a vehicle, don't end up behind it (e.g. the DS inventory)
+    targ carr
+    doif plne > va01
+      setv va01 plne
+      addv va01 10
+    endi
+    targ ownr
+    plne va01
+  endi
 endm
 
 scrp 1 1 32236 9

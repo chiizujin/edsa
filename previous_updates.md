@@ -1,3 +1,11 @@
+**2025-08-29**
+- Updated C3-in-DS Ettin Desert. See the *readme.txt* file for details.
+- Changed agent classifier of Gadget Shelf to avoid a clash.
+
+**2025-08-27**
+- Updated C3-in-DS Norn Terrarium. See the *readme.txt* file for details.
+- Pond Fish Food Docking Station update released. Original agent by Spirit.
+
 **2025-08-24**
 - New agent: Gadget Shelf.
 - Fixed Green Ball perpetual spinning and remove script.

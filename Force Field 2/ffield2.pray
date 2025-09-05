@@ -1,0 +1,45 @@
+"en-GB"
+
+group DSAG "Selective Force Field II "
+"Agent Type" 0
+"Dependency Count" 3
+"Dependency 1" "force field 2.c16"
+"Dependency 2" "ffbz.wav"
+"Dependency 3" "force field 2.catalogue"
+"Dependency Category 1" 2
+"Dependency Category 2" 1
+"Dependency Category 3" 7
+
+"Script Count" 1
+"Script 1" @ "ffield2.cos"
+"Agent Description" "A force field that can be configured to prevent or only allow certain types of creatures from passing."
+"Agent Animation File" "force field 2.c16"
+"Agent Animation Gallery" "force field 2"
+"Agent Animation String" "1"
+"Web URL" "github.com/chiizujin/edsa"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32237 kill targ next scrx 1 1 32237 4 scrx 1 1 32237 9 scrx 1 1 32237 1001 scrx 1 1 32237 1002 scrx 1 1 32237 1003 enum 1 1 32238 kill targ next scrx 1 1 32238 1000 scrx 1 1 32238 1001 scrx 1 1 32238 1002 scrx 1 1 32238 1003 scrx 1 1 32238 1004 scrx 1 1 32238 1005 scrx 1 1 32238 1006 scrx 1 1 32238 1007"
+
+group AGNT "Selective Force Field II"
+"Agent Type" 0
+"Dependency Count" 3
+"Dependency 1" "force field 2.c16"
+"Dependency 2" "ffbz.wav"
+"Dependency 3" "force field 2.catalogue"
+"Dependency Category 1" 2
+"Dependency Category 2" 1
+"Dependency Category 3" 7
+
+"Script Count" 1
+"Script 1" @ "ffield2.cos"
+"Agent Description" "A force field that can be configured to prevent or only allow certain types of creatures from passing."
+"Agent Animation File" "force field 2.c16"
+"Agent Animation Gallery" "force field 2"
+"Agent Animation String" "1"
+
+"Remove script" "enum 1 1 32237 kill targ next scrx 1 1 32237 4 scrx 1 1 32237 9 scrx 1 1 32237 1001 scrx 1 1 32237 1002 scrx 1 1 32237 1003 enum 1 1 32238 kill targ next scrx 1 1 32238 1000 scrx 1 1 32238 1001 scrx 1 1 32238 1002 scrx 1 1 32238 1003 scrx 1 1 32238 1004 scrx 1 1 32238 1005 scrx 1 1 32238 1006 scrx 1 1 32238 1007"
+
+inline FILE "force field 2.c16" "force field 2.c16"
+inline FILE "ffbz.wav" "ffbz.wav"
+inline FILE "force field 2.catalogue" "force field 2.catalogue"

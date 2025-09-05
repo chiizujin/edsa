@@ -1,0 +1,7 @@
+TAG "Agent Help 1 1 32237"
+"Selective Force Field"
+"This force field can be configured to either prevent (blacklist) or only allow (whitelist) certain types of creatures from passing, based on genus and life stage.\n\nTo configure the force field, click the blue button on the base to open the configuration panel. \n\nTo turn the force field on and off, click the green button. It will not operate while carried by the hand or a vehicle.\n\n\nThe force field has an output port and an input port on its base.\n\nThe output port outputs the genus number of the creature when one is pushed back. The number is positive if the creature is on the right of the portal and negative if it's on the left.\n\nFor example, a Norn on the right would output 1 and an Ettin on the left would output -2.\n\n\nThe input port can be used to turn the force field on and off. A positive input will turn it on and a zero or a negative input will turn it off."
+
+TAG "Agent Help 1 1 32238"
+"Force Field Configuration"
+"A combination of force field options can be set here by using the green arrows.\n\nClick the blue button on the base of the force field to close the panel.\n\nThe force field can be configured while turned on or off and changes take effect immediately."

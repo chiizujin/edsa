@@ -1,3 +1,7 @@
+**2025-08-31**
+- New agents: Frisky Fruit and Calming Clouds. Agents to assist with population control.
+- Added "disappointment" stimulus to Selective Force Field's push-back.
+
 **2025-08-29**
 - Updated C3-in-DS Ettin Desert. See the *readme.txt* file for details.
 - Changed agent classifier of Gadget Shelf to avoid a clash.

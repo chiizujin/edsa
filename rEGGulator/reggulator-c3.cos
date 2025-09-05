@@ -168,8 +168,6 @@ scrp 1 1 32236 9
         chem 155 -0.5
         * Decrease crowdedness
         chem 157 -0.75
-        * Urge push Norn
-        urge writ targ 36 1 1 1
       endi
     next
     slow

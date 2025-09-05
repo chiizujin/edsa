@@ -12,6 +12,9 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-09-05**
+- Updated the rEGGulator to no longer use `urge`.
+
 **2025-09-04**
 - Fixed a couple of inventory-related issues in the rEGGulator.
 

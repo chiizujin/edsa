@@ -1,21 +1,18 @@
 inst
 
-* Abort if already present (scripts will still be installed)
-setv va01 0
-enum 1 1 32221
-  setv va01 1
-next
-doif va01 eq 1
-  stop
-endi
-
-* Abort if a C3 or docked game (scripts will still be installed)
+* Abort if a C3 or docked game
 doif type game "ds_game_type" ne 2 or game "ds_game_type" eq "docked"
   stop
 endi
 
-* Abort if C3 not installed (scripts will still be installed)
+* Abort if C3 not installed
 doif eame "engine_no_auxiliary_bootstrap_1" ne 1
+  stop
+endi
+
+* Abort if already present
+rtar 1 1 32221
+doif targ ne null
   stop
 endi
 
@@ -24,10 +21,8 @@ new: simp 1 1 32221 "blnk" 1 0 1
 * Extra flag for lift script
 setv ov01 0
 
-* Setup
-brmi 0 0
-
 * Create meta-room
+brmi 0 0
 setv ov00 addm 14 1363 3000 1400 "gren3.4"
 mmsc 1514 2063 "grendel.mng\\swamp"
 
@@ -381,25 +376,25 @@ new: simp 1 1 32218 "ettin_doors" 4 4 3
 mvto 1598 2476
 
 * Populate with agents
-ject "beetle.cos" 7
-ject "environmental controls.cos" 7
-ject "fungi.cos" 7
-ject "garbage spewer.cos" 7
-ject "gnats.cos" 7
-ject "grendel area environment.cos" 7
-ject "grendel scenery.cos" 7
-ject "grendel seed bank.cos" 7
-ject "home smell emitters.cos" 7
-ject "kobold.cos" 7
-ject "mosquito.cos" 7
-ject "palmplant.cos" 7
-ject "piranha.cos" 7
-ject "rocklice.cos" 7
-ject "tendril.cos" 7
-ject "trapdoor.cos" 7
-ject "wasp.cos" 7
-ject "water smell emitter.cos" 7
-ject "wetness monitor and designator.cos" 7
+ject "beetle.cos" 6
+ject "environmental controls.cos" 6
+ject "fungi.cos" 6
+ject "garbage spewer.cos" 6
+ject "gnats.cos" 6
+ject "grendel area environment.cos" 6
+ject "grendel scenery.cos" 6
+ject "grendel seed bank.cos" 6
+ject "home smell emitters.cos" 6
+ject "kobold.cos" 6
+ject "mosquito.cos" 6
+ject "palmplant.cos" 6
+ject "piranha.cos" 6
+ject "rocklice.cos" 6
+ject "tendril.cos" 6
+ject "trapdoor.cos" 6
+ject "wasp.cos" 6
+ject "water smell emitter.cos" 6
+ject "wetness monitor and designator.cos" 6
 
 * Add 20 bacteria (keep it simple)
 setv va01 0
@@ -449,17 +444,16 @@ new: simp 1 1 99 "greneggmask" 1 0 1
 tick 3602
 mvto 2253 2017
 
-* Kill all other bioenergy incrementers
-enum 1 1 105
-  kill targ
-next
-* Bioengergy incrementer
-new: simp 1 1 105 "blnk" 0 0 0
-mvto 1000 300
-tick 100
-
-* Set up bioenergy initially
-setv game "Bioenergy" 1000
+* Bioengergy incrementer - shared with all C3-in-DS metarooms
+rtar 1 1 105
+doif targ eq null
+  new: simp 1 1 105 "blnk" 0 0 0
+  tick 100
+  setv game "Bioenergy" 1000
+  setv ov01 1
+else
+  addv ov01 1
+endi
 
 * New teleporter in jungle
 new: comp 3 2 32203 "c3indsgrendel" 5 0 2
@@ -485,6 +479,14 @@ elas 0
 setv ov00 2
 mvto 2750 9034
 
+* Create the signpost if it doesn't exist
+rtar 1 3 2
+doif targ eq null
+  new: simp 1 3 2 "fav_place_jungle" 1 0 1
+  attr 272
+  mvto 422 1743
+  tick 10
+endi
 * Move to where the signpost is so the favourite place icon gets created
 enum 1 3 2
   cmrp posx posy 0
@@ -613,7 +615,7 @@ scrp 3 2 32203 1
     doif targ ne null
       doif tmvf va01 va02 eq 1
         mvft va01 va02
-        stim writ targ 95 1
+        stim writ targ 95 2
       else
         * Play error sound if no room on other end
         snde "buzz"
@@ -645,4 +647,3 @@ scrp 3 2 32203 5
     bhvr 3
   next
 endm
-

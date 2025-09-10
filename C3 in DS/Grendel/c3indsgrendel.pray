@@ -15,8 +15,8 @@ group DSAG "Grendel Jungle"
 "Agent Animation File" "fav_place_jungle.c16"
 "Agent Animation Gallery" "fav_place_jungle"
 "Agent Animation String" "1"
-"Web URL" "creatures.webhop.net"
+"Web URL" "github.com/chiizujin/edsa"
 "Web Label" "Emmental's DS Agents"
- 
-inline FILE "c3indsgrendel.c16" "c3indsgrendel.c16" 
-inline FILE "c3indsgrendel.catalogue" "c3indsgrendel.catalogue" 
+
+inline FILE "c3indsgrendel.c16" "c3indsgrendel.c16"
+inline FILE "c3indsgrendel.catalogue" "c3indsgrendel.catalogue"

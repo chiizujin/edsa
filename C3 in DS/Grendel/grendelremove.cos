@@ -1,21 +1,13 @@
 inst
 
 * Check if present - abort if not
-setv va01 0
-enum 1 1 32221
-  setv va01 1
-next
-doif va01 eq 0
+rtar 1 1 32221
+doif targ eq null
   stop
 endi
 
-* Move camera back to meso
-cmrp 500 9200 0
-
-* Enumerate grendel area agent to get meta-room ID
-enum 1 1 32221
-  setv va00 ov00
-next
+* Get meta-room ID
+setv va00 ov00
 
 * Delete teleporters
 enum 3 2 32203
@@ -62,12 +54,9 @@ enum 3 9 1
       * Close portal
       lock
       sndc "por2"
-**      stop timer
-*      tick 0
       bhvr 0
       setv ov03 0
       anim [18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0]
-*      over
       attr 199
       clac 2
     endi
@@ -92,10 +81,18 @@ enum 3 0 0
 next
 
 * Stop any troublesome scripts and remove agents
-* Rain maker
+* ...Rain maker
 enum 1 1 114
   stpt
   kill targ
+next
+
+* Bioengergy incrementer - only remove if there are no other C3-in-DS rooms
+enum 1 1 105
+  subv ov01 1
+  doif ov01 eq 0
+    kill targ
+  endi
 next
 
 * Set LINKs to 0 otherwise the game will crash hugely
@@ -138,14 +135,23 @@ delr stoi va01
 delm va00
 
 * Kill room agent
-enum 1 1 32221
-  stpt
-  kill targ
-next
+rtar 1 1 32221
+stpt
+kill targ
 scrx 1 1 32221 9
 
-* Re-inject favourite places icons
-ject "new_ds_fav_places.cos" 7
-* Re-inject norn/attention indicators
-ject "ds norn indicator.cos" 7
-ject "ds object of attention indicator.cos" 7
+* Delete room favourite icon
+enum 1 4 2
+  setv va50 ov50
+  kill targ
+next
+enum 1 4 0
+  doif ov50 > va50
+    subv ov50 1
+    setv va02 ov50
+    mulv va02 50
+    addv va02 145
+    flto va02 0
+  endi
+next
+subv game "ds_favourites" 1

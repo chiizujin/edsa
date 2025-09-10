@@ -12,6 +12,10 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+
+**2025-09-10**
+- Updated C3-in-DS Grendel Jungle. See the *readme.txt* file for details.
+
 **2025-09-05**
 - Updated the rEGGulator to no longer use `urge`.
 - Released updated Interporter (by Mugendai) to fix teleport sound cutoff.
@@ -21,10 +25,6 @@ If you just want the agent to install into your game then all you need is the **
 
 **2025-09-03**
 - New agent: rEGGulator. An all-in-one agent for maintaining the number of unhatched Norn eggs.
-
-**2025-08-31**
-- New agents: Frisky Fruit and Calming Clouds. Agents to assist with population control.
-- Added "disappointment" stimulus to Selective Force Field's push-back.
 
 ([Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md))
 

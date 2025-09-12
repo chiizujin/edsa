@@ -47,6 +47,7 @@ Version history
 ---------------
 1.3
 - Added input/output ports.
+- Fixed input parts getting focus when they shouldn't.
 1.2
 - 'urge' is no longer used to encourage Norns to breed.
 1.1

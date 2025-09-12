@@ -142,9 +142,21 @@ endm
 
 * Mouse down
 scrp 1 1 32236 76
-  doif _p1_ ne 1
+  * An agent can only run one script at a time, so clicking anywhere in the
+  * game, even if not on the agent, will interrupt the timer script while it's
+  * doing the "working" button animation. This means that the rEGGulator will
+  * appear to be turned off if this happens. To avoid this, force the light back
+  * on if the rEGGulator is actually on
+  doif tick eq 100
+    part 7
+    pose 1
+  endi
+
+  * Don't do anything else if it wasn't a left click on us
+  doif hots ne ownr or _p1_ ne 1
     stop
   endi
+
   * Keep the focus on the last-clicked part until enter is pressed if a part is clicked...
   doif hotp eq 5 or hotp eq 6
     * ...and it's one of the input parts...
@@ -201,13 +213,13 @@ endm
 
 * Timer
 scrp 1 1 32236 9
+  * Most of the script is inst to prevent mouse down interrupting it, which
+  * fires even if not clicked on the agent itself
+  inst
   tick 100
-  part 7
-  pose 0
   setv va01 totl 3 4 1
   * Encourage breeding
   doif va01 lt ov01
-    inst
     enum 4 1 0
       * Also check chem 48 to let pregnant Norns lay their eggs
       doif dead eq 0 and cage ge 3 and chem 48 lt 0.1
@@ -223,13 +235,11 @@ scrp 1 1 32236 9
         chem 157 -0.75
       endi
     next
-    slow
     setv va00 va01
     subv va00 ov01
     setv va02 1
   * Discourage breeding
   elif va01 ge ov02
-    inst
     enum 4 1 0
       doif dead eq 0 and cage ge 3
         * Increase libido lowerer
@@ -245,7 +255,6 @@ scrp 1 1 32236 9
         endi
       endi
     next
-    slow
     setv va00 va01
     subv va00 ov02
     * Only display as a warning if we are actually over the limit
@@ -277,7 +286,12 @@ scrp 1 1 32236 9
 
   part 2
   ptxt va03
-  wait 1
+
+  * Do the "working" animation
+  slow
+  part 7
+  pose 0
+  wait 5
   part 7
   pose 1
 endm
@@ -293,3 +307,4 @@ scrx 1 1 32236 76
 scrx 1 1 32236 1001
 scrx 1 1 32236 1002
 scrx 1 1 32236 1003
+scrx 1 1 32236 1004

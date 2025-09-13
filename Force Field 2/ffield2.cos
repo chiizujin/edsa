@@ -1,0 +1,362 @@
+new: comp 1 1 32237 "force field 2" 5 0 5000
+
+* Buttons
+pat: butt 1 "force field 2" 7 2 3 119 0 [] 1001 1
+pat: butt 2 "force field 2" 5 2 68 119 0 [] 1002 1
+
+* Ports
+pat: dull 3 "force field 2" 9 20 121 0
+prt: onew 0 "Out" "Out" 24 124
+pat: dull 4 "force field 2" 10 53 121 0
+prt: inew 1 "In" "In" 57 124 1003
+
+attr 198
+perm 90
+bhvr 0
+accg 3
+elas 0
+fric 100
+rnge 70
+frat 4
+puhl 0 40 120
+
+* Block/allow only (0=allow only, 1=block)
+setv ov01 1
+* Genus (0=all)
+setv ov02 1
+* Stage type (0=all, 1=younger than, 2=older than)
+setv ov03 1
+* Life stage
+setv ov04 4
+
+seta ov05 null
+
+doif game "CreatorX" ne 0 and game "CreatorY" ne 0
+  mvto 6114 9097
+  velo rand -2 2 0
+else
+  mvto 5543 3520
+  velo rand 20 40 0
+endi
+
+* On/off
+scrp 1 1 32237 1002
+  snde "beep"
+  doif ov00 eq 0
+    setv ov00 1
+    anim [1 2 3 2 255]
+    part 2
+    pose 1
+    tick 1
+  else
+    setv ov00 0
+    pose 0
+    part 2
+    pose 0
+    tick 0
+  endi
+endm
+
+* In port
+scrp 1 1 32237 1003
+  doif _p1_ ge 1
+    setv ov00 1
+    anim [1 2 3 2 255]
+    part 2
+    pose 1
+    tick 1
+  else
+    setv ov00 0
+    pose 0
+    part 2
+    pose 0
+    tick 0
+  endi
+endm
+
+* Timer - check creatures
+scrp 1 1 32237 9
+  doif carr ne null
+    stop
+  endi
+
+  setv va00 posx
+  inst
+  esee 4 0 0
+    * Check for genus match
+    doif gnus eq mv02 or mv02 eq 0
+      setv va01 1
+    endi
+    * Check for "any age" match
+    doif mv03 eq 0
+      setv va02 1
+    * Check for specific age match
+    elif mv03 eq 1 and cage lt mv04
+      setv va02 1
+    elif mv03 eq 2 and cage gt mv04
+      setv va02 1
+    endi
+    * Check both genus and age match
+    doif va01 ne 0 and va02 ne 0
+      setv va03 1
+    endi
+    * Push away if not allowed to pass
+    doif va03 eq mv01
+      * Stim with disappointment
+      stim writ targ 0 1
+      snde "ffbz"
+      setv va02 gnus
+      doif posx gt va00
+        * Push right
+        velo 10 -10
+      else
+        * Push left
+        velo -10 -10
+        negv va02
+      endi
+      * Send a signal based on the genus and direction
+      targ ownr
+      prt: send 0 va02
+      setv va04 1
+    endi
+  next
+
+  * Animation
+  doif va04 eq 1
+    slow
+    targ ownr
+    pose 4
+    wait 1
+    anim [1 2 3 2 255]
+  endi
+endm
+
+* Pick up
+scrp 1 1 32237 4
+  * Kill config panel
+  doif ov05 ne null
+    inst
+    kill ov05
+    part 1
+    pose 0
+  endi
+endm
+
+* Config
+scrp 1 1 32237 1001
+  doif ov05 ne null
+    snde "beep"
+    kill ov05
+    part 1
+    pose 0
+    stop
+  endi
+
+  inst
+  setv va01 posx
+  subv va01 70
+  setv va02 posy
+  subv va02 32
+
+  new: comp 1 1 32238 "force field 2" 1 11 8000
+  doif tmvt va01 va02 eq 0
+    kill targ
+    targ ownr
+    snde "buzz"
+    stop
+  endi
+  seta ov00 ownr
+
+  setv va03 8
+  setv va04 6
+  setv va05 14
+  * Block/allow only
+  pat: fixd 1 "force field 2" 14 0 va03 0 "WhiteOnTransparentChars"
+  part 1
+  frmt 0 0 0 0 0 0 2
+  pat: butt 2 "force field 2" 12 1 9 va04 0 [] 1001 1
+  pat: butt 3 "force field 2" 13 1 123 va04 0 [] 1001 1
+  addv va03 va05
+  addv va04 va05
+  * Genus
+  pat: fixd 4 "force field 2" 14 0 va03 0 "WhiteOnTransparentChars"
+  part 4
+  frmt 0 0 0 0 0 0 2
+  pat: butt 5 "force field 2" 12 1 9 va04 0 [] 1002 1
+  pat: butt 6 "force field 2" 13 1 123 va04 0 [] 1003 1
+  addv va03 va05
+  addv va04 va05
+  * Stage type
+  pat: fixd 7 "force field 2" 14 0 va03 0 "WhiteOnTransparentChars"
+  part 7
+  frmt 0 0 0 0 0 0 2
+  pat: butt 8 "force field 2" 12 1 9 va04 0 [] 1004 1
+  pat: butt 9 "force field 2" 13 1 123 va04 0 [] 1005 1
+  addv va03 va05
+  addv va04 va05
+  * Life stage
+  pat: fixd 10 "force field 2" 14 0 va03 0 "WhiteOnTransparentChars"
+  part 10
+  frmt 0 0 0 0 0 0 2
+  pat: butt 11 "force field 2" 12 1 9 va04 0 [] 1006 1
+  pat: butt 12 "force field 2" 13 1 123 va04 0 [] 1007 1
+  mesg writ targ 1000
+
+  seta mv05 targ
+  mvto va01 va02
+
+  targ ownr
+  snde "beep"
+  part 1
+  pose 1
+endm
+
+* Config - update panel
+scrp 1 1 32238 1000
+  inst
+  targ ov00
+    setv va01 ov01
+    setv va02 ov02
+    setv va03 ov03
+    setv va04 ov04
+  targ ownr
+
+  * Block/allow only
+  part 1
+  doif va01 eq 0
+    ptxt "Allow only"
+  else
+    ptxt "Block"
+  endi
+  * Genus
+  part 4
+  doif va02 eq 0
+    ptxt "All creatures"
+  elif va02 eq 1
+    ptxt "Norns"
+  elif va02 eq 2
+    ptxt "Grendels"
+  elif va02 eq 3
+    ptxt "Ettins"
+  else
+    ptxt "Geats"
+  endi
+  * Stage type
+  part 7
+  doif va03 eq 1
+    ptxt "Younger than"
+  elif va03 eq 2
+    ptxt "Older than"
+  else
+    ptxt "Any life stage"
+  endi
+  * Life stage
+  part 10
+  doif va03 eq 0
+    ptxt ""
+  else
+    ptxt read "creature_history_life_stage" va04
+  endi
+endm
+
+* Buttons - block/allow only
+scrp 1 1 32238 1001
+  snde "1bep"
+  targ ov00
+  doif ov01 eq 0
+    setv ov01 1
+  else
+    setv ov01 0
+  endi
+  mesg writ ownr 1000
+endm
+
+* Buttons - genus
+scrp 1 1 32238 1002
+  snde "1bep"
+  targ ov00
+  subv ov02 1
+  doif ov02 eq -1
+    setv ov02 4
+  endi
+  mesg writ ownr 1000
+endm
+
+scrp 1 1 32238 1003
+  snde "1bep"
+  targ ov00
+  addv ov02 1
+  doif ov02 eq 5
+    setv ov02 0
+  endi
+  mesg writ ownr 1000
+endm
+
+* Buttons - stage type
+scrp 1 1 32238 1004
+  snde "1bep"
+  targ ov00
+  subv ov03 1
+  doif ov03 eq -1
+    setv ov03 2
+  endi
+  mesg writ ownr 1000
+endm
+
+scrp 1 1 32238 1005
+  snde "1bep"
+  targ ov00
+  addv ov03 1
+  doif ov03 eq 3
+    setv ov03 0
+  endi
+  mesg writ ownr 1000
+endm
+
+* Buttons - life stage
+scrp 1 1 32238 1006
+  targ ov00
+  doif ov03 ne 0
+    snde "1bep"
+    subv ov04 1
+    doif ov04 eq -1
+      setv ov04 6
+    endi
+    mesg writ ownr 1000
+  endi
+endm
+
+scrp 1 1 32238 1007
+  targ ov00
+  doif ov03 ne 0
+    snde "1bep"
+    addv ov04 1
+    doif ov04 eq 7
+      setv ov04 0
+    endi
+    mesg writ ownr 1000
+  endi
+endm
+
+rscr
+
+enum 1 1 32237
+  kill targ
+next
+scrx 1 1 32237 4
+scrx 1 1 32237 9
+scrx 1 1 32237 1001
+scrx 1 1 32237 1002
+scrx 1 1 32237 1003
+
+enum 1 1 32238
+  kill targ
+next
+scrx 1 1 32238 1000
+scrx 1 1 32238 1001
+scrx 1 1 32238 1002
+scrx 1 1 32238 1003
+scrx 1 1 32238 1004
+scrx 1 1 32238 1005
+scrx 1 1 32238 1006
+scrx 1 1 32238 1007

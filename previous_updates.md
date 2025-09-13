@@ -1,3 +1,9 @@
+**2025-09-04**
+- Fixed a couple of inventory-related issues in the rEGGulator.
+
+**2025-09-03**
+- New agent: rEGGulator. An all-in-one agent for maintaining the number of unhatched Norn eggs.
+
 **2025-08-31**
 - New agents: Frisky Fruit and Calming Clouds. Agents to assist with population control.
 - Added "disappointment" stimulus to Selective Force Field's push-back.

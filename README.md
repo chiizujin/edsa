@@ -12,6 +12,8 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-09-13**
+New agent (sort of): Selective Force Field II. This is an improved version of the original Selective Force Field with new sprites and additional features.
 
 **2025-09-10**
 - Updated C3-in-DS Grendel Jungle. See the *readme.txt* file for details.
@@ -19,12 +21,6 @@ If you just want the agent to install into your game then all you need is the **
 **2025-09-05**
 - Updated the rEGGulator to no longer use `urge`.
 - Released updated Interporter (by Mugendai) to fix teleport sound cutoff.
-
-**2025-09-04**
-- Fixed a couple of inventory-related issues in the rEGGulator.
-
-**2025-09-03**
-- New agent: rEGGulator. An all-in-one agent for maintaining the number of unhatched Norn eggs.
 
 ([Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md))
 
@@ -121,6 +117,10 @@ This robotic spider-rock wanders around the world, occasionally releasing sprays
 ## ※ Selective Force Field ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Force%20Field/force%20field.zip))
 
 This force field can be configured to prevent certain types of creatures from passing, based on race and life stage.
+
+## ※ Selective Force Field II ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Force%20Field%202/force%20field%202.zip))
+
+An improved version of the Selective Force field with new sprites, the ability to whitelist or blacklist, input/output ports, and general usability improvements.
 
 ## ※ Towel ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Towel/towel.zip))
 

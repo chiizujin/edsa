@@ -13,11 +13,11 @@ group DSAG "rEGGulator "
 "Agent Description" ""
 "Agent Animation File" "reggulator.c16"
 "Agent Animation Gallery" "reggulator"
-"Agent Animation String" "0"
+"Agent Animation String" "5"
 "Web URL" "github.com/chiizujin/edsa"
 "Web Label" "Emmental's DS Agents"
 
-"Remove script" "enum 1 1 32236 kill targ next scrx 1 1 32236 5 scrx 1 1 32236 9 scrx 1 1 32236 76 scrx 1 1 32236 1001 scrx 1 1 32236 1002 scrx 1 1 32236 1003"
+"Remove script" "enum 1 1 32236 kill targ next scrx 1 1 32236 5 scrx 1 1 32236 9 scrx 1 1 32236 76 scrx 1 1 32236 1001 scrx 1 1 32236 1002 scrx 1 1 32236 1003 scrx 1 1 32236 1004"
 
 group AGNT "rEGGulator"
 "Agent Type" 0
@@ -32,9 +32,9 @@ group AGNT "rEGGulator"
 "Agent Description" ""
 "Agent Animation File" "reggulator.c16"
 "Agent Animation Gallery" "reggulator"
-"Agent Animation String" "0"
+"Agent Animation String" "5"
 
-"Remove script" "enum 1 1 32236 kill targ next scrx 1 1 32236 5 scrx 1 1 32236 9 scrx 1 1 32236 1001 scrx 1 1 32236 1002 scrx 1 1 32236 1003"
+"Remove script" "enum 1 1 32236 kill targ next scrx 1 1 32236 5 scrx 1 1 32236 9 scrx 1 1 32236 1001 scrx 1 1 32236 1002 scrx 1 1 32236 1003 scrx 1 1 32236 1004"
 
 inline FILE "reggulator.c16" "reggulator.c16"
 inline FILE "reggulator.catalogue" "reggulator.catalogue"

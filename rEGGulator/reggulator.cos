@@ -28,14 +28,13 @@ doif va00 ne null
   stop
 endi
 
+* Display
 new: comp 1 1 32236 "reggulator" 1 0 5010
-*pat: text 1 "blnk" 0 37 15 0 1001 "WhiteOnTransparentChars"
-
 pat: fixd 1 "blnk" 0 37 15 0 "WhiteOnTransparentChars"
 part 1
 frmt 0 0 0 0 0 0 2
-ptxt "Eggs:"
 
+ptxt "Eggs:"
 pat: fixd 2 "blnk" 0 37 29 0 "WhiteOnTransparentChars"
 part 2
 frmt 0 0 0 0 0 0 2
@@ -63,7 +62,14 @@ part 6
 frmt 0 0 0 0 0 0 0
 ptxt vtos ov02
 
+* Button
 pat: butt 7 "reggulator" 1 2 48 67 0 [] 1003 1
+
+* Ports
+pat: dull 8 "reggulator" 3 10 31 0
+prt: onew 0 "Out" "Out" 15 36
+pat: dull 9 "reggulator" 4 10 49 0
+prt: inew 1 "In" "In" 15 54 1004
 
 attr 195
 perm 90
@@ -92,7 +98,10 @@ scrp 1 1 32236 1001
     setv ov00 0
     setv ov01 va01
     ptxt vtos va01
-    targ null
+    * Clear focus
+    rgam
+    targ game "c3_default_focus"
+    part game "c3_default_focus_part"
     fcus
   endi
 endm
@@ -108,7 +117,10 @@ scrp 1 1 32236 1002
     setv ov00 0
     setv ov02 va01
     ptxt vtos va01
-    targ null
+    * Clear focus
+    rgam
+    targ game "c3_default_focus"
+    part game "c3_default_focus_part"
     fcus
   endi
 endm
@@ -120,7 +132,6 @@ scrp 1 1 32236 1003
   doif pose eq 0
     tick 1
     pose 1
-    part 2
   else
     tick 0
     pose 0
@@ -131,9 +142,21 @@ endm
 
 * Mouse down
 scrp 1 1 32236 76
-  doif _p1_ ne 1
+  * An agent can only run one script at a time, so clicking anywhere in the
+  * game, even if not on the agent, will interrupt the timer script while it's
+  * doing the "working" button animation. This means that the rEGGulator will
+  * appear to be turned off if this happens. To avoid this, force the light back
+  * on if the rEGGulator is actually on
+  doif tick eq 100
+    part 7
+    pose 1
+  endi
+
+  * Don't do anything else if it wasn't a left click on us
+  doif hots ne ownr or _p1_ ne 1
     stop
   endi
+
   * Keep the focus on the last-clicked part until enter is pressed if a part is clicked...
   doif hotp eq 5 or hotp eq 6
     * ...and it's one of the input parts...
@@ -157,6 +180,20 @@ scrp 1 1 32236 76
   endi
 endm
 
+* In port
+scrp 1 1 32236 1004
+  part 7
+  doif _p1_ ge 1
+    tick 1
+    pose 1
+  else
+    tick 0
+    pose 0
+    part 2
+    ptxt "---"
+  endi
+endm
+
 * Force the plane back when dropped to make sure it (probably) stays visible
 scrp 1 1 32236 5
   setv va01 5010
@@ -174,14 +211,15 @@ scrp 1 1 32236 5
   endi
 endm
 
+* Timer
 scrp 1 1 32236 9
+  * Most of the script is inst to prevent mouse down interrupting it, which
+  * fires even if not clicked on the agent itself
+  inst
   tick 100
-  part 7
-  pose 0
   setv va01 totl 3 4 1
   * Encourage breeding
   doif va01 lt ov01
-    inst
     enum 4 1 0
       * Also check chem 48 to let pregnant Norns lay their eggs
       doif dead eq 0 and cage ge 3 and chem 48 lt 0.1
@@ -197,11 +235,11 @@ scrp 1 1 32236 9
         chem 157 -0.75
       endi
     next
-    slow
+    setv va00 va01
+    subv va00 ov01
     setv va02 1
   * Discourage breeding
   elif va01 ge ov02
-    inst
     enum 4 1 0
       doif dead eq 0 and cage ge 3
         * Increase libido lowerer
@@ -217,8 +255,9 @@ scrp 1 1 32236 9
         endi
       endi
     next
-    slow
-    * Only display as a warning if we are over the limit
+    setv va00 va01
+    subv va00 ov02
+    * Only display as a warning if we are actually over the limit
     doif va01 gt ov02
       setv va02 1
     endi
@@ -243,9 +282,16 @@ scrp 1 1 32236 9
     endi
   endi
 
+  prt: send 0 va00
+
   part 2
   ptxt va03
-  wait 1
+
+  * Do the "working" animation
+  slow
+  part 7
+  pose 0
+  wait 5
   part 7
   pose 1
 endm
@@ -261,3 +307,4 @@ scrx 1 1 32236 76
 scrx 1 1 32236 1001
 scrx 1 1 32236 1002
 scrx 1 1 32236 1003
+scrx 1 1 32236 1004

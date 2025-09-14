@@ -1,3 +1,7 @@
+**2025-09-05**
+- Updated the rEGGulator to no longer use `urge`.
+- Released updated Interporter (by Mugendai) to fix teleport sound cutoff.
+
 **2025-09-04**
 - Fixed a couple of inventory-related issues in the rEGGulator.
 

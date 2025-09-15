@@ -1,0 +1,6 @@
+TAG "Agent Help 3 9 32201"
+"Export Portal"
+"This portal works in a similar manner to the warp portals but exports creatures instead of sending them through the warp.\n\nThe files containing exported creatures can be found in the game's \"My Creatures\" folder."
+
+TAG "ToolTip 3 9 32201"
+"Export Portal"

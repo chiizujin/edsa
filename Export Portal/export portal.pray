@@ -1,0 +1,20 @@
+"en-GB"
+
+group DSAG "Export Portal"
+"Agent Type" 0
+"Dependency Count" 1
+"Dependency 1" "export portal.catalogue"
+"Dependency Category 1" 7
+
+"Script Count" 1
+"Script 1" @ "export portal.cos"
+"Agent Description" "This portal works in a similar manner to the warp portals but exports creatures instead of sending them through the warp."
+"Agent Animation File" "ds portals.c16"
+"Agent Animation Gallery" "ds portals"
+"Agent Animation String" "24 25 26 27 28 29 30 31 32 33 34 35 36 37 255"
+"Web URL" "github.com/chiizujin/edsa"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 3 9 32201 kill targ next scrx 3 9 32201 0 scrx 3 9 32201 1 scrx 3 9 32201 1000 scrx 3 9 32201 1001"
+
+inline FILE "export portal.catalogue" "export portal.catalogue"

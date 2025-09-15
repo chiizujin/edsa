@@ -1,0 +1,576 @@
+new: simp 3 9 32201 "ds portals" 39 0 400
+attr 199
+clac 2
+elas 0
+accg 5
+aero 10
+perm 60
+puhl -1 95 110
+
+mvto 6067 9096
+
+* Activate 0 - open
+scrp 3 9 32201 0
+  lock
+  attr 197
+  anim [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19]
+  sndc "por1"
+  over
+
+  setv ov00 1
+  bhvr 1
+  clac 1
+  call 1000 0 0
+endm
+
+* Activate 1 (only comes from a creature)
+scrp 3 9 32201 1
+  inst
+  targ from
+  * If this wasn't from a creature then stop
+  doif fmly ne 4
+    stop
+  endi
+
+  * Get the moniker
+  sets va01 gtos 0
+
+  * Stim and export the creature
+  stim writ from 27 1
+  stim writ from 75 1
+  setv va00 pray expo "DSEX"
+
+  * Can't export if the creature (or if pregnant any of its offspring) are already exported in some form
+  doif va00 ne 0
+    stop
+  endi
+
+  targ ownr
+  sndc "wr_e"
+  * Add warning icon
+  call 1001 va01 0
+  slow
+
+  wait 25
+  sndl "humm"
+
+  * Look for Ultimate Autosave
+  rtar 1 2 32301
+  doif targ ne null
+    * Save if UAS is set to save on warp out
+    doif ov13 eq 1
+      * UAS usually waits for 40 ticks but we've already waited for 25
+      wait 15
+      save
+      setv ov99 rtim
+    endi
+  endi
+endm
+
+* Activate 2 - close
+scrp 3 9 32201 2
+  lock
+  sndc "por2"
+  bhvr 0
+  setv ov03 0
+  anim [18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0]
+  over
+
+  attr 199
+  clac 2
+endm
+
+* Wormhole appear
+scrp 3 9 32201 1000
+  lock
+  sndl "humm"
+  anim [20 21 22 23]
+  over
+  setv ov03 2
+  anim [24 25 26 27 28 29 30 31 32 33 34 35 36 37 255]
+endm
+
+* Add a warning icon
+scrp 3 9 32201 1001
+  inst
+  * Check whether warning is needed by looking at state of ov02 in comms
+  rtar 1 2 210
+  doif targ ne null
+    setv va00 ov02
+    andv va00 2
+    doif va00 ne 2
+      stop
+    endi
+  else
+    * No targ, something's gone weird
+    stop
+  endi
+
+  * Get warning icons handler
+  rtar 1 1 300
+  doif targ eq null
+    stop
+  endi
+
+  * Get positioning info
+  setv va00 game "ds_warnings"
+  mulv va00 50
+  addv va00 145
+  * Create the icon
+  new: simp 1 2 46 "warning" 4 10 8505
+  * Floating agent + activate
+  attr 292
+  flto va00 50
+  anim [0 0 0 0 1 2 3 3 3 3 255]
+  * Set your type as export portal
+  setv ov00 8
+  * Store your position for reshuffle event later
+  setv ov02 game "ds_warnings"
+  * Store creature moniker in ov04
+  sets ov04 _p1_
+  * Increment ds_warnings variable for later icons
+  addv game "ds_warnings" 1
+
+  * Check that you haven't exceeded number of warnings limit
+  doif game "ds_warnings" gt game "ds_number_of_warnings"
+    enum 1 2 46
+      * Send event to shuffle, losing ID#0
+      mesg wrt+ targ 1000 0 0 0
+    next
+  endi
+endm
+
+* Warning icons click. This entire script is reproduced from the Docking Station
+* version to add another message type (8 -creature left though export portal).
+* Other than fixing couple of missing STOPs, nothing else is changed except
+* reformatting and removing commented-out code.
+scrp 1 2 46 1
+  inst
+  inst
+
+  * Check first whether any of the icons are running scripts
+  setv va00 0
+  enum 1 2 46
+    doif targ ne ownr
+      doif code ne -1
+        * Yep - stop
+        stop
+      endi
+    endi
+  next
+
+  * Filter according to type
+  doif ov00 eq 1
+    * If you're containment, move camera to look at contents
+    rtar 1 2 208
+    doif targ ne null
+      mesg writ targ 1065
+      cmrp 5450 8930 0
+      * Now give event to all icons to shuffle
+      * This works by passing your ID (ov02), only those higher than you move
+      targ ownr
+      setv va00 ov02
+      enum 1 2 46
+        mesg wrt+ targ 1000 va00 0 0
+      next
+    endi
+
+  elif ov00 eq 2
+    * Else if you are a creature arrived through portal warning
+    * work out the name of the user from ov03
+    sets va53 ov03
+    sets va54 ov04
+    adds va53 "_nick"
+    setv va99 0
+    loop
+      * Make sure this exists as a string
+      doif type game va53 ne 2
+        * No? Try triggering add contact event
+        rtar 1 1 157
+        doif targ ne null
+          mesg wrt+ targ 1000 va54 0 0
+        else
+          * Contact book missing, stop [Emmental: there was no stop]
+          stop
+        endi
+        targ ownr
+        lock
+        wait 5
+      else
+        setv va99 1
+      endi
+    untl va99 eq 1
+
+    * Put nick in va52
+    sets va52 game va53
+    * Work out creature name from moniker in ov04
+    sets va54 ov04
+    sets va51 hist name va54
+    doif va51 eq ""
+      sets va51 read "portals" 1
+    endi
+
+    * See if dialogue is on screen
+    rtar 1 1 179
+    * If not, create it
+    doif targ eq null
+      new: comp 1 1 179 "useful_screen" 1 0 8905
+      attr 292
+      * Text part
+      pat: fixd 1 "useful_screen" 1 20 70 1 "whiteontransparentchars"
+      * Close button
+      pat: butt 2 "useful_screen" 2 2 237 24 1 [] 1000 0
+      setv va90 wndw
+      divv va90 2
+      setv va91 wndh
+      divv va91 2
+      setv va92 wdth
+      divv va92 2
+      setv va93 hght
+      divv va93 2
+
+      subv va90 va92
+      subv va91 va93
+      flto va90 va91
+    else
+      pat: kill 1
+      pat: fixd 1 "useful_screen" 1 20 70 1 "whiteontransparentchars"
+    endi
+
+    sets va50 read "warnings" 11
+    adds va50 va51
+    adds va50 read "warnings" 12
+    adds va50 va52
+
+    part 1
+    ptxt va50
+
+    * Send shuffle event to icons
+    targ ownr
+    setv va00 ov02
+    enum 1 2 46
+      mesg wrt+ targ 1000 va00 0 0
+    next
+
+  elif ov00 eq 3
+    * Else if you are message
+    * See if dialogue is on screen
+    rtar 1 1 179
+    * If not, create it
+    doif targ eq null
+      new: comp 1 1 179 "useful_screen" 1 0 8905
+      attr 292
+      * Text part
+      pat: fixd 1 "useful_screen" 1 20 70 1 "whiteontransparentchars"
+      * Close button
+      pat: butt 2 "useful_screen" 2 2 237 24 1 [] 1000 0
+      setv va90 wndw
+      divv va90 2
+      setv va91 wndh
+      divv va91 2
+      setv va92 wdth
+      divv va92 2
+      setv va93 hght
+      divv va93 2
+
+      subv va90 va92
+      subv va91 va93
+      flto va90 va91
+    else
+      pat: kill 1
+      pat: fixd 1 "useful_screen" 1 20 70 1 "GreyOnTransChars"
+    endi
+
+    part 1
+    frmt 10 4 4 4 2 2 0
+    ptxt read "Message Centre Text" 24
+    rtar 1 2 210
+    cmrt 0
+    * Send shuffle event to icons
+    targ ownr
+    setv va00 ov02
+    enum 1 2 46
+      mesg wrt+ targ 1000 va00 0 0
+    next
+
+  elif ov00 eq 4
+  * Else if you are contact, let them know who is online now
+    sets va48 ov03
+    * See if dialogue is on screen
+    rtar 1 1 179
+    * If not, create it
+    doif targ eq null
+      new: comp 1 1 179 "useful_screen" 1 0 8905
+      attr 292
+      * Text part
+      pat: fixd 1 "useful_screen" 1 20 70 1 "whiteontransparentchars"
+      * Close button
+      pat: butt 2 "useful_screen" 2 2 237 24 1 [] 1000 0
+      setv va90 wndw
+      divv va90 2
+      setv va91 wndh
+      divv va91 2
+      setv va92 wdth
+      divv va92 2
+      setv va93 hght
+      divv va93 2
+
+      subv va90 va92
+      subv va91 va93
+      flto va90 va91
+    else
+      pat: kill 1
+      pat: fixd 1 "useful_screen" 1 20 70 1 "whiteontransparentchars"
+    endi
+
+    * Get nickname
+    adds va48 "_nick"
+    sets va49 game va48
+
+    sets va81 read "warnings" 5
+    sets va50 va81
+    adds va50 "\n"
+    adds va50 va49
+    adds va50 "\n"
+    sets va81 read "warnings" 6
+    adds va50 va81
+
+    part 1
+    ptxt va50
+
+    * Send shuffle event to icons
+    targ ownr
+    setv va00 ov02
+    enum 1 2 46
+      mesg wrt+ targ 1000 va00 0 0
+    next
+
+  elif ov00 eq 5
+    * Else if you are a chat warning
+    * See if dialogue is on screen
+    rtar 1 1 179
+    * If not, create it
+    doif targ eq null
+      new: comp 1 1 179 "useful_screen" 1 0 8905
+      attr 292
+      * Text part
+      pat: fixd 1 "useful_screen" 1 20 70 1 "GreyOnTransChars"
+      * Close button
+      pat: butt 2 "useful_screen" 2 2 237 24 1 [] 1000 0
+      setv va90 wndw
+      divv va90 2
+      setv va91 wndh
+      divv va91 2
+      setv va92 wdth
+      divv va92 2
+      setv va93 hght
+      divv va93 2
+
+      subv va90 va92
+      subv va91 va93
+      flto va90 va91
+    else
+      pat: kill 1
+      pat: fixd 1 "useful_screen" 1 20 70 1 "GreyOnTransChars"
+    endi
+    part 1
+    frmt 10 4 4 4 2 2 0
+    ptxt read "Misc Chat Text" 0
+    * Send shuffle event to icons
+    targ ownr
+    setv va00 ov02
+    enum 1 2 46
+      mesg wrt+ targ 1000 va00 0 0
+    next
+
+* Else if you are contact, let them know who is offline now
+  elif ov00 eq 6
+    sets va48 ov03
+    * See if dialogue is on screen
+    rtar 1 1 179
+    * If not, create it
+    doif targ eq null
+      new: comp 1 1 179 "useful_screen" 1 0 8905
+      attr 292
+      * Text part
+      pat: fixd 1 "useful_screen" 1 20 70 1 "whiteontransparentchars"
+      * Close button
+      pat: butt 2 "useful_screen" 2 2 237 24 1 [] 1000 0
+      setv va90 wndw
+      divv va90 2
+      setv va91 wndh
+      divv va91 2
+      setv va92 wdth
+      divv va92 2
+      setv va93 hght
+      divv va93 2
+
+      subv va90 va92
+      subv va91 va93
+      flto va90 va91
+    else
+      pat: kill 1
+      pat: fixd 1 "useful_screen" 1 20 70 1 "whiteontransparentchars"
+    endi
+
+    * Get nickname
+    adds va48 "_nick"
+    sets va49 game va48
+
+    sets va81 read "warnings" 5
+    sets va50 va81
+    adds va50 "\n"
+    adds va50 va49
+    adds va50 "\n"
+    sets va81 read "warnings" 8
+    adds va50 va81
+
+    part 1
+    ptxt va50
+
+    * Send shuffle event to icons
+    targ ownr
+    setv va00 ov02
+    enum 1 2 46
+      mesg wrt+ targ 1000 va00 0 0
+    next
+
+  * Else if you are a creature left warning
+  elif ov00 eq 7
+    * Work out the name of the user from ov03
+    sets va53 ov03
+    sets va54 ov04
+    adds va53 "_nick"
+
+    setv va99 0
+    loop
+      * Mmake sure this exists as a string
+      doif type game va53 ne 2
+      * No? Try triggering add contact event
+        rtar 1 1 157
+        doif targ ne null
+          mesg wrt+ targ 1000 va54 0 0
+        else
+          * Contact book missing, stop [Emmental: there was no stop]
+          stop
+        endi
+        targ ownr
+        lock
+        wait 5
+      else
+        setv va99 1
+      endi
+    untl va99 eq 1
+
+    * Put nick in va52
+    sets va52 game va53
+    * Work out creature name from moniker in ov04
+    sets va54 ov04
+    sets va51 hist name va54
+    doif va51 eq ""
+      sets va51 read "portals" 1
+    endi
+
+    * See if dialogue is on screen
+    rtar 1 1 179
+    * If not, create it
+    doif targ eq null
+      new: comp 1 1 179 "useful_screen" 1 0 8905
+      attr 292
+      * Text part
+      pat: fixd 1 "useful_screen" 1 20 70 1 "whiteontransparentchars"
+      * Close button
+      pat: butt 2 "useful_screen" 2 2 237 24 1 [] 1000 0
+      setv va90 wndw
+      divv va90 2
+      setv va91 wndh
+      divv va91 2
+      setv va92 wdth
+      divv va92 2
+      setv va93 hght
+      divv va93 2
+
+      subv va90 va92
+      subv va91 va93
+      flto va90 va91
+    else
+      pat: kill 1
+      pat: fixd 1 "useful_screen" 1 20 70 1 "whiteontransparentchars"
+    endi
+
+    sets va50 read "warnings" 11
+    adds va50 va51
+    adds va50 read "warnings" 13
+    adds va50 va52
+
+    part 1
+    ptxt va50
+
+    * Send shuffle event to icons
+    targ ownr
+    setv va00 ov02
+    enum 1 2 46
+      mesg wrt+ targ 1000 va00 0 0
+    next
+
+  * Else if you are an export portal warning [Emmental: additional message type]
+  elif ov00 eq 8
+    * Work out creature name from moniker in ov04
+    sets va54 ov04
+    sets va51 hist name va54
+    doif va51 eq ""
+      sets va51 read "portals" 1
+    endi
+
+    *	See if dialogue is on screen
+		rtar 1 1 179
+    *	If not, create it
+		doif targ eq null
+			new: comp 1 1 179 "useful_screen" 1 0 8905
+			attr 292
+      *	Text part
+			pat: fixd 1 "useful_screen" 1 20 70 1 "whiteontransparentchars"
+      *	Cose button
+			pat: butt 2 "useful_screen" 2 2 237 24 1 [] 1000 0
+			setv va90 wndw
+			divv va90 2
+			setv va91 wndh
+			divv va91 2
+			setv va92 wdth
+			divv va92 2
+			setv va93 hght
+			divv va93 2
+
+			subv va90 va92
+			subv va91 va93
+			flto va90 va91
+		else
+			pat: kill 1
+			pat: fixd 1 "useful_screen" 1 20 70 1 "whiteontransparentchars"
+		endi
+
+    sets va50 "The Creature named "
+    adds va50 va51
+    adds va50 " has <tint 64 64 255>left<tint> through an export portal.\n\nIts file can be found in the <tint 64 255 64>My Creatures<tint> folder."
+
+		part 1
+		ptxt va50
+
+    * Send shuffle event to icons
+    targ ownr
+    setv va00 ov02
+    enum 1 2 46
+      mesg wrt+ targ 1000 va00 0 0
+    next
+  endi
+endm
+
+rscr
+
+enum 3 9 32201
+  kill targ
+next
+scrx 3 9 32201 0
+scrx 3 9 32201 1
+scrx 3 9 32201 1000
+scrx 3 9 32201 1001

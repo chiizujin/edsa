@@ -1,3 +1,6 @@
+**2025-09-10**
+- Updated C3-in-DS Grendel Jungle. See the *readme.txt* file for details.
+
 **2025-09-05**
 - Updated the rEGGulator to no longer use `urge`.
 - Released updated Interporter (by Mugendai) to fix teleport sound cutoff.

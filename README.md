@@ -12,14 +12,14 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-09-18**
+- New agent: Export Portal. Like a warp portal but exports the creature instead.
+
 **2025-09-14**
 - rEGGulator update: Added input/output ports and fixed focus stealing.
 
 **2025-09-13**
 - New agent (sort of): Selective Force Field II. This is an improved version of the original Selective Force Field with new sprites and additional features.
-
-**2025-09-10**
-- Updated C3-in-DS Grendel Jungle. See the *readme.txt* file for details.
 
 ([Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md))
 
@@ -58,6 +58,10 @@ When injected, this agent removes the Ettin and Grendel egg layers from the curr
 ## ※ Electronic Butler ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Electronic%20Butler/electronic%20butler.zip))
 
 This electronic device monitors the speech of creatures anywhere in the world. Any complaining of hunger or boredom are served up with the appropriate food or a toy. Food is created anew and toys are selected from what's already in the world and moved near the creature.
+
+## ※ Export Portal ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Export%20Portal/export%20portal.zip))
+
+This is a portal that works in a similar manner to the warp portals except that it exports creatures instead of sending them through the warp.
 
 ## ※ Frisky Fruit ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Frisky%20Fruit/frisky%20fruit.zip))
 

@@ -1,0 +1,26 @@
+"en-GB"
+
+group DSAG "Warp Users"
+"Agent Type" 0
+"Dependency Count" 3
+"Dependency 1" "warp users.c16"
+"Dependency 2" "ticker font.s16"
+"Dependency 3" "warp users.catalogue"
+"Dependency Category 1" 2
+"Dependency Category 2" 2
+"Dependency Category 3" 7
+
+"Script Count" 1
+"Script 1" @ "warp users.cos"
+"Agent Description" "A ticker that displays the names of recently-seen warp users."
+"Agent Animation File" "warp users.c16"
+"Agent Animation Gallery" "warp users"
+"Agent Animation String" "0"
+"Web URL" "github.com/chiizujin/edsa"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32239 kill targ next scrx 1 1 32239 9 scrx 1 1 32239 128 scrx 1 1 32239 136"
+
+inline FILE "warp users.c16" "warp users.c16"
+inline FILE "ticker font.s16" "ticker font.s16"
+inline FILE "warp users.catalogue" "warp users.catalogue"

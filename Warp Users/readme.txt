@@ -1,0 +1,30 @@
+Warp users (1.0)
+
+A ticker that displays the names of recently-seen warp users.
+
+The ticker can be picked up by the hand and placed elsewhere if you like.
+
+Implementation notes
+--------------------
+Since there is no way to retrieve a full list of online users, this agent works
+by asking the server for a random online user once every minute and builds up a
+list of up to ten users that it has seen.
+
+Every five minutes it checks its list of users so see if they are still online
+and removes any that are not.
+
+This means that the list is only a guess at who is "probably online" and doesn't
+guarantee that every online user is listed, nor that they are still actually
+online. However, as the warp user count is usually in the single digits, it
+should be able to discover most, if not all, of the users.
+
+This is why I'm using the term "recently-seen warp users" rather than "online
+warp users".
+
+Note that is does not take into account users sending and receiving creatures or
+any of the message and chat functions. Since these are generally low-frequency
+events there is a good chance that the ticker already knows about the user
+before any of these happen.
+
+Emmental
+https://github.com/chiizujin/edsa

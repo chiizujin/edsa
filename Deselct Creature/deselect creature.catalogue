@@ -1,0 +1,6 @@
+TAG "Agent Help 1 1 32240"
+"Deselect Creature"
+"Click to deselect this creature and stop camera tracking.\n\nAlternatively, you can press CTRL+SHIFT+N."
+
+TAG "ToolTip 1 1 32240"
+"Deselect Creature"

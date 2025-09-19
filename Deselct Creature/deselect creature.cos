@@ -1,0 +1,57 @@
+* Abort if already present
+doif totl 1 1 32240 > 0
+  stop
+endi
+
+new: comp 1 1 32240 "deselect creature" 1 0 8901
+pat: butt 1 "deselect creature" 0 1 0 0 0 [] 1000 0
+
+attr 32
+imsk 1
+
+* The vertical positions in DS and C3 need to be slightly different
+doif game "CreatorX" ne 0 and game "CreatorY" ne 0
+  setv ov00 48
+else
+  setv ov00 51
+endi
+
+* Show if a creature selected
+doif norn ne null
+  flto 51 ov00
+endi
+
+* Key down
+scrp 1 1 32240 73
+  * Ctrl + Shift + N
+	doif _p1_ eq 'N' and keyd 17 eq 1 and keyd 16 eq 1
+    norn null
+  endi
+endm
+
+* Creature selection changed
+scrp 1 1 32240 120
+*  part 1
+  * Show/hide and stop tracking depending on selection. It is hidden by moving off-screen
+  * rather than changing the pose so that the tooltip can't be shown while hidden
+  doif _p1_ eq null
+    flto 51 -15
+    trck null 0 0 0 0
+  else
+    flto 51 ov00
+  endi
+endm
+
+* Button click
+scrp 1 1 32240 1000
+  norn null
+endm
+
+rscr
+
+enum 1 1 32240
+  kill targ
+next
+scrx 1 1 32240 73
+scrx 1 1 32240 120
+scrx 1 1 32240 1000

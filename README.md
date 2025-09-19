@@ -12,14 +12,14 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-09-19**
+- Fixed a bug relating to creature using an Export Portal immediately after a warp portal.
+
 **2025-09-18**
 - New agent: Export Portal. Like a warp portal but exports the creature instead.
 
 **2025-09-14**
 - rEGGulator update: Added input/output ports and fixed focus stealing.
-
-**2025-09-13**
-- New agent (sort of): Selective Force Field II. This is an improved version of the original Selective Force Field with new sprites and additional features.
 
 ([Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md))
 

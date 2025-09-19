@@ -1,3 +1,6 @@
+**2025-09-13**
+- New agent (sort of): Selective Force Field II. This is an improved version of the original Selective Force Field with new sprites and additional features.
+
 **2025-09-10**
 - Updated C3-in-DS Grendel Jungle. See the *readme.txt* file for details.
 

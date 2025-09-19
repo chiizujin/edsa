@@ -1,0 +1,40 @@
+"en-GB"
+
+group DSAG "Deselect Creature "
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "deselect creature.c16"
+"Dependency 2" "deselect creature.catalogue"
+"Dependency Category 1" 2
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "deselect creature.cos"
+"Agent Description" "Adds a button that can be used to deselect the current creature.\n\nCTRL+SHIFT+N can also be used."
+"Agent Animation File" "deselect creature.c16"
+"Agent Animation Gallery" "deselect creature"
+"Agent Animation String" "0"
+"Web URL" "github.com/chiizujin/edsa"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32240 kill targ next scrx 1 1 32240 73 scrx 1 1 32240 120 scrx 1 1 32240 1000"
+
+group AGNT "Deselect Creature"
+"Agent Type" 0
+"Dependency Count" 2
+"Dependency 1" "deselect creature.c16"
+"Dependency 2" "deselect creature.catalogue"
+"Dependency Category 1" 2
+"Dependency Category 2" 7
+
+"Script Count" 1
+"Script 1" @ "deselect creature.cos"
+"Agent Description" "Adds a button that can be used to deselect the current creature.\n\nCTRL+SHIFT+N can also be used."
+"Agent Animation File" "deselect creature.c16"
+"Agent Animation Gallery" "deselect creature"
+"Agent Animation String" "0"
+
+"Remove script" "enum 1 1 32240 kill targ next scrx 1 1 32240 73 scrx 1 1 32240 120 scrx 1 1 32240 1000"
+
+inline FILE "deselect creature.c16" "deselect creature.c16"
+inline FILE "deselect creature.catalogue" "deselect creature.catalogue"

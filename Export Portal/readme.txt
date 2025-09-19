@@ -1,4 +1,4 @@
-Export Portal (1.0)
+Export Portal (1.1)
 
 This is a portal that works in a similar manner to the warp portals except that
 it exports creatures instead of sending them through the warp.
@@ -16,6 +16,12 @@ Notes
   appear when a creature warps in, out, etc.) Its functionality for the existing
   types remains the same. You do not need to restore the original script after
   removing this agent, but you can if you like.
+
+Version history
+---------------
+1.1
+- Fixed a rare "invalid targ" error thrown by warp portals if a creature
+  activates one then activates an export portal soon afterwards.
 
 Emmental
 https://github.com/chiizujin/edsa

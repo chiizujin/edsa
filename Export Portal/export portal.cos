@@ -32,6 +32,20 @@ scrp 3 9 32201 1
     stop
   endi
 
+  * There is a rare case where, if a creature activates a warp portal and then
+  * an export portal quickly after, the warp portal will throw an "invalid targ"
+  * error when it checks if the creature is still alive. This is because the
+  * creature is exported immediately but the warp portal takes some time to
+  * reach the dead check due to the speed of the network requests, by which time
+  * the creature no longer exists. To avoid this without having to change the
+  * warp portal script, abort the export if any warp portals are running script 1
+  enum 3 9 1
+    doif code eq 1
+      stop
+    endi
+  next
+  targ from
+
   * Get the moniker
   sets va01 gtos 0
 

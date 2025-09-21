@@ -1,0 +1,268 @@
+* Abort if already injected
+doif totl 1 1 32239 gt 0
+  stop
+endi
+
+new: comp 1 1 32239 "warp users" 3 0 8900
+pat: fixd 1 "warp users" 3 4 4 0 "ticker font"
+part 1
+frmt 2 2 2 0 0 0 0
+
+* Base variable offset for user list
+setv ov00 50
+* Maximum number of users to record. Note that we will use double this number of variables
+setv ov01 10
+* How many 3-tick cycles until a random online user is be retrieved (400 = 1 minute)
+setv ov02 400
+* How many 3-tick cycles until the online user list is be rechecked (2000 = 5 minutes)
+setv ov03 2000
+
+* Initialise list variables & ticker.
+* An underscore is used instead of a space so that text will not wrap (and
+* therefore be cut off at word breaks) in the ticker. The included font displays
+* an underscore as a space.
+sets ov10 "_________________"
+mesg writ targ 128
+
+attr 34
+puhl -1 75 20
+flto 3 130
+
+* This dictates the ticker's scrolling speed
+tick 3
+
+scrp 1 1 32239 9
+  inst
+
+  * reset the ticker if it's empty
+  doif ov12 eq ""
+    sets ov12 ov11
+    part 0
+    pose ov06
+  endi
+
+  * Tick the ticker
+  part 1
+  ptxt ov12
+  setv va01 strl ov12
+  subv va01 1
+  sets ov12 subs ov12 2 va01
+
+  doif net: line eq 0
+    stop
+  endi
+
+  * Increment check users timer
+  addv ov05 1
+  doif ov05 ge ov03
+    * dbg: outs "Checking users"
+    gsub check_users
+    setv ov05 0
+  endi
+
+  * Increment get user timer
+  addv ov04 1
+  doif ov04 lt ov02
+    stop
+  endi
+  setv ov04 0
+
+  gsub get_user
+  gsub add_user
+  gsub set_ticker_string
+  * gsub dump_users
+
+  * Get a random online user. Return the ID in va01 and the name in va02
+  subr get_user
+    * dbg: outs "Getting user"
+    slow
+    net: ruso va01
+    net: unik va01 va02
+    inst
+
+    * Replace spaces in the name with underscores. I don't think user names can contain spaces, but just in case...
+    doif sins va02 1 " " ne -1
+      sets va03 va02
+      sets va02 ""
+      setv va04 1
+      reps strl va03
+        sets va05 subs va03 va04 1
+        doif va05 eq " "
+          adds va02 "_"
+        else
+          adds va02 va05
+        endi
+        addv va04 1
+      repe
+    endi
+
+    * --- mock start ---
+    *sets va01 vtos rand 1 9999
+    *setv va02 rean "1_male"
+    *subv va02 1
+    *sets va02 read "1_male" rand 0 va02
+    * ---- mock end ----
+  retn
+
+  * Add a user to the online list. ID is in va01 and name is in va02
+  subr add_user
+    setv va10 ov00
+    * Set the last variable number
+    setv va11 ov00
+    addv va11 ov01
+    loop
+      sets va12 avar ownr va10
+      doif va12 eq ""
+        * Record the first empty slot
+        doif va13 eq 0
+          setv va13 va10
+        endi
+      endi
+      * Flag that we already have this user
+      doif va12 eq va01
+        setv va14 1
+        * Abort
+        setv va10 999
+      endi
+      addv va10 1
+    untl va10 ge va11
+
+    * Record the user if there's a free slot and we don't already have them
+    doif va13 ne 0 and va14 eq 0
+      * ID
+      sets avar ownr va13 va01
+      * Name
+      setv va15 va13
+      addv va15 ov01
+      sets avar ownr va15 va02
+    endi
+  retn
+
+  * Set the current ticker string to a list of users, if any
+  subr set_ticker_string
+    sets va10 "Warp_users"
+    setv va11 ov00
+    addv va11 ov01
+    reps ov01
+      sets va12 avar ownr va11
+      doif va12 ne ""
+        adds va10 "_::_"
+        adds va10 va12
+        setv va13 1
+      endi
+      addv va11 1
+    repe
+
+    doif va13 eq 1
+      sets ov11 ov10
+      adds ov11 va10
+      setv ov06 1
+    else
+      sets ov11 ov10
+      adds ov11 "No_warp_users_seen_recently."
+      part 0
+      setv ov06 2
+    endi
+  retn
+
+  * Check if recorded users are still online and remove if not
+  subr check_users
+    setv va10 ov00
+    reps ov01
+      sets va01 avar ownr va10
+      doif va01 ne ""
+        * Check if user va01 is online, return answer in va02
+        gsub is_user_online
+        doif va02 eq 0
+          * ID
+          sets avar ownr va10 ""
+          * Name
+          setv va11 va10
+          addv va11 ov01
+          sets avar ownr va11 ""
+        endi
+      endi
+      addv va10 1
+    repe
+  retn
+
+  * Check if a user is online. va01 is the user's ID. va02 returns 1 if online, 0 if not.
+  subr is_user_online
+    slow
+    setv va02 net: ulin va01
+    inst
+
+    * --- mock start ---
+    *doif rand 1 10 eq 1
+    *  setv va02 0
+    *else
+    *  setv va02 1
+    *endi
+    * ---- mock end ----
+  retn
+
+  * Dump a list of all discovered users (debugging only)
+  subr dump_users
+    dbg: outs "Users:"
+    setv va01 ov00
+    setv va02 ov00
+    addv va02 ov01
+    reps ov01
+      sets va03 avar ownr va01
+      doif va03 ne ""
+        sets va04 " "
+        adds va04 avar ownr va02
+        adds va04 " ("
+        adds va04 va03
+        adds va04 ")"
+        dbg: outs va04
+      endi
+      addv va01 1
+      addv va02 1
+    repe
+  retn
+endm
+
+* World loaded
+scrp 1 1 32239 128
+  sets ov50 ""
+  sets ov51 ""
+  sets ov52 ""
+  sets ov53 ""
+  sets ov54 ""
+  sets ov55 ""
+  sets ov56 ""
+  sets ov57 ""
+  sets ov58 ""
+  sets ov59 ""
+
+  sets ov60 ""
+  sets ov61 ""
+  sets ov62 ""
+  sets ov63 ""
+  sets ov64 ""
+  sets ov65 ""
+  sets ov66 ""
+  sets ov67 ""
+  sets ov68 ""
+  sets ov69 ""
+
+  sets ov11 ov10
+  adds ov11 "Waiting..."
+  sets ov12 ""
+  setv ov06 0
+endm
+
+* Go offline
+scrp 1 1 32239 136
+  call 128 0 0
+endm
+
+rscr
+
+enum 1 1 32239
+  kill targ
+next
+scrx 1 1 32239 9
+scrx 1 1 32239 128
+scrx 1 1 32239 136

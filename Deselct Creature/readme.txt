@@ -5,11 +5,13 @@ tracking.
 
 Alternatively, you can use CTRL+SHIFT+N to do the same thing.
 
-Note
+Notes
 ----
-The button is only visible when a creature is selected, so if you inject the
-agent and nothing appears to happen then you probably don't have a creature
-selected.
+- The deselect button is only visible when a creature is selected, so if you
+  inject the agent and nothing appears to happen then you probably don't have a
+  creature selected.
+- The game will occasionally begin camera-tracking a creature again. I'm not
+  sure what this is based on.
 
 Emmental
 https://github.com/chiizujin/edsa

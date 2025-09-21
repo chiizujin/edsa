@@ -1,3 +1,6 @@
+**2025-09-14**
+- rEGGulator update: Added input/output ports and fixed focus stealing.
+
 **2025-09-13**
 - New agent (sort of): Selective Force Field II. This is an improved version of the original Selective Force Field with new sprites and additional features.
 

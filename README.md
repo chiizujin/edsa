@@ -12,14 +12,14 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-09-21**
+- New agent: Warp Users - a ticker that displays the names of recently-seen warp users.
+
 **2025-09-19**
 - Fixed a bug relating to creature using an Export Portal immediately after a warp portal.
 
 **2025-09-18**
-- New agent: Export Portal. Like a warp portal but exports the creature instead.
-
-**2025-09-14**
-- rEGGulator update: Added input/output ports and fixed focus stealing.
+- New agent: Export Portal - like a warp portal but exports the creature instead.
 
 ([Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md))
 
@@ -132,6 +132,10 @@ A tribute to Douglas Adams.
 ## ※ Trapper Planter ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Trapper%20Planter/trapper%20planter.zip))
 
 This useful tool allows you to plant extra trappers almost anywhere in your world to help get rid of pesky bugs.
+
+## ※ Warp Users ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Warp%20Users/warp%20users.zip))
+
+A ticker that displays the names of recently-seen warp users.
 
 # Agent updates
 

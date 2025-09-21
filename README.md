@@ -13,7 +13,9 @@ If you just want the agent to install into your game then all you need is the **
 ### Latest updates
 
 **2025-09-21**
-- New agent: Warp Users - a ticker that displays the names of recently-seen warp users.
+- New agents:
+  - Warp Users - a ticker that displays the names of recently-seen warp users.
+  - Deselect Creature - a button that can be used to deselect the current creature.
 
 **2025-09-19**
 - Fixed a bug relating to creature using an Export Portal immediately after a warp portal.
@@ -46,6 +48,10 @@ Mysterious white clouds occasionally drift around, calming down any overly-frisk
 ## ※ Camera Fixer ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Camera%20Fixer/camera%20fixer.zip))
 
 Use this to keep your Docking Station cameras in place.
+
+## ※ Deselect Creature ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Deselect%20Creature/deselect%20creature.zip))
+
+Adds a button that can be used to deselect the current creature and stop camera tracking.
 
 ## ※ Dummy Control ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/Dummy%20Contol/dummy%20control.zip))
 

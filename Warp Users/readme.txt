@@ -1,4 +1,4 @@
-Warp users (1.0)
+Warp users (1.1)
 
 A ticker that displays the names of recently-seen warp users.
 
@@ -25,6 +25,16 @@ Note that is does not take into account users sending and receiving creatures or
 any of the message and chat functions. Since these are generally low-frequency
 events there is a good chance that the ticker already knows about the user
 before any of these happen.
+
+Version history
+---------------
+1.1
+- If you issue a 'whois <your username>' to !System, calls to 'net: ruso' will
+  subsequently also be able to return your user ID. This was confirmed as a bug
+  by Ketesi on Discord, but is now handled anyway (i.e. ignored.) as it is
+  possible to configure the warp server to return your own user ID with 'net:
+  ruso' (though not dependent on 'whois') by setting excludeSelfRUSO
+  appropriately.
 
 Emmental
 https://github.com/chiizujin/edsa

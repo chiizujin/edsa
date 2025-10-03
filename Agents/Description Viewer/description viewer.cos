@@ -1,0 +1,211 @@
+inst
+
+* Abort if already present
+doif totl 1 1 32242 gt 0
+  stop
+endi
+
+new: simp 1 1 32242 "blnk" 1 0 0
+tick 20
+
+scrp 1 1 32242 9
+  * Add an extra button to any open creature history panel
+  rtar 1 2 23
+  doif targ ne null
+    doif part 900 eq 0 and ov12 eq 1001
+      pat: butt 900 "description viewer" 0 2 416 344 0 [] 9000 0
+    elif part 900 eq 1 and ov12 ne 1001
+      pat: kill 900
+    endi
+  endi
+endm
+
+* Selected creature changed
+scrp 1 1 32242 120
+  * Update the description panel if it's open and there's a description window open
+  rtar 1 2 32201
+  doif targ ne null
+    rtar 1 2 23
+    doif targ ne null
+      mesg wrt+ targ 9000 0 0 1
+    endi
+  endi
+endm
+
+* Script to create a full description panel
+scrp 1 2 23 9000
+  * Animate button if from a click (_p1_ contains the part ID)
+  doif _p1_ ne 0
+    part 900
+    pose 1
+  endi
+  inst
+
+  sets va01 "Desc: "
+  adds va01 hist name ov01
+  * Get the description text from the creature this panel is showing the info for
+  sets va02 hist utxt ov01 0
+
+  * Find the existing "useful screen" if it's already open, otherwise create it
+  rtar 1 2 32201
+  doif targ eq null
+    * Most of the following is taken from DS agent help.cos
+    new: comp 1 2 32201 "useful_screen" 1 0 9000
+    attr 304
+    * The description text
+    pat: fixd 1 "useful_screen" 1 25 59 1 "WhiteOnTransparentChars"
+    part 1
+    frmt 8 8 8 18 3 0 0
+    * Close button
+    pat: butt 2 "useful_screen" 2 2 237 24 0 [] 1000 0
+    * Pgdn button
+    pat: butt 4 "useful_screen" 9 3 238 302 0 [] 1001 0
+    * Pgup button
+    pat: butt 5 "useful_screen" 6 3 20 302 0 [] 1002 0
+    * Page counter
+    pat: fixd 6 "useful_screen" 15 119 306 1 "WhiteOnTransparentChars"
+    part 6
+    frmt 0 0 0 0 3 0 2
+    * Title bar
+    pat: fixd 3 "useful_screen" 12 22 22 1 "WhiteOnTransparentChars"
+  endi
+
+  part 3
+  frmt 8 0 37 0 2 0 8
+  ptxt va01
+
+  * Set description text
+  part 1
+  ptxt va02
+
+  setv va90 wndw
+  divv va90 2
+  setv va91 wndh
+  divv va91 2
+  setv va92 wdth
+  divv va92 2
+  setv va93 hght
+  divv va93 2
+  subv va90 va92
+  subv va91 va93
+  flto va90 va91
+
+  * Set page counter
+  mesg writ targ 1003
+
+  * Animate button if from a click
+  doif _p1_ ne 0
+    slow
+    lock
+    wait 3
+    targ ownr
+    part 900
+    pose 0
+  endi
+endm
+
+* Close - taken from DS agent help.cos
+scrp 1 2 32201 1000
+  inst
+  part 2
+  anim [0 1]
+  slow
+  wait 2
+  kill ownr
+endm
+
+* Page down - taken from DS agent help.cos
+scrp 1 2 32201 1001
+  part 1
+  setv va99 page
+  setv va06 npgs
+  addv va99 1
+
+  doif va99 < npgs
+    part 4
+    anim [ 2 2 2 ]
+    over
+    part 1
+    page va99
+  endi
+
+  * Set page counter
+  mesg writ ownr 1003
+endm
+
+* Page up - taken from DS agent help.cos
+scrp 1 2 32201 1002
+  part 1
+  setv va99 page
+
+  doif va99 > 0
+    part 5
+    anim [ 2 2 2 ]
+    over
+    part 1
+    subv va99 1
+    page va99
+  endi
+
+  * Set page counter
+  mesg writ ownr 1003
+endm
+
+* Set page counter - taken from DS agent help.cos
+scrp 1 2 32201 1003
+  inst
+
+  * Get number of pages and current page
+  part 1
+  setv va06 npgs
+  setv va07 page
+  addv va07 1
+
+  * Set page number text
+  sets va08 vtos va07
+  adds va08 "/"
+  adds va08 vtos va06
+  part 6
+  ptxt va08
+
+  * Set pgup button
+  part 5
+  doif va07 = 1
+    anim [0]
+  else
+    anim [1]
+  endi
+
+  * Set pgdn button
+  part 4
+  doif va07 = va06
+    anim [0]
+  else
+    anim [1]
+  endi
+endm
+
+rscr
+
+enum 1 1 32242
+  kill targ
+next
+scrx 1 1 32242 9
+scrx 1 1 32242 120
+
+enum 1 2 32201
+  kill targ
+next
+scrx 1 2 32201 1000
+scrx 1 2 32201 1001
+scrx 1 2 32201 1002
+scrx 1 2 32201 1003
+
+* Remove the extra button from the creature history panel
+rtar 1 2 23
+doif targ ne null
+  doif part 900 eq 1
+    pat: kill 900
+  endi
+endi
+scrx 1 2 23 9000

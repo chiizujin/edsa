@@ -1,0 +1,10 @@
+scrp 1 1 225 78
+	inst
+	doif hhld eq null and keyd 16 eq 1
+		doif _p1_ gt 0
+			mesg wrt+ ownr 73 33 0 0
+		elif _p1_ lt 0
+			mesg wrt+ ownr 73 34 0 0
+		endi
+	endi
+endm

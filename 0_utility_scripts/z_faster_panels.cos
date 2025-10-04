@@ -1,0 +1,58 @@
+* Creature history close button
+scrp 1 2 23 2002
+	lock
+	doif ov02 = 1001
+    *** Change: speed this up a bit, but it will still take a few ticks
+    inst
+    * Name entered
+		part 2
+		hist name ov01 ptxt
+    * User text entered
+		part 4
+		hist utxt ov01 0 ptxt
+    slow
+	endi
+
+	part 101
+	anim [0 1]
+  *** Change: we don't care about the "up" animation and there's enough going on
+  *** after this to not require any additional waiting to see the "down" animation
+	*wait 5
+	*anim [1 0]
+	*wait 2
+
+	rtar 1 2 13
+	doif targ ne null
+		mesg writ targ 127
+	endi
+	rtar 1 2 14
+	doif targ ne null
+		mesg writ targ 127
+	endi
+	rtar 1 2 208
+	doif targ ne null
+		mesg writ targ 127
+	endi
+
+	inst
+
+	wait 1
+	targ game "c3_default_focus"
+	part game "c3_default_focus_part"
+	fcus
+
+	kill mv03
+	kill ownr
+endm
+
+* Agent help close button
+scrp 1 2 5 1000
+	part 2
+	anim [0 1]
+	rtar 1 2 4
+	seta ov00 null
+  *** Change: we don't need to wait for half a second
+	*wait 10
+	wait 2
+	kill ownr
+endm

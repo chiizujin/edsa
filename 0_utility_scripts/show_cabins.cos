@@ -1,0 +1,33 @@
+new: simp 1 1 34464 "blnk" 1 0 0
+tick 1
+
+scrp 1 1 34464 9
+  inst
+    line 0 0 0 0 0 0 0 0 0
+  enum 3 1 0
+    doif type targ eq 6
+      setv va01 cabl
+      setv va02 cabt
+      setv va03 cabr
+      setv va04 cabb
+
+      addv va01 posl
+      addv va02 post
+      addv va03 posl
+      addv va04 post
+
+      targ ownr
+      line va01 va02 va03 va02 255 0 0 0 0
+      line va01 va02 va01 va04 255 0 0 0 0
+      line va03 va02 va03 va04 255 0 0 0 0
+      line va01 va04 va03 va04 255 0 0 0 0
+    endi
+  next
+endm
+
+rscr
+
+enum 1 1 34464
+  kill targ
+next
+scrx 1 1 34464 9

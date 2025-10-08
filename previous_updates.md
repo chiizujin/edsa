@@ -1,3 +1,6 @@
+**2025-09-18**
+- New agent: Export Portal - like a warp portal but exports the creature instead.
+
 **2025-09-14**
 - rEGGulator update: Added input/output ports and fixed focus stealing.
 

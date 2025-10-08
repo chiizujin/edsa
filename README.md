@@ -12,6 +12,9 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-10-08**
+- Updated Gadget Shelf to change the way the cabin works and increase its height.
+
 **2025-09-21**
 - New agents:
   - Warp Users - a ticker that displays the names of recently-seen warp users.
@@ -19,9 +22,6 @@ If you just want the agent to install into your game then all you need is the **
 
 **2025-09-19**
 - Fixed a bug relating to creature using an Export Portal immediately after a warp portal.
-
-**2025-09-18**
-- New agent: Export Portal - like a warp portal but exports the creature instead.
 
 ([Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md))
 

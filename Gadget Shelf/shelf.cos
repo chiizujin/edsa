@@ -5,15 +5,14 @@ aero 100
 accg 0
 bhvr 0
 
-cabn 0 0 177 106
-puhl 0 89 108
+cabn 0 -200 177 0
 
 doif gmap 6100 9200 ne -1
   * DS if the Comms Room exists (even if docked)
-  mvsf 6042 9131
+  mvsf 6042 9231
 else
   * Otherwise C3
-  mvsf 5633 3555
+  mvsf 5633 3655
 endi
 
 rscr

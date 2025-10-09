@@ -12,6 +12,9 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-10-09**
+- New agent: Ainarda agents. Adds the agents that were originally meant to be part of Ainarda.
+
 **2025-10-08**
 - Updated Gadget Shelf to change the way the cabin works and increase its height.
 
@@ -19,9 +22,6 @@ If you just want the agent to install into your game then all you need is the **
 - New agents:
   - Warp Users - a ticker that displays the names of recently-seen warp users.
   - Deselect Creature - a button that can be used to deselect the current creature.
-
-**2025-09-19**
-- Fixed a bug relating to creature using an Export Portal immediately after a warp portal.
 
 ([Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md))
 
@@ -144,6 +144,10 @@ This useful tool allows you to plant extra trappers almost anywhere in your worl
 A ticker that displays the names of recently-seen warp users.
 
 # Agent updates
+
+## ※ Ainarda agents ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/(Updated%20agents)/Ainarda/ainarda%20agents.zip))
+
+This does not actually change the Ainarda metaroom itself, but adds Merboy's agents to it. These include such things as elevators and food.
 
 ## ※ Green Ball (Docking Station update) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/(Updated%20agents)/Green%20Ball/Green%20Ball%20(DS%20update).zip))
 

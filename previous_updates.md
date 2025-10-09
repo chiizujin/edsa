@@ -1,3 +1,6 @@
+**2025-09-19**
+- Fixed a bug relating to creature using an Export Portal immediately after a warp portal.
+
 **2025-09-18**
 - New agent: Export Portal - like a warp portal but exports the creature instead.
 

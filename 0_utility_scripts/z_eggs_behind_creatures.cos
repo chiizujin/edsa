@@ -1,0 +1,9 @@
+scrp 3 4 1 6
+	doif carr eq null
+		plne 1000
+	endi
+endm
+
+rscr
+
+ject "Norn Egg layer.cos" 2

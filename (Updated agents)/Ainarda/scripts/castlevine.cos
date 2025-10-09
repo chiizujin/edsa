@@ -1,0 +1,110 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if this present
+doif totl 1 1 60723 ne 0
+  stop
+endi
+
+* Vine
+new: simp 1 1 60723 "ainarda_castlevine" 1 0 1
+tick rand 500 1000
+mvto 92886 4494
+
+* Grape bunch (unreachable)
+new: simp 2 4 60723 "ainarda_castlevine" 1 1 2
+attr 20
+mvto 92995 4550
+
+* Grape bunch
+new: simp 2 4 60723 "ainarda_castlevine" 1 1 2
+attr 4
+bhvr 8
+setv ov00 1
+mvto 93210 4729
+
+* Periodic grape creation
+scrp 1 1 60723 9
+  * Drop from a random bunch
+  setv va01 rand 1 3
+  doif va01 eq 1 or va01 eq 3
+    call 1000 0 0
+  endi
+  doif va01 eq 2 or va01 eq 3
+    call 1000 1 0
+  endi
+  tick rand 500 1000
+endm
+
+* Create grapes
+scrp 1 1 60723 1000
+  reps rand 3 5
+    new: simp 2 8 60723 "ainarda_castlevine" 1 2 2
+    attr 192
+    elas 25
+    accg 2
+    bhvr 16
+    emit 6 0.5
+    tick rand 500 600
+    * Fall depending on which bunch was hit
+    doif _p1_ eq 0
+      mvto 93015 4595
+      velo rand -3 3 0
+    else
+      mvto 93220 4755
+      velo rand -2 -6 rand -10 0
+    endi
+  repe
+endm
+
+* Activate (hand only)
+scrp 2 4 60723 1
+  rtar 1 1 60723
+  mesg wrt+ targ 1000 mv00 0 0
+endm
+
+* Hit
+scrp 2 4 60723 3
+  snde "punc"
+  stim writ from 44 1
+  rtar 1 1 60723
+  mesg wrt+ targ 1000 mv00 0 0
+endm
+
+* Decay
+scrp 2 8 60723 9
+  doif carr eq null
+    kill ownr
+  endi
+endm
+
+* Eat
+scrp 2 8 60723 12
+  snde "chwp"
+  stim writ from 78 1
+  kill ownr
+endm
+
+rscr
+
+enum 1 1 60723
+  kill targ
+next
+scrx 1 1 60723 9
+scrx 1 1 60723 1000
+
+enum 2 4 60723
+  kill targ
+next
+scrx 2 4 60723 1
+scrx 2 4 60723 3
+
+enum 2 8 60723
+  kill targ
+next
+scrx 2 8 60723 9
+scrx 2 8 60723 12

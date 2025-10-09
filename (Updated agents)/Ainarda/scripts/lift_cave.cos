@@ -1,0 +1,296 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if this present
+doif totl 3 1 60746 ne 0
+  stop
+endi
+
+new: vhcl 3 1 60746 "ainarda_lift_cave" 7 0 3
+tick 1
+* Open air cabin
+attr 516
+bhvr 3
+cabp 15
+cabw 3
+* cabn 18 123 126 273
+cabn -5 110 150 273
+mvto 94119 6359
+* You are at the bottom
+setv ov00 1
+setv ov04 0
+rnge 190
+
+* Lift buttons, door
+pat: butt 1 "ainarda_lift_cave" 1 1 24 228 0 [] 1110 0
+pat: butt 2 "ainarda_lift_cave" 2 1 104 228 0 [] 1111 0
+pat: dull 3 "ainarda_lift_cave" 0 0 0 20
+
+* Level 2 call button
+new: simp 2 12 60746 "ainarda_lift_cave" 2 5 8
+attr 4
+bhvr 3
+plne 1
+* Creatures can act1 this object
+setv ov00 1
+setv ov01 0
+mvto 94090 6021
+tick 0
+
+* Level 1 call button
+new: simp 2 12 60746 "ainarda_lift_cave" 2 3 8
+attr 4
+bhvr 3
+plne 1
+* Creatures can act1 this object
+setv ov00 1
+setv ov01 1
+mvto 94083 6603
+tick 0
+
+* Internal button 1 activate script
+scrp 3 1 60746 1110
+  doif ov02 = 0
+    part 2
+    anim [0]
+    over
+    part 0
+    targ ownr
+    doif ov00 = 1
+      enum 2 12 60746
+        doif ov01 = 0
+          pose 1
+        endi
+      next
+      mesg wrt+ targ 2001 1 from 0
+    endi
+  endi
+endm
+
+* Internal button 2 activate script
+scrp 3 1 60746 1111
+  doif ov02 = 0
+    part 1
+    anim []
+    over
+    part 0
+    targ ownr
+    doif ov00 = 0
+      enum 2 12 60746
+        doif ov01 = 1
+          pose 1
+        endi
+      next
+      mesg wrt+ targ 2000 1 from 0
+    endi
+  endi
+endm
+
+* Lift push script
+scrp 3 1 60746 1
+  doif ov02 = 0
+    targ ownr
+    doif ov00 = 1
+      enum 2 12 60746
+        doif ov01 = 0
+          pose 1
+        endi
+      next
+      mesg wrt+ targ 2001 1 from 0
+    endi
+  endi
+endm
+
+* Lift pull script
+scrp 3 1 60746 2
+  doif ov02 = 0
+    targ ownr
+    doif ov00 = 0
+      enum 2 12 60746
+        doif ov01 = 1
+          pose 1
+        endi
+      next
+      mesg wrt+ targ 2000 1 from 0
+    endi
+  endi
+endm
+
+* Button act1 script
+scrp 2 12 60746 1
+  enum 3 1 60746
+    setv mv50 ov00
+    setv mv51 ov01
+    setv mv52 ov02
+  next
+  doif mv52 = 0
+    doif crea from eq 1
+      setv va00 0
+    else
+      setv va00 1
+    endi
+    doif mv50 <> ov01
+      part 1
+      pose 1
+      sndc "ding"
+    endi
+    enum 3 1 60746
+      seta mv53 targ
+    next
+    doif ov01 = 0
+      doif mv50 = 1
+        pose 1
+        mesg wrt+ mv53 2001 va00 from 0
+      endi
+    elif ov01 = 1
+      doif mv50 = 0
+        pose 1
+        mesg wrt+ mv53 2000 va00 from 0
+      endi
+    endi
+  endi
+endm
+
+* Button act2 script
+scrp 2 12 60746 2
+  enum 3 1 60746
+    setv mv50 ov00
+    setv mv51 ov01
+    setv mv52 ov02
+  next
+  doif mv52 = 0
+    doif crea from eq 1
+      setv va00 0
+    else
+      setv va00 1
+    endi
+    doif mv50 <> ov01
+      part 1
+      pose 1
+    endi
+    enum 3 1 60746
+      seta mv53 targ
+    next
+    doif ov01 = 0
+      doif mv50 = 1
+        enum 2 12 60746
+          doif ov01 = 1
+            pose 1
+          endi
+        next
+        mesg wrt+ mv53 2001 va00 from 0
+      endi
+    elif ov01 = 1
+      doif mv50 = 0
+        enum 2 12 60746
+          doif ov01 = 0
+            pose 1
+          endi
+        next
+        mesg wrt+ mv53 2000 va00 from 0
+      endi
+    endi
+  endi
+endm
+
+* Going down from top level
+scrp 3 1 60746 2000
+  lock
+  enum 3 1 60746
+    setv ov02 1
+    *doif _p1_ = 1
+    *  gpas 4 0 0 0
+    *endi
+    doif type _p2_ eq 7
+      spas ownr _p2_
+    endi
+    doif ov04 eq 1
+      sndq "mlf1" 0
+      sndl "mlf2"
+    elif ov04 eq 0
+      sndl "m_a3"
+    endi
+    velo 0 6
+    loop
+      wait 1
+    untl post >= 6359
+    doif ov04 eq 1
+      sndq "mlf3" 0
+    elif ov04 eq 0
+      stpc
+    endi
+    velo 0 0
+    enum 2 12 60746
+      pose 0
+    next
+    epas 4 0 0
+      stim writ targ 94 1
+      stim writ targ 0 .25
+    next
+    targ ownr
+    dpas 0 0 0
+    setv ov02 0
+  next
+  setv ov00 1
+  unlk
+endm
+
+* Going up from bottom level
+scrp 3 1 60746 2001
+  lock
+  enum 3 1 60746
+    setv ov02 1
+    *doif _p1_ = 1
+    *  gpas 4 0 0 0
+    *endi
+    doif type _p2_ eq 7
+      spas ownr _p2_
+    endi
+    doif ov04 eq 1
+      sndq "mlf1" 0
+      sndl "mlf2"
+    elif ov04 eq 0
+      sndl "m_a3"
+    endi
+    velo 0 -6
+    loop
+      wait 1
+    untl post <= 5780
+    stpc
+    velo 0 0
+    enum 2 12 60746
+      pose 0
+    next
+    epas 4 0 0
+      stim writ targ 94 1
+      stim writ targ 0 .25
+    next
+    targ ownr
+    dpas 0 0 0
+    setv ov02 0
+  next
+  setv ov00 0
+  unlk
+endm
+
+rscr
+
+enum 3 1 60746
+  kill targ
+next
+scrx 3 1 60746 1
+scrx 3 1 60746 2
+scrx 3 1 60746 1110
+scrx 3 1 60746 1111
+scrx 3 1 60746 2000
+scrx 3 1 60746 2001
+
+enum 2 12 60746
+  kill targ
+next
+scrx 2 12 60746 1
+scrx 2 12 60746 2

@@ -1,0 +1,63 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* GHOST 1
+
+doif totl 1 1 60714 eq 0
+  new: simp 1 1 60714 "ainarda_ghost1" 13 0 501
+  mvto 93270 4500
+  attr 256
+endi
+
+* GHOST 2
+
+doif totl 1 1 60715 eq 0
+  new: simp 1 1 60715 "ainarda_ghost2" 13 0 8900
+  mvto 92941 5222
+  attr 256
+endi
+
+* GHOST 1 SCRIPT
+
+scrp 1 1 60714 1000
+  mvto 93270 4500
+  reps 12
+    anim [1 2 3 4 5 6 7 8 9 10 11 12]
+    over
+    frat 1
+    velo -9 1
+  repe
+  pose 0
+endm
+
+* GHOST 2 SCRIPT
+
+scrp 1 1 60715 1000
+  mvto 92941 5222
+  reps 12
+    anim [1 2 3 4 5 6 7 8 9 10 11 12]
+    over
+    frat 1
+    velo 3 -10
+  repe
+  pose 0
+  * Stop the looped sound playing on the chandelier
+  rtar 1 1 60717
+  stpc
+endm
+
+rscr
+
+enum 1 1 60714
+  kill targ
+next
+scrx 1 1 60714 1000
+
+enum 1 1 60715
+  kill targ
+next
+scrx 1 1 60714 1000

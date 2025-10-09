@@ -1,0 +1,194 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if this present
+doif totl 1 1 60726 ne 0
+  stop
+endi
+
+* Note: 2 8 60727 is in use by another agent
+
+new: simp 1 1 60726 "blnk" 1 0 0
+tick 3600
+mvto 92125 5802
+
+reps rand 3 5
+  new: simp 2 8 60728 "ainarda_darkfruit" 15 0 10
+  attr 64
+  bhvr 48
+  elas 30
+  accg 5
+  fric 100
+  tick rand 200 300
+  mvsf rand 92497 92600 rand 5843 5880
+  setv ov61 25
+
+  new: simp 2 8 60728 "ainarda_darkfruit" 15 0 10
+  attr 64
+  bhvr 48
+  elas 30
+  accg 5
+  fric 100
+  tick rand 200 300
+  mvsf rand 92252 92381 rand 5845 5880
+  setv ov61 25
+repe
+
+scrp 1 1 60726 9
+  inst
+  enum 2 8 60728
+    doif ov00 eq 0
+      addv va00 1
+    endi
+  next
+  slow
+  doif va00 lt 1
+    new: simp 2 8 60728 "ainarda_darkfruit" 15 0 10
+    attr 64
+    bhvr 48
+    elas 30
+    accg 5
+    fric 100
+    tick rand 20 75
+    mvsf rand 92497 92600 rand 5843 5880
+    setv ov61 25
+  endi
+endm
+
+scrp 2 8 60728 4
+  lock
+  doif ov00 eq 0
+    emit 6 0.5
+    setv ov00 1
+  endi
+  doif attr eq 67
+    attr 195
+  endi
+  perm 60
+endm
+
+scrp 2 8 60728 6
+  doif carr eq null
+    plne 4000
+  endi
+endm
+
+scrp 2 8 60728 9
+  doif ov00 eq 0
+    doif carr eq null
+      doif pose lt 13
+        setv va00 pose
+        addv va00 1
+        pose va00
+      else
+        doif attr eq 64
+          attr 67
+        endi
+        addv ov99 1
+      endi
+
+      doif ov99 ge 20
+        setv ov99 0
+        doif attr eq 67
+          attr 195
+        endi
+        setv ov00 1
+        emit 6 0.01
+        inst
+        new: simp 2 8 60728 "ainarda_darkfruit" 15 0 10
+        doif rand 1 4 eq 1
+          perm 60
+        endi
+        attr 64
+        bhvr 48
+        elas 30
+        fric 100
+        accg 5
+        tick rand 20 75
+        setv va99 rand 0 300
+        doif va99 gt 150
+          mvsf rand 92497 92600 rand 5843 5880
+        else
+          mvsf rand 92252 92381 rand 5845 5880
+        endi
+        setv ov61 25
+        targ ownr
+      endi
+    endi
+  endi
+
+  doif ov00 eq 1
+    addv ov99 1
+    doif ov99 ge 50
+      doif carr eq null
+        altr room targ 4 0.01
+        altr room targ 3 0.01
+        kill ownr
+      endi
+    endi
+  endi
+endm
+
+scrp 2 8 60728 12
+  setv va00 posl
+  setv va01 post
+  subv va01 20
+  stim writ from 78 1
+  wait 1
+  snde "eat1"
+  inst
+  new: simp 2 10 60729 "ainarda_darkfruit" 1 14 20
+  doif tmvt va00 va01 ne 1
+    kill targ
+    stop
+  endi
+  attr 195
+  bhvr 48
+  elas 0
+  accg 5
+  fric 100
+  mvto va00 va01
+  setv ov61 10
+  tick 1200
+  kill ownr
+endm
+
+scrp 2 10 60729 9
+  doif room targ <> -1 and carr = null
+    altr room targ 4 0.01
+    altr room targ 3 0.01
+    kill targ
+  elif room targ = -1 and carr = null
+    kill ownr
+  endi
+endm
+
+scrp 2 10 60729 12
+  stim writ from 81 1
+  wait 1
+  kill ownr
+endm
+
+rscr
+
+enum 1 1 60726
+  kill targ
+next
+scrx 1 1 60726 9
+
+enum 2 8 60728
+  kill targ
+next
+scrx 2 8 60728 4
+scrx 2 8 60728 6
+scrx 2 8 60728 9
+
+enum 2 10 60729
+  kill targ
+next
+scrx 2 10 60729 9
+scrx 2 10 60729 12

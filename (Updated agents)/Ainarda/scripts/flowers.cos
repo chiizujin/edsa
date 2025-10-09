@@ -1,0 +1,109 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if this present
+* Emmental: Changed to 1 1 60718 as 1 1 60703 is used by foreground castle 2
+doif totl 1 1 60718 ne 0
+  stop
+endi
+
+new: simp 1 1 60718 "ainarda_flowers" 10 0 0
+tick rand 30 90
+mvto 91929 6269
+
+scrp 1 1 60718 9
+  targ ownr
+  inst
+  reps rand 1 2
+  new: simp 2 3 60704 "ainarda_flowers" 10 0 5003
+  attr 195
+  bhvr 48
+  tick 2
+  mvsf rand 91935 93135 rand 6300 6526
+  anim [0 1 2 3 4 5 6 7 8 9 8 7 6 5 4 3 2 1 255]
+  velo 2.25 1
+  accg .007
+  repe
+  setv va00 0
+  enum 2 3 60704
+    doif ov00 eq 0
+      addv va00 1239
+    endi
+  next
+  slow
+  doif va00 lt 2
+    setv ov61 25
+  endi
+endm
+
+scrp 2 3 60704 4
+  lock
+  pose 9
+  doif ov00 eq 0
+    emit 6 0.5
+  setv ov00 1
+  endi
+  doif attr eq 67
+    attr 195
+  endi
+endm
+
+scrp 2 3 60704 6
+  kill ownr
+endm
+
+scrp 2 3 60704 12
+  setv va00 posl
+  setv va01 post
+  stim writ from 77 1
+  kill ownr
+  inst
+  new: simp 2 10 60705 "ainarda_flowers" 10 0 20
+  doif tmvt va00 va01 ne 1
+    kill ownr
+  stop
+  endi
+  attr 195
+  bhvr 48
+  accg .01
+  fric 100
+  mvto va00 va01
+  setv ov61 10
+  kill ownr
+endm
+
+scrp 2 10 60705 12
+  stim writ from 81 1
+  kill ownr
+endm
+
+scrp 2 3 60704 9
+  * If you've landed and not being held, die dammit.
+  doif fall eq 0 and carr eq null
+    kill ownr
+  endi
+endm
+
+rscr
+
+enum 1 1 60718
+  kill targ
+ next
+scrx 1 1 60718 9
+
+enum 2 3 60704
+  kill targ
+next
+scrx 2 3 60704 4
+scrx 2 3 60704 6
+scrx 2 3 60704 9
+scrx 2 3 60704 12
+
+enum 2 10 6070
+  kill targ
+ next
+scrx 2 10 60705 12

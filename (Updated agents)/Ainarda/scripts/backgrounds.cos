@@ -1,0 +1,74 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* WINDOW 1
+
+doif totl 1 1 60720 eq 0
+  new: simp 1 1 60720 "ainarda_window1" 5 0 1
+  mvto 95695 5936
+  tick 1
+endi
+
+* WINDOW 2
+
+doif totl 1 1 60721 eq 0
+  new: simp 1 1 60721 "ainarda_window2" 5 0 1
+  mvto 96962 5923
+  tick 1
+endi
+
+* WINDOW 3
+
+doif totl 1 1 60722 eq 0
+  new: simp 1 1 60722 "ainarda_window3" 5 0 1
+  mvto 97024 6033
+  tick 1
+endi
+
+* WINDOW 1 SCRIPT
+
+scrp 1 1 60720 9
+  anim [1 2 3 4 3 2 1 0 1 2 1 2 1 0 1 2 1 0 1 2 1 2 1 0 1 2 1 2 1 1 1 1 2 2 0 1 2]
+  over
+  frat 2
+  pose 0
+endm
+
+* WINDOW 2 SCRIPT
+
+scrp 1 1 60721 9
+	anim [1 2 3 3 2 1 0 1 2 1 2 1 0 1 2 1 0 1 2 1 2 1 0 1 2 1 2 1 1 1 1 2 2 0 1 2]
+	over
+	frat 2
+	pose 0
+endm
+
+* WINDOW 3 SCRIPT
+
+scrp 1 1 60722 9
+	anim [1 2 3 4 2 1 0 1 2 1 2 1 0 1 2 1 0 1 2 1 2 1 0 1 2 1 2 1 1 1 1 2 2 0 1 2]
+	over
+	frat 3
+	pose 0
+endm
+
+rscr
+
+enum 1 1 60720
+  kill targ
+next
+scrx 1 1 60720 9
+
+enum 1 1 60721
+  kill targ
+next
+scrx 1 1 60721 9
+
+enum 1 1 60722
+  kill targ
+next
+scrx 1 1 60722 9

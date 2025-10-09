@@ -1,0 +1,122 @@
+* Emmental: Creatures don't really use the gondola by themselves as there isn't really
+* any reason to, so the automatic (timed) movements pick up all creatures touching the
+* cabin. Although forcing unwilling creatures into vehicles isn't really the done thing,
+* it's pretty much the only way the gondola will ever get used.
+
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if this present
+doif totl 3 1 60704 ne 0
+  stop
+endi
+
+new: vhcl 3 1 60704 "ainarda_gondola" 4 0 3000
+* Open air cabin
+attr 520
+bhvr 3
+cabp 4
+cabw 8
+* cabn 37 -60 166 80
+cabn 37 -80 190 80
+mvto 93646 6615
+rnge 80
+tick 1200
+
+* Lift buttons, door
+pat: butt 1 "ainarda_gondola" 2 2 0 9 101 [] 1001 0
+pat: butt 2 "ainarda_gondola" 4 2 248 10 101 [] 1002 0
+pat: dull 3 "ainarda_gondola" 1 0 0 100
+
+scrp 3 1 60704 9
+  inst
+  doif ov00 eq 1
+    doif ov01 eq 0
+      sndc "angd"
+      setv ov01 115
+    endi
+    subv ov01 1
+    doif posl le 92802 or posl ge 93646
+      velo 0 0
+      part 1
+      pose 0
+      part 2
+      pose 0
+      setv ov00 0
+      dpas 0 0 0
+      tick 1200
+      setv ov01 0
+    endi
+  else
+    doif posl gt 93333
+      call 1001 0 1
+    else
+      call 1002 0 1
+    endi
+  endi
+endm
+
+* Lift push script
+scrp 3 1 60704 1
+  call 1001 from 2
+endm
+
+scrp 3 1 60704 1001
+  doif ov00 eq 0 and posl gt 93333
+    setv ov00 1
+    * From a timed move
+    doif _p2_ eq 1
+      gpas 4 0 0 1
+    * From a push
+    elif _p2_ eq 2
+      spas ownr _p1_
+    endi
+    epas 4 0 0
+      stim writ targ 75 2
+    next
+    part 1
+    pose 1
+    velo -2 0
+    tick 1
+  endi
+endm
+
+* Lift pull script
+scrp 3 1 60704 2
+  call 1002 from 2
+endm
+
+scrp 3 1 60704 1002
+  doif ov00 eq 0 and posl lt 93333
+    setv ov00 1
+    * From a timed move
+    doif _p2_ eq 1
+      gpas 4 0 0 1
+    * From a push
+    elif _p2_ eq 2
+      spas ownr _p1_
+    endi
+    epas 4 0 0
+      stim writ targ 75 2
+    next
+    part 2
+    pose 1
+    velo 2 0
+    tick 1
+  endi
+endm
+
+rscr
+
+enum 3 1 60704
+  kill targ
+next
+scrx 3 1 60704 1
+scrx 3 1 60704 2
+scrx 3 1 60704 9
+scrx 3 1 60704 1001
+scrx 3 1 60704 1002

@@ -1,0 +1,51 @@
+inst
+
+* Abort if Ainarda not present
+doif gmap 92000 4500 eq -1
+  stop
+endi
+
+* Abort if this present
+doif totl 1 1 60719 ne 0
+  stop
+endi
+
+new: simp 1 1 60719 "ainarda_incubator" 4 0 1
+attr 4
+anim [0 1 2 3 3 2 1 0 0 0 255]
+frat 4
+tick 60
+setv ov00 1
+
+mvto 97905 6225
+
+scrp 1 1 60719 1
+  doif ov00 eq 0
+  tick 60
+    anim [0 1 2 3 3 2 1 0 0 0 255]
+    setv ov00 1
+  else
+    tick 0
+    pose 0
+    setv ov00 0
+  endi
+endm
+
+scrp 1 1 60719 9
+  inst
+  esee 3 0 0
+    doif targ <> null
+      doif carr = null
+        doif code eq -1
+          tick rand 1 60
+        endi
+      endi
+    endi
+  next
+endm
+
+rscr
+
+enum 1 1 60719
+  kill targ
+next

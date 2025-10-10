@@ -1,3 +1,8 @@
+**2025-09-21**
+- New agents:
+  - Warp Users - a ticker that displays the names of recently-seen warp users.
+  - Deselect Creature - a button that can be used to deselect the current creature.
+
 **2025-09-19**
 - Fixed a bug relating to creature using an Export Portal immediately after a warp portal.
 

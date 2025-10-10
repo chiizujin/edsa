@@ -12,16 +12,14 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-10-10**
+- Added missing hosted agents Calm Balm Vendor and Panatreea Potion Vendor by MNB.
+
 **2025-10-09**
 - New agent: Ainarda agents. Adds the agents that were originally meant to be part of Ainarda.
 
 **2025-10-08**
 - Updated Gadget Shelf to change the way the cabin works and increase its height.
-
-**2025-09-21**
-- New agents:
-  - Warp Users - a ticker that displays the names of recently-seen warp users.
-  - Deselect Creature - a button that can be used to deselect the current creature.
 
 ([Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md))
 
@@ -166,6 +164,14 @@ An update of the Interporter by Mugendai to correct the sound cutting off when a
 An update of the Creatures 3 Pond Fish Food agent by Spirit to enable it to be compatible with undocked Docking Station worlds.
 
 # Hosted agents
+
+## ※ Calm Balm Vendor (by MNB) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/(Hosted%20agents)/CBvendor.zip))
+
+A vendor for Calm Balm from the Hardman Norn pack.
+
+## ※ Panatreea Potion Vendor (by MNB) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/(Hosted%20agents)/PPvendor.zip))
+
+A vendor for Panatreea Potion from the Treehugger Norn pack.
 
 ## ※ Remover Pack for Docking Station (by MNB) ([download](https://github.com/chiizujin/edsa/raw/refs/heads/main/(Hosted%20agents)/DSRemoverPack.zip))
 

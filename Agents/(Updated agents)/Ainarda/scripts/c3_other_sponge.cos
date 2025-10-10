@@ -10,25 +10,25 @@ doif reaq "patch_level" = 0
   stop
 endi
 
-new: simp 2 15 60709 "opalsponge" 59 0 4200
+new: simp 2 4 60709 "opalsponge" 59 0 4200
 mvto 99069 5953
 
-new: simp 2 15 60709 "opalsponge" 59 0 4200
+new: simp 2 4 60709 "opalsponge" 59 0 4200
 mvto 99364 6619
-new: simp 2 15 60709 "opalsponge" 59 0 4200
+new: simp 2 4 60709 "opalsponge" 59 0 4200
 mvto 97842 6496
 
-new: simp 2 15 60709 "opalsponge" 59 0 4200
+new: simp 2 4 60709 "opalsponge" 59 0 4200
 mvto 96047 6481
-new: simp 2 15 60709 "opalsponge" 59 0 4200
+new: simp 2 4 60709 "opalsponge" 59 0 4200
 mvto 95609 6481
 
-new: simp 2 15 60709 "opalsponge" 59 0 4200
+new: simp 2 4 60709 "opalsponge" 59 0 4200
 mvto 94937 6517
-new: simp 2 15 60709 "opalsponge" 59 0 4200
+new: simp 2 4 60709 "opalsponge" 59 0 4200
 mvto 94706 6478
 
-scrp 2 15 60709 10
+scrp 2 4 60709 10
   pose 49
   attr 192
   accg 3
@@ -42,7 +42,7 @@ endm
 
 rscr
 
-enum 2 15 60709
+enum 2 4 60709
   kill targ
 next
-scrx 2 15 60709 10
+scrx 2 4 60709 10

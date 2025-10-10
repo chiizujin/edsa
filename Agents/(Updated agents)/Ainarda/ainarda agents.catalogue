@@ -89,6 +89,14 @@ TAG "Agent Help 1 1 60723"
 "Dark Grape Vine"
 "A vine of Dark Grapes. It only grows in the castle."
 
+TAG "Agent Help 1 1 60724"
+"Thermal Vent"
+"Thermal vents are permanently active flows of hot, nutrient rich water."
+
+TAG "Agent Help 1 1 60725"
+"Thermal Vent"
+"Thermal vents are permanently active flows of hot, nutrient rich water."
+
 TAG "Agent Help 1 1 60748"
 "Statue"
 "An angelic statue."
@@ -96,6 +104,14 @@ TAG "Agent Help 1 1 60748"
 TAG "Agent Help 2 3 60704"
 "Blossom"
 "A pink blossom from the trees underground."
+
+TAG "Agent Help 2 4 60705"
+"Gumin Grass"
+"Gumin Grass (goo-min) is a green saltwater-loving plant that can can be found deep underwater."
+
+TAG "Agent Help 2 4 60709"
+"Opal Sponge"
+"The opal sponge can only be found at the bottom of marine areas."
 
 TAG "Agent Help 2 4 60723"
 "Bunch of Dark Grapes"
@@ -169,25 +185,9 @@ TAG "Agent Help 2 15 60704"
 "Neon Fish"
 "This is a Neon Fish. It enjoys swimming in the waters of Ainarda."
 
-TAG "Agent Help 2 15 60705"
-"Gumin Grass"
-"Gumin Grass (goo-min) is a green saltwater-loving plant that can can be found deep underwater."
-
-TAG "Agent Help 2 15 60706"
-"Thermal Vent"
-"Thermal vents are permanently active flows of hot, nutrient rich water."
-
-TAG "Agent Help 2 15 60707"
-"Thermal Vent"
-"Thermal vents are permanently active flows of hot, nutrient rich water."
-
 TAG "Agent Help 2 15 60708"
 "Man-o-War"
 "This voracious jellyfish usually devours little fish that happen its way, but it's much more relaxed here."
-
-TAG "Agent Help 2 15 60709"
-"Opal Sponge"
-"The opal sponge can only be found at the bottom of marine areas."
 
 TAG "Agent Help 3 1 60702"
 "Maison Lift"

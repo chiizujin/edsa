@@ -226,16 +226,15 @@ scrx 2 15 60704 9
 scrx 2 15 60704 10
 scrx 2 15 60704 12
 
-scrx 2 15 60705 10
+scrx 2 4 60705 10
 
-scrx 2 15 60706 10
-
-scrx 2 15 60707 10
+scrx 1 1 60724 10
+scrx 1 1 60725 10
 
 scrx 2 15 60708 9
 scrx 2 15 60708 10
 
-scrx 2 15 60709 10
+scrx 2 4 60709 10
 
 * Remove additional CA links
 

@@ -1,4 +1,4 @@
-Ainarda agents
+Ainarda agents (1.1)
 
 Ainarda is a fantastic metaroom created by Merboy that never received a
 completed release. The available downloads consist of the empty metaroom, a
@@ -99,6 +99,7 @@ Credits and thanks
     Ainarda would not have been even slightly possible. A huge thank you to each
     of them."
 - Thanks to Risen Angel and SpaceSR for help with the CA stuff.
+- Thanks to Risen Angel for bug-finding.
 - Thanks to Doringo for some room-wrapping information.
 - I would also like to thank my group of norns and Alba the grendel for their
   help and patience during testing.
@@ -106,3 +107,9 @@ Credits and thanks
    - https://freesound.org/people/EpicWizard/sounds/316595/ by EpicWizard
    - https://freesound.org/people/klankbeeld/sounds/238900/ by klankbeeld
    - https://freesound.org/people/joedeshon/sounds/339184/ by joedeshon
+
+Version history
+---------------
+1.1
+- Fixed missing ainarda_incubator.c16 file.
+- Fixed incorrect classification of marine plants and vents.

@@ -10,13 +10,13 @@ doif reaq "patch_level" = 0
   stop
 endi
 
-new: simp 2 15 60706 "vents" 48 0 4000
+new: simp 1 1 60724 "vents" 48 0 4000
 mvto 99577 5925
 
-new: simp 2 15 60707 "vents" 48 25 4000
+new: simp 1 1 60725 "vents" 48 25 4000
 mvto 96736 6415
 
-scrp 2 15 60706 10
+scrp 1 1 60724 10
   pose 0
   attr 192
   accg 3
@@ -28,7 +28,7 @@ scrp 2 15 60706 10
   anim [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 255]
 endm
 
-scrp 2 15 60707 10
+scrp 1 1 60725 10
   pose 0
   attr 192
   accg 3
@@ -42,12 +42,12 @@ endm
 
 rscr
 
-enum 2 15 60706
+enum 1 1 60724
   kill targ
 next
-scrx 2 15 60706 10
+scrx 1 1 60724 10
 
-enum 2 15 60707
+enum 1 1 60725
   kill targ
 next
-scrx 2 15 60707 10
+scrx 1 1 60725 10

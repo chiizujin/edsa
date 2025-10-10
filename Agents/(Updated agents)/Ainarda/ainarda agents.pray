@@ -2,7 +2,7 @@
 
 group DSAG "Ainarda agents"
 "Agent Type" 0
-"Dependency Count" 39
+"Dependency Count" 40
 "Dependency 1" "ainarda_gondola.c16"
 "Dependency 2" "ainarda_lift_treehouse.c16"
 "Dependency 3" "ainarda_lift_castle.c16"
@@ -37,11 +37,12 @@ group DSAG "Ainarda agents"
 "Dependency 32" "ainarda_ghost2.s16"
 "Dependency 33" "ainarda_castlevine.c16"
 "Dependency 34" "ainarda_fore_treehouse2.s16"
-"Dependency 35" "m_a3.wav"
-"Dependency 36" "angd.wav"
-"Dependency 37" "angs.wav"
-"Dependency 38" "anch.wav"
-"Dependency 39" "ainarda agents.catalogue"
+"Dependency 35" "ainarda_incubator.c16"
+"Dependency 36" "m_a3.wav"
+"Dependency 37" "angd.wav"
+"Dependency 38" "angs.wav"
+"Dependency 39" "anch.wav"
+"Dependency 40" "ainarda agents.catalogue"
 
 "Dependency Category 1" 2
 "Dependency Category 2" 2
@@ -77,11 +78,12 @@ group DSAG "Ainarda agents"
 "Dependency Category 32" 2
 "Dependency Category 33" 2
 "Dependency Category 34" 2
-"Dependency Category 35" 1
+"Dependency Category 35" 2
 "Dependency Category 36" 1
 "Dependency Category 37" 1
 "Dependency Category 38" 1
-"Dependency Category 39" 7
+"Dependency Category 39" 1
+"Dependency Category 40" 7
 
 "Script Count" 29
 
@@ -158,6 +160,7 @@ inline FILE "ainarda_ghost2.s16" "sprites\\ainarda_ghost2.s16"
 inline FILE "ainarda_ghost2.s16" "sprites\\ainarda_ghost2.s16"
 inline FILE "ainarda_castlevine.c16" "sprites\\ainarda_castlevine.c16"
 inline FILE "ainarda_fore_treehouse2.s16" "sprites\\ainarda_fore_treehouse2.s16"
+inline FILE "ainarda_incubator.c16" "sprites\\ainarda_incubator.c16"
 inline FILE "m_a3.wav" "sounds\\m_a3.wav"
 inline FILE "angd.wav" "sounds\\angd.wav"
 inline FILE "angs.wav" "sounds\\angs.wav"

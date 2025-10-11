@@ -13,15 +13,15 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-10-11**
+- New agent: Description Viewer. Adds a button to the creature history panel that allows you to view long descriptions in a separate, paged panel.
+
 **2025-10-10**
 - Added missing hosted agents Calm Balm Vendor and Panatreea Potion Vendor by MNB.
 - Updated Ainarda agents to fix a missing file and some incorrect agent classifications.
 
 **2025-10-09**
 - New agent: Ainarda agents. Adds the agents that were originally meant to be part of Ainarda.
-
-**2025-10-08**
-- Updated Gadget Shelf to change the way the cabin works and increase its height.
 
 → [Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md)
 
@@ -48,6 +48,10 @@ Mysterious white clouds occasionally drift around, calming down any overly-frisk
 ## ※ Camera Fixer [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/Camera%20Fixer/camera%20fixer.zip)
 
 Use this to keep your Docking Station cameras in place.
+
+## ※ Description Viewer [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/Description%20Viewer/description_viewer_1.0.zip)
+
+Adds a button to the creature history panel that allows you to view long descriptions in a separate, paged panel. This is useful if you're using Verm's Ancestry Tracker.
 
 ## ※ Deselect Creature [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/Deselect%20Creature/deselect%20creature.zip)
 

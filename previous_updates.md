@@ -1,3 +1,6 @@
+**2025-10-08**
+- Updated Gadget Shelf to change the way the cabin works and increase its height.
+
 **2025-09-21**
 - New agents:
   - Warp Users - a ticker that displays the names of recently-seen warp users.

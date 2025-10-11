@@ -1,0 +1,20 @@
+"en-GB"
+
+group DSAG "Description Viewer"
+"Agent Type" 0
+"Dependency Count" 1
+"Dependency 1" "description viewer.c16"
+"Dependency Category 1" 2
+
+"Script Count" 1
+"Script 1" @ "description viewer.cos"
+"Agent Description" "Adds a button beside the description box on the creature history panel that can be used to view the full description if it's too long to fit."
+"Agent Animation File" "description viewer.c16"
+"Agent Animation Gallery" "description viewer"
+"Agent Animation String" "1"
+"Web URL" "github.com/chiizujin/edsa"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32242 kill targ next scrx 1 1 32242 9 scrx 1 1 32242 120 enum 1 2 32201 kill targ next scrx 1 2 32201 1000 scrx 1 2 32201 1001 scrx 1 2 32201 1002 scrx 1 2 32201 1003 rtar 1 2 23 doif targ ne null doif part 900 eq 1 pat: kill 900 endi endi scrx 1 2 23 9000"
+
+inline FILE "description viewer.c16" "description viewer.c16"

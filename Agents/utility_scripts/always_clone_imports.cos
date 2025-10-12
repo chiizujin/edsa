@@ -1,0 +1,217 @@
+* import a creature
+scrp 1 2 32 1003
+	lock
+	part 8
+	anim [1 1 1 0]
+	over
+	inst
+	pray refr
+	doif pray test ov99 <> 0
+		setv va74 0
+*if room for more creatures in the world
+		setv va75 0
+		enum 4 0 0
+			doif dead = 0
+				addv va75 1
+			endi
+		next
+		doif va75 >= game "total_population"
+			setv va74 1
+		endi
+		doif va74 = 1
+			new: comp 1 2 40 "pick-ups" 1 24 9030
+			attr 304
+			pat: butt 1 "pick-ups" 29 2 295 19 0 [] 1000 0
+*the text box
+			pat: fixd 2 "useful_screen" 1 25 59 1 "WhiteOnTransparentChars"
+*the stop sign
+*		pat: dull 3 "agent_help" 3 95 80 0
+
+			part 2
+			frmt 8 8 8 8 3 0 0
+			ptxt read "Import Text" 12
+
+			setv va90 wndw
+			divv va90 2
+			setv va91 wndh
+			divv va91 2
+			setv va92 wdth
+			divv va92 2
+			setv va93 hght
+			divv va93 2
+
+			subv va90 va92
+			subv va91 va93
+
+			flto va90 va91
+			stop
+		endi
+
+		flto -1000 -1000
+*		XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+		sets va22 pray agts ov99 "Pray Extra Moniker" "none"
+* VA25 is the variable used in checking to see if it can import without cloning.
+		setv va25 0
+
+** A moniker was found in the creature to import
+		doif va22 <> "none"
+** check to see if the moniker is in the export file..
+			sets va23 uppa game "user_of_this_world"
+			adds va23 read "Import Text" 14
+			file iope 1 va23
+			sets va24 ""
+			loop
+				adds va24 innl
+			untl inok = 0
+			file iclo
+
+** Is the moniker in the export log?
+			doif sins va24 1 va22 <> -1
+				setv va25 1
+** Stop cloning on import, just for this creature! :)
+				setv eame "engine_clone_upon_import" 0
+*** xxxxxxxxxxxxxxxxxxxxxxxxxxx
+*** BEGIN RECREATING EXPORT LOG
+*** xxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+** 			return the starting position of the moniker in the export log string
+				setv va01 sins va24 1 va22
+** 			return the length of the moniker
+				setv va03 strl va22
+** 			Subtract 1 from the starting position of the moniker
+				setv va04 va01
+				subv va04 1
+** 			set a new string to be all the text up to the start of the moniker
+				sets va02 subs va24 1 va04
+** 			add the length of the moniker to the position before the moniker begins to find out the last
+** 			character of the moniker
+				addv va04 va03
+** 			increment it by one to find the next character after the end of the moniker
+				addv va04 1
+** 			return the length of the export log string
+				setv va05 strl va24
+** 			subtract from the length of the export log string the position of the character after the moniker string
+** 			this should return the remaining count of characters in that string
+				subv va05 va04
+** 			increment it by 1
+				addv va05 1
+** 			set a new string to be all the text from the end of the moniker to the end of the export log string
+				sets va06 subs va24 va04 va05
+** 			Add the two new strings together!
+				adds va02 va06
+** 			Replace the Export Log with this new version! :-)
+				sets va23 uppa game "user_of_this_world"
+				adds va23 read "Import Text" 14
+				file oope 1 va23 0
+				outs va02
+				file oclo
+
+*** xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+*** END RECREATION OF EXPORT LOG
+*** xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+			endi
+		else
+*			dbg: asrt 1 = 0
+			setv va25 0
+** Renew cloning on import.
+			setv eame "engine_clone_upon_import" 1
+		endi
+
+		setv va99 pray impo ov99 0 0
+		doif va99 > 1 or va99 < 0
+* bad error in creature file!
+			stop
+		endi
+* Creature must be cloned
+		*doif va99 = 1 or va25 = 0
+		doif 1 = 1
+** Either it has to be cloned because Creature Histories couldn't be reconciled (see CAOS docs on PRAY IMPO for more info).
+** Or it has to be cloned because it wasn't found in the Creature Export Log.
+			setv eame "engine_clone_upon_import" 1
+			targ ownr
+			sets va00 ov99
+			new: comp 1 2 39 "useful_screen" 1 0 9030
+			sets ov99 va00
+			attr 304
+*the no button
+			pat: butt 1 "useful_screen" 18 2 200 290 2 [0 1 255] 1000 0
+*the yes button
+			pat: butt 2 "useful_screen" 16 2 45 290 2 [0 1 255] 1001 0
+*the text box
+			pat: fixd 3 "useful_screen" 1 25 59 1 "WhiteOnTransparentChars"
+** title bar
+			pat: fixd 4 "useful_screen" 12 41 22 1 "WhiteOnTransparentChars"
+			part 4
+			frmt 0 8 0 0 0 0 0
+			ptxt read "Import Text" 13
+			sets va00 read "Import Text" 8
+			part 3
+			frmt 8 8 8 8 3 0 0
+			ptxt va00
+
+			setv va90 wndw
+			divv va90 2
+			setv va91 wndh
+			divv va91 2
+			setv va92 wdth
+			divv va92 2
+			setv va93 hght
+			divv va93 2
+
+			subv va90 va92
+			subv va91 va93
+
+			flto va90 va91
+		else
+** OTHERWISE, it doesn't need to be cloned at all, as it must be in the Export Log and it must have passed the Pray Impo Creature History check.
+			setv eame "engine_clone_upon_import" 0
+* In the Meso nest:
+			setv va10 480
+			setv va11 9236
+* Old place in Norn terrarium:
+*			setv va10 1065
+*			setv va11 772
+			new: simp 1 1 43 "teleport" 9 11 5001
+			setv va12 wdth
+			setv va13 hght
+			divv va12 2
+			divv va13 2
+			negv va12
+			negv va13
+			addv va12 va10
+			addv va13 va11
+			subv va13 35
+			addv va12 10
+			mvto va12 va13
+			cmrp 390 9398 0
+* Norn terrarium:
+*			cmrp 975 784 0
+			wait 1
+			snde "tele"
+			anim [0 0 1 1 2 2 2 3 3 3 4 4 4 5 5 5 6 6 6]
+			over
+			anim [6 6 6 5 5 5 4 4 4 3 3 3 2 2 2 1 1 0 0]
+			over
+			inst
+			seta va12 targ
+			targ ownr
+			setv va99 pray impo ov99 1 0
+* targ should now be the new creature
+			doif targ <> null and targ <> ownr
+				snde "cmc3"
+				aslp 0
+				pose 59
+				mvft va10 va11
+				norn targ
+				like pntr
+			endi
+			kill va12
+		endi
+		kill ownr
+	endi
+endm
+
+rscr
+
+ject "ds gui - creaturemenu.cos" 2

@@ -1,0 +1,248 @@
+* Export - from "ds gui - creaturemenu.cos"
+scrp 1 2 13 1003
+  inst
+  doif norn = null
+    snde "buzz"
+    stop
+  endi
+*** Change: write description to a file ***
+  *call 2001 norn 0
+*******************************************
+  snde "lg_1"
+  targ norn
+  seta va87 targ
+  zomb 1
+  pray refr
+
+  setv va10 posx
+  setv va11 posy
+  new: simp 1 1 43 "teleport" 9 11 5001
+  setv va12 wdth
+  setv va13 hght
+  divv va12 2
+  divv va13 2
+  negv va12
+  negv va13
+  addv va12 va10
+  addv va13 va11
+  subv va13 35
+  addv va12 10
+  mvto va12 va13
+  lock
+  wait 1
+  snde "tele"
+  anim [0 0 1 1 2 2 2 3 3 3 4 4 4 5 5 5 6 6 6]
+  over
+  anim [6 6 6 5 5 5 4 4 4 3 3 3 2 2 2 1 1 0 0]
+  over
+  inst
+  seta va12 targ
+  targ va87
+  doif targ = null
+    kill va12
+    stop
+  endi
+  zomb 0
+  sets name "Pray Extra Moniker" gtos 0
+
+  ** Save the moniker of the creature to an export log...
+  sets va98 gtos 0
+  sets va99 uppa game "user_of_this_world"
+  adds va99 read "Import Text" 14
+  file oope 1 va99 1
+  outs va98
+  file oclo
+
+  ** Export the creature!
+  setv va00 pray expo "DSEX"
+
+  doif va00 <> 0
+    new: comp 1 2 40 "pick-ups" 1 24 9030
+    attr 304
+    pat: butt 1 "pick-ups" 29 2 295 19 0 [] 1000 0
+    * The text box
+    pat: fixd 2 "useful_screen" 1 25 59 1 "WhiteOnTransparentChars"
+    * The stop sign
+    * pat: dull 3 "agent_help" 3 95 80 0
+
+    part 2
+    frmt 8 8 8 8 3 0 0
+    ptxt read "Import Text" 11
+
+    setv va90 wndw
+    divv va90 2
+    setv va91 wndh
+    divv va91 2
+    setv va92 wdth
+    divv va92 2
+    setv va93 hght
+    divv va93 2
+
+    subv va90 va92
+    subv va91 va93
+
+    flto va90 va91
+  else
+    targ va12
+    snde "cmc3"
+  endi
+  kill va12
+
+  ** If successfully exported
+  doif va00 eq 0
+    * Update display window
+    mesg writ ownr 120
+  endi
+endm
+
+* Clone a creature (yes button) - from "ds gui - creaturemenu.cos"
+scrp 1 2 39 1001
+  call 2000 ov99 0
+
+  part 2
+  lock
+  anim [ 1 1 1 0 ]
+  over
+
+  flto -1000 -1000
+  inst
+  setv va10 480
+  setv va11 9236
+  new: simp 1 1 43 "teleport" 9 11 5001
+  setv va12 wdth
+  setv va13 hght
+  divv va12 2
+  divv va13 2
+  negv va12
+  negv va13
+  addv va12 va10
+  addv va13 va11
+  subv va13 35
+  addv va12 10
+  mvto va12 va13
+  cmrp 390 9398 0
+  wait 1
+  snde "tele"
+  anim [0 0 1 1 2 2 2 3 3 3 4 4 4 5 5 5 6 6 6]
+  over
+  anim [6 6 6 5 5 5 4 4 4 3 3 3 2 2 2 1 1 0 0]
+  over
+  inst
+  seta va12 targ
+  targ ownr
+  setv va99 pray impo ov99 1 0
+  * targ should now be the new creature
+  doif targ <> null and targ <> ownr
+    snde "cmc3"
+    aslp 0
+    pose 59
+    mvft va10 va11
+    norn targ
+    like pntr
+*** Change: read description from a file ***
+    call 2001 targ 0
+********************************************
+  endi
+  kill va12
+  kill ownr
+endm
+
+* Write _p1_'s description to the file "<moniker>.description" in the main Journal directory
+scrp 1 2 13 2001
+  inst
+  targ _p1_
+  * Get the moniker
+  sets va01 gtos 0
+  * Get the description
+  sets va02 hist utxt va01 0
+  * Generate the file name from the moniker
+  adds va01 ".description"
+
+  file oope 1 va01 0
+  outs va02
+  file oclo
+endm
+
+scrp 1 2 39 2000
+  dbg: outs "moniker chunk:"
+  dbg: outs _p1_
+
+  setv eame "engine_clone_upon_import" 0
+  setv va99 pray impo ov99 1 0
+  dbg: outv va99
+
+  call 2039 targ 0
+	setv va00 pray expo "DSEX"
+  kill targ
+
+  setv eame "engine_clone_upon_import" 1
+endm
+
+scrp 1 2 39 2039
+  inst
+  targ _p1_
+  * Get the moniker
+  sets va01 gtos 0
+  * Get the description
+  sets va02 hist utxt va01 0
+  * Generate the file name from the moniker
+  adds va01 ".description"
+
+  file oope 1 va01 0
+  outs va02
+  file oclo
+endm
+
+* Read _p1_'s description from the file "<moniker>.description" in the main Journal directory
+scrp 1 2 39 2001
+  inst
+  targ _p1_
+  * Get the moniker
+  sets va01 gtos 0
+
+  * This script is called specifically when a creature is cloned, but check that
+  * event 0 is actually a cloned event
+  doif hist type va01 0 eq 14
+    * Generate the file name from the moniker
+    sets va02 hist mon1 va01 0
+    adds va02 ".description"
+
+    * Read the file if it exists
+    sets va03 ""
+    file iope 1 va02
+    doif inok eq 1
+      * Flag that the file exists
+      setv va99 1
+      loop
+        adds va03 innl
+        adds va03 "\n"
+      untl inok ne 1
+    endi
+    file iclo
+
+    * Only set the description if the file existed (including if it was an empty file)
+    doif va99 eq 1
+      * Delete the file
+      file jdel 1 va02
+      * Chop off the final \n that we added when reading the file
+      setv va04 strl va03
+      doif va04 ge 1
+        subv va04 1
+        sets va03 subs va03 1 va04
+      endi
+      slow
+      * Wait for Ancestry Tracker to do whatever it's going to do for the life event script,
+      * otherwise it'll overwrite our description
+      wait 10
+      * Set the new description
+      hist utxt va01 0 va03
+    endi
+  endi
+endm
+
+rscr
+
+scrx 1 2 13 2001
+scrx 1 2 39 2001
+
+ject "ds gui - creaturemenu.cos" 2

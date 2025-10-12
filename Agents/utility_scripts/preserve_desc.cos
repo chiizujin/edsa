@@ -1,0 +1,156 @@
+********************************
+*** Default script overrides ***
+********************************
+
+* Clone a creature ("Yes" button) - from "ds gui - creaturemenu.cos"
+scrp 1 2 39 1001
+*** Change: get original description ***
+  call 2001 ov99 0
+****************************************
+  part 2
+  lock
+  anim [ 1 1 1 0 ]
+  over
+
+  flto -1000 -1000
+  inst
+  setv va10 480
+  setv va11 9236
+  new: simp 1 1 43 "teleport" 9 11 5001
+  setv va12 wdth
+  setv va13 hght
+  divv va12 2
+  divv va13 2
+  negv va12
+  negv va13
+  addv va12 va10
+  addv va13 va11
+  subv va13 35
+  addv va12 10
+  mvto va12 va13
+  cmrp 390 9398 0
+  wait 1
+  snde "tele"
+  anim [0 0 1 1 2 2 2 3 3 3 4 4 4 5 5 5 6 6 6]
+  over
+  anim [6 6 6 5 5 5 4 4 4 3 3 3 2 2 2 1 1 0 0]
+  over
+  inst
+  seta va12 targ
+  targ ownr
+  setv va99 pray impo ov99 1 0
+  * targ should now be the new creature
+  doif targ <> null and targ <> ownr
+    snde "cmc3"
+    aslp 0
+    pose 59
+    mvft va10 va11
+    norn targ
+    like pntr
+*** Change: read description from a file ***
+    call 2003 targ 0
+********************************************
+  endi
+  kill va12
+  kill ownr
+endm
+
+*******************
+*** New scripts ***
+*******************
+
+* Import _p1_ without cloning, save its description, then export it again, removing the non-cloned creature
+scrp 1 2 39 2001
+  * Override the clone requirement that was set earlier
+  setv eame "engine_clone_upon_import" 0
+  * Test if it can be imported OK without cloning. If you attempt to import the same creature more
+  * than once, without cloning, the import will fail with "1 - couldn't reconcile histories so
+  * creature was cloned" and will clone it regardless of the "engine_clone_upon_import" setting
+  setv va01 pray impo _p1_ 0 1
+  * Only continue if it can be imported without cloning, otherwise there is no point as there will be no description
+  doif va01 eq 0
+    * Do the actual import
+    setv va01 pray impo _p1_ 1 0
+    * Write description
+    call 2002 targ 0
+    * Export again
+    setv va01 pray expo "DSEX"
+    * The export may fail, but we don't want the non-cloned creature to stay so kill it if it's still here
+    doif targ ne null
+      kill targ
+    endi
+  endi
+  * Restore the clone requirement
+  setv eame "engine_clone_upon_import" 1
+endm
+
+* Write _p1_'s description to the file "<moniker>.description" in the main Journal directory
+scrp 1 2 39 2002
+  inst
+  targ _p1_
+  * Get the moniker
+  sets va01 gtos 0
+  * Get the description
+  sets va02 hist utxt va01 0
+  * Generate the file name from the moniker
+  adds va01 ".description"
+  * Write the file
+  file oope 1 va01 0
+  outs va02
+  file oclo
+endm
+
+* Read _p1_'s description from the file "<moniker>.description" in the main Journal directory
+scrp 1 2 39 2003
+  inst
+  targ _p1_
+  * Get the moniker
+  sets va01 gtos 0
+
+  * This script is called specifically when a creature is cloned, but check that
+  * event 0 is actually a cloned event
+  doif hist type va01 0 eq 14
+    * Generate the file name from the moniker
+    sets va02 hist mon1 va01 0
+    adds va02 ".description"
+
+    * Read the file if it exists
+    sets va03 ""
+    file iope 1 va02
+    doif inok eq 1
+      * Flag that the file exists
+      setv va99 1
+      loop
+        adds va03 innl
+        adds va03 "\n"
+      untl inok ne 1
+    endi
+    file iclo
+
+    * Only set the description if the file existed (including if it was an empty file)
+    doif va99 eq 1
+      * Delete the file
+      file jdel 1 va02
+      * Chop off the final \n that we added when reading the file
+      setv va04 strl va03
+      doif va04 ge 1
+        subv va04 1
+        sets va03 subs va03 1 va04
+      endi
+      slow
+      * Wait for Ancestry Tracker to do whatever it's going to do for the life event script,
+      * otherwise it'll overwrite our description
+      wait 10
+      * Set the new description
+      hist utxt va01 0 va03
+    endi
+  endi
+endm
+
+rscr
+
+scrx 1 2 39 2001
+scrx 1 2 39 2002
+scrx 1 2 39 2003
+
+ject "ds gui - creaturemenu.cos" 2

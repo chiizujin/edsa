@@ -9,7 +9,7 @@ There is (and has been for some time) an *unofficial* [mirror](http://www.creatu
 
 ### Downloading
 
-If you just want the agent to install into your game then all you need is the **.zip** file from the appropriate directory. You can download this directly by clicking the  🠟 link beside the agent's name. The rest of the files in each directory are the sources used to build the agent.
+If you just want the agent to install into your game then all you need is the **.zip** file from the appropriate directory. You can download this directly by clicking the 🠟 link beside the agent's name in the list below. The rest of the files in each directory are the sources used to build the agent.
 
 ### Latest updates
 

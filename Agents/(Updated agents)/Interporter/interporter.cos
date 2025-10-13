@@ -1074,10 +1074,12 @@ scrp 3 9 1008 1000
       stim writ _P1_ 27 1
     endi
     doif crea targ eq 1
-      snde "tele"
-      mvft va32 va33
-      targ va40
-      snde "tele"
+      doif tmvf va32 va33 eq 1
+        snde "tele"
+        mvft va32 va33
+        targ va40
+        snde "tele"
+      endi
     endi
   endi
 endm
@@ -1280,11 +1282,13 @@ scrp 2 2 1018 1000
     setv va33 posy
     targ va20
     doif crea targ eq 1
-      snde "tele"
-      chem 157 -0.2
-      mvft va32 va33
-      targ va40
-      snde "tele"
+      doif tmvf va32 va33 eq 1
+        snde "tele"
+        chem 157 -0.2
+        mvft va32 va33
+        targ va40
+        snde "tele"
+      endi
     endi
   endi
 endm

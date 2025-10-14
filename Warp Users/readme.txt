@@ -26,6 +26,12 @@ any of the message and chat functions. Since these are generally low-frequency
 events there is a good chance that the ticker already knows about the user
 before any of these happen.
 
+Updating to version 1.1
+-----------------------
+If you have used a version prior to 1.1 then you will need to remove the agent
+in-game BEFORE copying the new agent file into the My Agents folder. Because the
+agent classifier has changed, version 1.1 will not remove previous versions.
+
 Version history
 ---------------
 1.1
@@ -35,6 +41,7 @@ Version history
   possible to configure the warp server to return your own user ID with 'net:
   ruso' (though not dependent on 'whois') by setting excludeSelfRUSO
   appropriately.
+- Changed agent classifier.
 
 Emmental
 https://github.com/chiizujin/edsa

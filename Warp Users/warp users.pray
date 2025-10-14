@@ -19,7 +19,7 @@ group DSAG "Warp Users"
 "Web URL" "github.com/chiizujin/edsa"
 "Web Label" "Emmental's DS Agents"
 
-"Remove script" "enum 1 1 32239 kill targ next scrx 1 1 32239 9 scrx 1 1 32239 128 scrx 1 1 32239 135 scrx 1 1 32239 136"
+"Remove script" "enum 1 2 32202 kill targ next scrx 1 2 32202 9 scrx 1 2 32202 128 scrx 1 2 32202 135 scrx 1 2 32202 136"
 
 inline FILE "warp users.c16" "warp users.c16"
 inline FILE "ticker font.s16" "ticker font.s16"

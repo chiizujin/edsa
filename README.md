@@ -15,6 +15,10 @@ If you just want the agent to install into your game then all you need is the **
 
 **2025-10-14**
 - Warp Users 1.1 - Added a workaround for a warp-related bug and changed the agent classifier.
+- Interporter update 1.1:
+    - Portals can no longer be used (either as a source or destination) if carried.
+    - Portals (when opened as an actual portal) no longer bounce when dropped.
+    - The destination is now first checked for space before a creature teleports
 
 **2025-10-11**
 - New agent: Description Viewer. Adds a button to the creature history panel that allows you to view long descriptions in a separate, paged panel.
@@ -147,7 +151,7 @@ This useful tool allows you to plant extra trappers almost anywhere in your worl
 
 A ticker that displays the names of recently-seen warp users.
 
-# Agent updates
+# Updated agents
 
 ## ※ Ainarda agents [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/(Updated%20agents)/Ainarda/ainarda%20agents.zip)
 
@@ -161,9 +165,9 @@ An update of the Creatures 3 Green Ball agent by Uttar and Tim to enable it to b
 
 An update of the Creatures 3 Infirmary metaroom by Lis Morris to enable it to be compatible with undocked Docking Station worlds. It is based on version 1.3.
 
-## ※ Interporter (update) [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/(Updated%20agents)/Interporter/Interporter%20(update).zip)
+## ※ Interporter (update) [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/(Updated%20agents)/Interporter/interporter_update_1.1.zip)
 
-An update of the Interporter by Mugendai to correct the sound cutting off when a creature teleports.
+An update of the Interporter by Mugendai to correct the sound cutting off when a creature teleports, and a few other small changes.
 
 ## ※ Pond Fish Food (Docking Station update) [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/(Updated%20agents)/Pond%20Fish%20Food/Pond%20Fish%20Food%20(DS%20update).zip)
 

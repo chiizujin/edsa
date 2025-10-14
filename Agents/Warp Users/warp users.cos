@@ -1,9 +1,9 @@
 * Abort if already injected
-doif totl 1 1 32239 gt 0
+doif totl 1 2 32202 ne 0
   stop
 endi
 
-new: comp 1 1 32239 "warp users" 3 0 8900
+new: comp 1 2 32202 "warp users" 3 0 8900
 pat: fixd 1 "warp users" 3 4 4 0 "ticker font"
 part 1
 frmt 2 2 2 0 0 0 0
@@ -16,6 +16,11 @@ setv ov01 10
 setv ov02 400
 * How many 3-tick cycles until the online user list is be rechecked (2000 = 5 minutes)
 setv ov03 2000
+
+* Initialise user ID to the name of the hand just in case it doesn't get
+* initialised with the actual user name before an add_user happens (I have seen
+* this happen once)
+sets ov99 hand
 
 * Initialise list variables & ticker.
 * An underscore is used instead of a space so that text will not wrap (and
@@ -31,7 +36,7 @@ flto 3 130
 * This dictates the ticker's scrolling speed
 tick 3
 
-scrp 1 1 32239 9
+scrp 1 2 32202 9
   inst
 
   * reset the ticker if it's empty
@@ -106,35 +111,39 @@ scrp 1 1 32239 9
 
   * Add a user to the online list. ID is in va01 and name is in va02
   subr add_user
-    setv va10 ov00
-    * Set the last variable number
-    setv va11 ov00
-    addv va11 ov01
-    loop
-      sets va12 avar ownr va10
-      doif va12 eq ""
-        * Record the first empty slot
-        doif va13 eq 0
-          setv va13 va10
+    * If you issue a 'whois <your username>' to !System then it will start also
+    * returning your user ID to 'net: ruso' calls, so we need to ignore this
+    doif va01 ne ov99
+      setv va10 ov00
+      * Set the last variable number
+      setv va11 ov00
+      addv va11 ov01
+      loop
+        sets va12 avar ownr va10
+        doif va12 eq ""
+          * Record the first empty slot
+          doif va13 eq 0
+            setv va13 va10
+          endi
         endi
-      endi
-      * Flag that we already have this user
-      doif va12 eq va01
-        setv va14 1
-        * Abort
-        setv va10 999
-      endi
-      addv va10 1
-    untl va10 ge va11
+        * Flag that we already have this user
+        doif va12 eq va01
+          setv va14 1
+          * Abort
+          setv va10 999
+        endi
+        addv va10 1
+      untl va10 ge va11
 
-    * Record the user if there's a free slot and we don't already have them
-    doif va13 ne 0 and va14 eq 0
-      * ID
-      sets avar ownr va13 va01
-      * Name
-      setv va15 va13
-      addv va15 ov01
-      sets avar ownr va15 va02
+      * Record the user if there's a free slot and we don't already have them
+      doif va13 ne 0 and va14 eq 0
+        * ID
+        sets avar ownr va13 va01
+        * Name
+        setv va15 va13
+        addv va15 ov01
+        sets avar ownr va15 va02
+      endi
     endi
   retn
 
@@ -224,7 +233,7 @@ scrp 1 1 32239 9
 endm
 
 * World loaded
-scrp 1 1 32239 128
+scrp 1 2 32202 128
   sets ov50 ""
   sets ov51 ""
   sets ov52 ""
@@ -253,16 +262,22 @@ scrp 1 1 32239 128
   setv ov06 0
 endm
 
+* Go online
+scrp 1 2 32202 135
+  sets ov99 net: user
+endm
+
 * Go offline
-scrp 1 1 32239 136
+scrp 1 2 32202 136
   call 128 0 0
 endm
 
 rscr
 
-enum 1 1 32239
+enum 1 2 32202
   kill targ
 next
-scrx 1 1 32239 9
-scrx 1 1 32239 128
-scrx 1 1 32239 136
+scrx 1 2 32202 9
+scrx 1 2 32202 128
+scrx 1 2 32202 135
+scrx 1 2 32202 136

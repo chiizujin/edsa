@@ -13,15 +13,15 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-10-14**
+- Warp Users 1.1 - Added a workaround for a warp-related bug and changed the agent classifier.
+
 **2025-10-11**
 - New agent: Description Viewer. Adds a button to the creature history panel that allows you to view long descriptions in a separate, paged panel.
 
 **2025-10-10**
 - Added missing hosted agents Calm Balm Vendor and Panatreea Potion Vendor by MNB.
 - Updated Ainarda agents to fix a missing file and some incorrect agent classifications.
-
-**2025-10-09**
-- New agent: Ainarda agents. Adds the agents that were originally meant to be part of Ainarda.
 
 → [Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md)
 
@@ -143,7 +143,7 @@ A tribute to Douglas Adams.
 
 This useful tool allows you to plant extra trappers almost anywhere in your world to help get rid of pesky bugs.
 
-## ※ Warp Users [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/Warp%20Users/warp%20users.zip)
+## ※ Warp Users [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/Warp%20Users/warp_users_1.1.zip)
 
 A ticker that displays the names of recently-seen warp users.
 

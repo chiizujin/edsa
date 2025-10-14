@@ -1,3 +1,6 @@
+**2025-10-09**
+- New agent: Ainarda agents. Adds the agents that were originally meant to be part of Ainarda.
+
 **2025-10-08**
 - Updated Gadget Shelf to change the way the cabin works and increase its height.
 

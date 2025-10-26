@@ -144,12 +144,12 @@ scrp 2 12 60746 1
     doif ov01 = 0
       doif mv50 = 1
         pose 1
-        mesg wrt+ mv53 2001 va00 from 0
+        mesg wrt+ mv53 2001 va00 0 0
       endi
     elif ov01 = 1
       doif mv50 = 0
         pose 1
-        mesg wrt+ mv53 2000 va00 from 0
+        mesg wrt+ mv53 2000 va00 0 0
       endi
     endi
   endi

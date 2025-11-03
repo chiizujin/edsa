@@ -1,3 +1,7 @@
+**2025-10-10**
+- Added missing hosted agents Calm Balm Vendor and Panatreea Potion Vendor by MNB.
+- Updated Ainarda agents to fix a missing file and some incorrect agent classifications.
+
 **2025-10-09**
 - New agent: Ainarda agents. Adds the agents that were originally meant to be part of Ainarda.
 

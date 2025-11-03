@@ -142,6 +142,7 @@ endm
 scrp 2 12 60703 10
   attr 4
   bhvr 1
+  tick 1200
   setv ov02 0
 endm
 
@@ -188,6 +189,19 @@ scrp 2 12 60703 1
     stim writ from 0 1
   endi
   targ ownr
+endm
+
+scrp 2 12 60703 9
+  * If the button is on...
+  doif name "on" eq 1
+    * ...but the elevator is idle, then something is broken
+    targ ov00
+    doif tick eq 0
+      * Reset the button
+      targ ownr
+      call 1000 0 0
+    endi
+  endi
 endm
 
 scrp 2 12 60703 1000
@@ -284,6 +298,7 @@ enum 2 12 60703
   kill targ
 next
 scrx 2 12 60703 1
+scrx 2 12 60703 9
 scrx 2 12 60703 10
 scrx 2 12 60703 1000
 scrx 2 12 60703 1001

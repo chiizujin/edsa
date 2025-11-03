@@ -1,4 +1,4 @@
-Ainarda agents (1.1)
+Ainarda agents (1.2)
 
 Ainarda is a fantastic metaroom created by Merboy that never received a
 completed release. The available downloads consist of the empty metaroom, a
@@ -110,6 +110,11 @@ Credits and thanks
 
 Version history
 ---------------
+1.2
+- Added a failsafe for lift buttons getting stuck in rare cases. I was unable to
+  find the root cause of this as I only saw it happen once.
+- Fixed the cave lift immediately picking up the creature that pressed a call
+  button.
 1.1
 - Fixed missing ainarda_incubator.c16 file.
 - Fixed incorrect classification of marine plants and vents.

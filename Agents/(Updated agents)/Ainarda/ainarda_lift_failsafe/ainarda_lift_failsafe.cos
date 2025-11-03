@@ -1,0 +1,67 @@
+* Treehouse
+
+enum 2 12 60749 tick 1200 next
+
+scrp 2 12 60749 9
+  * If the button is on...
+  doif name "on" eq 1
+    * ...but the elevator is idle, then something is broken
+    targ ov00
+    doif tick eq 0
+      * Reset the button
+      targ ownr
+      call 1000 0 0
+    endi
+  endi
+endm
+
+* Maison
+
+enum 2 12 60702 tick 1200 next
+
+scrp 2 12 60702 9
+  * If the button is on...
+  doif name "on" eq 1
+    * ...but the elevator is idle, then something is broken
+    targ ov00
+    doif tick eq 0
+      * Reset the button
+      targ ownr
+      call 1000 0 0
+    endi
+  endi
+endm
+
+* Castle
+
+enum 2 12 60704 tick 1200 next
+
+scrp 2 12 60704 9
+  * If the button is on...
+  doif name "on" eq 1
+    * ...but the elevator is idle, then something is broken
+    targ ov00
+    doif tick eq 0
+      * Reset the button
+      targ ownr
+      call 1000 0 0
+    endi
+  endi
+endm
+
+* Castle cave
+
+enum 2 12 60703 tick 1200 next
+
+scrp 2 12 60703 9
+  * If the button is on...
+  doif name "on" eq 1
+    * ...but the elevator is idle, then something is broken
+    targ ov00
+    doif tick eq 0
+      * Reset the button
+      targ ownr
+      call 1000 0 0
+    endi
+  endi
+endm

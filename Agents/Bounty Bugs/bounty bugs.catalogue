@@ -1,10 +1,10 @@
 TAG "Agent Help 2 17 32206"
 "Bounty Bug Nest"
-"This is where the mysterious Bounty Bugs come from\n\nBugs will pop out of here occasionally or if the nest is prodded by a creature."
+"This is where the Bounty Bugs come from.\n\nBugs will pop out of here occasionally or if the nest is prodded by a creature."
 
 TAG "Agent Help 2 13 32206"
 "Bounty Bug"
-"These little bugs are tasty and fun for creatures to eat, but if left alone long enough they have a little surprise in store..."
+"These little bugs wriggle around, minding their own business.\n\nThey can be eaten but if left alone long enough they may have a little surprise in store."
 
 TAG "Agent Help 2 8 32206"
 "Red Apple"
@@ -32,7 +32,7 @@ TAG "Agent Help 2 11 32204"
 
 TAG "Agent Help 2 3 32206"
 "Pod of Peas"
-"There's nothing like fresh peas straight from the pod.  The pods are tasty too."
+"There's nothing like fresh peas straight from the pod. The pods are tasty too."
 
 TAG "Agent Help 2 3 32205"
 "Green Chilli"

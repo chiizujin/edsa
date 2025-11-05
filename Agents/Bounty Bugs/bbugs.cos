@@ -3,7 +3,7 @@ inst
 * Create as a nest
 new: simp 2 17 32206 "bounty bugs" 1 0 100
 attr 194
-perm 90
+perm 100
 bhvr 3
 clac 0
 accg 3
@@ -20,7 +20,7 @@ doif va00 eq 0 and va01 eq 0
   endi
 pose 0
 mvsf va00 va01
-tick 80
+tick 200
 
 * BUG OVs
 * ov01 - movement direction
@@ -33,6 +33,10 @@ tick 80
 
 * ACTIVATE 1
 scrp 2 17 32206 1
+  * Cap at 10 bugs
+  doif totl 2 13 32206 ge 10
+    stop
+  endi
   * Create Bounty Bug
   lock
   * Check if nest is in the inventory - thanks to Uttar for this
@@ -61,29 +65,32 @@ scrp 2 17 32206 1
     endi
     new: simp 2 13 32206 "bounty bugs" 10 va04 3000
     attr 194
-*    attr 198
     bhvr 0
     accg 3
     elas 0
-    fric 10
+    fric 50
+    perm 100
     puhl -1 23 25
-    mvto va01 va02
-    snde "bbg1"
-    anim [0 0 1 1 2 2 1 1 255 0]
-    * Decide which way to go
-    doif rand 1 2 eq 1
-      setv ov01 3
+    doif tmvt va01 va02 eq 1
+      mvto va01 va02
+      snde "bbg1"
+      * Decide which way to go
+      doif rand 1 2 eq 1
+        setv ov01 4
+      else
+        setv ov01 -4
+      endi
+      setv ov02 0
+      setv ov03 0
+      setv ov04 rand 150 300
+      setv ov05 0
+      setv ov07 0
+      wait rand 5 10
+      bhvr 59
+      tick rand 15 25
     else
-      setv ov01 -3
+      kill targ
     endi
-    setv ov02 0
-    setv ov03 0
-    setv ov04 0
-    setv ov05 0
-    setv ov07 0
-    wait 10
-    bhvr 48
-    tick 1
   endi
 endm
 
@@ -94,11 +101,20 @@ endm
 
 * TIMER
 scrp 2 17 32206 9
+  * Check for any bugs that are not moving but should be. This was possibly caused by not
+  * having a lock on the drop script and it being interrupted before restarting the timer.
+  * This is retained as a fallback in case that wasn't the cause.
+  inst
+  enum 2 13 32206
+    doif tick eq 0 and ov02 eq 0 and ov04 gt 0
+      tick rand 15 25
+    endi
+  next
+  slow
+
   * Randomly create a bug
-  doif rand 1 5 eq 1
+  doif rand 1 3 eq 1
     call 1 0 0
-    * Push me!
-    urge sign 0.5 1 0.5
   endi
 endm
 
@@ -110,25 +126,24 @@ endm
 
 * DROP
 scrp 2 17 32206 5
-  tick 80
+  tick 200
   bhvr 3
 endm
 
 * BUG SCRIPTS
 
-* ACTIVATE 1
-scrp 2 13 32206 1
-  * Work out where it will appear
+* CREATE BOUNTY
+scrp 2 13 32206 1000
+  * Work out where the bounty will appear
   setv va01 posx
   setv va02 posy
   doif ov01 gt 0
     addv va01 20
     setv va03 rand 5 10
   else
-    subv va01 40
+    subv va01 20
     setv va03 rand -5 -10
   endi
-  setv ov06 va01
   * Decide what to create
   setv va04 rand 1 9
   * Create a toy? Less likely
@@ -139,84 +154,175 @@ scrp 2 13 32206 1
   doif va04 eq 1
     * Red apple
     new: simp 2 8 32206 "bounty" 2 0 2500
-    attr 194 bhvr 48 accg 2 fric 100 elas 25 tick 2000
+    attr 194
+    bhvr 48
+    accg 2
+    fric 100
+    elas 25
+    perm 100
+    emit 6 0.5
+    tick 3600
   elif va04 eq 2
     * Green apple
     new: simp 2 8 32205 "bounty" 2 2 2500
-    attr 194 bhvr 48 accg 2 fric 100 elas 25 tick 2000
+    attr 194
+    bhvr 48
+    accg 2
+    fric 100
+    elas 25
+    perm 100
+    emit 6 0.5
+    tick 3600
   elif va04 eq 3
     * Banana
     new: simp 2 8 32204 "bounty" 3 4 2500
-    attr 194 bhvr 48 accg 2 fric 100 elas 25 puhl -1 27 20 tick 2000
+    attr 194
+    bhvr 48
+    accg 2
+    fric 100
+    elas 25
+    puhl -1 27 20
+    perm 100
+    emit 6 0.5
+    tick 3600
   elif va04 eq 4
     * Cheese sandwich
     new: simp 2 11 32206 "bounty" 2 7 2500
-    attr 194 bhvr 48 accg 2 fric 100 elas 25 tick 2000
+    attr 194
+    bhvr 48
+    accg 2
+    fric 100
+    elas 25
+    perm 100
+    emit 8 0.5
+    tick 3600
   elif va04 eq 5
     * Gingerbread man
     new: simp 2 11 32205 "bounty" 2 13 2500
-    attr 194 bhvr 48 accg 2 fric 100 elas 25 tick 2000
+    attr 194
+    bhvr 48
+    accg 2
+    fric 100
+    elas 25
+    perm 100
+    emit 8 0.5
+    tick 3600
   elif va04 eq 6
     * Sushi roll
     new: simp 2 11 32204 "bounty" 2 15 2500
-    attr 194 bhvr 48 accg 2 fric 100 elas 25 tick 2000
+    attr 194
+    bhvr 48
+    accg 2
+    fric 100
+    elas 25
+    perm 100
+    emit 8 0.5
+    tick 3600
   elif va04 eq 7
     * Pod of peas
     new: simp 2 3 32206 "bounty" 2 17 2500
-    attr 194 bhvr 48 accg 2 fric 100 elas 25 tick 2000
+    attr 194
+    bhvr 48
+    accg 2
+    fric 100
+    elas 25
+    perm 100
+    emit 7 0.5
+    tick 3600
   elif va04 eq 8
     * Green chilli
     new: simp 2 3 32205 "bounty" 2 21 2500
-    attr 194 bhvr 48 accg 2 fric 100 elas 25 tick 2000
+    attr 194
+    bhvr 48
+    accg 2
+    fric
+    100
+    elas 25
+    perm 100
+    emit 7 0.5
+    tick 3600
   elif va04 eq 9
     * Red chilli
     new: simp 2 3 32204 "bounty" 2 19 2500
-    attr 194 bhvr 48 accg 2 fric 100 elas 25 tick 2000
+    attr 194
+    bhvr 48
+    accg 2
+    fric 100
+    elas 25
+    perm 100
+    emit 7 0.5
+    tick 3600
   elif va04 eq 10
     * Cube
     new: simp 2 21 32206 "bounty" 4 9 2500
-    attr 194 bhvr 35 accg 2 fric 100 elas 25 tick 10000
+    attr 194
+    bhvr 35
+    accg 2
+    fric 100
+    elas 25
+    perm 100
+    tick 12000
   endi
-  mvsf va01 va02
-  velo va03 rand -5 -10
-  targ ownr
+  * Try to move it
+  subv va02 hght
+  doif va03 lt 0
+    subv va01 wdth
+  endi
+  doif tmvt va01 va02 eq 1
+    mvto va01 va02
+    velo va03 rand -5 -10
+  else
+    kill targ
+  endi
 endm
 
 * TIMER
 scrp 2 13 32206 9
   * Keep moving unless half eaten, that would be silly
   doif ov05 eq 0
-    velo ov01 vely
+     fric 10
+     velo ov01 vely
+     anim [1 1 2 2 1 1 0 0]
+     over
+     fric 50
   endi
-  * Increment timer counters
+  * Update timer counters
   addv ov03 1
-  addv ov04 1
+  subv ov04 1
   addv ov07 1
   * Check if still in same place
-  doif ov07 ge 5 and ov05 eq 0
+  doif ov07 ge 2 and ov05 eq 0
     setv ov07 0
     setv va01 posx
     setv va02 posx
     subv va01 5
     addv va02 5
     doif ov06 gt va01 and ov06 lt va02
-      negv ov01
-      * Look appealing
-      urge sign 0.9 12 0.9
-      * Set collision counter to -1 to flag collision
-      setv ov07 -1
+      doif rand 1 2 eq 1
+        * Try to jump
+        setv va03 ov01
+        mulv va03 rand 2 3
+        anim [0 1 2]
+        over
+        velo va03 rand -10 -20
+        anim [2 2 2 2 2 2 2 2 2 1 0]
+        over
+      else
+        * Turn round
+        negv ov01
+        * Set collision counter to -1 to flag collision
+        setv ov07 -1
+      endi
     endi
     setv ov06 posx
   endi
   * Pick another random direction unless half eaten or collision
   doif ov03 ge 100 and ov05 eq 0 and ov07 ne -1
     doif rand 1 2 eq 1
-       setv ov01 3
+       setv ov01 4
      else
-      setv ov01 -3
+      setv ov01 -4
     endi
-    * Look appealing
-    urge sign 0.9 12 0.9
     * Reset counter
     setv ov03 0
   endi
@@ -230,12 +336,12 @@ scrp 2 13 32206 9
     endi
   next
   * Decide whether to die or release bounty
-  doif ov04 ge 500
-    setv va01 rand 1 250
-    doif va01 eq 1 or va01 eq 2
+  doif ov04 le 0 and ov02 eq 0
+    setv va01 rand 1 10
+    doif va01 le 4
       * Stop moving & remove hand/creature rights
       tick 0
-*      attr 192 - this causes invalid map pos sometimes :(
+      attr 192
       bhvr 0
       fric 100
       anim []
@@ -243,23 +349,20 @@ scrp 2 13 32206 9
         pose 0
       endi
     endi
-    doif va01 eq 2 and ov05 eq 0 and va00 eq 0
-      * Release bounty unless half eaten or in inventory
+    * Release bounty unless half eaten or in inventory
+    doif va01 lt 4 and ov05 eq 0 and va00 eq 0
       wait 10
       doif ov01 gt 0
         anim [0 7 8 9 9 8 7 0]
       else
         anim [0 4 5 6 6 5 4 0]
       endi
-      wait 2
       snde "bbg2"
-      * Activate 1 is used to test so just call it
-      call 1 0 0
+      call 1000 0 0
       wait 20
     endi
-    doif va01 eq 1 or va01 eq 2
-      * Fade out - use lock since attr breaks
-      lock
+    doif va01 le 4
+      * Fade out
       setv va02 0
       loop
         inst
@@ -272,14 +375,41 @@ scrp 2 13 32206 9
   endi
 endm
 
-* PICK UP
-scrp 2 13 32206 4
-*  stim writ from 85 1
+* ACTIVATE 1
+scrp 2 13 32206 1
+  call 1001 from 0
+endm
+
+* ACTIVATE 2
+scrp 2 13 32206 2
+  call 1001 from 0
+endm
+
+scrp 2 13 32206 1001
   * Do nothing if half eaten
   doif ov05 eq 0
     inst
+    snde "tcw1"
+    velo rand -10 10 rand -5 -15
+    stim writ _p1_ 85 1
+  endi
+endm
+
+* HIT
+scrp 2 13 32206 3
+  inst
+  snde "spnk"
+  velo rand -20 20 rand -15 -25
+  stim writ from 44 1
+endm
+
+* PICK UP
+scrp 2 13 32206 4
+  lock
+  setv ov02 1
+  * Do nothing if half eaten
+  doif ov05 eq 0
     tick 0
-    setv ov02 1
     anim []
     pose 2
   endi
@@ -287,117 +417,116 @@ endm
 
 * DROP
 scrp 2 13 32206 5
-  * Do nothing if half eaten
+  lock
+  setv ov02 0
+  * Start moving again if not half eaten
   doif ov05 eq 0
     pose 0
     * Decide which way to go
     doif rand 1 2 eq 1
-      setv ov01 3
+      setv ov01 4
     else
-      setv ov01 -3
+      setv ov01 -4
     endi
     wait 50
-    tick 1
-    anim [0 0 1 1 2 2 1 1 255 0]
-    setv ov02 0
   endi
+  tick rand 15 25
 endm
 
 * EAT
 scrp 2 13 32206 12
-  tick 0
   lock
+  tick 0
   inst
   snde "reat"
-*  stim writ from 85 2
   stim writ from 80 1
-  * Reduce boredom in addition to normal eating reduction
-  targ from
-  chem 159 -0.05
-  targ ownr
   * Two bites
   doif ov05 eq 0
     setv ov05 1
     pose 3
-    tick 1
   else
     kill ownr
   endi
 endm
 
 rscr
-  * Kill bounty
-  enum 2 8 32206
-    kill targ
-  next
-  enum 2 8 32205
-    kill targ
-  next
-  enum 2 8 32204
-    kill targ
-  next
-  enum 2 11 32206
-    kill targ
-  next
-  enum 2 11 32205
-    kill targ
-  next
-  enum 2 11 32204
-    kill targ
-  next
-  enum 2 3 32206
-    kill targ
-  next
-  enum 2 3 32205
-    kill targ
-  next
-  enum 2 3 32204
-    kill targ
-  next
-  enum 2 21 32206
-    kill targ
-  next
-  * Kill bugs
-  enum 2 13 32206
-    kill targ
-  next
-  * Kill nests
-  enum 2 17 32206
-    kill targ
-  next
-  * Nest scripts
-  scrx 2 17 32206 1
-  scrx 2 17 32206 2
-  scrx 2 17 32206 9
-  scrx 2 17 32206 4
-  scrx 2 17 32206 5
-  * Bug scripts
-  scrx 2 13 32206 1
-  scrx 2 13 32206 9
-  scrx 2 13 32206 4
-  scrx 2 13 32206 5
-  scrx 2 13 32206 12
-  * Bounty scripts
-  scrx 2 8 32206 12
-  scrx 2 8 32206 9
-  scrx 2 8 32205 12
-  scrx 2 8 32205 9
-  scrx 2 8 32204 12
-  scrx 2 8 32204 9
-  scrx 2 11 32206 12
-  scrx 2 11 32206 9
-  scrx 2 11 32205 12
-  scrx 2 11 32205 9
-  scrx 2 11 32204 12
-  scrx 2 11 32204 9
-  scrx 2 3 32206 12
-  scrx 2 3 32206 9
-  scrx 2 3 32205 12
-  scrx 2 3 32205 9
-  scrx 2 3 32204 12
-  scrx 2 3 32204 9
-  * Cube scripts
-  scrx 2 21 32206 1
-  scrx 2 21 32206 2
-  scrx 2 21 32206 6
-  scrx 2 21 32206 9
+
+* Kill bounty
+enum 2 8 32206
+  kill targ
+next
+enum 2 8 32205
+  kill targ
+next
+enum 2 8 32204
+  kill targ
+next
+enum 2 11 32206
+  kill targ
+next
+enum 2 11 32205
+  kill targ
+next
+enum 2 11 32204
+  kill targ
+next
+enum 2 3 32206
+  kill targ
+next
+enum 2 3 32205
+  kill targ
+next
+enum 2 3 32204
+  kill targ
+next
+enum 2 21 32206
+  kill targ
+next
+* Kill bugs
+enum 2 13 32206
+  kill targ
+next
+* Kill nests
+enum 2 17 32206
+  kill targ
+next
+* Nest scripts
+scrx 2 17 32206 1
+scrx 2 17 32206 2
+scrx 2 17 32206 4
+scrx 2 17 32206 5
+scrx 2 17 32206 9
+* Bug scripts
+scrx 2 13 32206 1
+scrx 2 13 32206 2
+scrx 2 13 32206 3
+scrx 2 13 32206 4
+scrx 2 13 32206 5
+scrx 2 13 32206 9
+scrx 2 13 32206 12
+scrx 2 13 32206 1000
+scrx 2 13 32206 1001
+* Bounty scripts
+scrx 2 8 32206 9
+scrx 2 8 32206 12
+scrx 2 8 32205 9
+scrx 2 8 32205 12
+scrx 2 8 32204 9
+scrx 2 8 32204 12
+scrx 2 11 32206 9
+scrx 2 11 32206 12
+scrx 2 11 32205 9
+scrx 2 11 32205 12
+scrx 2 11 32204 9
+scrx 2 11 32204 12
+scrx 2 3 32206 9
+scrx 2 3 32206 12
+scrx 2 3 32205 9
+scrx 2 3 32205 12
+scrx 2 3 32204 9
+scrx 2 3 32204 12
+* Cube scripts
+scrx 2 21 32206 1
+scrx 2 21 32206 2
+scrx 2 21 32206 6
+scrx 2 21 32206 9

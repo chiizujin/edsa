@@ -20,17 +20,19 @@ endm
 
 * TIMER
 scrp 2 8 32206 9
-  lock
-  cato 10
-  bhvr 0
-  setv va01 0
-  loop
-    inst
-    alph va01 1
-    addv va01 1
-    slow
-  untl va01 gt 256
-  kill targ
+  doif type carr ne 7
+    lock
+    cato 10
+    bhvr 0
+    setv va01 0
+    loop
+      inst
+      alph va01 1
+      addv va01 1
+      slow
+    untl va01 gt 256
+    kill targ
+  endi
 endm
 
 * GREEN APPLE
@@ -55,17 +57,19 @@ endm
 
 * TIMER
 scrp 2 8 32205 9
-  lock
-  cato 10
-  bhvr 0
-  setv va01 0
-  loop
-    inst
-    alph va01 1
-    addv va01 1
-    slow
-  untl va01 gt 256
-  kill targ
+  doif type carr ne 7
+    lock
+    cato 10
+    bhvr 0
+    setv va01 0
+    loop
+      inst
+      alph va01 1
+      addv va01 1
+      slow
+    untl va01 gt 256
+    kill targ
+  endi
 endm
 
 * BANANA
@@ -97,17 +101,19 @@ endm
 
 * TIMER
 scrp 2 8 32204 9
-  lock
-  cato 10
-  bhvr 0
-  setv va01 0
-  loop
-    inst
-    alph va01 1
-    addv va01 1
-    slow
-  untl va01 gt 256
-  kill targ
+  doif type carr ne 7
+    lock
+    cato 10
+    bhvr 0
+    setv va01 0
+    loop
+      inst
+      alph va01 1
+      addv va01 1
+      slow
+    untl va01 gt 256
+    kill targ
+  endi
 endm
 
 * CHEESE SANDWICH
@@ -132,17 +138,19 @@ endm
 
 * TIMER
 scrp 2 11 32206 9
-  lock
-  cato 10
-  bhvr 0
-  setv va01 0
-  loop
-    inst
-    alph va01 1
-    addv va01 1
-    slow
-  untl va01 gt 256
-  kill targ
+  doif type carr ne 7
+    lock
+    cato 10
+    bhvr 0
+    setv va01 0
+    loop
+      inst
+      alph va01 1
+      addv va01 1
+      slow
+    untl va01 gt 256
+    kill targ
+  endi
 endm
 
 * GINGERBREAD MAN
@@ -155,9 +163,6 @@ scrp 2 11 32205 12
   doif pose eq 1
     kill targ
   else
-    * Get sick enjoyment from biting head off
-*    stim writ from 90 1
-    chem 159 0.01
     targ ownr
     pose 1
   endi
@@ -165,17 +170,19 @@ endm
 
 * TIMER
 scrp 2 11 32205 9
-  lock
-  cato 10
-  bhvr 0
-  setv va01 0
-  loop
-    inst
-    alph va01 1
-    addv va01 1
-    slow
-  untl va01 gt 256
-  kill targ
+  doif type carr ne 7
+    lock
+    cato 10
+    bhvr 0
+    setv va01 0
+    loop
+      inst
+      alph va01 1
+      addv va01 1
+      slow
+    untl va01 gt 256
+    kill targ
+  endi
 endm
 
 * SUSHI ROLL
@@ -200,17 +207,19 @@ endm
 
 * TIMER
 scrp 2 11 32204 9
-  lock
-  cato 10
-  bhvr 0
-  setv va01 0
-  loop
-    inst
-    alph va01 1
-    addv va01 1
-    slow
-  untl va01 gt 256
-  kill targ
+  doif type carr ne 7
+    lock
+    cato 10
+    bhvr 0
+    setv va01 0
+    loop
+      inst
+      alph va01 1
+      addv va01 1
+      slow
+    untl va01 gt 256
+    kill targ
+  endi
 endm
 
 * POD OF PEAS
@@ -219,7 +228,7 @@ endm
 scrp 2 3 32206 12
   inst
   snde "reat"
-  stim writ from 77 1
+  stim writ from 79 1
   * Medicine One
   setv va01 itof rand 1 2
   divv va01 10.0
@@ -235,17 +244,19 @@ endm
 
 * TIMER
 scrp 2 3 32206 9
-  lock
-  cato 10
-  bhvr 0
-  setv va01 0
-  loop
-    inst
-    alph va01 1
-    addv va01 1
-    slow
-  untl va01 gt 256
-  kill targ
+  doif type carr ne 7
+    lock
+    cato 10
+    bhvr 0
+    setv va01 0
+    loop
+      inst
+      alph va01 1
+      addv va01 1
+      slow
+    untl va01 gt 256
+    kill targ
+  endi
 endm
 
 * GREEN CHILLI
@@ -254,15 +265,14 @@ endm
 scrp 2 3 32205 12
   inst
   snde "reat"
-  stim writ from 77 1
+  stim writ from 79 1
   * Temperature
-  setv va01 itof rand -1 -2
+  setv va01 itof rand 1 2
   divv va01 10.0
-  setv va02 itof rand 1 2
-  divv va02 10.0
   targ from
+  chem 153 va01
+  negv va01
   chem 152 va01
-  chem 153 va02
   targ ownr
   doif pose eq 1
     kill targ
@@ -273,17 +283,19 @@ endm
 
 * TIMER
 scrp 2 3 32205 9
-  lock
-  cato 10
-  bhvr 0
-  setv va01 0
-  loop
-    inst
-    alph va01 1
-    addv va01 1
-    slow
-  untl va01 gt 256
-  kill targ
+  doif type carr ne 7
+    lock
+    cato 10
+    bhvr 0
+    setv va01 0
+    loop
+      inst
+      alph va01 1
+      addv va01 1
+      slow
+    untl va01 gt 256
+    kill targ
+  endi
 endm
 
 * RED CHILLI
@@ -292,15 +304,14 @@ endm
 scrp 2 3 32204 12
   inst
   snde "reat"
-  stim writ from 77 1
+  stim writ from 79 1
   * Temperature
-  setv va01 itof rand -2 -3
+  setv va01 itof rand 2 3
   divv va01 10.0
-  setv va02 itof rand 2 3
-  divv va02 10.0
   targ from
+  chem 153 va01
+  negv va01
   chem 152 va01
-  chem 153 va02
   targ ownr
   doif pose eq 1
     kill targ
@@ -311,17 +322,19 @@ endm
 
 * TIMER
 scrp 2 3 32204 9
-  lock
-  cato 10
-  bhvr 0
-  setv va01 0
-  loop
-    inst
-    alph va01 1
-    addv va01 1
-    slow
-  untl va01 gt 256
-  kill targ
+  doif type carr ne 7
+    lock
+    cato 10
+    bhvr 0
+    setv va01 0
+    loop
+      inst
+      alph va01 1
+      addv va01 1
+      slow
+    untl va01 gt 256
+    kill targ
+  endi
 endm
 
 * CUBE
@@ -339,9 +352,16 @@ scrp 2 21 32206 1
   setv va01 rand 0 3
   pose va01
   doif va01 eq 3
+    lock
     stim writ va00 97 2
     bhvr 0
-    urge writ va00 12 0.9 7 0.9
+    inst
+    doif type carr eq 7
+      targ carr
+      drop
+      targ ownr
+    endi
+    slow
     wait 100
     setv va01 0
     loop
@@ -368,15 +388,17 @@ endm
 
 * TIMER
 scrp 2 21 32206 9
-  lock
-  cato 10
-  bhvr 0
-  setv va01 0
-  loop
-    inst
-    alph va01 1
-    addv va01 1
-    slow
-  untl va01 gt 256
-  kill targ
+  doif type carr ne 7
+    lock
+    cato 10
+    bhvr 0
+    setv va01 0
+    loop
+      inst
+      alph va01 1
+      addv va01 1
+      slow
+    untl va01 gt 256
+    kill targ
+  endi
 endm

@@ -1,5 +1,5 @@
-* CREATE
 inst
+
 new: simp 1 1 32228 "ebutler" 7 0 1000
 attr 198
 perm 90
@@ -17,23 +17,12 @@ doif va00 eq 0 and va01 eq 0
   setv va01 400
   endi
 mvsf va00 va01
-* Inititalise variables
-setv ov50 -1
-setv ov51 -1
-setv ov52 -1
-setv ov53 -1
-setv ov54 -1
-setv ov00 1
+frat 2
 anim [1 2 3 4 255]
-tick 20
+* On/off state
+setv ov00 1
 
-* OVs
-* ov00 - on/off
-* ov30 - ov34 = speech
-* ov40 - ov44 = creature targs
-* ov50 - ov54 = flags/seconds counters
-
-* ACTIVATE 1
+* Activate 1
 scrp 1 1 32228 1
   snde "1bep"
   doif ov00 eq 0
@@ -45,9 +34,10 @@ scrp 1 1 32228 1
   endi
 endm
 
-* SPEECH
+* Speech
 scrp 1 1 32228 126
   lock
+  inst
 
   * Abort if turned off
   doif ov00 eq 0
@@ -58,280 +48,177 @@ scrp 1 1 32228 126
   * _p2_ is the creature who is speaking
 
   * Check for key words
-  doif sins _p1_ 1 " starch" ne -1 or sins _p1_ 1 " protein" ne -1 or sins _p1_ 1 " fat" ne -1 or sins _p1_ 1 " bored" ne -1 or sins _p1_ 1 " ill" ne -1
+  doif sins _p1_ 1 " hungry for starch" ne -1 or sins _p1_ 1 " hungry for protein" ne -1 or sins _p1_ 1 " hungry for fat" ne -1 or sins _p1_ 1 " bored" ne -1
     anim [5 6 255]
-    * Find a slot for this speech
-    doif ov50 eq -1
-      sets ov30 _p1_
-      seta ov40 _p2_
-      setv ov50 0
-    elif ov51 eq -1
-      sets ov31 _p1_
-      seta ov41 _p2_
-      setv ov51 0
-    elif ov52 eq -1
-      sets ov32 _p1_
-      seta ov42 _p2_
-      setv ov52 0
-    elif ov53 eq -1
-      sets ov33 _p1_
-      seta ov43 _p2_
-      setv ov53 0
-    elif ov54 eq -1
-      sets ov34 _p1_
-      seta ov44 _p2_
-      setv ov54 0
-    endi
+    gsub checkneed
+    targ ownr
     anim [1 2 3 4 255]
   endi
-endm
 
-* TIMER
-scrp 1 1 32228 9
-  lock
+  subr checkneed
+    * Check for starch hunger
+    doif sins _p1_ 1 " hungry for starch" ne -1
+      * Get creature's position
+      targ _p2_
+      setv va01 posx
+      setv va02 posy
+      * Create 3 justanut pods
+      reps 3
+        new: simp 2 3 17 "justanut pod" 9 18 51
+        attr 194
+        perm 64
+        bhvr 48
+        pose 1
+        accg 3
+        aero 5
+        fric 99
+        elas 20
+        emit 7 .5
+        tick 200
+        * Move near creature
+        setv va03 va01
+        setv va04 va02
+        subv va03 rand 0 wdth
+        subv va04 hght
+        doif tmvt va03 va04 eq 1
+          mvto va03 va04
+          velo rand -5 5 0
+          snde "pl_2"
+        else
+          kill targ
+        endi
+        wait 2
+        inst
+      repe
+    endi
 
-  * Check if any slots filled
-  doif ov50 eq 0
-    sets va70 ov30
-    seta va71 ov40
-    setv va72 -1
-    gsub checkneed
-    setv ov50 va72
-  endi
-  doif ov51 eq 0
-    sets va70 ov31
-    seta va71 ov41
-    setv va72 -1
-    gsub checkneed
-    setv ov51 va72
-  endi
-  doif ov52 eq 0
-    sets va70 ov32
-    seta va71 ov42
-    setv va72 -1
-    gsub checkneed
-    setv ov52 va72
-  endi
-  doif ov53 eq 0
-    sets va70 ov33
-    seta va71 ov43
-    setv va72 -1
-    gsub checkneed
-    setv ov53 va72
-  endi
-  doif ov54 eq 0
-    sets va70 ov34
-    seta va71 ov44
-    setv va72 -1
-    gsub checkneed
-    setv ov54 va72
-  endi
+    * Check for protein hunger
+    doif sins _p1_ 1 " hungry for protein" ne -1
+      * Get creature's position
+      targ _p2_
+      setv va01 posx
+      setv va02 posy
+      * Create 3 lemons
+      reps 3
+        new: simp 2 8 7 "ds lemon pod" 2 30 355
+        attr 194
+        bhvr 48
+        accg 2
+        perm 64
+        fric 100
+        elas 30
+        aero 2
+        sets name "eaten" "no"
+        emit 6 .5
+        tick 1000
+        * Move near creature
+        setv va03 va01
+        setv va04 va02
+        subv va03 rand 0 wdth
+        subv va04 hght
+        doif tmvt va03 va04 eq 1
+          mvto va03 va04
+          velo rand -5 5 0
+          snde "pl_2"
+        else
+          kill targ
+        endi
+        wait 2
+        inst
+      repe
+    endi
 
-  * Increment counters
-  doif ov50 ge 1
-    addv ov50 1
-  endi
-  doif ov51 ge 1
-    addv ov51 1
-  endi
-  doif ov52 ge 1
-    addv ov52 1
-  endi
-  doif ov53 ge 1
-    addv ov53 1
-  endi
-  doif ov54 ge 1
-    addv ov54 1
-  endi
+    * Check for fat hunger
+    doif sins _p1_ 1 " hungry for fat" ne -1
+      * Get creature's position
+      targ _p2_
+      setv va01 posx
+      setv va02 posy
+      * Create 3 carrots
+      reps 3
+        new: simp 2 11 9 "carr" 0 0 563
+        attr 194
+        bhvr 48
+        perm 64
+        accg 1
+        elas 20
+        fric 99
+        emit 8 .5
+        tick 100
+        doif rand 0 1 eq 1
+          sets name "direction" "right"
+          pose 6
+        else
+          sets name "direction" "left"
+          pose 2
+        endi
+        * Move near creature
+        setv va03 va01
+        setv va04 va02
+        subv va03 rand 0 wdth
+        subv va04 hght
+        doif tmvt va03 va04 eq 1
+          mvto va03 va04
+          velo rand -5 5 0
+          snde "pl_2"
+        else
+          kill targ
+        endi
+        wait 2
+        inst
+      repe
+    endi
 
-  * Check if counters at max & remove drives (2 more than desired seconds)
-  doif ov50 ge 7
-    urge writ ov40 -1 1.1 -1 1.1
-    setv ov50 -1
-  endi
-  doif ov51 ge 7
-    urge writ ov41 -1 1.1 -1 1.1
-    setv ov51 -1
-  endi
-  doif ov52 ge 7
-    urge writ ov42 -1 1.1 -1 1.1
-    setv ov52 -1
-  endi
-  doif ov53 ge 7
-    urge writ ov43 -1 1.1 -1 1.1
-    setv ov53 -1
-  endi
-  doif ov54 ge 7
-    urge writ ov44 -1 1.1 -1 1.1
-    setv ov54 -1
-  endi
-
-subr checkneed
-  * Check for starch hunger
-  doif va71 ne null and sins va70 1 " starch" ne -1
-    * Get creature's position
-    targ va71
-    setv va01 posx
-    setv va03 posy
-    subv va03 20
-    * Create 3 justanut pods
-    reps 3
-      new: simp 2 3 17 "justanut pod" 9 18 51
-      attr 194
-      perm 64
-      bhvr 48
-      pose 1
-      accg 3
-      aero 5
-      fric 99
-      elas 20
-      emit 7 .5
-      tick 200
-      * Move near creature
-      setv va02 va01
-      subv va02 rand 0 20
-      doif tmvt va02 va03 eq 1
-        mvto va02 va03
-        snde "pl_2"
-      else
-        kill targ
-      endi
-    repe
-    * Make creature eat
-    urge writ va71 3 1.1 12 1.1
-    setv va72 1
-  endi
-
-  * Check for protein hunger or illness
-  doif sins va70 1 " ill" ne -1
-    sets va70 " protein"
-  endi  
-  doif va71 ne null and sins va70 1 " protein" ne -1
-    * Get creature's position
-    targ va71
-    setv va01 posx
-    setv va03 posy
-    subv va03 20
-    * Create 3 lemons
-    reps 3
-      new: simp 2 8 7 "ds lemon pod" 2 30 355
-      attr 194
-      bhvr 48
-      accg 2
-      perm 64
-      fric 100
-      elas 30
-      aero 2
-      sets name "eaten" "no"
-      emit 6 .5
-      tick 1000
-      * Move near creature
-      setv va02 va01
-      subv va02 rand 0 20
-      doif tmvt va02 va03 eq 1
-        mvto va02 va03
-        snde "pl_2"
-      else
-        kill targ
-      endi
-    repe
-    * Make creature eat
-    urge writ va71 8 1.1 12 1.1
-    setv va72 1
-  endi
-
-  * Check for fat hunger
-  doif va71 ne null and sins va70 1 " fat" ne -1
-    * Get creature's position
-    targ va71
-    setv va01 posx
-    setv va03 posy
-    subv va03 20
-    * Create 3 carrots
-    reps 3
-      new: simp 2 11 9 "carr" 0 0 563
-      attr 194
-      bhvr 48
-      perm 64
-      accg 1
-      elas 20
-      fric 99
-      pose 6
-      emit 8 .5
-      tick 1000
-      setv va09 rand 0 1
-      doif va09 = 0
-        sets name "direction" "left"
-      elif va09 = 1
-        sets name "direction" "right"
-      endi
-      * Move near creature
-      setv va02 va01
-      subv va02 rand 0 20
-      doif tmvt va02 va03 eq 1
-        mvto va02 va03
-        snde "pl_2"
-      else
-        kill targ
-      endi
-    repe
-    * Make creature eat
-    urge writ va71 11 1.1 12 1.1
-    setv va72 1
-  endi
-
-  * Check for boredom
-  doif va71 ne null and sins va70 1 " bored" ne -1
-    * Get creature's position
-    targ va71
-    setv va01 posx
-    subv va01 10
-    setv va03 posy
-    subv va03 30
-    * Find a toy - try 10 times
-    setv va98 0
-    loop
-      addv va98 1
-      rtar 2 21 0
-      doif targ ne null
-        * Check if it can be picked up, and hence moved.  Must be autonomous
-        setv va99 attr
-        andv va99 2
-        doif va99 eq 2 and movs eq 0
-          * Check position
-          setv va02 va01
-          addv va02 rand -20 10
-          doif tmvt va02 va03 eq 1
-            * Move near creature
-            snde "pl_2"
-            mvto va02 va03
-            snde "pl_2"
-            * Enforce gravity
-            accg accg
-            * Make creature push
-            urge writ va71 21 1.1 1 1.1
-            setv va72 1
-            setv va98 -1
+    * Check for boredom
+    doif sins _p1_ 1 " bored" ne -1
+      * Abort if there is already a toy near the creature
+      setv va01 0
+      enum 2 21 0
+        doif va01 eq 0
+          doif sqrt disq _p2_ le 100
+            * Stop is not used so that the subroutine to exits properly and
+            * allows the calling code to continue
+            setv va01 1
           endi
         endi
+      next
+      doif va01 eq 0
+        * Get creature's position
+        targ _p2_
+        setv va01 posx
+        setv va02 posy
+        * Find a toy - try up to 10 times
+        setv va98 0
+        loop
+          addv va98 1
+          inst
+          rtar 2 21 0
+          doif carr ne pntr
+            * Check if it can be picked up by creatures and is autonomous
+            setv va99 bhvr
+            andv va99 32
+            doif va99 eq 32 and movs eq 0
+              * Calculate position
+              subv va01 rand 0 wdth
+              subv va02 hght
+              doif tmvt va01 va02 eq 1
+                * Move near creature
+                snde "pl_2"
+                mvto va01 va02
+                snde "pl_2"
+                * Enforce gravity
+                accg accg
+                setv va98 -1
+              endi
+            endi
+          endi
+          slow
+        untl va98 eq 10 or va98 eq -1
       endi
-    untl va98 eq 10 or va98 eq -1
-  endi
-
-  targ ownr
-retn
-
+    endi
+  retn
 endm
 
-* DESTROY
 rscr
-  enum 1 1 32228
-    kill targ
-  next
-  scrx 1 1 32228 1
-  scrx 1 1 32228 9
-  scrx 1 1 32228 126
-  * Remove any urges just in case
-  enum 4 0 0
-    urge writ targ -1 1.1 -1 1.1
-  next
+
+enum 1 1 32228 kill targ next scrx 1 1 32228 1 scrx 1 1 32228 9 scrx 1 1 32228 126

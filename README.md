@@ -13,6 +13,9 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-11-10**
+- Bounty Bugs 1.3 - Removed URGEs and some CHEMs/STIMs, added EMITs, and several other changes.
+
 **2025-11-03**
 - Ainarda agents 1.2 - Fixed a couple of lift issues.
 
@@ -23,14 +26,11 @@ If you just want the agent to install into your game then all you need is the **
     - Portals (when opened as an actual portal) no longer bounce when dropped.
     - The destination is now first checked for space before a creature teleports
 
-**2025-10-11**
-- New agent: Description Viewer. Adds a button to the creature history panel that allows you to view long descriptions in a separate, paged panel.
-
 → [Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md)
 
-## ※ Bounty Bugs [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/Bounty%20Bugs/bounty%20bugs.zip)
+## ※ Bounty Bugs [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/Bounty%20Bugs/bounty_bugs_1.3.zip)
 
-These little bugs are tasty and fun for creatures to eat, but if left alone long enough they have a little surprise in store.
+These little bugs wriggle around, minding their own business. They can be eaten but if left alone long enough they may have a little surprise in store.
 
 ## ※ C3-in-DS
 

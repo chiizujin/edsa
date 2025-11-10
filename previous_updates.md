@@ -1,3 +1,6 @@
+**2025-10-11**
+- New agent: Description Viewer. Adds a button to the creature history panel that allows you to view long descriptions in a separate, paged panel.
+
 **2025-10-10**
 - Added missing hosted agents Calm Balm Vendor and Panatreea Potion Vendor by MNB.
 - Updated Ainarda agents to fix a missing file and some incorrect agent classifications.

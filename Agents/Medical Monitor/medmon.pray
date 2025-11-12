@@ -16,10 +16,10 @@ group DSAG "Medical Monitor "
 "Agent Animation File" "medical monitor.c16"
 "Agent Animation Gallery" "medical monitor"
 "Agent Animation String" "0"
-"Web URL" "creatures.webhop.net"
+"Web URL" "github.com/chiizujin/edsa"
 "Web Label" "Emmental's DS Agents"
 
-"Remove script" "enum 1 1 32204 kill targ next scrx 1 1 32204 1 scrx 1 1 32204 2 scrx 1 1 32204 9 scrx 1 1 32204 1001 scrx 1 1 32204 1002 scrx 1 1 32204 1003"
+"Remove script" "enum 1 1 32204 kill targ next scrx 1 1 32204 1 scrx 1 1 32204 2 scrx 1 1 32204 9 scrx 1 1 32204 73 scrx 1 1 32204 74 scrx 1 1 32204 1001 scrx 1 1 32204 1002 scrx 1 1 32204 1003 scrx 1 1 32204 1004 scrx 1 1 32204 1005 scrx 1 1 32204 1006 scrx 1 1 32204 1007"
 
 group AGNT "Medical Monitor"
 "Agent Type" 0
@@ -38,8 +38,8 @@ group AGNT "Medical Monitor"
 "Agent Animation Gallery" "medical monitor"
 "Agent Animation String" "0"
 
-"Remove script" "enum 1 1 32204 kill targ next scrx 1 1 32204 1 scrx 1 1 32204 2 scrx 1 1 32204 9 scrx 1 1 32204 1001 scrx 1 1 32204 1002 scrx 1 1 32204 1003"
+"Remove script" "enum 1 1 32204 kill targ next scrx 1 1 32204 1 scrx 1 1 32204 2 scrx 1 1 32204 9 scrx 1 1 32204 73 scrx 1 1 32204 74 scrx 1 1 32204 1001 scrx 1 1 32204 1002 scrx 1 1 32204 1003 scrx 1 1 32204 1004 scrx 1 1 32204 1005 scrx 1 1 32204 1006 scrx 1 1 32204 1007"
 
-inline FILE "medical monitor.c16" "medical monitor.c16" 
-inline FILE "medical monitor 2.c16" "medical monitor 2.c16" 
-inline FILE "medical monitor.catalogue" "medical monitor.catalogue" 
+inline FILE "medical monitor.c16" "medical monitor.c16"
+inline FILE "medical monitor 2.c16" "medical monitor 2.c16"
+inline FILE "medical monitor.catalogue" "medical monitor.catalogue"

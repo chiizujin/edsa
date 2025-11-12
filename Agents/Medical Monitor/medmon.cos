@@ -17,7 +17,7 @@ bhvr 0
 accg 0
 elas 0
 fric 100
-imsk 3
+imsk 1
 pat: fixd 1 "medical monitor" 1 0 0 0 "WhiteOnTransparentChars"
 pat: fixd 2 "medical monitor" 1 130 0 0 "WhiteOnTransparentChars"
 *pat: fixd 3 "medical monitor" 1 0 170 0 "WhiteOnTransparentChars"
@@ -35,8 +35,6 @@ pat: butt 7 "medical monitor" 8 3 344 95 0 [] 1000 0
 setv ov01 0
 * Warning
 setv ov02 0
-* CTRL state
-setv ov04 0
 pose 0
 * Button images
 part 4
@@ -71,7 +69,6 @@ tick 1
 * ov01 - display page
 * ov02 - warning
 * ov03 - y position (nornstats installed?)
-* ov04 - CTRL state
 * ov05 - Norns
 * ov06 - Ettins
 * ov07 - Grendels
@@ -300,9 +297,9 @@ endm
 * CLICKING ON ICON
 scrp 1 1 32204 1000
   doif clac eq 0
-    call 1 0 0
+    mesg writ ownr 0
   else
-    call 2 0 0
+    mesg writ ownr 2
   endi
 endm
 
@@ -412,7 +409,7 @@ scrp 1 1 32204 1004
   endi
   slow
   doif tick ne 0
-    call 9 0 0
+    mesg writ ownr 9
   endi
 endm
 
@@ -431,7 +428,7 @@ scrp 1 1 32204 1005
   endi
   slow
   doif tick ne 0
-    call 9 0 0
+    mesg writ ownr 9
   endi
 endm
 
@@ -450,7 +447,7 @@ scrp 1 1 32204 1006
   endi
   slow
   doif tick ne 0
-    call 9 0 0
+    mesg writ ownr 9
   endi
 endm
 
@@ -469,14 +466,14 @@ scrp 1 1 32204 1007
   endi
   slow
   doif tick ne 0
-    call 9 0 0
+    mesg writ ownr 9
   endi
 endm
 
 * RAW KEY DOWN
 scrp 1 1 32204 73
   * Check if 4 pressed while CTRL down
-  doif ov04 eq 1 and _p1_ eq 52
+  doif keyd 17 eq 1 and _p1_ eq 52
     doif clac eq 0
       * Slide out
       lock
@@ -512,28 +509,24 @@ scrp 1 1 32204 73
       clac 0
     endi
   endi
-  * Flag if CTRL pressed
-  doif _p1_ eq 17
-    setv ov04 1
-  endi
-endm
-
-* RAW KEY UP
-scrp 1 1 32204 74
-  * Clear flag if CTRL released
-  doif _p1_ eq 17
-    setv ov04 0
-  endi
 endm
 
 * DESTROY
 rscr
-  enum 1 1 32204
+
+enum 1 1 32204
   kill targ
-  next
-  scrx 1 1 32204 1
-  scrx 1 1 32204 2
-  scrx 1 1 32204 9
-  scrx 1 1 32204 1001
-  scrx 1 1 32204 1002
-  scrx 1 1 32204 1003
+next
+
+scrx 1 1 32204 1
+scrx 1 1 32204 2
+scrx 1 1 32204 9
+scrx 1 1 32204 73
+scrx 1 1 32204 74
+scrx 1 1 32204 1001
+scrx 1 1 32204 1002
+scrx 1 1 32204 1003
+scrx 1 1 32204 1004
+scrx 1 1 32204 1005
+scrx 1 1 32204 1006
+scrx 1 1 32204 1007

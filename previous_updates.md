@@ -1,3 +1,10 @@
+**2025-10-14**
+- Warp Users 1.1 - Added a workaround for a warp-related bug and changed the agent classifier.
+- Interporter update 1.1:
+    - Portals can no longer be used (either as a source or destination) if carried.
+    - Portals (when opened as an actual portal) no longer bounce when dropped.
+    - The destination is now first checked for space before a creature teleports
+
 **2025-10-11**
 - New agent: Description Viewer. Adds a button to the creature history panel that allows you to view long descriptions in a separate, paged panel.
 

@@ -13,18 +13,14 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-11-14**
+- Electronic Butler 1.1 - Removed URGEs and other small changes.
+
 **2025-11-10**
 - Bounty Bugs 1.3 - Removed URGEs and some CHEMs/STIMs, added EMITs, and several other changes.
 
 **2025-11-03**
 - Ainarda agents 1.2 - Fixed a couple of lift issues.
-
-**2025-10-14**
-- Warp Users 1.1 - Added a workaround for a warp-related bug and changed the agent classifier.
-- Interporter update 1.1:
-    - Portals can no longer be used (either as a source or destination) if carried.
-    - Portals (when opened as an actual portal) no longer bounce when dropped.
-    - The destination is now first checked for space before a creature teleports
 
 → [Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md)
 
@@ -68,7 +64,7 @@ This control panel allows you to make the training dummy moveable by the hand.
 
 When injected, this agent removes the Ettin and Grendel egg layers from the current world. This is useful for people who would like to use the C3-in-DS meta-room agents but do not want Ettins or Grendels in their world.
 
-## ※ Electronic Butler [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/Electronic%20Butler/electronic%20butler.zip)
+## ※ Electronic Butler [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/Electronic%20Butler/electronic_butler_1.1.zip)
 
 This electronic device monitors the speech of creatures anywhere in the world. Any complaining of hunger or boredom are served up with the appropriate food or a toy. Food is created anew and toys are selected from what's already in the world and moved near the creature.
 

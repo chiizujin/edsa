@@ -1,0 +1,18 @@
+TAG "Agent Help 1 1 32204"
+"Medical Monitor" 
+"This agent adds a panel to the left of the screen that displays the bacteria and toxin levels of all your creatures.\n\nIf any bacteria or toxins are found or if any vitals drop too low, then a short alarm will sound and the green cross on the edge of the tab will turn red.  Creatures are checked about every 5 seconds but the alarm will not sound again until all creatures have been healed.\n\n\nThe four rectangular buttons are used to toggle on or off the display of the various species and the two arrow buttons are used to scroll the window if there is more than one page of text.\n\nThe red light button can be used to turn off the monitor.  When the monitor is disabled the green/red cross will turn grey.\n\nList of monitored chemicals, their numbers, and their detection thresholds:\n\nGlycogen (4) <= 5\n\nOxygen (30) <= 40\n\nWater (33) <= 30\n\nEnergy  ATP (34-35) <= 35\nProne to false positives, but making the threshold lower resulted in more surprise deaths\n\nHeavy Metals, Cyanide,\nBelladonna (66-89) >= 1\n\nVarious Toxins (69-75) >= 10\n\nATP Decoupler (78) >= 1\n\nMore Toxins (79-81) >= 10\n\nAntigens (82-89) >= 20\n\nWounded (90) >= 10\n\nBody Heat (110) <= 35 or >= 60\nOnly tracked if non-zero amounts of chemical 110 are detected as this is assumed to mean the creature is True Warm/Coldblood\n\n\n\nTryptamine (130) >= 20\nOnly has an effect on certain fanmade genomes\n\nPain (148) >= 10\n\nHunger (149-151) >= 80\n\nHotness & Coldness (152-153) >= 25\n\nOxygenated Blood (221) <= 20\nOnly tracked if non-zero amounts of chemical 110 are detected as this is assumed to mean the creature is True Warm/Coldblood"
+
+TAG "ToolTip 1 1 32204 6"
+"On/Off Toggle"
+
+TAG "ToolTip 1 1 32204 8"
+"Toggle Norns"
+
+TAG "ToolTip 1 1 32204 9"
+"Toggle Ettins"
+
+TAG "ToolTip 1 1 32204 10"
+"Toggle Grendels"
+
+TAG "ToolTip 1 1 32204 11"
+"Toggle Geats"

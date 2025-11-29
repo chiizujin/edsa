@@ -12,7 +12,7 @@ group DSAG "Norn Statistics Update v1.3 "
 
 "Script Count" 1
 "Script 1" @ "nornstats.cos"
-"Agent Description" "Shows various statistics about your Norns.\n\nSee its Agent Help for more information."
+"Agent Description" "Shows various statistics about your creatures.\n\nSee its Agent Help for more information."
 "Agent Animation File" "norn stats.c16"
 "Agent Animation Gallery" "norn stats"
 "Agent Animation String" "0"
@@ -33,7 +33,7 @@ group AGNT "Norn Statistics Update v1.3"
 
 "Script Count" 1
 "Script 1" @ "nornstats.cos"
-"Agent Description" "Shows various statistics about your Norns.\n\nSee its Agent Help for more information."
+"Agent Description" "Shows various statistics about your creatures.\n\nSee its Agent Help for more information."
 "Agent Animation File" "norn stats.c16"
 "Agent Animation Gallery" "norn stats"
 "Agent Animation String" "0"

@@ -808,7 +808,7 @@ endm
 * RAW KEY DOWN
 scrp 1 1 32207 73
 * Check if 5 pressed while CTRL down
-  doif keyd 17 eq 1 and _p1_ eq 53
+  doif keyd 16 eq 0 and keyd 17 eq 1 and _p1_ eq 53
     doif clac eq 0
 * Slide out
       lock

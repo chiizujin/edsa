@@ -14,7 +14,6 @@ changes made by SunlitMiracle.
 
 Agent information
 -----------------
-
 This agent adds a panel to the left of the screen that displays various
 information about your creatures, including their age, life stage, generation,
 and if they have been through the warp. The information is updated about every
@@ -54,17 +53,6 @@ Installation
 If you have used any version (of either agent) prior to 1.2.2:
   - Copy "norn stats 2.c16" to the game's "Images" folder.
   - Copy "norn stats.catalogue" to the game's "Catalogue" folder.
-
-Optional but highly recommended (Update)
-----------------------------------------
-Download the Unofficial Chemicals Catalogue
-https://eemfoo.org/archive/downloads/bb16 and Short Chem Names
-https://eemfoo.org/archive/downloads/7412 to ensure chemicals are displayed
-properly. Even if you don't use unofficial creatures with fan-created chemicals,
-this is recommended due to Chemical 90, Wounded, not being named in the game's
-catalogue files for some reason. Install in both the "Docking Station/Catalogue"
-and the "Creatures 3/Catalogue" folders. The monitors are still functional
-without this but several chemicals will show up as only numbers.
 
 Known issues (SunlitMiracle)
 ----------------------------

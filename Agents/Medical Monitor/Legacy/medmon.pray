@@ -12,7 +12,7 @@ group DSAG "Medical Monitor "
 
 "Script Count" 1
 "Script 1" @ "medmon.cos"
-"Agent Description" "Monitors the bacteria and toxin levels of all your creatures.\n\nSee its Agent Help for more information."
+"Agent Description" "Monitors various chemical levels of all your creatures.\n\nSee its Agent Help for more information."
 "Agent Animation File" "medical monitor.c16"
 "Agent Animation Gallery" "medical monitor"
 "Agent Animation String" "0"
@@ -33,7 +33,7 @@ group AGNT "Medical Monitor"
 
 "Script Count" 1
 "Script 1" @ "medmon.cos"
-"Agent Description" "Monitors the bacteria and toxin levels of all your creatures.\n\nSee its Agent Help for more information."
+"Agent Description" "Monitors various chemical levels of all your creatures.\n\nSee its Agent Help for more information."
 "Agent Animation File" "medical monitor.c16"
 "Agent Animation Gallery" "medical monitor"
 "Agent Animation String" "0"

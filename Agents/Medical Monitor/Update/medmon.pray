@@ -12,7 +12,7 @@ group DSAG "Medical Monitor Update v1.5 "
 
 "Script Count" 1
 "Script 1" @ "medmon.cos"
-"Agent Description" "Monitors the bacteria and toxin levels of all your creatures.\n\nSee its Agent Help for more information. \n\n'Unofficial Chemical Catalogue' and 'Short Name Chemical List' recommended for proper display names."
+"Agent Description" "Monitors various chemical levels of all your creatures.\n\nSee its Agent Help for more information.\n\n'Unofficial Chemical Catalogue' and 'Short Name Chemical List' recommended for proper display names."
 "Agent Animation File" "medical monitor.c16"
 "Agent Animation Gallery" "medical monitor"
 "Agent Animation String" "0"
@@ -33,7 +33,7 @@ group AGNT "Medical Monitor Update v1.5"
 
 "Script Count" 1
 "Script 1" @ "medmon.cos"
-"Agent Description" "Monitors the bacteria and toxin levels of all your creatures.\n\nSee its Agent Help for more information.\n\n'Unofficial Chemical Catalogue' and 'Short Name Chemical List' recommended for proper display names."
+"Agent Description" "Monitors various chemical levels of all your creatures.\n\nSee its Agent Help for more information.\n\n'Unofficial Chemical Catalogue' and 'Short Name Chemical List' recommended for proper display names."
 "Agent Animation File" "medical monitor.c16"
 "Agent Animation Gallery" "medical monitor"
 "Agent Animation String" "0"

@@ -4,10 +4,10 @@ group DSAG "Medical Monitor "
 "Agent Type" 0
 "Dependency Count" 3
 "Dependency 1" "medical monitor.c16"
-"Dependency Category 1" 2
 "Dependency 2" "medical monitor 2.c16"
-"Dependency Category 2" 2
 "Dependency 3" "medical monitor.catalogue"
+"Dependency Category 1" 2
+"Dependency Category 2" 2
 "Dependency Category 3" 7
 
 "Script Count" 1
@@ -25,10 +25,10 @@ group AGNT "Medical Monitor"
 "Agent Type" 0
 "Dependency Count" 3
 "Dependency 1" "medical monitor.c16"
-"Dependency Category 1" 2
 "Dependency 2" "medical monitor 2.c16"
-"Dependency Category 2" 2
 "Dependency 3" "medical monitor.catalogue"
+"Dependency Category 1" 2
+"Dependency Category 2" 2
 "Dependency Category 3" 7
 
 "Script Count" 1

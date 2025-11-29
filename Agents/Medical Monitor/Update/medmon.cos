@@ -1,15 +1,3 @@
-* Original agent by Emmental, edits by SunlitMiracle. Feel free to edit and reupload as desired. Last updated December 29th 2024.
-
-* Update 1.4.1 (retroactively named)
-* Truncation of creature names longer than 16 characters; renamed (D) marker and made it its own trackable condition; non-Norns tracked by default
-* Added tracking for: Pregnancy, Glycogen, Oxygen, Water, Air, ATP, Wounded, Hunger for Fat/Carbs/Protein, Coldness, Hotness
-* Tracking of custom chemicals 110 (Body Heat), 130 (Tryptamine), Oxygenated Hemoglobin (221). Body Heat and Oxygenated Hemoglobin should ideally only trigger for True Warmbloods, but false positives and negatives are possible with mutations and certain custom breeds.
-* Some chemicals display best with the Unoffical Chemical Names and Short Chem Names catalogues.
-
-* Update 1.4.2
-* Adjustments to various detection thresholds to better reflect creatures' needs.
-* Updated the in-game help file with new information, also added tooltips.
-
 * CREATE
 inst
 * Check if already installed
@@ -20,6 +8,8 @@ next
 doif va00 eq 1
 	stop
 endi
+* Remove old raw key up script
+scrx 1 1 32204 74
 * Create it
 new: comp 1 1 32204 "medical monitor" 11 0 8900
 *attr 52
@@ -29,7 +19,7 @@ bhvr 0
 accg 0
 elas 0
 fric 100
-imsk 3
+imsk 1
 pat: fixd 1 "medical monitor" 1 0 0 0 "WhiteOnTransparentChars"
 pat: fixd 2 "medical monitor" 1 130 0 0 "WhiteOnTransparentChars"
 *pat: fixd 3 "medical monitor" 1 0 170 0 "WhiteOnTransparentChars"
@@ -47,8 +37,6 @@ pat: butt 7 "medical monitor" 8 3 344 95 0 [] 1000 0
 setv ov01 0
 * Warning
 setv ov02 0
-* CTRL state
-setv ov04 0
 pose 0
 * Button images
 part 4
@@ -89,7 +77,6 @@ tick 1
 * ov01 - display page
 * ov02 - warning
 * ov03 - y position (nornstats installed?)
-* ov04 - CTRL state
 * ov05 - Norns
 * ov06 - Ettins
 * ov07 - Grendels
@@ -689,9 +676,9 @@ endm
 * CLICKING ON ICON
 scrp 1 1 32204 1000
 	doif clac eq 0
-		call 1 0 0
+		mesg writ ownr 0
 	else
-		call 2 0 0
+		mesg writ ownr 1
 	endi
 endm
 
@@ -801,7 +788,7 @@ scrp 1 1 32204 1004
 	endi
 	slow
 	doif tick ne 0
-		call 9 0 0
+		mesg writ ownr 9
 	endi
 endm
 
@@ -820,7 +807,7 @@ scrp 1 1 32204 1005
 	endi
 	slow
 	doif tick ne 0
-		call 9 0 0
+		mesg writ ownr 9
 	endi
 endm
 
@@ -839,7 +826,7 @@ scrp 1 1 32204 1006
 	endi
 	slow
 	doif tick ne 0
-		call 9 0 0
+		mesg writ ownr 9
 	endi
 endm
 
@@ -858,14 +845,14 @@ scrp 1 1 32204 1007
 	endi
 	slow
 	doif tick ne 0
-		call 9 0 0
+		mesg writ ownr 9
 	endi
 endm
 
 * RAW KEY DOWN
 scrp 1 1 32204 73
 * Check if 4 pressed while CTRL down
-	doif ov04 eq 1 and _p1_ eq 52
+  doif keyd 16 eq 0 and keyd 17 eq 1 and _p1_ eq 52
 		doif clac eq 0
 * Slide out
 			lock
@@ -900,18 +887,6 @@ scrp 1 1 32204 73
 			flto 0 ov03
 			clac 0
 		endi
-	endi
-* Flag if CTRL pressed
-	doif _p1_ eq 17
-		setv ov04 1
-	endi
-endm
-
-* RAW KEY UP
-scrp 1 1 32204 74
-* Clear flag if CTRL released
-	doif _p1_ eq 17
-		setv ov04 0
 	endi
 endm
 

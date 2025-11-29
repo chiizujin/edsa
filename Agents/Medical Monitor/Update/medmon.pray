@@ -1,6 +1,6 @@
 "en-GB"
 
-group DSAG "Medical Monitor Update v1.4.2 "
+group DSAG "Medical Monitor Update v1.5 "
 "Agent Type" 0
 "Dependency Count" 3
 "Dependency 1" "medical monitor.c16"
@@ -11,8 +11,8 @@ group DSAG "Medical Monitor Update v1.4.2 "
 "Dependency Category 3" 7
 
 "Script Count" 1
-"Script 1" @ "Medical Monitor Update v1.4.2  script.cos"
-"Agent Description" "Original by Emmental\n\nMonitors the bacteria and toxin levels of all your Norns.\n\nSee its Agent Help for more information. 'Unofficial Chemical Catalogue' and 'Short Name Chemical List' recommended for proper display names."
+"Script 1" @ "medmon.cos"
+"Agent Description" "Monitors the bacteria and toxin levels of all your creatures.\n\nSee its Agent Help for more information. \n\n'Unofficial Chemical Catalogue' and 'Short Name Chemical List' recommended for proper display names."
 "Agent Animation File" "medical monitor.c16"
 "Agent Animation Gallery" "medical monitor"
 "Agent Animation String" "0"
@@ -21,7 +21,7 @@ group DSAG "Medical Monitor Update v1.4.2 "
 
 "Remove script" "enum 1 1 32204 kill targ next scrx 1 1 32204 1 scrx 1 1 32204 2 scrx 1 1 32204 9 scrx 1 1 32204 1001 scrx 1 1 32204 1002 scrx 1 1 32204 1003"
 
-group AGNT "Medical Monitor Update v1.4.2"
+group AGNT "Medical Monitor Update v1.5"
 "Agent Type" 0
 "Dependency Count" 3
 "Dependency 1" "medical monitor.c16"
@@ -32,8 +32,8 @@ group AGNT "Medical Monitor Update v1.4.2"
 "Dependency Category 3" 7
 
 "Script Count" 1
-"Script 1" @ "Medical Monitor Update v1.4.2 script.cos"
-"Agent Description" "Original by Emmental\n\nMonitors the bacteria and toxin levels of all your Norns.\n\nSee its Agent Help for more information. 'Unofficial Chemical Catalogue' and 'Short Name Chemical List' recommended for proper display names."
+"Script 1" @ "medmon.cos"
+"Agent Description" "Monitors the bacteria and toxin levels of all your creatures.\n\nSee its Agent Help for more information.\n\n'Unofficial Chemical Catalogue' and 'Short Name Chemical List' recommended for proper display names."
 "Agent Animation File" "medical monitor.c16"
 "Agent Animation Gallery" "medical monitor"
 "Agent Animation String" "0"

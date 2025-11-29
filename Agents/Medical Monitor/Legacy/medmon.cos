@@ -8,6 +8,8 @@ next
 doif va00 eq 1
   stop
 endi
+* Remove old raw key up script
+scrx 1 1 32204 74
 * Create it
 new: comp 1 1 32204 "medical monitor" 11 0 8900
 *attr 52
@@ -299,7 +301,7 @@ scrp 1 1 32204 1000
   doif clac eq 0
     mesg writ ownr 0
   else
-    mesg writ ownr 2
+    mesg writ ownr 1
   endi
 endm
 
@@ -473,7 +475,7 @@ endm
 * RAW KEY DOWN
 scrp 1 1 32204 73
   * Check if 4 pressed while CTRL down
-  doif keyd 17 eq 1 and _p1_ eq 52
+  doif keyd 16 eq 0 and keyd 17 eq 1 and _p1_ eq 52
     doif clac eq 0
       * Slide out
       lock
@@ -522,7 +524,6 @@ scrx 1 1 32204 1
 scrx 1 1 32204 2
 scrx 1 1 32204 9
 scrx 1 1 32204 73
-scrx 1 1 32204 74
 scrx 1 1 32204 1001
 scrx 1 1 32204 1002
 scrx 1 1 32204 1003

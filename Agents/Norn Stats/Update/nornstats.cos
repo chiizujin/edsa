@@ -637,9 +637,9 @@ endm
 * CLICKING ON ICON
 scrp 1 1 32207 1000
   doif clac eq 0
-    mesg writ ownr 1
+    mesg writ ownr 0
   else
-    mesg writ ownr 2
+    mesg writ ownr 1
   endi
 endm
 

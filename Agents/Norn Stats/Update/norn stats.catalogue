@@ -1,0 +1,21 @@
+TAG "Agent Help 1 1 32207"
+"Norn Statistics" 
+"This agent adds a panel to the left of the screen that displays various information about your creatures, including their age, life stage, generation, and if they have been through the warp.\n\nThe information is updated about every 15 seconds.\n\nIt also checks for possible immortal and fast-aging creatures by checking 4 indicators:\n\n\n\n1. Creatures older than 9 hours may be immortal.\n\n2. Creatures with 2 or more of Cyanide, Belladonna, ATP Decoupler, Wounded over 90 may be immortal.\n\n3. Creatures that reached adult stage before a certain age are probably fast-agers.\n\n4. Creatures that have 1 or less ATP or Energy may be immortal, hereby nicknamed 'zombies'.\n\nIf any of these checks are matched then a ''boing'' sound will be heard and 1 or more letters will appear in square brackets along with the rest of the information for that creature:\n\nO = Old\nT = Toxins\nA = Aging\nZ = Zombie\n\nThis checking can be turned on or off with the WARN button.\nNote that it is possible for these alerts to be false positives, especially when working with custom breeds or agents, and some false positives will eventually clear themselves given enough time. Examples include:\n\n1. Creatures with custom lifespans being marked as fast-agers or old immortals even though they are aging as intended. Alert clears only when these creatures are no longer in this world.\n\n2. Creatures who've been artificially aged to adult through agents or CAOS codes being marked as fast-agers even though their natural lifespan is unaffected. Alert clears only when these creatures are no longer in this world.\n\n3. Creatures who are severely sick or wounded but do not immediately die. Alert clears when it either recovers or dies.\n\n4. Toxic breeds who are unaffected by or benefit from diseases. Alert clears if either all toxins are removed (but do you want to?) or if the creature dies.\n5. Creatures who do not die immediately if ATP/Energy goes below 1. Alert clears when the creature either recovers their ATP/Energy or dies.\n\nThe top four buttons are used to toggle on or off the display of the various species and the two arrow buttons are used to scroll the window if there is more than one page of text.\n\n\n\n\nThe text at the bottom of the panel shows the number of males and females and highest generation of each species.\n\nIf the NB button is toggled on, it will also count creatures that are neither male nor female. Even when toggled off, Nornbinary creatures will still be tracked in the main panel."
+
+TAG "ToolTip 1 1 32207 6"
+"Toggle Norns"
+
+TAG "ToolTip 1 1 32207 7"
+"Toggle Ettins"
+
+TAG "ToolTip 1 1 32207 8"
+"Toggle Grendels"
+
+TAG "ToolTip 1 1 32207 9"
+"Toggle Geats"
+
+TAG "ToolTip 1 1 32207 10"
+"Toggle Suspected\nImmortal/Fastager"
+
+TAG "ToolTip 1 1 32207 12"
+"Toggle Nornbinary"

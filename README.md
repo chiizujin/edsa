@@ -13,14 +13,14 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-11-30**
+- Norn Statistics 1.3 & Medical Monitor 1.5 - Fixed a bug which caused the hotkeys (CTRL+4/5) to sometimes operate without CTRL pressed. This has also been fixed in SunlitMiracle's updated versions, which are now included as standard in the downloads.
+
 **2025-11-14**
 - Electronic Butler 1.1 - Removed URGEs and other small changes.
 
 **2025-11-10**
 - Bounty Bugs 1.3 - Removed URGEs and some CHEMs/STIMs, added EMITs, and several other changes.
-
-**2025-11-03**
-- Ainarda agents 1.2 - Fixed a couple of lift issues.
 
 → [Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md)
 
@@ -86,9 +86,11 @@ Are you fed up of Ettins, and even Norns, messing with your connectable agents? 
 
 This spray releases clouds into the air that help homesick Norns feel better.
 
-## ※ Medical Monitor [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/Medical%20Monitor/medical%20monitor.zip)
+## ※ Medical Monitor [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/Medical%20Monitor/medical_monitor_1.5.zip)
 
-This agent adds a panel to the left of the screen that displays the bacteria and toxin levels of all your creatures.
+This agent adds a panel to the left of the screen that monitors various chemical levels of all your creatures.
+
+The download includes two versions: the original (legacy) version and a version with several improvements made by SunlitMiracle (update).
 
 ### Alternative version
 
@@ -110,9 +112,11 @@ This agent checks for possible immortal and fast-aging Norns and attempts to kee
 
 This agent checks for possible immortal and fast-aging Norns.
 
-## ※ Norn Statistics [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/Norn%20Stats/norn%20statistics.zip)
+## ※ Norn Statistics [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Agents/Norn%20Stats/norn_statistics_1.3.zip)
 
 This agent adds a panel to the left of the screen that displays various information about your creatures, including their age, life stage, generation, and if they have been through the warp.
+
+The download includes two versions: the original (legacy) version and a version with several improvements made by SunlitMiracle (update).
 
 ### Alternative version
 

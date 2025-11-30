@@ -1,3 +1,6 @@
+**2025-11-03**
+- Ainarda agents 1.2 - Fixed a couple of lift issues.
+
 **2025-10-14**
 - Warp Users 1.1 - Added a workaround for a warp-related bug and changed the agent classifier.
 - Interporter update 1.1:

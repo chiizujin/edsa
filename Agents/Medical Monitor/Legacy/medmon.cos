@@ -1,0 +1,533 @@
+* CREATE
+inst
+* Check if already installed
+setv va00 0
+enum 1 1 32204
+  setv va00 1
+next
+doif va00 eq 1
+  stop
+endi
+* Remove old raw key up script
+scrx 1 1 32204 74
+* Create it
+new: comp 1 1 32204 "medical monitor" 11 0 8900
+*attr 52
+attr 308
+clac 0
+bhvr 0
+accg 0
+elas 0
+fric 100
+imsk 1
+pat: fixd 1 "medical monitor" 1 0 0 0 "WhiteOnTransparentChars"
+pat: fixd 2 "medical monitor" 1 130 0 0 "WhiteOnTransparentChars"
+*pat: fixd 3 "medical monitor" 1 0 170 0 "WhiteOnTransparentChars"
+pat: butt 4 "medical monitor" 2 2 302 132 0 [] 1001 1
+pat: butt 5 "medical monitor" 4 2 302 160 0 [] 1002 1
+pat: butt 6 "medical monitor" 6 2 300 10 0 [] 1003 1
+* Species buttons
+pat: butt 8 "medical monitor 2" 0 2 299 48 0 [] 1004 1
+pat: butt 9 "medical monitor 2" 2 2 299 68 0 [] 1005 1
+pat: butt 10 "medical monitor 2" 4 2 299 88 0 [] 1006 1
+pat: butt 11 "medical monitor 2" 6 2 299 108 0 [] 1007 1
+* Button just used for status icon
+pat: butt 7 "medical monitor" 8 3 344 95 0 [] 1000 0
+* Display page
+setv ov01 0
+* Warning
+setv ov02 0
+pose 0
+* Button images
+part 4
+pose 1
+part 5
+pose 1
+part 8
+pose 1
+* Initial text
+part 1
+ptxt "(Waiting)"
+part 0
+setv ov05 1
+setv ov06 0
+setv ov07 0
+setv ov08 0
+* Check if norn stats installed (can't seem to use OWNR here)
+seta va00 targ
+setv ov03 401
+enum 1 1 32207
+  * Check if other agent at upper position
+  doif ov03 ne 201
+    targ va00
+    setv ov03 201
+  endi
+next
+targ va00
+flto 0 ov03
+tick 1
+
+* OVs
+* ov01 - display page
+* ov02 - warning
+* ov03 - y position (nornstats installed?)
+* ov05 - Norns
+* ov06 - Ettins
+* ov07 - Grendels
+* ov08 - Geats
+
+* ACTIVATE 1
+scrp 1 1 32204 1
+  lock
+  enum 1 2 14
+    seta va00 targ
+  next
+  targ va00
+  snde "gui3"
+  targ ownr
+  setv va00 0
+  loop
+    subv va00 10
+    flto va00 ov03
+  untl va00 lt -320
+  flto -334 ov03
+  clac 1
+endm
+
+* ACTIVATE 2
+scrp 1 1 32204 2
+  lock
+  * Play sound from top left GUI agent as agent may be off screen so sound would not be heard
+  enum 1 2 14
+    seta va00 targ
+  next
+  targ va00
+  snde "gui1"
+  targ ownr
+  setv va00 -334
+  loop
+    addv va00 10
+    flto va00 ov03
+  untl va00 gt -10
+  flto 0 ov03
+  clac 0
+endm
+
+* TIMER
+scrp 1 1 32204 9
+  doif tick eq 1
+    tick 80
+  endi
+  * Loop through Norns
+  sets va01 ""
+  sets va02 ""
+  sets va97 ""
+  inst
+
+  * Loop through Norns
+  targ ownr
+  doif ov05 eq 1
+    setv va66 1
+    gsub checkmed
+  endi
+
+  * Loop through Ettins
+  targ ownr
+  doif ov06 eq 1
+    setv va66 3
+    gsub checkmed
+  endi
+
+  * Loop through Grendels
+  targ ownr
+  doif ov07 eq 1
+    setv va66 2
+    gsub checkmed
+  endi
+
+  * Loop through Geats
+  targ ownr
+  doif ov08 eq 1
+    setv va66 4
+    gsub checkmed
+  endi
+
+  * Display
+  doif va01 eq ""
+    sets va01 "(All clear)"
+    setv ov02 0
+    part 7
+    pose 0
+  else
+    * Remove last \n to prevent page wrap if exactly fills a page
+    setv va04 strl va01
+    subv va04 1
+    sets va01 subs va01 1 va04
+    setv va04 strl va02
+    subv va04 1
+    sets va02 subs va02 1 va04
+    doif ov02 eq 0
+      * Play sound from top left GUI agent as Medical monitor may be off screen so sound would not be heard
+      enum 1 2 14
+        seta va00 targ
+      next
+      targ va00
+      snde "htal"
+      targ ownr
+      setv ov02 1
+    endi
+    part 7
+    pose 1
+  endi
+  part 1
+  ptxt va01
+  * Check page number
+  setv va05 npgs
+  doif ov01 ge npgs
+    setv ov01 npgs
+    subv ov01 1
+  endi
+  page ov01
+  part 2
+  ptxt va02
+  page ov01
+  * Button images
+  part 4
+  pose 1
+  doif ov01 ne 0
+    pose 0
+  endi
+  part 5
+  pose 1
+  subv va05 1
+  doif ov01 lt va05
+    pose 0
+  endi
+  part 0
+  slow
+
+  subr checkmed
+    enum 4 va66 0
+      doif targ <> null
+        * Get creature's agent & name
+        seta va99 targ
+        sets va95 gtos 0
+        sets va98 hist name gtos 0
+        doif va98 eq ""
+          sets va98 "(Unnamed)"
+        endi
+        doif dead eq 1
+          sets va96 " (D)"
+        else
+          sets va96 ""
+        endi
+        * Check for any bacteria
+        setv va03 0
+        enum 2 32 23
+          doif targ <> null
+            doif ov00 = va99
+              addv va03 1
+            endi
+          endi
+        next
+        targ va99
+        * Add to list if any found
+        doif va03 gt 0
+          doif va97 ne va95
+            doif va01 ne ""
+              adds va01 "\n"
+              adds va02 "\n"
+            endi
+            adds va01 va98
+            adds va01 va96
+            sets va97 va95
+          endi
+          adds va01 "\n"
+          adds va02 vtos va03
+          adds va02 " Bacteria\n"
+        endi
+        * Check for any chemicals 66-89
+        setv va00 66
+        loop
+          doif chem va00 gt 0.2
+            doif va97 ne va95
+              doif va01 ne ""
+                adds va01 "\n"
+                adds va02 "\n"
+              endi
+              adds va01 va98
+              adds va01 va96
+              sets va97 va95
+            endi
+            adds va01 "\n"
+            adds va02 read "chemical_names" va00
+            adds va02 " ("
+            setv va03 chem va00
+            mulv va03 100.0
+            setv va03 ftoi va03
+            adds va02 vtos va03
+            adds va02 ")\n"
+          endi
+          addv va00 1
+        untl va00 gt 89
+        * Check for pain (148) greater than 10
+          doif chem 148 gt 0.1
+            doif va97 ne va95
+              doif va01 ne ""
+                adds va01 "\n"
+                adds va02 "\n"
+              endi
+              adds va01 va98
+              adds va01 va96
+              sets va97 va95
+            endi
+            adds va01 "\n"
+            adds va02 read "chemical_names" 148
+            adds va02 " ("
+            setv va03 chem 148
+            mulv va03 100.0
+            setv va03 ftoi va03
+            adds va02 vtos va03
+            adds va02 ")\n"
+          endi
+          addv va00 1
+      endi
+    next
+  retn
+endm
+
+* CLICKING ON ICON
+scrp 1 1 32204 1000
+  doif clac eq 0
+    mesg writ ownr 0
+  else
+    mesg writ ownr 1
+  endi
+endm
+
+* UP BUTTON
+scrp 1 1 32204 1001
+  snde "1bep"
+  inst
+  subv ov01 1
+  part 1
+  setv va05 npgs
+  doif ov01 lt 0
+    setv ov01 0
+  endi
+  page ov01
+  part 2
+  page ov01
+  * Button images
+  part 4
+  pose 1
+  doif ov01 ne 0
+    pose 0
+  endi
+  part 5
+  pose 1
+  subv va05 1
+  doif ov01 lt va05
+    pose 0
+  endi
+  part 0
+  slow
+endm
+
+* DOWN BUTTON
+scrp 1 1 32204 1002
+  snde "1bep"
+  inst
+  addv ov01 1
+  part 1
+  setv va05 npgs
+  doif ov01 ge npgs
+    setv ov01 npgs
+    subv ov01 1
+  endi
+  page ov01
+  part 2
+  page ov01
+  * Button images
+  part 4
+  pose 1
+  doif ov01 ne 0
+    pose 0
+  endi
+  part 5
+  pose 1
+  subv va05 1
+  doif ov01 lt va05
+    pose 0
+  endi
+  part 0
+  slow
+endm
+
+* ON/OFF BUTTON
+scrp 1 1 32204 1003
+  snde "1bep"
+  inst
+  doif tick eq 0
+    tick 1
+    part 6
+    pose 0
+    part 1
+    ptxt "(Waiting)"
+    setv ov02 0
+    part 7
+    pose 0
+  else
+    tick 0
+    part 6
+    pose 1
+    part 1
+    ptxt "(Disabled)"
+    part 7
+    pose 2
+  endi
+  part 2
+  ptxt ""
+  part 4
+  pose 1
+  part 5
+  pose 1
+  part 0
+  slow
+endm
+
+* NORN BUTTON
+scrp 1 1 32204 1004
+  snde "1bep"
+  inst
+  doif ov05 eq 0
+    setv ov05 1
+    part 8
+    pose 1
+  else
+    setv ov05 0
+    part 8
+    pose 0
+  endi
+  slow
+  doif tick ne 0
+    mesg writ ownr 9
+  endi
+endm
+
+* ETTIN BUTTON
+scrp 1 1 32204 1005
+  snde "1bep"
+  inst
+  doif ov06 eq 0
+    setv ov06 1
+    part 9
+    pose 1
+  else
+    setv ov06 0
+    part 9
+    pose 0
+  endi
+  slow
+  doif tick ne 0
+    mesg writ ownr 9
+  endi
+endm
+
+* GRENDEL BUTTON
+scrp 1 1 32204 1006
+  snde "1bep"
+  inst
+  doif ov07 eq 0
+    setv ov07 1
+    part 10
+    pose 1
+  else
+    setv ov07 0
+    part 10
+    pose 0
+  endi
+  slow
+  doif tick ne 0
+    mesg writ ownr 9
+  endi
+endm
+
+* GEAT BUTTON
+scrp 1 1 32204 1007
+  snde "1bep"
+  inst
+  doif ov08 eq 0
+    setv ov08 1
+    part 11
+    pose 1
+  else
+    setv ov08 0
+    part 11
+    pose 0
+  endi
+  slow
+  doif tick ne 0
+    mesg writ ownr 9
+  endi
+endm
+
+* RAW KEY DOWN
+scrp 1 1 32204 73
+  * Check if 4 pressed while CTRL down
+  doif keyd 16 eq 0 and keyd 17 eq 1 and _p1_ eq 52
+    doif clac eq 0
+      * Slide out
+      lock
+      enum 1 2 14
+        seta va00 targ
+      next
+      targ va00
+      snde "gui3"
+      targ ownr
+      setv va00 0
+      loop
+        subv va00 10
+        flto va00 ov03
+      untl va00 lt -320
+      flto -334 ov03
+      clac 1
+    else
+      * Slide in
+      lock
+      * Play sound from top left GUI agent as Medical monitor may be off screen so sound would not be heard
+      enum 1 2 14
+        seta va00 targ
+      next
+      targ va00
+      snde "gui1"
+      targ ownr
+      setv va00 -334
+      loop
+        addv va00 10
+        flto va00 ov03
+      untl va00 gt -10
+      flto 0 ov03
+      clac 0
+    endi
+  endi
+endm
+
+* DESTROY
+rscr
+
+enum 1 1 32204
+  kill targ
+next
+
+scrx 1 1 32204 1
+scrx 1 1 32204 2
+scrx 1 1 32204 9
+scrx 1 1 32204 73
+scrx 1 1 32204 1001
+scrx 1 1 32204 1002
+scrx 1 1 32204 1003
+scrx 1 1 32204 1004
+scrx 1 1 32204 1005
+scrx 1 1 32204 1006
+scrx 1 1 32204 1007

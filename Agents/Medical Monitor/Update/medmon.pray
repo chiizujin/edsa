@@ -1,0 +1,45 @@
+"en-GB"
+
+group DSAG "Medical Monitor Update v1.5 "
+"Agent Type" 0
+"Dependency Count" 3
+"Dependency 1" "medical monitor.c16"
+"Dependency 2" "medical monitor 2.c16"
+"Dependency 3" "medical monitor.catalogue"
+"Dependency Category 1" 2
+"Dependency Category 2" 2
+"Dependency Category 3" 7
+
+"Script Count" 1
+"Script 1" @ "medmon.cos"
+"Agent Description" "Monitors various chemical levels of all your creatures.\n\nSee its Agent Help for more information.\n\n'Unofficial Chemical Catalogue' and 'Short Name Chemical List' recommended for proper display names."
+"Agent Animation File" "medical monitor.c16"
+"Agent Animation Gallery" "medical monitor"
+"Agent Animation String" "0"
+"Web URL" "github.com/chiizujin/edsa"
+"Web Label" "Emmental's DS Agents"
+
+"Remove script" "enum 1 1 32204 kill targ next scrx 1 1 32204 1 scrx 1 1 32204 2 scrx 1 1 32204 9 scrx 1 1 32204 1001 scrx 1 1 32204 1002 scrx 1 1 32204 1003"
+
+group AGNT "Medical Monitor Update v1.5"
+"Agent Type" 0
+"Dependency Count" 3
+"Dependency 1" "medical monitor.c16"
+"Dependency 2" "medical monitor 2.c16"
+"Dependency 3" "medical monitor.catalogue"
+"Dependency Category 1" 2
+"Dependency Category 2" 2
+"Dependency Category 3" 7
+
+"Script Count" 1
+"Script 1" @ "medmon.cos"
+"Agent Description" "Monitors various chemical levels of all your creatures.\n\nSee its Agent Help for more information.\n\n'Unofficial Chemical Catalogue' and 'Short Name Chemical List' recommended for proper display names."
+"Agent Animation File" "medical monitor.c16"
+"Agent Animation Gallery" "medical monitor"
+"Agent Animation String" "0"
+
+"Remove script" "enum 1 1 32204 kill targ next scrx 1 1 32204 1 scrx 1 1 32204 2 scrx 1 1 32204 9 scrx 1 1 32204 1001 scrx 1 1 32204 1002 scrx 1 1 32204 1003"
+
+inline FILE "medical monitor.c16" "medical monitor.c16"
+inline FILE "medical monitor 2.c16" "medical monitor 2.c16"
+inline FILE "medical monitor.catalogue" "medical monitor.catalogue"

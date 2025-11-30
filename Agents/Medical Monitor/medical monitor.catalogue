@@ -1,3 +1,0 @@
-TAG "Agent Help 1 1 32204"
-"Medical Monitor" 
-"This agent adds a panel to the left of the screen that displays the bacteria and toxin levels of all your creatures.\n\nIf any bacteria or toxins are found then a short alarm will sound and the green cross on the edge of the tab will turn red.  Creatures are checked about every 5 seconds but the alarm will not sound again until all creatures have been healed.\n\n\n\nThe four rectangular buttons are used to toggle on or off the display of the various species and the two arrow buttons are used to scroll the window if there is more than one page of text.\n\nThe red light button can be used to turn off the monitor.  When the monitor is disabled the green/red cross will turn grey."

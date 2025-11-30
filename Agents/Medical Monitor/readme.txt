@@ -43,6 +43,11 @@ catalogue files for some reason. Install in both the "Docking Station/Catalogue"
 and the "Creatures 3/Catalogue" folders. The monitors are still functional
 without this but several chemicals will show up as only numbers.
 
+Credits
+-------
+- Original agent: Emmental.
+- Update versions 1.4.1 & 1.4.2: SunlitMiracle.
+
 Version history (Both versions)
 -------------------------------
 1.5

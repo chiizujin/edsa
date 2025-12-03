@@ -1,0 +1,26 @@
+Clearslot (1.0)
+
+This is a Python script that will delete all image and body data files for a
+specified breed slot in order to:
+
+- Ensure that an egg agent will extract all of the necessary files (it won't
+  overwrite files that already exist.)
+- Avoid potential weirdness if you are manually replacing a breed with one that
+  uses fewer sprites or body data files.
+
+Requirements
+------------
+Requires Python >= 3.11
+
+Usage
+-----
+Copy the file into your Creatures 3 or Docking Station directory and run it with:
+
+  clearslot <breed name> <slot>
+
+or:
+
+  python clearslot <breed name> <slot>
+
+Emmental
+https://github.com/chiizujin/edsa

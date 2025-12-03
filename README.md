@@ -13,14 +13,14 @@ If you just want the agent to install into your game then all you need is the **
 
 ### Latest updates
 
+**2025-12-03**
+- clearslot 1.0 - A Python script to delete all image and body data files for a specified breed slot.
+
 **2025-11-30**
 - Norn Statistics 1.3 & Medical Monitor 1.5 - Fixed a bug which caused the hotkeys (CTRL+4/5) to sometimes operate without CTRL pressed. This has also been fixed in SunlitMiracle's updated versions, which are now included as standard in the downloads.
 
 **2025-11-14**
 - Electronic Butler 1.1 - Removed URGEs and other small changes.
-
-**2025-11-10**
-- Bounty Bugs 1.3 - Removed URGEs and some CHEMs/STIMs, added EMITs, and several other changes.
 
 → [Previous updates](https://github.com/chiizujin/edsa/blob/main/previous_updates.md)
 
@@ -187,6 +187,12 @@ A vendor for Panatreea Potion from the Treehugger Norn pack.
 This pack contains three agents that can help your game run a bit faster on older hardware.
 
 The DS extras remover will remove some agents and most of the ecosystem -- but don't worry about food as the tubas will still grow from time to time. The other two agents are for DS docked or undocked worlds that use the C3-in-DS desert or aquarium. These agents will remove all of the ecosystem from both rooms.
+
+# Utilities
+
+## clearslot [🠟](https://github.com/chiizujin/edsa/raw/refs/heads/main/Utilities/clearslot/clearslot_1.0.zip)
+
+A Python script to delete all image and body data files for a specified breed slot.
 
 <!-- For GitHub -->
 <p align="center"><img src="Agents/0_site/edsalink.png" alt="e.dsa"/></p>

@@ -1,3 +1,6 @@
+**2025-11-10**
+- Bounty Bugs 1.3 - Removed URGEs and some CHEMs/STIMs, added EMITs, and several other changes.
+
 **2025-11-03**
 - Ainarda agents 1.2 - Fixed a couple of lift issues.
 
